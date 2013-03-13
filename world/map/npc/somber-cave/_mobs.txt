@@ -1,0 +1,41 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Somber Cave mobs
+
+somber-cave.gat,81,91,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
+somber-cave.gat,37,61,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
+somber-cave.gat,45,114,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
+somber-cave.gat,0,0,0,0|monster|Lava Slime|1096,30,20,0,Mobsomber-cave::On1096
+somber-cave.gat,0,0,0,0|monster|Fire Goblin|1011,30,20,0,Mobsomber-cave::On1011
+somber-cave.gat,74,52,1,1|monster|Fire Skull|1023,1,0,2000,Mobsomber-cave::On1023
+somber-cave.gat,115,116,1,1|monster|Fire Skull|1023,1,0,2000,Mobsomber-cave::On1023
+somber-cave.gat,0,0,0,0|monster|Evil Mushroom|1013,10,20,0,Mobsomber-cave::On1013
+
+
+somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,{
+On1011:
+    set @mobID, 1011;
+    callfunc "MobPoints";
+    end;
+
+On1013:
+    set @mobID, 1013;
+    callfunc "MobPoints";
+    end;
+
+On1023:
+    set @mobID, 1023;
+    callfunc "MobPoints";
+    end;
+
+On1039:
+    set @mobID, 1039;
+    callfunc "MobPoints";
+    end;
+
+On1096:
+    set @mobID, 1096;
+    callfunc "MobPoints";
+    end;
+
+    end;
+}

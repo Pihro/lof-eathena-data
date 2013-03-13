@@ -51,9 +51,9 @@ L_LD_Drinks:
     set @state, 2;
     callsub S_Update_Var;
     delitem "CactusDrink", 10;
-    getitem "Boots", 1;
+    getitem "Cottontrousers", 1;
     mes "[Lieutenant Dausen]";
-    mes "\"Great!  This will help us make it through the hot day.  As a gift for your troubles, take these boots to keep your feet from burning on the sand.  Have a good day...\"";
+    mes "\"Great!  This will help us make it through the hot day.  As a gift for your troubles, take these boots to keep your legs from burning in the sun.  Have a good day...\"";
     next;
     mes "Lieutenant Dausen mumbles to himself and rubs his head.";
     next;
@@ -111,7 +111,7 @@ L_LD_Nickos_Waits:
 L_LD_Orders:
     set @state, 7;
     callsub S_Update_Var;
-    set Zeny, Zeny + 500;
+    set Zeny, Zeny + 15000;
     mes "[Lieutenant Dausen]";
     mes "\"Thank you for clearing up the orders to my men!  Here's some gold for your efforts.\"";
     next;
