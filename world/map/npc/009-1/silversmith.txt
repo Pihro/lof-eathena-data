@@ -1,0 +1,148 @@
+//
+
+009-1.gat,43,32,0|script|Silversmith|135,{
+   
+    mes "[Smith Silvers]";
+    mes "\"Hello, I am your local silversmith, here for all of your smithing needs!\"";
+    goto L_Smithmenu;
+
+L_Smithmenu:
+    menu
+        "Can you smith my Short Sword?", L_Sword,
+        "How about a Crusade Helmet?", L_Helm,
+        "Can you silver my Forest Bow?", L_Bow,
+        "I'd like my Clover Silvered.", L_Clover,
+        "I think I have everything I need, thanks.", -;
+    goto L_Close;
+
+L_Sword:
+    mes "[Smith Silvers]";
+    mes "\"I can, it will cost you 15 Silver Ore, 6 Raw Coal, and 100,000 gp.\"";
+    menu
+        "Sure.", L_sword2,
+        "What a ripoff!  No way!", -;
+    goto L_Close;
+
+L_Helm:
+    mes "[Smith Silvers]";
+    mes "\"I can silver that helmet for 6 Silver Ore, 9 Raw coal, and 50,000 gp.\"";
+    menu
+        "Here you go.", L_helm2,
+        "Are you nuts?! Forget it!", -;
+    goto L_Close;
+
+L_Bow:
+    mes "[Smith Silvers]";
+    mes "\"I can silver that bow for 18 Silver Ore, 18 Raw Coal, and 200,000 gp.\"";
+    menu
+        "Sure.", L_bow2,
+        "Whoa, that's way too much.", -;
+    goto L_Close;
+
+L_Clover:
+        mes "[Smith Silvers]";
+        mes "\"I can silver your clover for 4 Silver Ore, 5 Raw Coal, and 250,000 gp.\"";
+        menu
+            "I have them right here.", L_Clover2,
+            "Whoa, that's way too much.", -;
+        goto L_Close;
+
+L_sword2:
+    if (countitem("Silverore") < 15) goto L_Missing;
+    if (countitem("Rawcoal") < 6) goto L_Missing;
+    if (countitem("Shortsword") < 1) goto L_Missing;
+    if (Zeny < 100000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Silverore") > 15 && countitem("Rawcoal") < 6) goto L_Full;
+    delitem "Silverore", 15;
+    delitem "Rawcoal", 6;
+    delitem "Shortsword", 1;
+    set Zeny, Zeny - 100000;
+    getitem "Silversword", 1;
+    mes "[Smith Silvers]";
+    mes "\"There you go! Want me to silver anything else?\"";
+    menu
+        "Yes.", L_Smithmenu,
+        "Nope.", L_No;
+    goto L_Close;
+
+L_helm2:
+    if (countitem("Silverore") < 6) goto L_Missing;
+    if (countitem("Rawcoal") < 9) goto L_Missing;
+    if (countitem("unsilveredcrusadehelmet") < 1) goto L_Missing;
+    if (Zeny < 50000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Silverore") > 6 && countitem("Rawcoal") < 9) goto L_Full;
+    delitem "Rawcoal", 9;
+    delitem "Silverore", 6;
+    delitem "unsilveredcrusadehelmet", 1;
+    set Zeny, Zeny - 50000;
+    getitem "Crusadehelmet", 1;
+    mes "[Smith Silvers]";
+    mes "\"There you go.  Would you like anything else silvered?\"";
+    menu
+        "Yes.", L_Smithmenu,
+        "No.", L_No;
+    goto L_Close;
+
+L_bow2:
+    if (countitem("Silverore") < 18) goto L_Missing;
+    if (countitem("Rawcoal") < 18) goto L_Missing;
+    if (countitem("Forestbow") < 1) goto L_Missing;
+    if (Zeny < 200000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Silverore") > 18 && countitem("Rawcoal") < 18) goto L_Full;
+    delitem "Rawcoal", 18;
+    delitem "Silverore", 18;
+    delitem "Forestbow", 1;
+    set Zeny, Zeny - 200000;
+    getitem "Silverbow", 1;
+    mes "[Smith Silvers]";
+    mes "\"There you go.  Would you like anything else silvered?\"";
+    menu
+        "Yes.", L_Smithmenu,
+        "No.", L_No;
+    goto L_Close;
+
+L_Clover2:
+        if (countitem("Silverore") < 4) goto L_Missing;
+        if (countitem("Rawcoal") < 5) goto L_Missing;
+        if (countitem("Fourleafclover") < 1) goto L_Missing;
+        if (Zeny < 250000) goto L_NotEnoughMoney;
+        getinventorylist;
+        if (@inventorylist_count == 100 && countitem("Silverore") > 4 && countitem("Rawcoal") < 5) goto L_Full;
+        delitem "Rawcoal", 5;
+        delitem "Silverore", 4;
+        delitem "Fourleafclover", 1;
+        set Zeny, Zeny - 250000;
+        getitem "Silverfourleafamulet", 1;
+        mes "[Smith Silvers]";
+        mes "\"There you go.  Would you like anything else silvered?\"";
+        menu
+            "Yes.", L_Smithmenu,
+            "No.", L_No;
+        goto L_Close;
+
+L_Full:
+    mes "[Smith Silvers]";
+    mes "\"You must have been making a lot of trades...your bag is completely full!  Come back after you've made some room.\"";
+    goto L_Close;
+
+L_Missing:
+    mes "[Smith Silvers]";
+    mes "\"It looks like you're missing some items.  Please come back when you have what i need!\"";
+    goto L_Close;
+
+L_NotEnoughMoney:
+    mes "[Smith Silvers]";
+    mes "\"You don't have enough money, come back later!\"";
+    goto L_Close;
+
+L_No:
+    mes "[Smith Silvers]";
+    mes "\"Have a great day!\"";
+    goto L_Close;
+
+L_Close:
+    close;
+}
