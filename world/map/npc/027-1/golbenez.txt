@@ -1,9 +1,9 @@
 027-1.gat,68,89,0|script|#Golbenez#_M|204,{
 
-    set @fee, 666;
+    set @fee, 1000;
 
     mes "[Golbenez]";
-    mes "\"Welcome mortal. I finished the creation of the place of leisure.\"";
+    mes "\"Welcome human. I finished the creation of the place of leisure.\"";
     next;
     if (BaseLevel < 60)
         goto L_Weak;

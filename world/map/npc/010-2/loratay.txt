@@ -673,11 +673,42 @@ L_tanktop_insufficient_Zeny:
     goto L_main_menu;
 
 L_cape:
+    if (countitem("GoldenWarlordPlate") > 0) goto L_cape2;
     mes "[Lora Tay the Seamstress]";
     mes "She shakes her head.";
     mes "\"No capes.  You're an adventurer, right? Do you want to get caught by a closing portcullis?  Or strangled when your cape gets tangled in a tree?  Or brought down by a mushroom stomping on your cape while you're trying to run away?  No capes.\"";
     next;
     goto L_main_menu;
+
+L_cape2:
+    mes "[Lora Tay the Seamstress]";
+    mes "\"Well, it looks like you have some pretty golden armor, I can add a cape if you wish....\"";
+    next;
+    goto L_capemenu;
+
+L_capemenu:
+    mes "[Lora Tay the Seamstress]";
+    mes "\"That will be 20 cotton cloth, 5 iron ingots, and 450,000gp.\"";
+    menu
+        "That sounds awesome! Yes!", L_capeyes,
+        "What a ripoff!?", L_end;
+
+L_capeyes:
+    if (countitem("Cottoncloth") < 20) goto L_Missing;
+    if (countitem("Ironingot") < 5) goto L_Missing;
+    if (countitem("Goldenwarlordplate") < 1) goto L_Missing;
+    if (Zeny < 450000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Cottoncloth") > 5 && countitem("Ironingot") < 5) goto L_Full;
+    delitem "Cottoncloth", 20;
+    delitem "Ironingot", 5;
+    delitem "Goldenwarlordplate", 1;
+    set Zeny, Zeny - 450000;
+    getitem "Whitesaviorarmor", 1;
+    mes "[Lora Tay]";
+    mes "\"There you go!\"";
+    next;
+    goto L_end;
 
 L_robe:
     mes "[Lora Tay the Seamstress]";

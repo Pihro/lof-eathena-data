@@ -1,0 +1,88 @@
+// Author: Jenalya, Pihro
+
+009-2.gat,181,56,0|script|Cerhan|311,{
+    mes "[Cerhan]";
+    mes "\"Ah, hello! It is good to see another person in this different town!\"";
+    next;
+    menu
+        "Really? Where are you from?",L_Story,
+        "Alright.",-;
+    goto L_Close;
+
+L_Story:
+    mes "[Cerhan]";
+    mes "\"I came from Thermin, a town in Kazei area.\"";
+    next;
+    mes "\"I'm an experienced weapon master and helping this smithy here, I am new in this town. I am best experienced in smithing armor.\"";
+    next;
+    if (countitem("MylarinDust") > 0)
+        menu
+            "Do you know something about 'Mylarin Dust'?", L_Mylarin,
+            "Good luck with that.",-;
+    if (countitem("Warlordplate") > 0)
+        menu
+            "Can you improve my Warlord Plate for me?", L_goldenwplate,
+            "What are you looking at?",-;
+    if (countitem("Lightplatemail") > 0)
+        menu
+            "Can you improve my Light Platemail for me?", L_goldenlplate,
+            "What are you looking at?",-;
+
+    mes "[Cerhan]";
+    mes "\"If you are interested in weapons and armor, you may want to come back later.\"";
+    goto L_Close;
+
+L_Mylarin:
+    mes "[Cerhan]";
+    mes "\"Mylarin dust?! Where did you get that? That's amazing!\"";
+    next;
+    mes "\"I can craft you an amazing strong armor with that - uhm, well, I first need to set up my smithy here.\"";
+    next;
+    mes "\"Please come back, when I'm ready with that. Mylarin dust... amazing.\"";
+    goto L_Close;
+
+L_goldenwplate:
+    mes "[Cerhan]";
+    mes "\"I can plate that armor in gold if you so wish, I will need 30 gold ore and 600,000gp.\"";
+    if (countitem("gold") < 30) goto L_Missing;
+    if (countitem("Warlordplate") < 1) goto L_Missing;
+    if (Zeny < 600000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("gold") > 30) goto L_Full;
+    delitem "gold", 30;
+    delitem "Warlordplate", 1;
+    set Zeny, Zeny - 600000;
+    getitem "Goldenwarlordplate", 1;
+    mes "[Cerhan]";
+    mes "\"There you go!\"";
+    goto L_Close;
+
+L_goldenlplate:
+    mes "[Cerhan]";
+    mes "\"I can plate that armor in gold if you so wish, I will need 20 gold ore and 300,000gp.\"";
+    if (countitem("gold") < 20) goto L_Missing;
+    if (countitem("Lightplatemail") < 1) goto L_Missing;
+    if (Zeny < 300000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("gold") > 20) goto L_Full;
+    delitem "gold", 20;
+    delitem "Lightplatemail", 1;
+    set Zeny, Zeny - 300000;
+    getitem "Goldenplatemail", 1;
+    mes "[Cerhan]";
+    mes "\"There you go!\"";
+    goto L_Close;
+
+L_Missing:
+    mes "[Cerhan]";
+    mes "\"It looks like you're missing some items.  Please come back when you have what i need!\"";
+    goto L_Close;
+
+L_NotEnoughMoney:
+    mes "[Cerhan]";
+    mes "\"You don't have enough money, come back later!\"";
+    goto L_Close;
+
+L_Close:
+    close;
+}

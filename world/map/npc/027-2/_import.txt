@@ -7,7 +7,6 @@ npc: npc/027-2/alacrius.txt
 npc: npc/027-2/alacrius2.txt
 npc: npc/027-2/barman.txt
 npc: npc/027-2/caretaker.txt
-npc: npc/027-2/cerhan.txt
 npc: npc/027-2/crying_child.txt
 npc: npc/027-2/diary.txt
 npc: npc/027-2/door.txt

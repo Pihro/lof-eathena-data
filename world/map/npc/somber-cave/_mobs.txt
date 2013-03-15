@@ -4,7 +4,7 @@
 somber-cave.gat,81,91,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
 somber-cave.gat,37,61,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
 somber-cave.gat,45,114,2,2|monster|Fire Lizard|1039,2,0,2000,Mobsomber-cave::On1039
-somber-cave.gat,0,0,0,0|monster|Lava Slime|1096,30,20,0,Mobsomber-cave::On1096
+somber-cave.gat,0,0,0,0|monster|Lava Slime|1104,30,20,0,Mobsomber-cave::On1104
 somber-cave.gat,0,0,0,0|monster|Fire Goblin|1011,30,20,0,Mobsomber-cave::On1011
 somber-cave.gat,74,52,1,1|monster|Fire Skull|1023,1,0,2000,Mobsomber-cave::On1023
 somber-cave.gat,115,116,1,1|monster|Fire Skull|1023,1,0,2000,Mobsomber-cave::On1023
@@ -32,8 +32,8 @@ On1039:
     callfunc "MobPoints";
     end;
 
-On1096:
-    set @mobID, 1096;
+On1104:
+    set @mobID, 1104;
     callfunc "MobPoints";
     end;
 
