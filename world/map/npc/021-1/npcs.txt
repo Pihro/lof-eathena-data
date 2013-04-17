@@ -22,16 +22,6 @@
     close;
 }
 
-021-1.gat,45,77,0|script|Pauline|208,{
-    set @npcname$, "Pauline";
-
-    mes "[" + @npcname$ + "]";
-    mes "\"I've mastered several schools of magic and fought the Yeti in Kaizei.\"";
-    next;
-    mes "\"The path of magic is a long and difficult one.\"";
-    close;
-}
-
 021-1.gat,49,123,0|script|Michel|215,{
     set @npcname$, "Michel";
 
