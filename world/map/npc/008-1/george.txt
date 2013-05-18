@@ -1,66 +1,120 @@
-//
-
+//George
 008-1.gat,136,36,0|script|George|138,{
-    set @hw2011_npc_id, $@hw2011_npc_george;
-    if (gettime(7) == $@hw2011_year && gettime(6) == 10 && gettime(5) >= $@hw2011_start_day)
-        goto L_TrickOrTreat;
-
-//    if (QUEST_Easter12 == 3 && ((gettime(6) == 3 && gettime(5) >= $@easter2012_start_day) || (gettime(6) == 4 && gettime(5) < $@easter2012_reward_start_day)))
-//        menu
-//            "Hey George, I need to ask some questions about a crime.", L_George_Easter2012;
-
-L_Begin:
-    if (getequipid(equip_head) == 617) goto L_Pirate;
-    if (getequipid(equip_head) == 622) goto L_Bandana;
-    if (getequipid(equip_head) == 621) goto L_EyePatch;
-    mes "[George the Pirate]";
-    mes "\"Arrrrh! 'Tis some kind of treasure map!\"";
-    close;
-
-L_Pirate:
-    mes "[George the Pirate]";
-    mes "\"Arrrrh! Ye be wearing a pirate's hat!\"";
-    close;
-
-L_Bandana:
-    mes "[George the Pirate]";
-    mes "\"Arrrrh! Ye remind me of my old first mate!\"";
-    close;
-
-L_EyePatch:
-    mes "[George the Pirate]";
-    mes "\"Arrrrh! Looks like ye lost an eye there!\"";
-    close;
-
-L_TrickOrTreat:
-    callfunc "TrickOrTreat2011";
-    goto L_Begin;
-
-L_George_Easter2012:
-    mes "[George the Pirate]";
-    mes "\"Aaarrrrh mate! That scarab armlet was a present from my grandfather, I swear! That is all I have to say...\"";
+       
+    if(GEORGE_Quest >= 4) goto L_Done2;
+    if(GEORGE_Quest == 3) goto L_Progress2;
+    if(GEORGE_Quest == 2) goto L_Done1;
+    if(GEORGE_Quest == 1) goto L_Progress;
+    set @TEMP, rand(2);
+    if(@TEMP == 1) goto L_Open1;
+       
+L_Open0:
+    mes "[George]";
+    mes "\"I need some help, could you please do something for me?\"";
     next;
+    goto L_Ask;
+              
+L_Open1:
+    mes "[George]";
+    mes "\"Oh hey there, wanna help me?\"";
+    next;
+       
+L_Ask:
     menu
-        "What? What are you talking about?", -;
-    mes "[George the Pirate]";
-    mes "\"Uh? Ahh, hehe... Arrrh, what crime are ye talking about?\"";
+        "Yes, I will help you.", L_Yes,
+        "No, I don't have time, sorry.", L_Close;
+       
+L_Yes:
+    set @TEMP, rand(2); 
+    if(@TEMP == 1) goto L_Req1;
+       
+L_Req0:
+    mes "[George]";
+    mes "\"Great!  I need 30 beers, 50 bottles of water and 30 Casino coins.\"";
     next;
-    menu
-        "The Easter Bunny was kidnapped. I heard you know the person behind this crime.", -;
-    mes "[George the Pirate]";
-    mes "\"Arrrrh, I know, I know... But it's such a sad thing. My old mate Pink Boots Hank. He was a great treasure hunter, but now he is just a criminal.\"";
+    goto L_Set;
+             
+L_Req1:
+    mes "[George]";
+    mes "\"Bring me 30 beers, 50 bottles of water and 30 Casino coins, and I'll give you something.\"";
     next;
-    mes "\"I remember like it was yesterday! Pink Boots Hank was not the same, he had those crazy eyes and would not stop talking about this man, or monster, or spirit, I don't know, I think his name is Galvanes or Gilbenos, I don't know.\"";
+    goto L_Set;
+       
+L_Set:
+    mes "[George]";
+    set GEORGE_Quest, 1;
+    mes "\"We are going to sea soon, so please hurry!\"";
+    goto L_Close;
+       
+L_Progress:
+    if (countitem("Beer") < 30) goto L_NotEnough;
+    if (countitem("Bottleofwater") < 50) goto L_NotEnough;
+    if (countitem("Casinocoins") < 30) goto L_NotEnough;
+    mes "[George]";
+    mes "\"Oooh, You have them all, here is your reward! You are a trustworthy adventurer.";
+    getinventorylist;
+    if (@inventorylist_count - (countitem("Beer") == 30) > 99 - (countitem("Sailorhat") == 0) - (countitem("Bottleofwater") == 50) > 99 - (countitem("Casinocoins") == 30) > 99 ) goto L_TooMany;
+    delitem "Beer", 30;
+    delitem "Bottleofwater", 50;
+    delitem "Casinocoins", 30;
+    getexp 5000, 0;
+    getitem "Sailorhat", 1;
+    set GEORGE_Quest, 2;
+    goto L_Close;
+              
+L_Progress2:
+    if (countitem("Zombienachos") < 50) goto L_NotEnough1;
+    if (countitem("Ladyfingers") < 50) goto L_NotEnough1;
+    if (countitem("ScrollOfPaper") < 1) goto L_NotEnough1;
+    mes "[George]";
+    mes "\"Nice!  They're perfect, just perfect!";
+    mes "You brought everything my captain asked,even the Maritaime Almanac Scroll! Your effort deserves a special reward, take this.\"";
+    getinventorylist;
+    if ((@inventorylist_count - (countitem("Zombienachos") == 50) > 99  - (countitem("Captainshat") == 0) - (countitem("Ladyfingers") == 50) > 99 - (countitem("Scrollofpaper") == 1) > 99 )) goto L_TooMany;
+    delitem "Zombienachos", 50;
+    delitem "Ladyfingers", 50;
+    delitem "Scrollofpaper", 1;
+    getexp 15000, 0;
+    getitem "Captainshat", 1;
+    set GEORGE_Quest, 4;
+    goto L_Close;
+              
+L_NotEnough:
+    mes "[George]";
+    mes "\"Oh, please hurry and bring me what I asked,  We're leaving soon!\"";
+    mes "\"Remember the items we need is 30 Beers, 50 Bottles of water, and 30 casino coins...Thanks.\"";
+    goto L_Close;
+       
+L_NotEnough1:
+    mes "[George]";
+    mes "\"Please do hurry and bring me what I asked, so we can shove off!\"";
+    mes "\"Remember that was 50 Zombie Nachos, 50 Lady Fingers, and something to read about the sea...you know maritime stuff.\"";
+    goto L_Close;
+      
+L_Done1:
+    mes "[George]";
+    mes "\"Thank you, Mate!\"";
+    mes "\"But...  My Captain asked you to get him some things.\"";
     next;
-    mes "\What I know is from that day, he just started doing crazy things, like stealing money, present boxes, even chocolate cake!\"";
-    next;
-    menu
-        "But what about the Easter Bunny?", -;
-    mes "[George the Pirate]";
-    mes "\"Yes, yes... Hank is not a very smart guy. I remember he had a secret place, a big house in the desert. When he could find a treasure he would always run to this house and hide his things in the basement. I am sure he must be using this same place to hide the Easter Bunny.\"";
-    next;
-    menu
-        "Thank you George, I will check this information right now!", -;
-    set QUEST_Easter12, 4;
+    mes "\"Zombie Nachos and Lady Fingers are some of his favorite foods while in port, please get him 50 of each.\"";
+    mes "\"He really enjoys reading about the sea, so see if you could find him something. I am sure the reward will be good, if you do.\"";
+    set GEORGE_Quest,3;
+    goto L_Close;
+           
+L_Done2:
+    mes "[George]";
+    mes "\"My Captain and I Thank You!\"";
+    mes "\"Because of your efforts, we can now go to sea. You will now be able to get a low fare passage to the island of Candor!\"";
+    goto L_Close;
+       
+L_Close:
+    set @TEMP, 0;
     close;
+    
+L_TooMany:
+    next;
+    mes "[George]";
+    mes "\"Your backpack is full.  I'll wait until you have some room.\"";
+    goto L_Close;
+
 }

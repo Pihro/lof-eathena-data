@@ -1,0 +1,140 @@
+// The Paper Boy, Roger, helps sailors obtain the scroll needed for the captains hat. Nov 07, 2012 Dev- DingoDuck
+
+018-1.gat,76,85,0|script|Roger|130,{
+    mes "[Roger]";
+    mes "\"Paper! Paper! Get your copy of The Land of Fire Gazette here!\"";
+    mes "\"Read about the travels of other adventures and the NPCs that helped them.\"";
+    next;
+    mes "Hello " + strcharinfo(0) + ", may I interest you in a copy of the Gazette?\"";
+    menu
+        "Yes, please", -,
+        "No, Thank You, kid.", L_TooBad,
+        "Do you have anything else to read?", L_ExtraRead;
+
+L_GetRead:
+    mes "[Roger]";
+    mes "\"Let me see.....\"";
+    next;
+    if (GEORGE_Quest == 4) goto L_LOF_NEWS;
+    mes "\"Oh yes, here you go, that will be 1 GP.\"";
+    if (Zeny< 1) goto L_Poor;
+    set Zeny, (Zeny-1);
+    mes "\"[You are handed the Land of Fire Gazette, You look at the headline...]\"";
+    mes "\"[but it is written in Mananese, a language you know nothing about.]\"";
+    next;
+    mes "\"[You toss the paper in the trash.]\""; 
+    close;
+
+L_TooBad:
+    mes "[Roger]";
+    mes "\"Too bad, There is some really good news this week. Things like how to go to Candor for only 200GP.\"";
+    mes "\"And a special coupon section to get rare items for little or no money!\"";
+    menu
+        "I changed my mind, I think I would like a copy!", L_GetRead,
+        "That's ok, kid...I can't read anyways", -;
+    close;
+    
+L_ExtraRead:
+    mes "[Roger]";
+    mes "\"Now that you ask....\"";
+    next;
+    if (PB_Quest == 1) goto L_Mad_Mag;
+    mes "\"I might be able to get you a rare copy of the Maritime Almanac Scroll. A yearly publication for seafaring men.\"";
+    mes "\"It is very hard to come by, however, my father has a copy he might sell to you for the right price.\"";
+    menu
+        "I will trade you this Dagger and Sailor's Hat for it.", L_BadOffer1,
+        "I will pay you 5,000 GP in pure gold for it!", L_BadOffer2,
+        "I can give you a rare...(cough, cough).. Mouboo Figurine for it.", L_Success,
+        "I have no interest in things such as that.", L_Close;
+    
+L_Success:
+    if (PB_Quest ==1) goto L_HaveScroll;
+    if (countitem("MoubooFigurine") < 1) goto L_Nomouboo;
+    if (countitem("Sailorhat") == 0) goto L_State_none;
+    mes "[Roger]";
+    mes "\"This is great! My collection of rare figurines is now complete.\"";
+    mes "\"I asked my father and he agreed to trade it to you, so here is the last copy of the Maritime Almanac Scroll.\"";
+    getinventorylist;
+    if (@inventorylist_count > 99 ) goto L_TooMany;
+    delitem "MoubooFigurine", 1;
+    getitem "ScrollOfPaper", 1;
+    set PB_Quest, 1;
+    close;
+    
+L_BadOffer1:
+    mes "[Roger]";
+    mes "\"Wow a Dagger and a Sailor's Hat!\"";
+    next;
+    mes "Although I really want the Sailor's Hat, but daggers are dangerous for kids to play with.\"";
+    mes "Besides that, do I look like a warrior to you? Why would you give a kid a sharp dagger?\"";
+    close;
+    
+L_BadOffer2:
+    mes "[Roger]";
+    mes "\"5000 GP? That sure is a lot of gold...\"";
+    mes "\"but I was hoping for something more valuable. No Thanks.\"";
+    close;
+    
+L_Nomouboo:
+    mes "[Roger]";
+    mes "\"You said you would trade a real Mouboo Figurine, but now I see you don't have one. Come back when you do.\"";
+    close;
+
+L_State_none:
+    mes "\"You might have the Mouboo Figurine, but I don't trust everyone.\"";
+    if(GEORGE_Quest >= 2) goto L_Shat;
+    mes "\"My friend George is much older than I am, go see him and if he trusts you, so will I.\"";
+    close;
+    
+L_Shat:    
+    mes "\"I see you have met my good friend George, and you gave him some items that he needed...\"";
+    mes "\"Didn't he give you anything?\"";
+    next;
+    mes "\"If you could show me what he gave you, I might trust you.\"";
+    close;
+    
+L_Mad_Mag:
+    mes "[Roger]";
+    mes "\"I have my favorite book of all times, Moby Dick.\"";
+    mes "Let me read some of it to you....\"";
+    next;
+    mes "[Roger begins to read]";
+    mes "\"Towards thee I roll, thou all-destroying but unconquering whale; to the last I grapple with thee; from hell’s heart I stab at thee; for hate’s sake I spit my last breath at thee. Sink all coffins and all hearses to one common pool! And since neither can be mine, let me then tow to pieces, while still chasing thee, though tied to thee, thou damned whale! Thus, I give up the spear!\"";
+    next;
+    mes "[Roger]";
+    mes "\"I don't really understand it either, but it's not for sale. Maybe you could come back later so I can read more of it to you.\"";
+    mes "\"Have a nice day.\"";
+    goto L_Close;
+
+L_TooMany:
+    mes "[Roger]";
+    mes "\"Your backpack is full.  I'll wait until you have some room.\"";
+    goto L_Close;
+    
+L_Poor:
+    mes "[Roger]";
+    mes "\"You don't seem to have enough gold, not even 1 GP...you should go kill some red slimes in the mine.\"";
+    goto L_Close;
+    
+L_LOF_NEWS:
+    mes "[Roger]";
+    mes "\"Well I see that you have completed the George Quest.\"";
+    mes "\"I am actually surprised you clicked me again. Well then Land of Fire News...\"";
+    next;
+    mes "\"As you may know, LOF is currently running a modified version of The Mana World game. The admins and developers are working on a new game to offer a new experience for players.\"";
+    mes "\"Currently there are new maps being developed and new NPCs. The project is involving only a small group of members, but would welcome anyone who knows how to assist in development.\"";
+    next;
+    mes "\"Graphical development sure could use some help. We have Map DEVs, but could use more. Someone with skill to make new NPC or Monster graphics would be a great help. The graphics use XML files, so those would have to be developed along with the images.\"";
+    mes "\"If you believe you are able to help, please contact Keekeekat, Pihro, or DingoDuck. The LOF admins and developers always welcome suggestions also, so speak up.\"";
+    goto L_Close;
+
+L_HaveScroll:
+    mes "[Roger]";
+    mes "\"Looks like I already gave you the Maritime Almanac Scroll. You need to go see George again. I am unable to get another copy for you.\"";
+    goto L_Close;
+
+L_Close: 
+    close;
+
+
+}

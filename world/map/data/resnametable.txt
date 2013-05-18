@@ -103,3 +103,4 @@
 056-2.gat#056-2.wlk#
 057-1.gat#057-1.wlk#
 botcheck.gat#botcheck.wlk#
+somber-cave.gat#somber-cave.wlk#

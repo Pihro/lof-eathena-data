@@ -35,6 +35,7 @@ L_clothes_choice:
         "Bowler hat.", L_bowlerhat,
         "Sorcerer robe.", L_sorcererrobe,
         "Bowler hat (brown).", L_bowlerhatbrown,
+        "Savior Armor", L_saviorarmor,
         "Fine dress.", L_finedress,
         "About these sorcerer robes...", L_asksorcererrobe,
         "I'm fine for now, thanks.", -;
@@ -331,4 +332,70 @@ L_havenone:
     mes "Would you like to dye something else?\"";
     next;
     goto L_clothes_choice;
+
+L_saviorarmor:
+    mes "[Selim]";
+    mes "\"I can dye this for you only once, what color would you like?\"";
+    next;
+    goto L_saviorarmormenu;
+
+L_saviorarmormenu:
+    if(ARMOR_Quest == 2) goto L_alreadydone;
+    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
+    menu
+        "I would like red", L_redsav,
+        "Blue would be nice", L_bluesav,
+        "Black is awesome!", L_blacksav,
+        "I'm fine.", L_close;
+
+L_redsav:
+    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
+    if (countitem("Reddye") < 1) goto L_missing;
+    delitem "Whitesaviorarmor", 1;
+    delitem "Reddye", 1;
+    getitem "Redsaviorarmor", 1;
+    set ARMOR_Quest,2;
+    mes "[Selim]";
+    mes "\"There you go! Want me to dye anything else?\"";
+    menu
+        "Yes.", L_clothes_choice,
+        "Nope.", L_close;
+
+L_bluesav:
+    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
+    if (countitem("Lightbluedye") < 1) goto L_missing;
+    delitem "Whitesaviorarmor", 1;
+    delitem "Lightbluedye", 1;
+    getitem "Bluesaviorarmor", 1;
+    set ARMOR_Quest,2;
+    mes "[Selim]";
+    mes "\"There you go! Want me to dye anything else?\"";
+    menu
+        "Yes.", L_clothes_choice,
+        "Nope.", L_close;
+
+L_blacksav:
+    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
+    if (countitem("Blackdye") < 1) goto L_missing;
+    delitem "Whitesaviorarmor", 1;
+    delitem "Blackdye", 1;
+    getitem "Blacksaviorarmor", 1;
+    set ARMOR_Quest,2;
+    mes "[Selim]";
+    mes "\"There you go! Want me to dye anything else?\"";
+    menu
+        "Yes.", L_clothes_choice,
+        "Nope.", L_close;
+
+L_missing:
+    mes "\"Looks like you are missing something, bye!\"";
+    close;
+
+L_alreadydone:
+    mes "[Selim]";
+    mes "\"Looks like you have already dyed it, sorry..\"";
+    close;
+
+L_close:
+    close;
 }
