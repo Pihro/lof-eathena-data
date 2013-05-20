@@ -1,0 +1,76 @@
+//
+
+009-2.gat,63,26,0|script|Royal Fairy|108,{
+    if(FAIRY_Quest == 1) goto L_tellagain;
+    if(FAIRY_Quest == 3) goto L_thanks;
+    if(FAIRY_Quest == 4) goto L_thanks2;
+
+    mes "[Fairy Princess]";
+    mes "\"Hi, I'm too busy to talk right now, please go away. Very pressing matters at hand.\"";
+    goto L_Close;
+
+L_tellagain:
+    mes "[Fairy Princess]";
+    mes "\"Hello, I noticed my dear friend, Susanne, asked you to help us save my sisters, do not forget to ask Sussane where the Fafi Dragon was last seen.\"";
+    goto L_Close;
+ 
+L_thanks:
+    mes "[Fairy Princess]";
+    mes "\"Thank you so much for saving my sisters!\"";
+    next;
+    mes "\"As a reward to a Noble Warrior as yourself, I want you to have one. They will serve you during your travels, please choose one.\"";
+    mes "\"Or If you don't want one you can keep the Monster Skull Mask that Susanne gave you.\"";
+    if (countitem("MonsterSkullHelmet") == 0) goto L_nomask;
+    goto L_fairymenu;
+
+L_fairymenu:
+    menu
+        "I'd like to take the Blue Fairy with me!", L_blue,
+        "I love the Red Fairy, she'd be a good friend", L_red,
+        "Can I take the Green Fairy with me?", L_green,
+        "Right now I don't really feel like having someone with me..", L_no;
+
+L_blue:
+    delitem "MonsterSkullHelmet", 1;
+    getexp 100000, 0;
+    getitem "BlueFairy", 1;
+    set FAIRY_Quest,4;
+    goto L_Close;
+
+L_red:
+    delitem "MonsterSkullHelmet", 1;
+    getexp 100000, 0;
+    getitem "RedFairy", 1;
+    set FAIRY_Quest,4;
+    goto L_Close;
+
+L_green:
+    delitem "MonsterSkullHelmet", 1;
+    getexp 100000, 0;
+    getitem "GreenFairy", 1;
+    set FAIRY_Quest,4;
+    goto L_Close;
+
+L_no:
+    mes "[Fairy Princess]";
+    mes "\"Ok...if you ever feel like having one of my sisters there with you, come back!\"";
+    goto L_Close;
+
+L_thanks2:	
+    mes "[Fairy Princess]";
+    mes "\"Thank you so much for saving my sisters!\"";
+    next;
+    mes "\"They can now enjoy life and see their younger friend.\"";
+    goto L_Close;
+
+L_nomask:
+    mes "[Fairy Princess]";
+    mes "\"Seems like you don't have the Monster Skull Helmet with you.\"";
+    mes "\"For a Fairy to obey your every command, the Helmet must be used as part of the spell.\"";
+    mes "\"Please come back when you have it with you.\"";
+    goto L_Close;
+    
+     
+L_Close:
+    close;
+}

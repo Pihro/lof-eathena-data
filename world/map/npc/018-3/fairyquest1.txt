@@ -1,0 +1,102 @@
+//NPC to set the state for killing the Fafi Dragon. Edited by DingoDuck
+
+018-3.gat,60,21,0|script|Susanne|114,{
+  
+  if(BaseLevel <= 49) goto L_noob;
+  if(@FafiFight == 1) goto L_coward;
+  if(FAIRY_Quest == 1) goto L_tellagain;
+  if(FAIRY_Quest == 2) goto L_thanks; 
+  if(FAIRY_Quest >= 3) goto L_thanks_again;
+    
+
+    mes "[Susanne]";
+    mes "\"Do you like fairies? I love them! I play with them all the time, they are so nice to me...\"";
+    next;
+
+    mes "\"(The girl now looks away sadly, thinking about what to say next)\"";
+    next;
+
+    mes "[Susanne]";
+    mes "\"But a Dragon came and ran away with them, you look big and strong, do you want to help me and save my friends?\"";
+    goto L_firstmenu;
+
+L_firstmenu:
+    menu
+        "Sure, I'd love to help! What can I do?", L_yes1,
+        "Nah, I've got more serious matters to attend to...", L_no;
+
+L_yes1:
+    
+    mes "[Susanne]";
+    mes "\"Thank you so much! I can't wait to see my friends again!\"";
+    next;
+    mes "\"The Dragon is a really really bad guy, He lives in the caves of the Dark world.\"";
+    mes "\"and it looks like he found a way to come into our world, some kind of portal or... that doesn't matter now.\"";
+    next;
+    mes "\"All that matters right now is getting him to let my freinds go!\"";
+    next;
+    mes "\"So if you can help, go kill him to free my friends! Please let me know when he is dead.\"";
+    next;
+    mes "\"Thank You....\"";
+    next;
+    mes "\"(Susanne Screams) WATCH OUT !!! I think I hear him in this very cave !!!\"";
+    set FAIRY_Quest, 1;
+    set @FafiFight, 1;
+    monster "018-3.gat",28,25,"FafiDragon",1101,1, "Susanne::onFafiDragonDead";
+    close;
+
+onFafiDragonDead:
+    if (FAIRY_Quest<2)	set FAIRY_Quest, 2;
+    set @FafiFight, 0;
+    message strcharinfo(0), " You killed the Fafi Dragon.";
+    mapannounce "018-3.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "009-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "001-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "020-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "027-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    message strcharinfo(0), " Cheers are being heard troughout the land!";
+    end;
+
+L_tellagain:
+    mes "[Susanne]";
+    mes "\"Hello \"" + strcharinfo(0) + ",";
+    mes "\"Don't forget, the Fafi Dragon roams throughout many worlds... Please save my friends, they are in so much danger...\"";
+//    killmonster "018-3.gat", "Susanne::onFafiDragonDead";
+    set @FafiFight, 1;
+    monster "018-3.gat",28,25,"FafiDragon",1101,1, "Susanne::onFafiDragonDead";
+    mes "\"Thank you...\"";
+    next;
+    mes "\"(Susanne Screams) WATCH OUT !!!  I think I hear him in this very cave !!!\"";
+    close;
+
+L_thanks:
+    mes "[Susanne]";
+    mes "\"I'm so glad I get to see my friends again, thank you so much for saving them! You are so big and strong... You should talk to the Fairy Princess on the second floor of the Hurnscald Inn.\"";
+    mes "\"By the way, I found this Helmet after you killed the Fafi Dragon, Maybe you can use it some day.\"";
+    if (FAIRY_Quest==2)	set FAIRY_Quest, 3;
+    getitem "MonsterSkullHelmet", 1;
+    close;
+
+L_thanks_again:
+  mes "[Susanne]";
+    mes "\"I'm so glad I get to see my friends again, thank you so much for saving them!\"";
+    close;
+    
+L_no:
+    mes "[Susanne]";
+    mes "\"Ok...please come back when you aren't busy...\"";
+    next;
+    mes "\"(The girls turns around and you hear her sniffing, she is probably crying...\"";
+    close;
+
+L_noob:
+    mes "[Susanne]";
+    mes "\" I need some help with something, but I need someone stronger(Level 50+), come back later please.\"";
+    close;
+    
+L_coward:
+    mes "[Susanne]";
+    mes "\"What are you doing talking to me? Go fight, you coward!\"";
+    close;
+
+}

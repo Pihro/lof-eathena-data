@@ -1,0 +1,11 @@
+//
+
+009-2.gat,110,44,0|script|The Doctor|184,{
+
+    mes "[The Doctor]";
+    mes "\"The layout of this bookshelf is brilliant! The way the colours match... My screwdriver is getting sensing some kind of power source here....but what is it...\"";
+    next;
+
+    mes "\"(He now begins to point some kind of whirring tool at the shelf and starts looking at the shelf very closely)\"";
+    close;
+}

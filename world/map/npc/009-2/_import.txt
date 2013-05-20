@@ -8,12 +8,15 @@ npc: npc/009-2/alan.txt
 npc: npc/009-2/cerhan.txt
 npc: npc/009-2/doctor.txt
 npc: npc/009-2/drunks.txt
+npc: npc/009-2/drwho.txt
+npc: npc/009-2/fairyquest2.txt
 npc: npc/009-2/inspector.txt
 npc: npc/009-2/kfahr.txt
 npc: npc/009-2/lena.txt
 npc: npc/009-2/mapflags.txt
 npc: npc/009-2/misc.txt
 npc: npc/009-2/nicholas.txt
+npc: npc/009-2/nowhere_man.txt
 npc: npc/009-2/nurse.txt
 npc: npc/009-2/olana.txt
 npc: npc/009-2/peter.txt

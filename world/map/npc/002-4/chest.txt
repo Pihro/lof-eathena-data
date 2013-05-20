@@ -25,6 +25,7 @@ L_Yes:
     mes "You opened the chest and found an AFK Cap!";
     delitem "TreasureKey", 3;
     getitem "Afkcap", 1;
+    getitem "DesertBow", 1;
     set @state, 26;
     callsub S_Update_Var;
     goto L_Close;

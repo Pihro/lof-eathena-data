@@ -10,6 +10,8 @@
         "\"Sure! [don't tip]\"", L_NoTip,
         "Sure! [tip 5 GP]", L_5Tip,
         "Sure! [tip 10 GP]", L_10Tip,
+        "Actually, I've heard you have something else... [Give 10000 GP]", L_1000Tip,
+        "Actually, I've heard you have something else... [Give 50000 GP]", L_5000Tip,
         "Nah, maybe later.", L_No;
     close;
 
@@ -34,7 +36,7 @@ L_5Tip:
     set Zeny, Zeny - 175;
     getitem "Beer", 1;
     mes "[Melinda]";
-    mes "\"Here you go, sweetheart!\"";
+    mes "\"Here you go sweetie!\"";
     close;
 
 L_10Tip:
@@ -53,6 +55,30 @@ L_10Tip:
         "Nah, I don't feel like chatting.", L_No;
     mes "[Melinda]";
     mes "\"The master bowyer in this village used to construct exceptional bows. When you want one you should go and ask him.\"";
+    close;
+
+L_5000Tip:
+    if (Zeny < 50000)
+        goto L_NoMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Ironingot") == 0)
+        goto L_TooMany;
+    set Zeny, Zeny - 50000;
+    getitem "Ironingot", 5;
+    mes "[Melinda]";
+    mes "\"Here you go sweetie!\"";
+    close;
+
+L_1000Tip:
+    if (Zeny < 10000)
+        goto L_NoMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Coal") == 0)
+        goto L_TooMany;
+    set Zeny, Zeny - 10000;
+    getitem "Coal", 5;
+    mes "[Melinda]";
+    mes "\"Here you go sweetie!\"";
     close;
 
 L_No:

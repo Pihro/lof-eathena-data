@@ -6,3 +6,6 @@
 001-1.gat,125,21|warp|To North Tulimshar|0,-1,021-1.gat,136,146
 001-1.gat,32,71|warp|To Tulimshar Indoor|-1,-1,001-2.gat,25,34
 001-1.gat,75,41|warp|To Tulimshar Indoor|-1,-1,001-2.gat,71,72
+001-1.gat,39,65|warp|Somber Cave|-1,-1,somber-cave.gat,1,1
+001-1.gat,49,80|warp|Yetis|-1,-1,031-3.gat,1,1
+001-1.gat,39,80|warp|Terra Cave|-1,-1,012-4.gat,196,47

@@ -101,6 +101,7 @@ L_Nickos_AS_Done:
     callsub S_Update_Var;
     delitem "AngryScorpionStinger", 10;
     getitem "Buckler", 1;
+    getitem "JeansChaps", 1;
     mes "[Nickos]";
     mes "\"Ah, you are a fine combatant!  Take this Buckler, it might be useful for your future battles.\"";
     next;

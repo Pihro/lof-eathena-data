@@ -1,0 +1,133 @@
+//
+
+009-2.gat,33,94,0|script|Nowhere Man|153,{
+    set @Ironprice, 1000;
+    set @Sulphurprice, 1200;
+    set @Yellowpowderprice, 6500;
+   
+    mes "[Nowhere Man]";
+    mes "\"Welcome! I am a transmuter and I will Transmute some items into other items, but at a cost.\"";
+    goto L_Trademenu;
+
+L_Trademenu:
+    menu
+        "Can you make iron powder?", L_Iron,
+        "How about Sulphur Powder?", L_Sulphur,
+        "I need Yellow Powder", L_Healpots,
+        "Do you have gloves?", L_Gloves,
+        "I think I have everything I need, thanks.", -;
+    goto L_Close;
+
+L_Iron:
+    mes "[Nowhere Man]";
+    mes "\"I do have a few of those.  I will give you 4 Iron Powders for 1 Iron Ore and " + @Ironprice + "gp.\"";
+    menu
+        "Sure.", L_Ipowder,
+        "What a ripoff!  No way!", -;
+    goto L_Close;
+
+L_Sulphur:
+    mes "[Nowhere Man]";
+    mes "\"I can trade you 5 Sulphur Powders for 1 Pile of Ash and " + @Sulphurprice + "gp.\"";
+    menu
+        "Here you go.", L_Spowder,
+        "Are you nuts?! Forget it!", -;
+    goto L_Close;
+
+L_Healpots:
+    mes "[Nowhere Man]";
+    mes "\"Yellow powder can be used for spells, but isn't cheap, are you sure? Its " + @Yellowpowderprice + "gp and 3 hard spikes.\"";
+    menu
+        "Sure.", L_Pots,
+        "Whoa, that's way too much.", -;
+    goto L_Close;
+
+L_Ipowder:
+    if (countitem("IronOre") < 1) goto L_Missing;
+    if (Zeny < @Ironprice) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("IronOre") > 1 && countitem("IronPowder") < 1) goto L_Full;
+    delitem "IronOre", 1;
+    set Zeny, Zeny - @Ironprice;
+    getitem "IronPowder", 4;
+    mes "[Nowhere Man]";
+    mes "\"There you go.  Would you like to trade anything else?\"";
+    menu
+        "Yes.", L_Trademenu,
+        "No.", L_No;
+    goto L_Close;
+
+L_Spowder:
+    if (countitem("PileOfAsh") < 1) goto L_Missing;
+    if (Zeny < @Sulphurprice) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("PileOfAsh") > 1 && countitem("SulphurPowder") < 1) goto L_Full;
+    delitem "PileOfAsh", 1;
+    set Zeny, Zeny - @Sulphurprice;
+    getitem "SulphurPowder", 5;
+    mes "[Nowhere Man]";
+    mes "\"There you go.  Would you like to trade anything else?\"";
+    menu
+        "Yes.", L_Trademenu,
+        "No.", L_No;
+    goto L_Close;
+
+L_Pots:
+    if (countitem("Hardspike") < 3) goto L_Missing;
+    if (Zeny < @Yellowpowderprice) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Hardspike") > 3 && countitem("Yellowpowder") < 1) goto L_Full;
+    delitem "Hardspike", 3;
+    set Zeny, Zeny - @Yellowpowderprice;
+    getitem "Yellowpowder", 1;
+    mes "[Nowhere Man]";
+    mes "\"There you go.  Would you like me to transmute anything else?\"";
+    menu
+        "Yes.", L_Trademenu,
+        "No.", L_No;
+    goto L_Close;
+
+L_Gloves:
+    if (Zeny < 3000)
+        goto L_Close;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Leathergloves") == 0)
+        goto L_TooMany;
+    mes "[Nowhere Man]";
+    mes "\"Gloves? Sure, I sell fine leather gloves for only 3000 GP.\"";
+    menu
+        "Ok, that's a good deal", -,
+        "No gloves, lets see what else you have", L_Trademenu,
+        "No thank you, maybe I will buy some later.", L_Close;
+    set Zeny, Zeny - 3000;
+    getitem "Leathergloves", 1;
+    mes "[Nowhere Man]";
+    mes "Thank you. I am sure you will get use from them";
+    close;
+
+L_Full:
+    mes "[Nowhere Man]";
+    mes "\"You must have been making a lot of trades...your bag is completely full!  Come back after you've made some room.\"";
+    goto L_Close;
+
+L_Missing:
+    mes "[Nowhere Man]";
+    mes "\"It looks like you're missing some items.  Please come back when you have enough to trade.\"";
+    goto L_Close;
+
+L_NotEnoughMoney:
+    mes "[Nowhere Man]";
+    mes "\"You don't have enough money.\"";
+    goto L_Close;
+
+L_No:
+    mes "[Nowhere Man]";
+    mes "\"Have a great day!\"";
+    goto L_Close;
+
+L_Close:
+    set @Ironprice, 0;
+    set @Sulphurprice, 0;
+    set @Potionprice, 0;
+    close;
+}
