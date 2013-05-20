@@ -1,0 +1,5 @@
+// Map 008-1-night: Hurnscald Outskirts
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: 008-1-night.gat
+npc: npc/008-1-night/_mobs.txt
+npc: npc/008-1-night/_warps.txt
