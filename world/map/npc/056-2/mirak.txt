@@ -49,14 +49,14 @@ L_Talk:
     mes "He looks at you angrily.";
     next;
     mes "[Mirak]";
-    mes "\"Hi, my name is Mirak. You might have the impression that I am nice, but I am NOT! I want to be left alone to read in peace! I tried that at my mansion in Port City but it did not work. My damn brother, he always kept going on about Bat Wings...\"";
+    mes "\"Hi, my name is Mirak. You might have the impression that I am nice, but I am NOT! I want to be left alone to read in peace! I tried that at my mansion in Port City but it did not work. My brother always kept going on about Bat Wings...\"";
     next;
     mes "Suddenly his face gets red. He breathes slowly three times...";
     next;
     mes "He seems to be calm again.";
     next;
     mes "[Mirak]";
-    mes "\"Eh... Ah! That's why I bought this house in this goddamn woods. I hoped nobody would come by here. It seems I was wrong. I believe that you did not read the notes I left behind. Read them on your way out.\"";
+    mes "\"Eh... Ah! That's why I bought this house in these woods. I hoped nobody would come by here. It seems I was wrong. I believe that you did not read the notes I left behind. Read them on your way out.\"";
     mes "He looks down on his book and ignores you.";
     set @talk, 1;
     callsub S_Update_Mask;
