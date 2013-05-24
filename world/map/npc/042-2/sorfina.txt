@@ -232,7 +232,7 @@ L_SkipTut:
     callfunc "TutorialCompleted";
     getitem "Knife", 1;
     getitem "CottonShirt", 1;
-    getitem "RaggedShorts", 1;
+    getitem "CottonTrousers", 1;
     set Zeny, Zeny + 50;
     mes "Good luck.\"";
     goto L_Close;
@@ -278,9 +278,9 @@ OnTouch:
     close;
 
 L_Shirt:
-    mes "You take a simple Cotton Shirt and some very worn-out Ragged Shorts out of the chest.";
+    mes "You take a simple Cotton Shirt and some Cotton Trousers out of the chest.";
     getitem "CottonShirt", 1;
-    getitem "RaggedShorts", 1;
+    getitem "CottonTrousers", 1;
     next;
     mes "[Sorfina]";
     mes "\"Great! Now you can equip it.\"";
