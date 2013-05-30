@@ -43,15 +43,15 @@ L_Mylarin:
 
 L_goldenwplate:
     mes "[Cerhan]";
-    mes "\"I can plate that armor in gold if you so wish, I will need 30 gold ore and 600,000gp.\"";
+    mes "\"I can plate that armor in gold if you so wish, I will need 30 gold ore and 450,000gp.\"";
     if (countitem("gold") < 30) goto L_Missing;
     if (countitem("Warlordplate") < 1) goto L_Missing;
-    if (Zeny < 600000) goto L_NotEnoughMoney;
+    if (Zeny < 450000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("gold") > 30) goto L_Full;
     delitem "gold", 30;
     delitem "Warlordplate", 1;
-    set Zeny, Zeny - 600000;
+    set Zeny, Zeny - 450000;
     getitem "Goldenwarlordplate", 1;
     mes "[Cerhan]";
     mes "\"There you go!\"";
@@ -59,15 +59,15 @@ L_goldenwplate:
 
 L_goldenlplate:
     mes "[Cerhan]";
-    mes "\"I can plate that armor in gold if you so wish, I will need 20 gold ore and 300,000gp.\"";
+    mes "\"I can plate that armor in gold if you so wish, I will need 20 gold ore and 250,000gp.\"";
     if (countitem("gold") < 20) goto L_Missing;
     if (countitem("Lightplatemail") < 1) goto L_Missing;
-    if (Zeny < 300000) goto L_NotEnoughMoney;
+    if (Zeny < 250000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("gold") > 20) goto L_Full;
     delitem "gold", 20;
     delitem "Lightplatemail", 1;
-    set Zeny, Zeny - 300000;
+    set Zeny, Zeny - 250000;
     getitem "Goldenplatemail", 1;
     mes "[Cerhan]";
     mes "\"There you go!\"";
