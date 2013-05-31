@@ -51,6 +51,3 @@ L_Close:
     set @cost, 0;
     close;
 }
-
-009-1.gat,91,27,0|duplicate(test)|Malivox|103
-025-1.gat,33,52,0|duplicate(test)|Malivox|103
