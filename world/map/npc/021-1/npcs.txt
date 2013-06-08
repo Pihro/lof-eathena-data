@@ -10,7 +10,7 @@
     close;
 }
 
-021-1.gat,75,67,0|script|Silvia|207,{
+021-1.gat,76,67,0|script|Silvia|207,{
     set @npcname$, "Silvia";
 
     mes "[" + @npcname$ + "]";
@@ -22,7 +22,21 @@
     close;
 }
 
+<<<<<<< HEAD
 021-1.gat,49,123,0|script|Michel|215,{
+=======
+021-1.gat,55,66,0|script|Pauline|208,{
+    set @npcname$, "Pauline";
+
+    mes "[" + @npcname$ + "]";
+    mes "\"I've mastered several schools of magic and fought the Yeti in Kaizei.\"";
+    next;
+    mes "\"The path of magic is a long and difficult one.\"";
+    close;
+}
+
+021-1.gat,51,123,0|script|Michel|215,{
+>>>>>>> c67d6bb3d1eea2e585a7501b2bb4946728663222
     set @npcname$, "Michel";
 
     mes "[" + @npcname$ + "]";
