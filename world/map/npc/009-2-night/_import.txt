@@ -1,0 +1,6 @@
+// Map 009-2-night: Hurnscald Indoor
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: 009-2-night.gat
+npc: npc/009-2-night/_mobs.txt
+npc: npc/009-2-night/_warps.txt
+npc: npc/009-2-night/pvpflag.txt

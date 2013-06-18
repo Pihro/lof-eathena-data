@@ -1,5 +1,8 @@
-// Map 012-4: Terranite Cave
 // This file is generated automatically. All manually changes will be removed when running the Converter.
-map: 012-4.gat
-npc: npc/012-4/_mobs.txt
-npc: npc/012-4/_warps.txt
+// Hurnscald Indoor mobs
+
+
+
+009-2-night.gat,0,0,0|script|Mob009-2-night|-1,{
+    end;
+}

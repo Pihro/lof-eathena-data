@@ -1,0 +1,7 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Hurnscald Cave warps
+
+009-3-night.gat,173,20|warp|To Cellar|-1,-1,009-2-night.gat,147,89
+009-3-night.gat,20,57|warp|To Lake Cave|-1,-1,011-4-night.gat,129,87
+009-3-night.gat,157,30|warp|To Northern Mines|-1,-1,018-3-night.gat,179,180
+009-3-night.gat,117,19|warp|To Woodland Hills Cave|-1,-1,013-3-night.gat,160,102

@@ -2,16 +2,15 @@
 
 009-1.gat,53,47,0|script|Teleporter|116,{
     mes "[Mundane Transporter]";
-    mes "\"Soon I will be able to transport you to the Night World..\"";
+    mes "\"Would you like to visit the Night World?\"";
+    menu
+         "Sure, I'll try it out.", L_Sure,
+         "Are you crazy!?", L_Close;
+
+L_Sure:
+    warp "009-1-night.gat", 50, 40;
     close;
-//    menu
-//         "Sure, I'll try it out.", L_Sure,
-//         "Are you crazy!?", L_Close;
-//
-//L_Sure:
-//    warp "009-1-evil.gat", 50, 40;
-//    close;
-//    
-//L_Close:
-//    close;
+    
+L_Close:
+    close;
 }

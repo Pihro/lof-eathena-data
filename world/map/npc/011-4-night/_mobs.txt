@@ -1,0 +1,32 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Lake Cave mobs
+
+011-4-night.gat,52,30,39,39|monster|PunkSkeleton|1097,1,100000,30000,Mob011-4-night::On1097
+011-4-night.gat,93,114,39,39|monster|AzulSlime|1100,1,100000,30000,Mob011-4-night::On1100
+011-4-night.gat,0,0,0,0|monster|ShadowSnake|1101,40,0,0,Mob011-4-night::On1101
+011-4-night.gat,0,0,0,0|monster|WitchGuard|1103,15,0,0,Mob011-4-night::On1103
+
+
+011-4-night.gat,0,0,0|script|Mob011-4-night|-1,{
+On1097:
+    set @mobID, 1097;
+    callfunc "MobPoints";
+    end;
+
+On1100:
+    set @mobID, 1100;
+    callfunc "MobPoints";
+    end;
+
+On1101:
+    set @mobID, 1101;
+    callfunc "MobPoints";
+    end;
+
+On1103:
+    set @mobID, 1103;
+    callfunc "MobPoints";
+    end;
+
+    end;
+}
