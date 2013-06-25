@@ -9,7 +9,7 @@
 L_Smithmenu:
     menu
         "Can you smith my Short Sword?", L_Sword,
-        "How about a Crusade Helmet?", L_Helm,
+//        "How about a Crusade Helmet?", L_Helm,
         "Can you silver my Forest Bow?", L_Bow,
         "I'd like my Clover Silvered.", L_Clover,
         "I think I have everything I need, thanks.", -;
