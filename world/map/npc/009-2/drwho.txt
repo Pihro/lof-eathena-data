@@ -2,10 +2,103 @@
 
 009-2.gat,110,44,0|script|The Doctor|184,{
 
-    mes "[The Doctor]";
-    mes "\"The layout of this bookshelf is brilliant! The way the colours match... My screwdriver is getting sensing some kind of power source here....but what is it...\"";
-    next;
+    if (BaseLevel <=24) goto L_Lvl_too_low; 
+   
+    if(QUEST_Episode == 1) goto L_Check;
+    if(QUEST_Episode == 2) goto L_Redo_tea;
 
-    mes "\"(He now begins to point some kind of whirring tool at the shelf and starts looking at the shelf very closely)\"";
+    mes "[The Doctor]";
+    mes "\" Quite interesting, quite interesting indeed.\"";
+    menu 
+        "Um, might I ask, what is so interesting?",-;
+    mes "[The Doctor]";
+    mes "\"Well, you are, your quite interesting. I've been watching you for sometime now, helping so many people and a master at what you do indeed.\"";
+    menu
+        "Well, thanks",-;
+    mes "[The Doctor]";
+    mes "\" I don't suppose you have some herbs and a few bottles of water with you, do you?\"";
+    menu
+        "Some herbs and water, can you be more specific?",-;
+    mes "[The Doctor]";
+    mes "\"Ah, sorry, of course, I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water as well.\"";
+    menu
+        "It's not much of a trouble, but do i get something in return?",-;
+    mes "[The Doctor]";
+    mes "\"I suppose, What would you like?";
+    mes "Ah never mind, I have something in mind to give you. You can go off now, get what i need.\"";
+	set QUEST_Episode,1;
     close;
+
+L_Lvl_too_low:
+	mes "[The Doctor]";
+    mes "\"Hmm, it's very interesting, very ... (mumbling).\"";
+    close;
+
+L_Check:
+     if (countitem(680) < 50 
+     || countitem(681) < 50 
+     || countitem(682) < 50
+     || countitem(683) < 50
+     || countitem(541) < 10) goto L_NotEnough;
+    
+    delitem 680, 50;
+    delitem 681, 50;
+    delitem 682, 50;
+    delitem 683, 50;
+    delitem 541, 10;
+    goto L_Get_Reward;
+
+L_Check2:
+     if (countitem(680) < 50 
+     || countitem(681) < 50 
+     || countitem(682) < 50
+     || countitem(683) < 50
+     || countitem(541) < 10) goto L_NotEnough;
+    
+    delitem 680, 50;
+    delitem 681, 50;
+    delitem 682, 50;
+    delitem 683, 50;
+    delitem 541, 10;
+    getitem 745, 5;
+    mes "[The Doctor]";
+    mes "\"Thanks, enjoy!\"";
+	close;
+
+L_Get_Reward:
+    mes "[The Doctor]";
+    mes "\"OH, its been so long since i have had herbal tea. You have my gratitude.\"";
+    menu
+        " WHAT!!?? IS THAT ALL I GET, YOUR GRATITUDE!!??\"",-;
+    mes "[The Doctor]";
+    mes "\" Well, i suppose you can have whats left of my tea.\"";
+    getitem 745, 5;
+    menu
+        "OH, thank you.",-;
+    set QUEST_Episode,2;                   
+    close;
+
+L_Redo_tea:
+    mes "[The Doctor]";
+    mes "\"If you want, you can bring me some more of those herbs and water.\"";
+	menu
+		"Alright, I have them here!", L_Check2,
+		"Can you remind me what I need to get again?", L_Remind,
+		"No thanks, see ya!", -;
+	close;
+
+L_Remind:
+    mes "[The Doctor]";
+    mes "\"Ah, sorry, of course, I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water.\"";
+	close;
+
+L_NotEnough:
+    mes "[The Doctor]";
+    mes "\"Sorry, you have not enough ingredients. You'd better search thoroughly.\"";
+    menu
+		"Can you remind me what I need to get?", L_Remind,
+		"Ok, I'll go find what you need.", -;
+    close;
+    end;
 }
+
