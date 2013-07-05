@@ -1,4 +1,4 @@
-//
+//Written by Ozthokk, scripted by Munkar and edited by Pihro
 
 009-2.gat,110,44,0|script|The Doctor|184,{
 

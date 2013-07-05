@@ -148,6 +148,7 @@ onInit:
     setarray $@FinalAnnualEasterReward$, "RedEggshellHat", "BlueEggshellHat", "YellowEggshellHat", "GreenEggshellHat", "OrangeEggshellHat", "DarkEggshellHat";
 
     callsub S_disableEggs;
+    if (debug >= 2) end;
     initnpctimer;
     end;
 
@@ -167,10 +168,20 @@ OnTimer1000:
         set $@isEaster, 1;
 
     if (!$@wasEaster && $@isEaster)
-        callsub S_enableEggs;
+        goto L_do_update_enable;
     if ($@wasEaster && !$@isEaster)
-        callsub S_disableEggs;
+        goto L_do_update_disable;
+    goto L_done_update;
 
+L_do_update_enable:
+    callsub S_enableEggs;
+    goto L_done_update;
+
+L_do_update_disable:
+    callsub S_disableEggs;
+    goto L_done_update;
+
+L_done_update:
     set $@wasEaster, $@isEaster;
 
     if (!$@isEaster)

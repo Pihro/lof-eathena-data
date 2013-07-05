@@ -2,7 +2,7 @@
 // Hurnscald mobs
 
 009-1-night.gat,74,32,2,1|monster|SoulSnake|1096,1,100000,120000,Mob009-1-night::On1096
-009-1-night.gat,29,44,9,13|monster|TreasureBox|1107,2,0,250,Mob009-1-night::On1107
+009-1-night.gat,29,44,9,13|monster|TreasureBox|1114,2,0,250,Mob009-1-night::On1114
 009-1-night.gat,88,51,15,4|monster|Moggun|1061,2,0,5000,Mob009-1-night::On1061
 009-1-night.gat,80,38,5,5|monster|Bandit|1064,1,0,5000,Mob009-1-night::On1064
 009-1-night.gat,0,0,0,0|monster|RedSlime|1008,5,30,20,Mob009-1-night::On1008
@@ -29,8 +29,8 @@ On1096:
     callfunc "MobPoints";
     end;
 
-On1107:
-    set @mobID, 1107;
+On1114:
+    set @mobID, 1114;
     callfunc "MobPoints";
     end;
 

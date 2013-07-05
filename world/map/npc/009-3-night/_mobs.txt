@@ -1,24 +1,24 @@
 // This file is generated automatically. All manually changes will be removed when running the Converter.
 // Hurnscald Cave mobs
 
-009-3-night.gat,0,0,0,0|monster|LavaSlime|1104,20,0,0,Mob009-3-night::On1104
-009-3-night.gat,0,0,0,0|monster|BlackSlime|1108,35,0,0,Mob009-3-night::On1108
-009-3-night.gat,0,0,0,0|monster|SnowFlake|1105,35,0,0,Mob009-3-night::On1105
+009-3-night.gat,0,0,0,0|monster|LavaSlime|1111,20,0,0,Mob009-3-night::On1111
+009-3-night.gat,0,0,0,0|monster|BlackSlime|1115,35,0,0,Mob009-3-night::On1115
+009-3-night.gat,0,0,0,0|monster|SnowFlake|1112,35,0,0,Mob009-3-night::On1112
 
 
 009-3-night.gat,0,0,0|script|Mob009-3-night|-1,{
-On1104:
-    set @mobID, 1104;
+On1111:
+    set @mobID, 1111;
     callfunc "MobPoints";
     end;
 
-On1105:
-    set @mobID, 1105;
+On1112:
+    set @mobID, 1112;
     callfunc "MobPoints";
     end;
 
-On1108:
-    set @mobID, 1108;
+On1115:
+    set @mobID, 1115;
     callfunc "MobPoints";
     end;
 
