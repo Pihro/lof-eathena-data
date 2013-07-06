@@ -16,6 +16,7 @@
     mes "\"(The girl now looks away sadly, thinking about what to say next)\"";
     next;
 
+
     mes "[Susanne]";
     mes "\"But a Dragon came and ran away with them, you look big and strong, do you want to help me and save my friends?\"";
     goto L_firstmenu;
@@ -42,7 +43,7 @@ L_yes1:
     mes "\"(Susanne Screams) WATCH OUT !!! I think I hear him in this very cave !!!\"";
     set FAIRY_Quest, 1;
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1101,1, "Susanne::onFafiDragonDead";
+    monster "018-3.gat",28,25,"FafiDragon",1116,1, "Susanne::onFafiDragonDead";
     close;
 
 onFafiDragonDead:
@@ -63,7 +64,7 @@ L_tellagain:
     mes "\"Don't forget, the Fafi Dragon roams throughout many worlds... Please save my friends, they are in so much danger...\"";
 //    killmonster "018-3.gat", "Susanne::onFafiDragonDead";
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1101,1, "Susanne::onFafiDragonDead";
+    monster "018-3.gat",28,25,"FafiDragon",1116,1, "Susanne::onFafiDragonDead";
     mes "\"Thank you...\"";
     next;
     mes "\"(Susanne Screams) WATCH OUT !!!  I think I hear him in this very cave !!!\"";
