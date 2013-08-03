@@ -123,7 +123,8 @@ L_saviorpants2:
     if (@inventorylist_count == 100 && countitem("gold") > 35) goto L_Full;
     if (@inventorylist_count == 100 && countitem("Cottontrousers") > 2) goto L_Full;
     delitem "gold", 35;
-    delitem "Cottontrousers", 2;
+    delitem "Cottontrousers", 1;
+	delitem "Cottontrousers", 1;
     set Zeny, Zeny - 250000;
     getitem "Saviorpants", 1;
     mes "[Cerhan]";
@@ -137,7 +138,7 @@ L_beback:
 
 L_Missing:
     mes "[Cerhan]";
-    mes "\"It looks like you're missing some items.  Please come back when you have what i need!\"";
+    mes "\"It looks like you're missing some items.  Please come back when you have what I need!\"";
     goto L_Close;
 
 L_NotEnoughMoney:
