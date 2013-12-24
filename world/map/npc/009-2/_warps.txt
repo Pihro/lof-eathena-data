@@ -2,7 +2,7 @@
 // Hurnscald Indoor warps
 
 009-2.gat,75,23|warp|To First Floor|0,-1,009-2.gat,74,47
-009-2.gat,95,30|warp|To Outside|-1,-1,009-1.gat,59,34
+009-2.gat,95,29|warp|To Outside|-1,-1,009-1.gat,59,34
 009-2.gat,130,26|warp|To Outside|-1,-1,009-1.gat,71,31
 009-2.gat,144,26|warp|To Second Floor|0,-1,009-2.gat,144,43
 009-2.gat,144,42|warp|To Third Floor|0,-1,009-2.gat,144,25
@@ -18,6 +18,6 @@
 009-2.gat,155,62|warp|To Second Floor|0,-1,009-2.gat,155,46
 009-2.gat,182,67|warp|To Outside|0,-1,009-1.gat,91,47
 009-2.gat,147,90|warp|To Hurnscald Cave|-1,-1,009-3.gat,173,21
-009-2.gat,27,107|warp|To Outside|-1,-1,009-1.gat,58,47
+009-2.gat,27,106|warp|To Outside|-1,-1,009-1.gat,58,47
 009-2.gat,46,50|warp|To Inn Private Room|-1,-1,009-2.gat,76,78
 009-2.gat,77,78|warp|To Hurnscald Inn|-1,-1,009-2.gat,47,50
