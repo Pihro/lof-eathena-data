@@ -1,8 +1,8 @@
 // Auldsbel the Wizard
 // Transmutation Magic expert
 
-011-1.gat,50,68,0|script|Auldsbel#_M|168,{
-
+011-1.gat,50,68,0|script|Auldsbel#_M|168,
+{
     set @mexp, MAGIC_EXPERIENCE & 65535;
 
     set @Q_STATUS_INITIAL, 0;
@@ -944,10 +944,10 @@ L_component_quest_5:
     mes "\"I suggest that you run.\"";
     next;
     misceffect sfx_magic_transmute;
-    monster "this", 50, 68, "Grass Snake", 1034, 4, "Auldsbel#_M::onSnakeDeath";
+    monster "this", 50, 68, "Grass Snake", 1034, 4, "Auldsbel#_M::OnSnakeDeath";
     close;
 
-onSnakeDeath:
+OnSnakeDeath:
     set BOSS_POINTS, BOSS_POINTS + 5;
     message strcharinfo(0), "You gain 5 Boss Points giving you a total of " + BOSS_POINTS + ".";
     end;

@@ -12,7 +12,8 @@
 011-1-night.gat,0,0,0,0|monster|TheLost|1073,10,30,20,Mob011-1-night::On1073
 
 
-011-1-night.gat,0,0,0|script|Mob011-1-night|-1,{
+011-1-night.gat,0,0,0|script|Mob011-1-night|-1,
+{
 On1013:
     set @mobID, 1013;
     callfunc "MobPoints";

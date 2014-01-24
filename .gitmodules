@@ -1,3 +1,7 @@
 [submodule "client-data"]
 	path = client-data
 	url = git://github.com/Pihro/lof-tmwa-client-data.git
+[submodule "tools"]
+	path = tools
+	url = git://github.com/themanaworld/tmw-tools.git
+

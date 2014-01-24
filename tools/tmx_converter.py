@@ -92,6 +92,8 @@ class Warp(Object):
         'dest_map',
         'dest_x',
         'dest_y',
+        'dest_tile_x',
+        'dest_tile_y',
     ) + other_warp_fields
 
 class ContentHandler(xml.sax.ContentHandler):
@@ -264,12 +266,22 @@ class ContentHandler(xml.sax.ContentHandler):
                     ])
                 )
             elif isinstance(obj, Warp):
+                nx = hasattr(obj, 'dest_tile_x')
+                ny = hasattr(obj, 'dest_tile_y')
+                ox = hasattr(obj, 'dest_x')
+                oy = hasattr(obj, 'dest_y')
+                assert nx == ny != ox == oy, 'Error: mixed coordinate properties exist.'
+
+                if ox:
+                    obj.dest_tile_x =  obj.dest_x / 32;
+                    obj.dest_tile_y =  obj.dest_y / 32;
+
                 self.warps.write(
                     SEPARATOR.join([
                         '%s.gat,%d,%d' % (self.base, obj.x, obj.y),
                         'warp',
                         obj.name,
-                        '%d,%d,%s.gat,%d,%d\n' % (obj.w, obj.h, obj.dest_map, obj.dest_x / 32, obj.dest_y / 32),
+                        '%d,%d,%s.gat,%d,%d\n' % (obj.w, obj.h, obj.dest_map, obj.dest_tile_x, obj.dest_tile_y),
                     ])
                 )
 
@@ -289,7 +301,7 @@ class ContentHandler(xml.sax.ContentHandler):
                 self.state = State.FINAL
 
     def endDocument(self):
-        self.mobs.write('\n\n%s.gat,0,0,0|script|Mob%s|-1,{\n' % (self.base, self.base))
+        self.mobs.write('\n\n%s.gat,0,0,0|script|Mob%s|-1,\n{\n' % (self.base, self.base))
         for mob_id in sorted(self.mob_ids):
             self.mobs.write('On%d:\n    set @mobID, %d;\n    callfunc "MobPoints";\n    end;\n\n' % (mob_id, mob_id))
         self.mobs.write('    end;\n}\n')

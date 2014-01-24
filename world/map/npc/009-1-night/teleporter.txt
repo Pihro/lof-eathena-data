@@ -1,6 +1,6 @@
 //
 
-009-1-night.gat,53,47,0|script|Teleporter|116,{
+009-1-night.gat,53,47,0|script|Teleporter#2|116,{
     mes "[Mundane Transporter]";
     mes "\"Would you like to return to the daylight?\"";
     menu

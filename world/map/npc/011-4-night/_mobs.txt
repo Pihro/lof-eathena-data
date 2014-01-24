@@ -7,7 +7,8 @@
 011-4-night.gat,0,0,0,0|monster|WitchGuard|1103,15,0,0,Mob011-4-night::On1103
 
 
-011-4-night.gat,0,0,0|script|Mob011-4-night|-1,{
+011-4-night.gat,0,0,0|script|Mob011-4-night|-1,
+{
 On1097:
     set @mobID, 1097;
     callfunc "MobPoints";

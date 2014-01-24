@@ -8,7 +8,8 @@
 //     2: Players collected enough souls and gave the souls to the waterfall
 //-----------------------------------------------------------------------------
 
-051-1.gat,142,39,0|script|Bones|367,{
+051-1.gat,142,39,0|script|Bones|367,
+{
     mes "You find a ruined paper next to these bones.";
     mes "It says...";
     next;
@@ -21,7 +22,8 @@
 
 }
 
-051-1.gat,170,24,0|script|Cursed Waterfall|400,{
+051-1.gat,170,24,0|script|Cursed Waterfall|400,
+{
     set $@illia_num_sealed_souls, 7;
     set @step, 3;
     if ($@illia_progress < @step) goto L_ShouldNotBeHere;
@@ -107,7 +109,7 @@ L_CheckSouls:
     set $@illia_level_3_progress, 2;
     set $@illia_progress, 4;
     callfunc "UpdateIlliaProgress";
-    set $@illia_max_time, $@illia_max_time + 1200;
+    set $@illia_max_time, $@illia_max_time + 540;
 
     // Clean all spawned monsters
     killmonster "051-1.gat", "IlliaDMobs051-1::On1096";

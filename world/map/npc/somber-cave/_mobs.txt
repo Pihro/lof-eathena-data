@@ -4,14 +4,15 @@
 somber-cave.gat,81,91,2,2|monster|FireLizard|1039,2,0,2000,Mobsomber-cave::On1039
 somber-cave.gat,37,61,2,2|monster|FireLizard|1039,2,0,2000,Mobsomber-cave::On1039
 somber-cave.gat,45,114,2,2|monster|FireLizard|1039,2,0,2000,Mobsomber-cave::On1039
-somber-cave.gat,0,0,0,0|monster|LavaSlime|1111,30,20,0,Mobsomber-cave::On1111
+somber-cave.gat,0,0,0,0|monster|LavaSlime|1115,30,20,0,Mobsomber-cave::On1115
 somber-cave.gat,0,0,0,0|monster|FireGoblin|1011,30,20,0,Mobsomber-cave::On1011
 somber-cave.gat,74,52,1,1|monster|FireSkull|1023,1,0,2000,Mobsomber-cave::On1023
 somber-cave.gat,115,116,1,1|monster|FireSkull|1023,1,0,2000,Mobsomber-cave::On1023
 somber-cave.gat,0,0,0,0|monster|EvilMushroom|1013,10,20,0,Mobsomber-cave::On1013
 
 
-somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,{
+somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,
+{
 On1011:
     set @mobID, 1011;
     callfunc "MobPoints";
@@ -32,8 +33,8 @@ On1039:
     callfunc "MobPoints";
     end;
 
-On1111:
-    set @mobID, 1111;
+On1115:
+    set @mobID, 1115;
     callfunc "MobPoints";
     end;
 

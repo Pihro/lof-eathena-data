@@ -6,7 +6,8 @@
 027-1.gat,37,65,33,22|monster|Zombie|1036,3,140000,30000,specialMob027-1::On1036
 027-1.gat,37,65,33,22|monster|Fallen|1045,3,120000,30000,specialMob027-1::On1045
 
-027-1.gat,0,0,0|script|specialMob027-1|-1,{
+027-1.gat,0,0,0|script|specialMob027-1|-1,
+{
 On1036:
     set @mobID, 1036;
     callsub _MOBCOUNT_ZOMBIES;
@@ -27,12 +28,12 @@ _MOBCOUNT_ZOMBIES:
     set @state, ((QUEST_Graveyard_Inn & @Graveyard_Inn_MASK) >> @Graveyard_Inn_SHIFT);
 
     if (@state != 1)
-        return;
+        goto L_Return;
     set @ring, @ring + 1;
     if (@ring < 10)
-        return;
+        goto L_Return;
     if (rand(8) != 0)
-        return;
+        goto L_Return;
     message strcharinfo(0), "You found a ring hidden in the zombie's rotten rags. Maybe this is what Aldred was looking for...";
     set @state, 2;
     callsub S_Update_Mask;
@@ -46,15 +47,18 @@ _MOBCOUNT_FALLENS:
     set @state, ((QUEST_Graveyard_Inn & @Graveyard_Inn_MASK) >> @Graveyard_Inn_SHIFT);
 
     if (@state != 1)
-        return;
+        goto L_Return;
     set @ring, @ring + 1;
     if (@ring < 10)
-        return;
+        goto L_Return;
     if (rand(8) != 0)
-        return;
+        goto L_Return;
     message strcharinfo(0), "You found a ring inside the fallen's broken helmet. Maybe this is what Aldred was looking for...";
     set @state, 2;
     callsub S_Update_Mask;
+    return;
+
+L_Return:
     return;
 
 S_Update_Mask:

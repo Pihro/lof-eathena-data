@@ -1,7 +1,7 @@
 // NPC to provide hints on progression of linear quest chain in Tulimshar
 
-001-1.gat,49,31,0|script|Gladys|154,{
-
+001-1.gat,49,31,0|script|Gladys|154,
+{
     // This NPC previously used the variable TMW_Quest
     callfunc "ClearVarTMW_Quest";
 
@@ -36,7 +36,7 @@ L_Intro:
     mes "[Gladys, Town Gossip]";
     mes "\"Have you met our lovely guard captain yet?  He usually keeps a post just outside the gates where he can keep an eye on things.  He likes to talk to new adventurers too.\"";
     next;
-    mes "Gladys, Town Gossip]";
+    mes "[Gladys, Town Gossip]";
     mes "\"I also overheard some of the children in the square talking today.  I think they are having trouble with some of their chores.  Kids these days...\"";
     next;
     mes "The old lady trails off and starts muttering to herself about hills and snow.  Perhaps it's best to leave her alone for now.";

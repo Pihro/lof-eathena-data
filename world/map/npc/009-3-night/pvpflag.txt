@@ -1,1 +1,1 @@
-009-3-night.gat mapflag pvp
+009-3-night.gat|mapflag|pvp

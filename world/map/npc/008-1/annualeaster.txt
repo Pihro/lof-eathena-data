@@ -9,8 +9,8 @@
 // the event in these days.
 
 
-function|script|AnnualEasterEvent|{
-
+function|script|AnnualEasterEvent|,
+{
     if ((gettimetick(2)-TUT_var < 5*7*86400) || (BaseLevel < 40)) //player must be created at least 5 weeks ago
         goto L_EndTooYoung;
 
@@ -110,26 +110,30 @@ L_End1:
     return;
 }
 
-008-1.gat,65,40,0|script|#TestEgg0|375,{
+008-1.gat,65,40,0|script|#TestEgg0|375,
+{
     set @EasterEggID, 0;
     callfunc("AnnualEasterEvent");
 }
 
-008-1.gat,65,40,0|script|#TestEgg1|375,{
+008-1.gat,65,40,0|script|#TestEgg1|375,
+{
     set @EasterEggID, 1;
     callfunc("AnnualEasterEvent");
 }
 
-008-1.gat,65,40,0|script|#TestEgg2|375,{
+008-1.gat,65,40,0|script|#TestEgg2|375,
+{
     set @EasterEggID, 2;
     callfunc("AnnualEasterEvent");
 }
 
 
-008-1.gat,59,38,0|script|#AnnualEaster|-1,{
+008-1.gat,59,38,0|script|#AnnualEaster|-1,
+{
     end;
 
-onInit:
+OnInit:
     set $@EASTER_FOUND_WAIT_TIME, 15;
     set $@EASTER_FINAL_REW_INV_CHANCE, 70;
     set $@EASTER_EGG_INV_CHANCE, 750;
@@ -164,7 +168,7 @@ OnTimer1000:
     set $@AEASTER_mapcount, 1 + getmapusers("008-1.gat") / 3;
 
     set $@isEaster, 0;
-    if ((gettime(6) == 3 && gettime(5) >= 22) || (gettime(6) == 4 && gettime(5) <= 25) || debug)
+    if ((gettime(6) == 3 && gettime(5) >= 22) || (gettime(6) == 4 && gettime(5) <= 25))
         set $@isEaster, 1;
 
     if (!$@wasEaster && $@isEaster)
@@ -215,12 +219,13 @@ S_disableEggs:
 
 S_relocateEasterEgg:
     if ($@peopleFoundEggs[$@EggID] < $@AEASTER_mapcount)
-        return;
+        goto L_Return;
 
     set $@peopleFoundEggs[$@EggID], 0;
 
     set $@eastereggPos, rand(getarraysize($@easteregg_posx));
     npcwarp $@easteregg_posx[$@eastereggPos], $@easteregg_posy[$@eastereggPos], "#TestEgg" + $@EggID;
-    return;
 
+L_Return:
+    return;
 }

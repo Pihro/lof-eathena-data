@@ -240,7 +240,7 @@ L_BuyBcat:
     mes "\"Bring me the following items and 750,000 GP and then I will let you have one.\"";
     mes "\"50 Marshmallows, 50 Candy Pumpkins, 20 Lifestones, 4 Jack-O-Lanterns, 3 Jars of Blood, 2 Rubber Bats and 1 rare Black Pearl.\"";
     
-    Menu
+    menu
        "OK I have what you need.", L_SpecialBuy,
        "No, I have changed my mind.", L_Close;
     goto L_Close;

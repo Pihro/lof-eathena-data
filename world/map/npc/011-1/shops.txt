@@ -6,7 +6,7 @@
 
 // Exotic Trader
 // Toy Sabre - 10mil, Cap - 20mil, High Priest Crown - 30mil, Monster Skull Helmet - 30mil
-011-1.gat,109,38,0|shop|Exotic Trader|179,ToySabre :10000,Cap :20000,HighPriestCrown :30000,MonsterSkullHelmet :30000,AFKCap :30000,VikingHelmet :400000,Gladius :16000,SoldierHelmet :60000
+011-1.gat,109,38,0|shop|Exotic Trader|179,ToySabre :10000,Cap :20000,HighPriestCrown :30000,MonsterSkullHelmet :30000,Afkcap :30000,VikingHelmet :400000,Gladius :16000,SoldierHelmet :60000
 
 // Shop
 011-1.gat,80,33,0|shop|Fruit Store|400,GreenApple :-1,RedApple :-1,Orange :-1

@@ -32,7 +32,8 @@
 // @KylianNTSightSeeing
 // @KylianNTCasino
 
--|script|#businessmanNTconfig|-1,{
+-|script|#businessmanNTconfig|-1,
+{
 OnInit:
     // Nibble 4
     set $@knowYanisNT,   0x10000;
@@ -45,15 +46,16 @@ OnInit:
     end;
 }
 
-021-2.gat,25,67,0|script|#KylianOut|32767,1,1,{
+021-2.gat,25,67,0|script|#KylianOut|32767,1,1,
+{
     set @KylianNTLicense, 0;
     set @KylianNTSightSeeing, 0;
     set @KylianNTCasino, 0;
     end;
 }
 
-021-2.gat,32,92,0|script|Kylian|193,{
-
+021-2.gat,32,92,0|script|Kylian|193,
+{
     set @state, ((QUEST_NorthTulimshar & $@businessmanNT_MASK) >> $@businessmanNT_SHIFT);
 
     set @acorn_amount, 12;
@@ -231,13 +233,15 @@ L_DesertHat: // @state == 8
     mes "[Kylian]";
     mes "\"That was an interesting night. Thanks for your suggestion to visit the casino.\"";
     next;
+    getinventorylist;
     mes "\"You helped me a lot, so I bought a souvenir for you while I was shopping.\"";
-    if ((checkweight("DesertHat", count) == 0) || (@inventorylist_count == 100))
+    if ((checkweight("DesertHat", 1) == 0) || (@inventorylist_count == 100))
         goto L_Inventory;
     getitem "DesertHat", 1;
     set @state, 9;
     callsub S_Update_Mask;
     next;
+
 L_Done:
     mes "[Kylian]";
     mes "\"I hope to get a positive response about my shop license soon. I might have more things to do for you then, if you're interested.";

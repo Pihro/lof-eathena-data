@@ -94,7 +94,8 @@ L_noob:
     mes "[Susanne]";
     mes "\" I need some help with something, but I need someone stronger(Level 50+), come back later please.\"";
     close;
-    
+
+
 L_coward:
     mes "[Susanne]";
     mes "\"What are you doing talking to me? Go fight, you coward!\"";

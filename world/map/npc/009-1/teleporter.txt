@@ -1,6 +1,6 @@
 //
 
-009-1.gat,53,47,0|script|Teleporter|116,{
+009-1.gat,53,47,0|script|Teleporter#1|116,{
     mes "[Mundane Transporter]";
     mes "\"Would you like to visit the Night World?\"";
     menu
