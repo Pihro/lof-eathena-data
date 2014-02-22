@@ -82,7 +82,7 @@ L_Progress2:
     if ((@inventorylist_count - (countitem("MaggotSlime") == 3) > 99  - (countitem("Beer") == 0) )) goto L_TooMany;
     delitem "MaggotSlime", 3;
     getexp 100, 0;
-    getitem "Chainmailshirt", 1;
+    getitem "ChainmailShirt", 1;
     set @state, 4;
     callsub S_Update_Var;
     goto L_Close;

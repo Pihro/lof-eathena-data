@@ -697,17 +697,17 @@ L_capemenu:
         "What a ripoff!?", L_end;
 
 L_capeyes:
-    if (countitem("Cottoncloth") < 20) goto L_Missing;
-    if (countitem("Ironingot") < 5) goto L_Missing;
-    if (countitem("Goldenwarlordplate") < 1) goto L_Missing;
+    if (countitem("CottonCloth") < 20) goto L_Missing;
+    if (countitem("IronIngot") < 5) goto L_Missing;
+    if (countitem("GoldenWarlordPlate") < 1) goto L_Missing;
     if (Zeny < 240000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("Cottoncloth") > 5 && countitem("Ironingot") < 5) goto L_Full;
-    delitem "Cottoncloth", 20;
-    delitem "Ironingot", 5;
-    delitem "Goldenwarlordplate", 1;
+    delitem "CottonCloth", 20;
+    delitem "IronIngot", 5;
+    delitem "GoldenWarlordPlate", 1;
     set Zeny, Zeny - 240000;
-    getitem "Whitesaviorarmor", 1;
+    getitem "WhiteSaviorArmor", 1;
     mes "[Lora Tay]";
     mes "\"There you go!\"";
     next;

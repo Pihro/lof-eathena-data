@@ -100,7 +100,7 @@ L_Gloves:
         "No gloves, lets see what else you have", L_Trademenu,
         "No thank you, maybe I will buy some later.", L_Close;
     set Zeny, Zeny - 3000;
-    getitem "Leathergloves", 1;
+    getitem "LeatherGloves", 1;
     mes "[Nowhere Man]";
     mes "Thank you. I am sure you will get use from them";
     close;

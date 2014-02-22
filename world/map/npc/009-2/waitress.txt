@@ -64,7 +64,7 @@ L_5000Tip:
     if (@inventorylist_count == 100 && countitem("Ironingot") == 0)
         goto L_TooMany;
     set Zeny, Zeny - 50000;
-    getitem "Ironingot", 5;
+    getitem "IronIngot", 5;
     mes "[Melinda]";
     mes "\"Here you go sweetie!\"";
     close;

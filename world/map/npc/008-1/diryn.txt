@@ -32,7 +32,8 @@ L_Diryn_Yes:
         "Magic House (" + @cost_magichouse + " GP)", L_Diryn_Magic_House,
         "Terranite Cave (" + @cost_terranitecave + " GP)", L_Diryn_Terranite,
         "Tulimshar Town Square (" + @cost_tulimshar + " GP)", L_Diryn_Tulimshar,
-        "Sage Nikolai's Mansion (" + @cost_nivalis + " GP)", L_Diryn_Nivalis,
+        "Nivalis Town Square (" + @cost_nivalis + " GP)", L_Diryn_Nivalis,
+        "Sage Nikolai's Mansion (" + @cost_nivalis + " GP)", L_Diryn_Nivalis2,
         "I'm not interested.", L_Diryn_No;
 
 L_Diryn_Druid_Tree:
@@ -86,6 +87,16 @@ L_Diryn_Tulimshar:
     goto L_Clearvars;
 
 L_Diryn_Nivalis:
+    if (Zeny < @cost_nivalis)
+        goto L_NoMoney;
+    mes "[Diryn]";
+    mes "\"Be fearless!\"";
+    close2;
+    set Zeny, Zeny - @cost_nivalis;
+    warp "020-1.gat",74,86;
+    goto L_Clearvars;
+
+L_Diryn_Nivalis2:
     if (Zeny < @cost_nivalis)
         goto L_NoMoney;
     mes "[Diryn]";

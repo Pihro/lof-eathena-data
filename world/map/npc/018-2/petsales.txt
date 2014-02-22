@@ -64,15 +64,15 @@ L_Rat:
     goto L_Close;
 
 L_dog2:
-    if (countitem("Animalbones") < 20) goto L_Missing;
+    if (countitem("AnimalBones") < 20) goto L_Missing;
     if (countitem("Steak") < 15) goto L_Missing;
-    if (countitem("Rawlog") < 10) goto L_Missing;
+    if (countitem("RawLog") < 10) goto L_Missing;
     if (Zeny < 40000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Animalbones") > 20 && countitem("Steak") > 15) goto L_Full;
-    delitem "Animalbones", 20;
+    if (@inventorylist_count == 100 && countitem("AnimalBones") > 20 && countitem("Steak") > 15) goto L_Full;
+    delitem "AnimalBones", 20;
     delitem "Steak", 15;
-    delitem "Rawlog", 10;
+    delitem "RawLog", 10;
     set Zeny, Zeny - 40000;
     getitem "Hund", 1;
     mes "[Ace Ventura]";
@@ -84,13 +84,13 @@ L_dog2:
     goto L_Close;
 
 L_cat2:
-    if (countitem("Animalbones") < 10) goto L_Missing;
+    if (countitem("AnimalBones") < 10) goto L_Missing;
     if (countitem("Steak") < 10) goto L_Missing;
     if (countitem("Milk") < 15) goto L_Missing;
     if (Zeny < 40000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Animalbones") > 10 && countitem("Steak") > 10) goto L_Full;
-    delitem "Animalbones", 10;
+    if (@inventorylist_count == 100 && countitem("AnimalBones") > 10 && countitem("Steak") > 10) goto L_Full;
+    delitem "AnimalBones", 10;
     delitem "Steak", 10;
     delitem "Milk", 15;
     set Zeny, Zeny - 40000;
@@ -104,15 +104,15 @@ L_cat2:
     goto L_Close;
 
 L_rat2:
-    if (countitem("Animalbones") < 15) goto L_Missing;
+    if (countitem("AnimalBones") < 15) goto L_Missing;
     if (countitem("Steak") < 10) goto L_Missing;
-    if (countitem("Bottleofwater") < 20) goto L_Missing;
+    if (countitem("BottleOfWater") < 20) goto L_Missing;
     if (Zeny < 40000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Animalbones") > 15 && countitem("Steak") > 10) goto L_Full;
-    delitem "Animalbones", 15;
+    if (@inventorylist_count == 100 && countitem("AnimalBones") > 15 && countitem("Steak") > 10) goto L_Full;
+    delitem "AnimalBones", 15;
     delitem "Steak", 10;
-    delitem "Bottleofwater", 20;
+    delitem "BottleOfWater", 20;
     set Zeny, Zeny - 40000;
     getitem "Rat", 1;
     mes "[Ace Ventura]";

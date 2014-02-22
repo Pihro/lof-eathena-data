@@ -14,10 +14,10 @@
     cleararray @Ys[0], 0, 7;
     set @x, 0;
     set @y, 0;
-    delitem "Whitehitchhikerstowel", 1;
-    getitem "Whitehitchhikerstowel", 1;
-    delitem "Redhitchhikerstowel", 1;
-    delitem "Yellowhitchhikerstowel", 1;
-    delitem "Hitchhikerstowel", 1;
+    delitem "WhitehitchhikersTowel", 1;
+    getitem "WhitehitchhikersTowel", 1;
+    delitem "RedhitchhikersTowel", 1;
+    delitem "YellowhitchhikersTowel", 1;
+    delitem "HitchhikersTowel", 1;
     close;
 }
