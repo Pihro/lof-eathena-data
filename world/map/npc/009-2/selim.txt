@@ -342,7 +342,7 @@ L_saviorarmor:
 
 L_saviorarmormenu:
     if(ARMOR_Quest == 2) goto L_alreadydone;
-    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
+    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
     menu
         "I would like red", L_redsav,
         "Blue would be nice", L_bluesav,
@@ -350,11 +350,11 @@ L_saviorarmormenu:
         "I'm fine.", L_close;
 
 L_redsav:
-    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
-    if (countitem("Reddye") < 1) goto L_missing;
-    delitem "Whitesaviorarmor", 1;
-    delitem "Reddye", 1;
-    getitem "Redsaviorarmor", 1;
+    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
+    if (countitem("RedDye") < 1) goto L_missing;
+    delitem "WhiteSaviorArmor", 1;
+    delitem "RedDye", 1;
+    getitem "RedSaviorArmor", 1;
     set ARMOR_Quest,2;
     mes "[Selim]";
     mes "\"There you go! Want me to dye anything else?\"";
@@ -363,11 +363,11 @@ L_redsav:
         "Nope.", L_close;
 
 L_bluesav:
-    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
-    if (countitem("Lightbluedye") < 1) goto L_missing;
-    delitem "Whitesaviorarmor", 1;
-    delitem "Lightbluedye", 1;
-    getitem "Bluesaviorarmor", 1;
+    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
+    if (countitem("LightblueDye") < 1) goto L_missing;
+    delitem "WhiteSaviorArmor", 1;
+    delitem "LightblueDye", 1;
+    getitem "BlueSaviorArmor", 1;
     set ARMOR_Quest,2;
     mes "[Selim]";
     mes "\"There you go! Want me to dye anything else?\"";
@@ -376,11 +376,11 @@ L_bluesav:
         "Nope.", L_close;
 
 L_blacksav:
-    if (countitem("Whitesaviorarmor") < 1) goto L_missing;
-    if (countitem("Blackdye") < 1) goto L_missing;
-    delitem "Whitesaviorarmor", 1;
-    delitem "Blackdye", 1;
-    getitem "Blacksaviorarmor", 1;
+    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
+    if (countitem("BlackDye") < 1) goto L_missing;
+    delitem "WhiteSaviorArmor", 1;
+    delitem "BlackDye", 1;
+    getitem "BlackSaviorArmor", 1;
     set ARMOR_Quest,2;
     mes "[Selim]";
     mes "\"There you go! Want me to dye anything else?\"";

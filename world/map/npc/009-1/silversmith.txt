@@ -48,17 +48,17 @@ L_Clover:
         goto L_Close;
 
 L_sword2:
-    if (countitem("Silverore") < 15) goto L_Missing;
-    if (countitem("Rawcoal") < 6) goto L_Missing;
-    if (countitem("Shortsword") < 1) goto L_Missing;
+    if (countitem("SilverOre") < 15) goto L_Missing;
+    if (countitem("RawCoal") < 6) goto L_Missing;
+    if (countitem("ShortSword") < 1) goto L_Missing;
     if (Zeny < 100000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Silverore") > 15 && countitem("Rawcoal") < 6) goto L_Full;
-    delitem "Silverore", 15;
-    delitem "Rawcoal", 6;
-    delitem "Shortsword", 1;
+    if (@inventorylist_count == 100 && countitem("SilverOre") > 15 && countitem("RawCoal") < 6) goto L_Full;
+    delitem "SilverOre", 15;
+    delitem "RawCoal", 6;
+    delitem "ShortSword", 1;
     set Zeny, Zeny - 100000;
-    getitem "Silversword", 1;
+    getitem "SilverSword", 1;
     mes "[Smith Silvers]";
     mes "\"There you go! Want me to silver anything else?\"";
     menu
@@ -67,17 +67,17 @@ L_sword2:
     goto L_Close;
 
 L_helm2:
-    if (countitem("Silverore") < 6) goto L_Missing;
-    if (countitem("Rawcoal") < 9) goto L_Missing;
-    if (countitem("unsilveredcrusadehelmet") < 1) goto L_Missing;
+    if (countitem("SilverOre") < 6) goto L_Missing;
+    if (countitem("RawCoal") < 9) goto L_Missing;
+    if (countitem("UnsilveredCrusadeHelmet") < 1) goto L_Missing;
     if (Zeny < 50000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Silverore") > 6 && countitem("Rawcoal") < 9) goto L_Full;
-    delitem "Rawcoal", 9;
-    delitem "Silverore", 6;
-    delitem "unsilveredcrusadehelmet", 1;
+    if (@inventorylist_count == 100 && countitem("SilverOre") > 6 && countitem("RawCoal") < 9) goto L_Full;
+    delitem "RawCoal", 9;
+    delitem "SilverOre", 6;
+    delitem "UnsilveredCrusadeHelmet", 1;
     set Zeny, Zeny - 50000;
-    getitem "Crusadehelmet", 1;
+    getitem "CrusadeHelmet", 1;
     mes "[Smith Silvers]";
     mes "\"There you go.  Would you like anything else silvered?\"";
     menu
@@ -86,17 +86,17 @@ L_helm2:
     goto L_Close;
 
 L_bow2:
-    if (countitem("Silverore") < 18) goto L_Missing;
-    if (countitem("Rawcoal") < 18) goto L_Missing;
-    if (countitem("Forestbow") < 1) goto L_Missing;
+    if (countitem("SilverOre") < 18) goto L_Missing;
+    if (countitem("RawCoal") < 18) goto L_Missing;
+    if (countitem("ForestBow") < 1) goto L_Missing;
     if (Zeny < 200000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Silverore") > 18 && countitem("Rawcoal") < 18) goto L_Full;
-    delitem "Rawcoal", 18;
-    delitem "Silverore", 18;
-    delitem "Forestbow", 1;
+    if (@inventorylist_count == 100 && countitem("SilverOre") > 18 && countitem("RawCoal") < 18) goto L_Full;
+    delitem "RawCoal", 18;
+    delitem "SilverOre", 18;
+    delitem "ForestBow", 1;
     set Zeny, Zeny - 200000;
-    getitem "Silverbow", 1;
+    getitem "SilverBow", 1;
     mes "[Smith Silvers]";
     mes "\"There you go.  Would you like anything else silvered?\"";
     menu
@@ -105,17 +105,17 @@ L_bow2:
     goto L_Close;
 
 L_Clover2:
-        if (countitem("Silverore") < 4) goto L_Missing;
-        if (countitem("Rawcoal") < 5) goto L_Missing;
-        if (countitem("Fourleafclover") < 1) goto L_Missing;
+        if (countitem("SilverOre") < 4) goto L_Missing;
+        if (countitem("RawCoal") < 5) goto L_Missing;
+        if (countitem("FourleafClover") < 1) goto L_Missing;
         if (Zeny < 250000) goto L_NotEnoughMoney;
         getinventorylist;
-        if (@inventorylist_count == 100 && countitem("Silverore") > 4 && countitem("Rawcoal") < 5) goto L_Full;
-        delitem "Rawcoal", 5;
-        delitem "Silverore", 4;
-        delitem "Fourleafclover", 1;
+        if (@inventorylist_count == 100 && countitem("SilverOre") > 4 && countitem("RawCoal") < 5) goto L_Full;
+        delitem "RawCoal", 5;
+        delitem "SilverOre", 4;
+        delitem "FourleafClover", 1;
         set Zeny, Zeny - 250000;
-        getitem "Silverfourleafamulet", 1;
+        getitem "SilverFourLeafAmulet", 1;
         mes "[Smith Silvers]";
         mes "\"There you go.  Would you like anything else silvered?\"";
         menu
