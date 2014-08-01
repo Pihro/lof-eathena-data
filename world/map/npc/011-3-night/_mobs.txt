@@ -7,6 +7,8 @@
 
 011-3-night.gat,0,0,0|script|Mob011-3-night|-1,
 {
+    end;
+
 On1056:
     set @mobID, 1056;
     callfunc "MobPoints";
@@ -15,7 +17,5 @@ On1056:
 On1066:
     set @mobID, 1066;
     callfunc "MobPoints";
-    end;
-
     end;
 }
