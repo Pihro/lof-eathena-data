@@ -13,6 +13,8 @@ somber-cave.gat,0,0,0,0|monster|EvilMushroom|1013,10,20,0,Mobsomber-cave::On1013
 
 somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,
 {
+    end;
+
 On1011:
     set @mobID, 1011;
     callfunc "MobPoints";
@@ -36,7 +38,5 @@ On1039:
 On1115:
     set @mobID, 1115;
     callfunc "MobPoints";
-    end;
-
     end;
 }

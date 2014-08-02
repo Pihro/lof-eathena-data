@@ -21,11 +21,12 @@
 001-1.gat,21,74,6,18|monster|Maggot|1002,2,100000,30000,Mob001-1::On1002
 001-1.gat,122,59,17,22|monster|GiantMaggot|1006,1,100000,30000,Mob001-1::On1006
 001-1.gat,137,25,15,7|monster|FireGoblin|1011,1,61000,60000,Mob001-1::On1011
-001-1.gat,48,69,1,1|monster|Duck|1048,1,0,0,Mob001-1::On1048
 
 
 001-1.gat,0,0,0|script|Mob001-1|-1,
 {
+    end;
+
 On1002:
     set @mobID, 1002;
     callfunc "MobPoints";
@@ -44,12 +45,5 @@ On1006:
 On1011:
     set @mobID, 1011;
     callfunc "MobPoints";
-    end;
-
-On1048:
-    set @mobID, 1048;
-    callfunc "MobPoints";
-    end;
-
     end;
 }
