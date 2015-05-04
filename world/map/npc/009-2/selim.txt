@@ -366,7 +366,7 @@ L_bluesav:
     if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
     if (countitem("LightblueDye") < 1) goto L_missing;
     delitem "WhiteSaviorArmor", 1;
-    delitem "LightblueDye", 1;
+    delitem "LightBlueDye", 1;
     getitem "BlueSaviorArmor", 1;
     set ARMOR_Quest,2;
     mes "[Selim]";

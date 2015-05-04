@@ -107,13 +107,13 @@ L_bow2:
 L_Clover2:
         if (countitem("SilverOre") < 4) goto L_Missing;
         if (countitem("RawCoal") < 5) goto L_Missing;
-        if (countitem("FourleafClover") < 1) goto L_Missing;
+        if (countitem("FourLeafClover") < 1) goto L_Missing;
         if (Zeny < 250000) goto L_NotEnoughMoney;
         getinventorylist;
         if (@inventorylist_count == 100 && countitem("SilverOre") > 4 && countitem("RawCoal") < 5) goto L_Full;
         delitem "RawCoal", 5;
         delitem "SilverOre", 4;
-        delitem "FourleafClover", 1;
+        delitem "FourLeafClover", 1;
         set Zeny, Zeny - 250000;
         getitem "SilverFourLeafAmulet", 1;
         mes "[Smith Silvers]";
