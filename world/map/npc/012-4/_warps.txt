@@ -1,6 +1,0 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-// Terranite Cave warps
-
-012-4.gat,193,58|warp|To Moggun Cave|-1,-1,012-3.gat,448,62
-012-4.gat,363,26|warp|To Small Cave|-1,-1,012-4.gat,474,187
-012-4.gat,474,188|warp|To Terranite Cave|-1,-1,012-4.gat,363,27

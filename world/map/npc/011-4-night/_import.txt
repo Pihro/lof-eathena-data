@@ -1,6 +1,0 @@
-// Map 011-4-night: Lake Cave
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: 011-4-night.gat
-npc: npc/011-4-night/_mobs.txt
-npc: npc/011-4-night/_warps.txt
-npc: npc/011-4-night/pvpflag.txt
