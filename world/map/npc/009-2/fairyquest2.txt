@@ -1,4 +1,4 @@
-//
+// Quest fixed by Pyndragon/Daniel Foerster, 27 May 2015
 
 009-2.gat,63,26,0|script|Royal Fairy|108,
 {

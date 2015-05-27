@@ -1,13 +1,15 @@
 // The Paper Boy, Roger, helps sailors obtain the scroll needed for the captains hat. Nov 07, 2012 Dev- DingoDuck
+// Fixed 19 May 2015 by Itchy Demon
 
-018-1.gat,76,85,0|script|Roger|130,{
+018-1.gat,76,85,0|script|Roger|130,
+{
     mes "[Roger]";
     mes "\"Paper! Paper! Get your copy of The Land of Fire Gazette here!\"";
     mes "\"Read about the travels of other adventures and the NPCs that helped them.\"";
     next;
     mes "Hello " + strcharinfo(0) + ", may I interest you in a copy of the Gazette?\"";
     menu
-        "Yes, please", -,
+        "Yes, please", L_GetRead,
         "No, Thank You, kid.", L_TooBad,
         "Do you have anything else to read?", L_ExtraRead;
 
@@ -15,15 +17,17 @@ L_GetRead:
     mes "[Roger]";
     mes "\"Let me see.....\"";
     next;
-    if (GEORGE_Quest == 4) goto L_LOF_NEWS;
+    if (GEORGE_Quest == 5)
+        goto L_LOF_NEWS;
     mes "\"Oh yes, here you go, that will be 1 GP.\"";
-    if (Zeny< 1) goto L_Poor;
+    if (Zeny< 1)
+        goto L_Poor;
     set Zeny, (Zeny-1);
     mes "\"[You are handed the Land of Fire Gazette, You look at the headline...]\"";
     mes "\"[but it is written in Mananese, a language you know nothing about.]\"";
     next;
     mes "\"[You toss the paper in the trash.]\""; 
-    close;
+    goto L_Close;
 
 L_TooBad:
     mes "[Roger]";
@@ -31,14 +35,19 @@ L_TooBad:
     mes "\"And a special coupon section to get rare items for little or no money!\"";
     menu
         "I changed my mind, I think I would like a copy!", L_GetRead,
-        "That's ok, kid...I can't read anyways", -;
-    close;
+        "That's ok, kid...I can't read anyways", L_TooBadTwo;
+
+L_TooBadTwo:
+    mes "[Roger]";
+    mes "\"Too bad, you're really missing out!\"";
+    goto L_Close;
     
 L_ExtraRead:
     mes "[Roger]";
     mes "\"Now that you ask....\"";
     next;
-    if (PB_Quest == 1) goto L_Mad_Mag;
+    if (PB_Quest == 1)
+        goto L_MadMag;
     mes "\"I might be able to get you a rare copy of the Maritime Almanac Scroll. A yearly publication for seafaring men.\"";
     mes "\"It is very hard to come by, however, my father has a copy he might sell to you for the right price.\"";
     menu
@@ -48,18 +57,22 @@ L_ExtraRead:
         "I have no interest in things such as that.", L_Close;
     
 L_Success:
-    if (PB_Quest ==1) goto L_HaveScroll;
-    if (countitem("MoubooFigurine") < 1) goto L_Nomouboo;
-    if (countitem("Sailorhat") == 0) goto L_State_none;
+    if (PB_Quest == 1)
+        goto L_HaveScroll;
+    if (countitem("MoubooFigurine") < 1)
+        goto L_NoMouboo;
+    if (countitem("SailorHat") == 0)
+        goto L_StatNone;
     mes "[Roger]";
     mes "\"This is great! My collection of rare figurines is now complete.\"";
     mes "\"I asked my father and he agreed to trade it to you, so here is the last copy of the Maritime Almanac Scroll.\"";
     getinventorylist;
-    if (@inventorylist_count > 99 ) goto L_TooMany;
+    if (@inventorylist_count == 100 )
+        goto L_TooMany;
     delitem "MoubooFigurine", 1;
     getitem "ScrollOfPaper", 1;
     set PB_Quest, 1;
-    close;
+    goto L_Close;
     
 L_BadOffer1:
     mes "[Roger]";
@@ -67,33 +80,37 @@ L_BadOffer1:
     next;
     mes "Although I really want the Sailor's Hat, but daggers are dangerous for kids to play with.\"";
     mes "Besides that, do I look like a warrior to you? Why would you give a kid a sharp dagger?\"";
-    close;
+    goto L_Close;
     
 L_BadOffer2:
     mes "[Roger]";
     mes "\"5000 GP? That sure is a lot of gold...\"";
     mes "\"but I was hoping for something more valuable. No Thanks.\"";
-    close;
+    goto L_Close;
     
-L_Nomouboo:
+L_NoMouboo:
     mes "[Roger]";
     mes "\"You said you would trade a real Mouboo Figurine, but now I see you don't have one. Come back when you do.\"";
-    close;
+    goto L_Close;
 
-L_State_none:
+L_StatNone:
     mes "\"You might have the Mouboo Figurine, but I don't trust everyone.\"";
-    if(GEORGE_Quest >= 2) goto L_Shat;
+    if(GEORGE_Quest >= 3)
+        goto L_ShowHat;
     mes "\"My friend George is much older than I am, go see him and if he trusts you, so will I.\"";
-    close;
+    if (GEORGE_Quest < 2)
+        set GEORGE_Quest, 1;
+    goto L_Close;
     
-L_Shat:    
+L_ShowHat:
     mes "\"I see you have met my good friend George, and you gave him some items that he needed...\"";
+    mes "";
     mes "\"Didn't he give you anything?\"";
     next;
     mes "\"If you could show me what he gave you, I might trust you.\"";
-    close;
+    goto L_Close;
     
-L_Mad_Mag:
+L_MadMag:
     mes "[Roger]";
     mes "\"I have my favorite book of all times, Moby Dick.\"";
     mes "Let me read some of it to you....\"";
@@ -125,7 +142,7 @@ L_LOF_NEWS:
     mes "\"Currently there are new maps being developed and new NPCs. The project is involving only a small group of members, but would welcome anyone who knows how to assist in development.\"";
     next;
     mes "\"Graphical development sure could use some help. We have Map DEVs, but could use more. Someone with skill to make new NPC or Monster graphics would be a great help. The graphics use XML files, so those would have to be developed along with the images.\"";
-    mes "\"If you believe you are able to help, please contact Keekeekat, Pihro, or DingoDuck. The LOF admins and developers always welcome suggestions also, so speak up.\"";
+    mes "\"If you believe you are able to help, please contact KeeKeeKat, Pihro, or DingoDuck. The LOF admins and developers always welcome suggestions also, so speak up.\"";
     goto L_Close;
 
 L_HaveScroll:
@@ -135,6 +152,4 @@ L_HaveScroll:
 
 L_Close: 
     close;
-
-
 }

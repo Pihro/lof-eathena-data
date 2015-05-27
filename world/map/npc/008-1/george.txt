@@ -1,120 +1,162 @@
-//George
-008-1.gat,136,36,0|script|George|138,{
-       
-    if(GEORGE_Quest >= 4) goto L_Done2;
-    if(GEORGE_Quest == 3) goto L_Progress2;
-    if(GEORGE_Quest == 2) goto L_Done1;
-    if(GEORGE_Quest == 1) goto L_Progress;
-    set @TEMP, rand(2);
-    if(@TEMP == 1) goto L_Open1;
-       
-L_Open0:
-    mes "[George]";
-    mes "\"I need some help, could you please do something for me?\"";
-    next;
-    goto L_Ask;
-              
-L_Open1:
-    mes "[George]";
-    mes "\"Oh hey there, wanna help me?\"";
-    next;
-       
-L_Ask:
+// Fixed 19 May 2015 by Itchy Demon
+
+008-1,136,62,0|script|George|138,
+{
+
+    if (getequipid(equip_head) == 617) goto L_Pirate;
+    if (getequipid(equip_head) == 622) goto L_Bandana;
+    if (getequipid(equip_head) == 621) goto L_EyePatch;
+
+    mes "[George the Pirate]";
+    mes "\"Yar! Do you need something, matey?\"";
+    if (GEORGE_Quest == 1) goto L_Main2;
+    if (GEORGE_Quest == 2) goto L_Main3;
+    if (GEORGE_Quest == 3) goto L_Main5;
+    if (GEORGE_Quest == 4) goto L_Main4;
+    goto L_Main;
+
+L_Main:
     menu
-        "Yes, I will help you.", L_Yes,
-        "No, I don't have time, sorry.", L_Close;
-       
-L_Yes:
-    set @TEMP, rand(2); 
-    if(@TEMP == 1) goto L_Req1;
-       
-L_Req0:
-    mes "[George]";
-    mes "\"Great!  I need 30 beers, 50 bottles of water and 30 Casino coins.\"";
+        "Can you explain the Ferry?", L_Explain,
+        "Nothing I guess", L_Close;
+
+L_Main2:
+    menu
+        "Can you explain the Ferry?", L_Explain,
+        "Actually, I heard from Roger that you may need some help.", L_RequestOne,
+        "Nothing I guess", L_Close;
+
+L_Main3:
+    menu
+        "Can you explain the Ferry?", L_Explain,
+        "About the items you asked me to collect...", L_ProgressOne,
+        "Nothing I guess", L_Close;
+
+L_Main4:
+    menu
+        "Can you explain the Ferry?", L_Explain,
+        "About the items you asked me to collect...", L_ProgressTwo,
+        "Nothing I guess", L_Close;
+
+L_Main5:
+    menu
+        "Can you explain the Ferry?", L_Explain,
+        "Dow you need any more help?", L_RequestTwo,
+        "Nothing I guess", L_Close;
+
+L_Pirate:
+    mes "[George the Pirate]";
+    mes "\"Arrrrh! Ye be wearing a pirate's hat!\"";
+    goto L_Main;
+
+L_Bandana:
+    mes "[George the Pirate]";
+    mes "\"Arrrrh! Ye remind me of my old first mate!\"";
+    goto L_Main;
+
+L_EyePatch:
+    mes "[George the Pirate]";
+    mes "\"Arrrrh! Looks like ye lost an eye there!\"";
+    goto L_Main;
+
+L_Explain:
+    mes "[George the Pirate]";
+    mes "\"Arrr matey! I helped pioneer the trade routes between Hurnscald and the rest of the World, so now merchants and adventurers can travel to and fro without any hassle of dodging wolvern, yarr.\"";
     next;
-    goto L_Set;
-             
-L_Req1:
-    mes "[George]";
-    mes "\"Bring me 30 beers, 50 bottles of water and 30 Casino coins, and I'll give you something.\"";
-    next;
-    goto L_Set;
-       
-L_Set:
-    mes "[George]";
-    set GEORGE_Quest, 1;
-    mes "\"We are going to sea soon, so please hurry!\"";
-    goto L_Close;
-       
-L_Progress:
-    if (countitem("Beer") < 30) goto L_NotEnough;
-    if (countitem("Bottleofwater") < 50) goto L_NotEnough;
-    if (countitem("Casinocoins") < 30) goto L_NotEnough;
-    mes "[George]";
-    mes "\"Oooh, You have them all, here is your reward! You are a trustworthy adventurer.";
-    getinventorylist;
-    if (@inventorylist_count - (countitem("Beer") == 30) > 99 - (countitem("Sailorhat") == 0) - (countitem("Bottleofwater") == 50) > 99 - (countitem("Casinocoins") == 30) > 99 ) goto L_TooMany;
-    delitem "Beer", 30;
-    delitem "Bottleofwater", 50;
-    delitem "Casinocoins", 30;
-    getexp 5000, 0;
-    getitem "Sailorhat", 1;
+    callfunc "FerryHelp";
+    if (GEORGE_Quest == 1)
+        goto L_Main2;
+    if (GEORGE_Quest == 2)
+        goto L_Main3;
+    if (GEORGE_Quest == 3)
+        goto L_Main5;
+    if (GEORGE_Quest == 4)
+        goto L_Main4;
+    goto L_Main;
+
+
+// LoF Quests
+L_RequestOne:
+    mes "[George the Pirate]";
+    mes "\"Roger, eh? Aye, I do need help. If you bring me 30 beers, 50 bottles, and 30 casino coins, maybe I can give you a reward.";
     set GEORGE_Quest, 2;
     goto L_Close;
-              
-L_Progress2:
-    if (countitem("Zombienachos") < 50) goto L_NotEnough1;
-    if (countitem("Ladyfingers") < 50) goto L_NotEnough1;
-    if (countitem("ScrollOfPaper") < 1) goto L_NotEnough1;
-    mes "[George]";
-    mes "\"Nice!  They're perfect, just perfect!";
-    mes "You brought everything my captain asked,even the Maritaime Almanac Scroll! Your effort deserves a special reward, take this.\"";
-    getinventorylist;
-    if ((@inventorylist_count - (countitem("Zombienachos") == 50) > 99  - (countitem("Captainshat") == 0) - (countitem("Ladyfingers") == 50) > 99 - (countitem("Scrollofpaper") == 1) > 99 )) goto L_TooMany;
-    delitem "Zombienachos", 50;
-    delitem "Ladyfingers", 50;
-    delitem "Scrollofpaper", 1;
-    getexp 15000, 0;
-    getitem "Captainshat", 1;
+
+L_RequestTwo:
+    mes "[George the Pirate]";
+    mes "\"Arrr matey! My captain asked me to have you get him some items. Please bring us 50 zombie nachos and 50 lady fingers, my captain likes to snack on those during our long voyages. Oh, and something to read too!\"";
     set GEORGE_Quest, 4;
     goto L_Close;
-              
-L_NotEnough:
-    mes "[George]";
-    mes "\"Oh, please hurry and bring me what I asked,  We're leaving soon!\"";
-    mes "\"Remember the items we need is 30 Beers, 50 Bottles of water, and 30 casino coins...Thanks.\"";
-    goto L_Close;
-       
-L_NotEnough1:
-    mes "[George]";
-    mes "\"Please do hurry and bring me what I asked, so we can shove off!\"";
-    mes "\"Remember that was 50 Zombie Nachos, 50 Lady Fingers, and something to read about the sea...you know maritime stuff.\"";
-    goto L_Close;
-      
-L_Done1:
-    mes "[George]";
-    mes "\"Thank you, Mate!\"";
-    mes "\"But...  My Captain asked you to get him some things.\"";
-    next;
-    mes "\"Zombie Nachos and Lady Fingers are some of his favorite foods while in port, please get him 50 of each.\"";
-    mes "\"He really enjoys reading about the sea, so see if you could find him something. I am sure the reward will be good, if you do.\"";
-    set GEORGE_Quest,3;
-    goto L_Close;
-           
-L_Done2:
-    mes "[George]";
-    mes "\"My Captain and I Thank You!\"";
-    mes "\"Because of your efforts, we can now go to sea. You will now be able to get a low fare passage to the island of Candor!\"";
-    goto L_Close;
-       
-L_Close:
-    set @TEMP, 0;
-    close;
-    
-L_TooMany:
-    next;
-    mes "[George]";
-    mes "\"Your backpack is full.  I'll wait until you have some room.\"";
+
+L_ProgressOne:
+    if (countitem("Beer") < 30)
+        goto L_NotEnough;
+    if (countitem("BottleOfWater") < 50)
+        goto L_NotEnough;
+    if (countitem("CasinoCoins") < 30)
+        goto L_NotEnough;
+    mes "[George the Pirate]";
+    mes "\"Yar matey! You have the items I asked for! You have the honor and trust we pirates bestow each other!\"";
+    getinventorylist;
+    if (@inventorylist_count == 100)
+        goto L_TooMuch;
+    delitem "Beer", 30;
+    delitem "BottleOfWater", 50;
+    delitem "CasionCoins", 30;
+    mes "";
+    mes "\"Here is a reward for your effort! Now you can be a true buckoneer!\"";
+    getitem "SailorHat", 1;
+    getexp 5000, 0;
+    set GEORGE_Quest, 3;
     goto L_Close;
 
+L_ProgressTwo:
+    if (countitem("ZombieNachos") < 50)
+        goto L_NotEnough;
+    if (countitem("LadyFingers") < 50)
+        goto L_NotEnough;
+    if (countitem("ScrollOfPaper") < 1)
+        goto L_NotEnough;
+    mes "[George the Pirate]";
+    mes "\"Arrr! Good job matey! You brought us everything we asked for, even the Maritaime Almanac Scroll!\"";
+    getinventorylist;
+    if (@inventorylist_count == 100)
+        goto L_TooMuch;
+    delitem "ZombieNachos", 50;
+    delitem "LadyFingers", 50;
+    delitem "ScrollOfPaper", 1;
+    mes "\"My captain wanted me to give this to you as a special reward for your efforts.\"";
+    getitem "CaptainsHat", 1;
+    getexp 15000, 0;
+    set GEORGE_Quest, 5;
+    goto L_Close;
+
+L_NotEnough:
+    mes "[George the Pirate]";
+    mes "\"Arrr! You did not bring me everything I asked for!\"";
+    if (GEORGE_Quest == 2)
+        goto L_NotEnoughOne;
+    if (GEORGE_Quest == 4)
+        goto L_NotEnoughTwo;
+    // This shouldn't be necessary as it should *never* be reached, but
+    // tmwAthena complains of "implicit fallthrough" and refuses to run
+    // without it here. Perhaps I'm doing something wrong? More likely
+    // we need to slap some TMW devs.
+    goto L_Close;
+
+L_NotEnoughOne:
+    mes "\"Remember, I need 30 beers, 50 bottles, and 30 casino coins.\"";
+    goto L_Close;
+
+L_NotEnoughTwo:
+    mes "\"Remember, I need 50 zombie nachos, 50 lady fingers, and something to read.\"";
+    goto L_Close;
+
+L_TooMuch:
+    mes "[George the Pirate]";
+    mes "\"Err... you do not appear to have enough room for your reward. Please come back once you lighten your load, matey!\"";
+    goto L_Close;
+
+L_Close:
+    close;
 }

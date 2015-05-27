@@ -1,4 +1,6 @@
-//NPC to set the state for killing the Fafi Dragon. Edited by DingoDuck
+// NPC to set the state for killing the Fafi Dragon. Edited by DingoDuck
+// Quest fixed by Pyndragon/Daniel Foerster, 27 May 2015
+// See also 009-2/fairyquest2.txt
 
 018-3.gat,60,21,0|script|Susanne|114,
 {
