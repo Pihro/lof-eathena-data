@@ -2,31 +2,31 @@
 
 009-2.gat,110,44,0|script|The Doctor|184,{
 
-    if (BaseLevel <=24) goto L_Lvl_too_low; 
+    if (BaseLevel <= 24) goto L_Lvl_too_low; 
    
-    if(QUEST_Episode == 1) goto L_Check;
-    if(QUEST_Episode == 2) goto L_Redo_tea;
+    if (QUEST_Episode == 1) goto L_Check;
+    if (QUEST_Episode == 2) goto L_Redo_tea;
 
     mes "[The Doctor]";
-    mes "\" Quite interesting, quite interesting indeed.\"";
+    mes "\"Quite interesting, quite interesting indeed.\"";
     menu 
         "Um, might I ask, what is so interesting?",-;
     mes "[The Doctor]";
-    mes "\"Well, you are, your quite interesting. I've been watching you for sometime now, helping so many people and a master at what you do indeed.\"";
+    mes "\"Well, you are. You're quite interesting. I've been watching you for some time now, as you've been helping so many people: you're quite a master at what you do, you know.\"";
     menu
-        "Well, thanks",-;
+        "Well, thanks.",-;
     mes "[The Doctor]";
-    mes "\" I don't suppose you have some herbs and a few bottles of water with you, do you?\"";
+    mes "\"I don't suppose you have some herbs and a few bottles of water with you, do you?\"";
     menu
-        "Some herbs and water, can you be more specific?",-;
+        "Some herbs and water? Could you be more specific?",-;
     mes "[The Doctor]";
-    mes "\"Ah, sorry, of course, I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water as well.\"";
+    mes "\"Ah, sorry, of course. I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water as well.\"";
     menu
-        "It's not much of a trouble, but do i get something in return?",-;
+        "That shouldn't been too hard, but do I get something in return?",-;
     mes "[The Doctor]";
-    mes "\"I suppose, What would you like?";
-    mes "Ah never mind, I have something in mind to give you. You can go off now, get what i need.\"";
-	set QUEST_Episode,1;
+    mes "\"I suppose, what would you like?";
+    mes "Er, nevermind, I've thought of something to give you. You can go off now and get what I need.\"";
+	set QUEST_Episode, 1;
     close;
 
 L_Lvl_too_low:
@@ -35,70 +35,66 @@ L_Lvl_too_low:
     close;
 
 L_Check:
-     if (countitem(680) < 50 
-     || countitem(681) < 50 
-     || countitem(682) < 50
-     || countitem(683) < 50
-     || countitem(541) < 10) goto L_NotEnough;
+    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 || 
+        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 || 
+        countitem("BottleOfWater") < 10) goto L_NotEnough;
     
-    delitem 680, 50;
-    delitem 681, 50;
-    delitem 682, 50;
-    delitem 683, 50;
-    delitem 541, 10;
+    delitem "MauveHerb", 50;
+    delitem "CobaltHerb", 50;
+    delitem "GambogeHerb", 50;
+    delitem "AlizarinHerb", 50;
+    delitem "BottleOfWater", 10;
     goto L_Get_Reward;
 
 L_Check2:
-     if (countitem(680) < 50 
-     || countitem(681) < 50 
-     || countitem(682) < 50
-     || countitem(683) < 50
-     || countitem(541) < 10) goto L_NotEnough;
+    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 || 
+        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 || 
+        countitem("BottleOfWater") < 10) goto L_NotEnough;
     
-    delitem 680, 50;
-    delitem 681, 50;
-    delitem 682, 50;
-    delitem 683, 50;
-    delitem 541, 10;
-    getitem 745, 5;
+    delitem "MauveHerb", 50;
+    delitem "CobaltHerb", 50;
+    delitem "GambogeHerb", 50;
+    delitem "AlizarinHerb", 50;
+    delitem "BottleOfWater", 10;
+    
+    getitem "DarkConcentrationPotion", 5;
     mes "[The Doctor]";
     mes "\"Thanks, enjoy!\"";
 	close;
 
 L_Get_Reward:
     mes "[The Doctor]";
-    mes "\"OH, its been so long since i have had herbal tea. You have my gratitude.\"";
+    mes "\"Mmm, it's been so long since I have had herbal tea. You have my gratitude.\"";
     menu
-        " WHAT!!?? IS THAT ALL I GET, YOUR GRATITUDE!!??\"",-;
+        "Seriously? What sort of reward is that?",-;
     mes "[The Doctor]";
-    mes "\" Well, i suppose you can have whats left of my tea.\"";
-    getitem 745, 5;
+    mes "\"Well, I suppose you can have what's left of my tea.\"";
+    getitem "DarkConcentrationPotion", 5;
     menu
-        "OH, thank you.",-;
-    set QUEST_Episode,2;                   
+        "Oh, thank you!",-;
+    set QUEST_Episode, 2;                   
     close;
 
 L_Redo_tea:
     mes "[The Doctor]";
     mes "\"If you want, you can bring me some more of those herbs and water.\"";
-	menu
-		"Alright, I have them here!", L_Check2,
-		"Can you remind me what I need to get again?", L_Remind,
-		"No thanks, see ya!", -;
-	close;
+    menu
+        "Alright, I have them here!", L_Check2,
+        "Can you remind me what I need to get again?", L_Remind,
+        "No thanks, see ya!", -;
+    close;
 
 L_Remind:
     mes "[The Doctor]";
     mes "\"Ah, sorry, of course, I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water.\"";
-	close;
+    close;
 
 L_NotEnough:
     mes "[The Doctor]";
-    mes "\"Sorry, you have not enough ingredients. You'd better search thoroughly.\"";
+    mes "\"Sorry, you do not have enough ingredients. You'd better search thoroughly.\"";
     menu
-		"Can you remind me what I need to get?", L_Remind,
-		"Ok, I'll go find what you need.", -;
+        "Can you remind me what I need to get?", L_Remind,
+        "Ok, I'll go find what you need.", -;
     close;
-    end;
 }
 
