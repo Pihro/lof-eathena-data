@@ -1,6 +1,7 @@
 //NPC to set the state for killing the Fafi Dragon. Edited by DingoDuck
 
-018-3.gat,60,21,0|script|Susanne|114,{
+018-3.gat,60,21,0|script|Susanne|114,
+{
   
   if(BaseLevel <= 49) goto L_noob;
   if(@FafiFight == 1) goto L_coward;
@@ -34,20 +35,20 @@ L_yes1:
     mes "\"The Dragon is a really really bad guy, He lives in the caves of the Dark world.\"";
     mes "\"and it looks like he found a way to come into our world, some kind of portal or... that doesn't matter now.\"";
     next;
-    mes "\"All that matters right now is getting him to let my freinds go!\"";
+    mes "\"All that matters right now is getting him to let my friends go!\"";
     next;
     mes "\"So if you can help, go kill him to free my friends! Please let me know when he is dead.\"";
     next;
     mes "\"Thank You....\"";
     next;
-    mes "\"(Susanne Screams) WATCH OUT !!! I think I hear him in this very cave !!!\"";
+    mes "\"(Susanne Screams) WATCH OUT!!! I think I hear him in this very cave!!!\"";
     set FAIRY_Quest, 1;
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::onFafiDragonDead";
+    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
     close;
 
-onFafiDragonDead:
-    if (FAIRY_Quest<2)	set FAIRY_Quest, 2;
+OnFafiDragonDead:
+    if (FAIRY_Quest == 1) set FAIRY_Quest, 2;
     set @FafiFight, 0;
     message strcharinfo(0), " You killed the Fafi Dragon.";
     mapannounce "018-3.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
@@ -55,31 +56,41 @@ onFafiDragonDead:
     mapannounce "001-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
     mapannounce "020-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
     mapannounce "027-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
-    message strcharinfo(0), " Cheers are being heard troughout the land!";
+    message strcharinfo(0), " Cheers are being heard throughout the land!";
     end;
 
 L_tellagain:
     mes "[Susanne]";
     mes "\"Hello \"" + strcharinfo(0) + ",";
     mes "\"Don't forget, the Fafi Dragon roams throughout many worlds... Please save my friends, they are in so much danger...\"";
-//    killmonster "018-3.gat", "Susanne::onFafiDragonDead";
+//    killmonster "018-3.gat", "Susanne::OnFafiDragonDead";
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::onFafiDragonDead";
+    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
     mes "\"Thank you...\"";
     next;
-    mes "\"(Susanne Screams) WATCH OUT !!!  I think I hear him in this very cave !!!\"";
+    mes "\"(Susanne Screams) WATCH OUT!!!  I think I hear him in this very cave!!!\"";
     close;
 
 L_thanks:
     mes "[Susanne]";
+    
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_full_inv;
+    set @inventorylist_count, 0;
+    
     mes "\"I'm so glad I get to see my friends again, thank you so much for saving them! You are so big and strong... You should talk to the Fairy Princess on the second floor of the Hurnscald Inn.\"";
     mes "\"By the way, I found this Helmet after you killed the Fafi Dragon, Maybe you can use it some day.\"";
     if (FAIRY_Quest==2)	set FAIRY_Quest, 3;
     getitem "MonsterSkullHelmet", 1;
     close;
 
+L_full_inv:
+    mes "\"Thank you for saving my friends! I have something to give you, but you have nowhere to put it! Please come back when you have some room.\"";
+    set @inventorylist_count, 0;
+    close;
+
 L_thanks_again:
-  mes "[Susanne]";
+    mes "[Susanne]";
     mes "\"I'm so glad I get to see my friends again, thank you so much for saving them!\"";
     close;
     
@@ -92,13 +103,11 @@ L_no:
 
 L_noob:
     mes "[Susanne]";
-    mes "\" I need some help with something, but I need someone stronger(Level 50+), come back later please.\"";
+    mes "\" I need some help with something, but I don't think you're strong enough. Come back later please when you're stronger.\"";
     close;
-
 
 L_coward:
     mes "[Susanne]";
     mes "\"What are you doing talking to me? Go fight, you coward!\"";
     close;
-
 }

@@ -1,6 +1,7 @@
 //
 
-009-2.gat,63,26,0|script|Royal Fairy|108,{
+009-2.gat,63,26,0|script|Royal Fairy|108,
+{
     if(FAIRY_Quest == 1) goto L_tellagain;
     if(FAIRY_Quest == 3) goto L_thanks;
     if(FAIRY_Quest == 4) goto L_thanks2;
@@ -11,7 +12,7 @@
 
 L_tellagain:
     mes "[Fairy Princess]";
-    mes "\"Hello, I noticed my dear friend, Susanne, asked you to help us save my sisters, do not forget to ask Sussane where the Fafi Dragon was last seen.\"";
+    mes "\"Hello, I noticed my dear friend, Susanne, asked you to help us save my sisters; do not forget to ask Susanne where the Fafi Dragon was last seen.\"";
     goto L_Close;
  
 L_thanks:
