@@ -136,13 +136,13 @@ L_Poor:
 L_LOF_NEWS:
     mes "[Roger]";
     mes "\"Well I see that you have completed the George Quest.\"";
-    mes "\"I am actually surprised you clicked me again. Well then Land of Fire News...\"";
+    mes "\"I am actually surprised you clicked me again. Well then, here's the Land of Fire News...\"";
     next;
     mes "\"As you may know, LOF is currently running a modified version of The Mana World game. The admins and developers are working on a new game to offer a new experience for players.\"";
     mes "\"Currently there are new maps being developed and new NPCs. The project is involving only a small group of members, but would welcome anyone who knows how to assist in development.\"";
     next;
-    mes "\"Graphical development sure could use some help. We have Map DEVs, but could use more. Someone with skill to make new NPC or Monster graphics would be a great help. The graphics use XML files, so those would have to be developed along with the images.\"";
-    mes "\"If you believe you are able to help, please contact KeeKeeKat, Pihro, or DingoDuck. The LOF admins and developers always welcome suggestions also, so speak up.\"";
+    mes "\"Graphical development sure could use some help. We have Map devs, but could use more. Someone with skill to make new NPC or Monster graphics would be a great help. The graphics use XML files, so those would have to be developed along with the images.\"";
+    mes "\"If you believe that you may able to help, please contact an admin or developer, or post on the forum. Suggestions are welcomed as well, so speak up.\"";
     goto L_Close;
 
 L_HaveScroll:
