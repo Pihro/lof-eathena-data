@@ -20,7 +20,7 @@ L_GetRead:
     if (GEORGE_Quest == 5)
         goto L_LOF_NEWS;
     mes "\"Oh yes, here you go, that will be 1 GP.\"";
-    if (Zeny< 1)
+    if (Zeny < 1)
         goto L_Poor;
     set Zeny, (Zeny-1);
     mes "\"[You are handed the Land of Fire Gazette, You look at the headline...]\"";
@@ -67,7 +67,7 @@ L_Success:
     mes "\"This is great! My collection of rare figurines is now complete.\"";
     mes "\"I asked my father and he agreed to trade it to you, so here is the last copy of the Maritime Almanac Scroll.\"";
     getinventorylist;
-    if (@inventorylist_count == 100 )
+    if (@inventorylist_count == 100)
         goto L_TooMany;
     delitem "MoubooFigurine", 1;
     getitem "ScrollOfPaper", 1;

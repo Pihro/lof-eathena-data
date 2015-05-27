@@ -61,6 +61,8 @@ L_EyePatch:
 L_Explain:
     mes "[George the Pirate]";
     mes "\"Arrr matey! I helped pioneer the trade routes between Hurnscald and the rest of the World, so now merchants and adventurers can travel to and fro without any hassle of dodging wolvern, yarr.\"";
+    next;
+    mes "\"To use the ferry, just step up on the dock and select your destination. Each destination has an associated price that you need to pay. You don't have to go anywhere. Choosing the current port will result in nothing.\"";
     goto L_Close;
 
 
@@ -91,9 +93,9 @@ L_ProgressOne:
         goto L_TooMuch;
     delitem "Beer", 30;
     delitem "BottleOfWater", 50;
-    delitem "CasionCoins", 30;
+    delitem "CasinoCoins", 30;
     mes "";
-    mes "\"Here is a reward for your effort! Now you can be a true buckoneer!\"";
+    mes "\"Here is a reward for your effort! Now you can be a true buccaneer!\"";
     getitem "SailorHat", 1;
     getexp 5000, 0;
     set GEORGE_Quest, 3;
@@ -107,7 +109,7 @@ L_ProgressTwo:
     if (countitem("ScrollOfPaper") < 1)
         goto L_NotEnough;
     mes "[George the Pirate]";
-    mes "\"Arrr! Good job matey! You brought us everything we asked for, even the Maritaime Almanac Scroll!\"";
+    mes "\"Arrr! Good job matey! You brought us everything we asked for, even the Maritime Almanac Scroll!\"";
     getinventorylist;
     if (@inventorylist_count == 100)
         goto L_TooMuch;

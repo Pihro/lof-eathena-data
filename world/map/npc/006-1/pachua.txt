@@ -252,7 +252,7 @@ L_warp_cheat:
     if (@warp_cheat == 1) goto L_Begin;
     message strcharinfo(0), "Pachua releases a ring of smoke towards the sky! But, by the look on his face, you can tell he is suspicious about your methods...";
     set @warp_cheat, 1;
-    end;
+    close;
 
 L_Basket:
     mes "[Chief Pachua]";
