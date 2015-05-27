@@ -42,9 +42,9 @@ L_Begin:
     next;
 
 L_Check_Shops:
-    if((countitem("JeansShorts") > 0 && countitem("SnakeSkin") > 9) && (countitem("FancyHat") > 0 && countitem("SnakeSkin") > 1)) goto L_Super_store;
-    if(countitem("JeansShorts") > 0 && countitem("SnakeSkin") > 9) goto L_Chaps_store;
-    if(countitem("FancyHat") > 0 && countitem("SnakeSkin") > 1) goto L_Cowboy_store;
+    if((countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) && (countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2)) goto L_Super_store;
+    if(countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) goto L_Chaps_store;
+    if(countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2) goto L_Cowboy_store;
 
     mes "[Chief Pachua]";
     mes "";
@@ -246,7 +246,7 @@ L_smoke:
     message strcharinfo(0), "Pachua quickly inhales from his pipe and releases a ring of smoke towards the sky!";
     set QUEST_MIRIAM_run, gettimetick(2) - QUEST_MIRIAM_start;
     set QUEST_MIRIAM_start, 0;
-    end;
+    close;
 
 L_warp_cheat:
     if (@warp_cheat == 1) goto L_Begin;
