@@ -2,7 +2,6 @@
 
 008-1,136,62,0|script|George|138,
 {
-
     if (getequipid(equip_head) == 617) goto L_Pirate;
     if (getequipid(equip_head) == 622) goto L_Bandana;
     if (getequipid(equip_head) == 621) goto L_EyePatch;
@@ -62,17 +61,7 @@ L_EyePatch:
 L_Explain:
     mes "[George the Pirate]";
     mes "\"Arrr matey! I helped pioneer the trade routes between Hurnscald and the rest of the World, so now merchants and adventurers can travel to and fro without any hassle of dodging wolvern, yarr.\"";
-    next;
-    callfunc "FerryHelp";
-    if (GEORGE_Quest == 1)
-        goto L_Main2;
-    if (GEORGE_Quest == 2)
-        goto L_Main3;
-    if (GEORGE_Quest == 3)
-        goto L_Main5;
-    if (GEORGE_Quest == 4)
-        goto L_Main4;
-    goto L_Main;
+    goto L_Close;
 
 
 // LoF Quests
