@@ -1,0 +1,28 @@
+function|script|DelItems|,
+{
+    goto L_Loop;
+    
+L_Loop:
+    if (@number == 0) goto L_Done;
+    delitem @item$, 1;
+    set @number, @number - 1;
+    goto L_Loop;
+
+L_Done:
+    set @item$, "";
+    return;
+}
+function|script|GetItems|,
+{
+    goto L_Loop;
+    
+L_Loop:
+    if (@number == 0) goto L_Done;
+    getitem @item$, 1;
+    set @number, @number - 1;
+    goto L_Loop;
+
+L_Done:
+    set @item$, "";
+    return;
+}

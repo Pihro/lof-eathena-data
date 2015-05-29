@@ -36,6 +36,7 @@ L_intro_0:
 
 L_intro_1:
     mes "You see a middle-aged woman cautiously but surprisingly swiftly cutting out shapes from a huge cotton sheet.  The scissors glide along the cloth as if it were butter, never leaving the premarked lines.";
+    goto L_intro_over;
 
 L_intro_over:
     next;
@@ -357,8 +358,8 @@ L_proposal_retrieve_design:
     mes "\"May you go retrieve the design from Agostine?\"";
     next;
     menu
-        "Certainly I'll be back soon!", -,
-        "Actually I want something else...", L_main_menu;
+        "Certainly, I'll be back soon!", -,
+        "Actually, I want something else...", L_main_menu;
     close;
 
 L_proposal_bringing_design:
@@ -1067,13 +1068,13 @@ L_ChooseSorcererLineColor:
     mes "After a few minutes you barely noticed, the robe seems to be ready.";
     next;
     mes "[Lora Tay the Seamstress]";
-    mes "\"There you are dear. I have to say I made a perfect job... As always.";
+    mes "\"There you are dear. I have to say I did a perfect job... As always.";
     mes "I hope you'll enjoy your new robe.\"";
     goto L_CleanSorcererRobe;
 
 L_SorcererRobe_SameColor:
     mes "[Lora Tay the Seamstress]";
-    mes "\"Are you blind? Your robe is already of this color dear!\"";
+    mes "\"Are you blind? Dear, your robe is already of this color!\"";
     goto L_CleanSorcererRobe;
 
 L_SorcererRobe_Vanished:
