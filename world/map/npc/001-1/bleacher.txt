@@ -16,6 +16,9 @@
         "No thanks.", L_Close;
 
 L_bleach_menu:
+    if (countitem("PileOfAsh") < 3) goto L_no_ash;
+    if (Zeny < 5000) goto L_no_money;
+    
     mes "[Candide]";
     mes "\"What would you like to bleach?\"";
     next;
@@ -42,8 +45,8 @@ L_bleach_menu:
         "Bowler hat (brown).", L_bowler_hat_brown,
         "Fine dress.", L_fine_dress,
         "Cotton cloth.", L_cotton_cloth,
-        "Nevermind.", -;
-    goto L_Close;
+        "Savior armor.", L_savior_armor,
+        "Nevermind.", L_Close;
 
 L_cottonshirt:
     set @normal, 1202;
@@ -146,8 +149,7 @@ L_sorcerer_robe:
         "A purple lined one.", L_purple_lined_sorcerer_robe,
         "A dark green lined one.", L_dark_green_lined_sorcerer_robe,
         "A white lined one.", L_white_lined_sorcerer_robe,
-        "Nevermind.", -;
-    goto L_Close;
+        "Nevermind.", L_Close;
 
 L_red_lined_sorcerer_robe:
     set @normal, 798;
@@ -234,20 +236,54 @@ L_choose_color:
         "Black.", -,
         "Orange.", -,
         "Purple.", -,
-        "Dark Green.", -;
+        "Dark Green.", -,
+        "Nevermind.", L_Close;
 
     set @del, @dyeBase + @menu - 1;
 
     if (countitem(@del) == 0) goto L_no_item;
 
-    if (countitem("PileOfAsh") < 3) goto L_no_ash;
-
-    if (Zeny < 5000) goto L_no_money;
-
     delitem @del, 1;
     getitem @normal, 1;
     delitem "PileOfAsh", 3;
     set Zeny, Zeny - 5000;
+    
+    goto L_again;
+
+L_savior_armor:
+    mes "[Candide]";
+    mes "\"And the color?\"";
+    next;
+    
+    // No purple - purple is Royal Savior Armor.
+    menu
+        "Red.", -,
+        "Green.", -,
+        "Dark Blue.", -,
+        "Yellow.", -,
+        "Light Blue.", -,
+        "Pink.", -,
+        "Black.", -,
+        "Orange.", -,
+        "Dark Green.", -,
+        "Nevermind.", L_Close;
+    
+    callfunc "SaviorColors";
+    
+    set @which_armor$, @savior_armors$[@menu - 1];
+    
+    callfunc "ClearSaviorColors";
+    
+    if (countitem(@which_armor$) == 0) goto L_no_item;
+    
+    delitem @which_armor$, 1;
+    getitem "WhiteSaviorArmor", 1;
+    delitem "PileOfAsh", 3;
+    set Zeny, Zeny - 5000;
+    
+    set @which_armor$, "";
+    
+    goto L_again;
 
 L_again:
     mes "[Candide]";

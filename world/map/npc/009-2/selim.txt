@@ -36,7 +36,7 @@ L_clothes_choice:
         "Bowler hat.", L_bowlerhat,
         "Sorcerer robe.", L_sorcererrobe,
         "Bowler hat (brown).", L_bowlerhatbrown,
-        "Savior Armor", L_saviorarmor,
+        "Savior Armor.", L_saviorarmor,
         "Fine dress.", L_finedress,
         "About these sorcerer robes...", L_asksorcererrobe,
         "I'm fine for now, thanks.", -;
@@ -290,7 +290,8 @@ L_colour:
         "Black.", -,
         "Orange.", -,
         "Purple.", -,
-        "Dark Green.", -;
+        "Dark Green.", -,
+        "Nevermind.", L_close;
     set @colour, @menu - 1;
     set @vial, 690 + @colour;
     if (countitem(@vial) == 0) goto L_no_dye;
@@ -304,7 +305,7 @@ L_no_dye:
     menu
         "Sorry, I meant a different color.", L_colour,
         "I wanted to dye a different item anyway.", L_clothes_choice,
-        "What do you mean, `bring you dye'?", L_explain_dye,
+        "What do you mean, 'bring you dye'?", L_explain_dye,
         "Where would I get dye?", L_explain_dye,
         "Never mind.", -;
     close;
@@ -325,7 +326,7 @@ L_finish:
     getitem @new + @colour, 1;
     mes "[Selim]";
     mes "\"Here " + @is_verb$ + " your " + @all_colours$[@colour] + " " + @name$ + "!  Please let " + @pronoun$ + " dry for a minute before you put " + @pronoun$ + " on.\"";
-    close;
+    goto L_close;
 
 L_havenone:
     mes "[Selim]";
@@ -335,61 +336,65 @@ L_havenone:
     goto L_clothes_choice;
 
 L_saviorarmor:
+    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
+    
     mes "[Selim]";
-    mes "\"I can dye this for you only once, what color would you like?\"";
+    mes "\"Sure, what color would you like?\"";
     next;
-    goto L_saviorarmormenu;
-
-L_saviorarmormenu:
-    if(ARMOR_Quest == 2) goto L_alreadydone;
-    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
+    
     menu
-        "I would like red", L_redsav,
-        "Blue would be nice", L_bluesav,
-        "Black is awesome!", L_blacksav,
+        "Red.", -,
+        "Green.", -,
+        "Dark Blue.", -,
+        "Yellow.", -,
+        "Light Blue.", -,
+        "Pink.", -,
+        "Black.", -,
+        "Orange.", -,
+        "Dark Green.", -,
+        "Could you do purple?", L_purple_savior,
         "I'm fine.", L_close;
-
-L_redsav:
-    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
-    if (countitem("RedDye") < 1) goto L_missing;
+    
+    callfunc "SaviorColors";
+    
+    set @which_armor$, @savior_armors$[@menu - 1];
+    set @which_dye$, @savior_dyes$[@menu - 1];
+    
+    callfunc "ClearSaviorColors";
+    
+    if (countitem(@which_dye$) == 0) goto L_no_dye_savior;
+    
     delitem "WhiteSaviorArmor", 1;
-    delitem "RedDye", 1;
-    getitem "RedSaviorArmor", 1;
-    set ARMOR_Quest,2;
+    delitem @which_dye$, 1;
+    getitem @which_armor$, 1;
+    
+    set ARMOR_Quest, 2;
     mes "[Selim]";
     mes "\"There you go! Want me to dye anything else?\"";
     menu
         "Yes.", L_clothes_choice,
         "Nope.", L_close;
 
-L_bluesav:
-    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
-    if (countitem("LightblueDye") < 1) goto L_missing;
-    delitem "WhiteSaviorArmor", 1;
-    delitem "LightBlueDye", 1;
-    getitem "BlueSaviorArmor", 1;
-    set ARMOR_Quest,2;
+L_no_dye_savior:
     mes "[Selim]";
-    mes "\"There you go! Want me to dye anything else?\"";
+    mes "\"I would love to dye your Savior Armor for you, but you will have to bring me some dye first.";
+    mes "Those behind me are nearly empty and won't last for your item.\"";
+    next;
     menu
-        "Yes.", L_clothes_choice,
-        "Nope.", L_close;
+        "Sorry, I meant a different color.", L_saviorarmor,
+        "I wanted to dye a different item anyway.", L_clothes_choice,
+        "What do you mean, 'bring you dye'?", L_explain_dye,
+        "Where would I get dye?", L_explain_dye,
+        "Never mind.", L_close;
 
-L_blacksav:
-    if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
-    if (countitem("BlackDye") < 1) goto L_missing;
-    delitem "WhiteSaviorArmor", 1;
-    delitem "BlackDye", 1;
-    getitem "BlackSaviorArmor", 1;
-    set ARMOR_Quest,2;
+L_purple_savior:
     mes "[Selim]";
-    mes "\"There you go! Want me to dye anything else?\"";
-    menu
-        "Yes.", L_clothes_choice,
-        "Nope.", L_close;
+    mes "Selim shakes his head.";
+    mes "\"You need a special license to produce a Royal Savior Armor, and I don't have it.\"";
+    close;
 
 L_missing:
-    mes "\"Looks like you are missing something, bye!\"";
+    mes "\"Looks like you don't have any undyed Savior Armor.\"";
     close;
 
 L_alreadydone:
@@ -398,5 +403,15 @@ L_alreadydone:
     close;
 
 L_close:
+    set @del, 0;
+    set @new, 0;
+    set @name$, "";
+    set @pronoun$, "";
+    set @is_verb$, "";
+    set @colour, 0;
+    set @vial, 0;
+    set @all_colours$, "";
+    set @which_armor$, "";
+    set @which_dye$, "";
     close;
 }

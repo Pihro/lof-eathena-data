@@ -82,7 +82,7 @@ L_Progress:
     mes "\"Excellent! You brought me 5 Scorpion Stingers!";
     mes "Here's something for you.\"";
     getinventorylist;
-    if (@inventorylist_count + (countitem("ScorpionStinger") == 5) - (countitem("Arrow") == 0) > 99)
+    if (@inventorylist_count - (countitem("ScorpionStinger") == 5) + (countitem("Arrow") == 0) > 99)
         goto L_TooMany;
     delitem "ScorpionStinger", 5;
     getitem "Bow", 1;
