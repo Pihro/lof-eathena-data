@@ -11,9 +11,9 @@
 
 L_Trademenu:
     menu
-        "Can you make iron powder?", L_Iron,
+        "Can you make Iron Powder?", L_Iron,
         "How about Sulphur Powder?", L_Sulphur,
-        "I need Yellow Powder", L_Healpots,
+        "I need Yellow Powder.", L_Healpots,
         "Do you have gloves?", L_Gloves,
         "I think I have everything I need, thanks.", -;
     goto L_Close;
@@ -36,10 +36,10 @@ L_Sulphur:
 
 L_Healpots:
     mes "[Nowhere Man]";
-    mes "\"Yellow powder can be used for spells, but isn't cheap, are you sure? Its " + @Yellowpowderprice + "gp and 3 hard spikes.\"";
+    mes "\"Yellow powder can be used for spells, but isn't cheap to transmute. Are you sure? It'll cost you " + @Yellowpowderprice + "gp and 3 hard spikes for 1.\"";
     menu
         "Sure.", L_Pots,
-        "Whoa, that's way too much.", -;
+        "You're right, that's way too much.", -;
     goto L_Close;
 
 L_Ipowder:
@@ -73,13 +73,13 @@ L_Spowder:
     goto L_Close;
 
 L_Pots:
-    if (countitem("Hardspike") < 3) goto L_Missing;
+    if (countitem("HardSpike") < 3) goto L_Missing;
     if (Zeny < @Yellowpowderprice) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Hardspike") > 3 && countitem("Yellowpowder") < 1) goto L_Full;
-    delitem "Hardspike", 3;
+    if (@inventorylist_count == 100 && countitem("HardSpike") > 3 && countitem("YellowPowder") < 1) goto L_Full;
+    delitem "HardSpike", 3;
     set Zeny, Zeny - @Yellowpowderprice;
-    getitem "Yellowpowder", 1;
+    getitem "YellowPowder", 1;
     mes "[Nowhere Man]";
     mes "\"There you go.  Would you like me to transmute anything else?\"";
     menu
@@ -91,7 +91,7 @@ L_Gloves:
     if (Zeny < 3000)
         goto L_Close;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Leathergloves") == 0)
+    if (@inventorylist_count == 100 && countitem("LeatherGloves") == 0)
         goto L_TooMany;
     mes "[Nowhere Man]";
     mes "\"Gloves? Sure, I sell fine leather gloves for only 3000 GP.\"";
