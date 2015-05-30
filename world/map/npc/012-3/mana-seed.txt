@@ -143,6 +143,7 @@ L_magic_start:
     mes "The Mana Seed is still in the same place as during your last visit, spreading its light throughout the cavern.";
     mes "What would you like to do?";
     next;
+    goto L_magic_mainmenu;
 
 L_magic_mainmenu:
     menu

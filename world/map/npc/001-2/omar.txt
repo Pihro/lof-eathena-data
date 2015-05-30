@@ -23,7 +23,6 @@ function|script|KadiyaSubquestConsts|,
 
 001-2.gat,70,60,0|script|Omar|162,
 {
-    callfunc "ElanoreFix";
     callfunc "KadiyaSubquestConsts";
 
     set @Q_status, @Q_kadiya_status;
@@ -181,7 +180,6 @@ S_update_var:
     set @child_number, 7;
     callfunc "XmasList";
 
-    callfunc "ElanoreFix";
     set @Q_MASK, NIBBLE_3_MASK;
     set @Q_SHIFT, NIBBLE_3_SHIFT;
     callfunc "KadiyaSubquestConsts";
