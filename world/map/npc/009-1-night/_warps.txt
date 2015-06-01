@@ -1,0 +1,14 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Hurnscald warps
+
+009-1-night.gat,49,55|warp|Hurnscald South Exit|2,-1,008-1-night.gat,78,81
+009-1-night.gat,97,36|warp|Hurnscald East Exit|-1,0,008-1-night.gat,128,61
+009-1-night.gat,35,30|warp|To Hurnscald Inn|-1,-1,009-2-night.gat,50,54
+009-1-night.gat,58,46|warp|To Storage Room|-1,-1,009-2-night.gat,27,106
+009-1-night.gat,59,33|warp|To Archer Shop|-1,-1,009-2-night.gat,95,29
+009-1-night.gat,71,30|warp|To Hurnscald Potion Shop|-1,-1,009-2-night.gat,130,25
+009-1-night.gat,80,31|warp|To Hurnscald Hospital|-1,-1,009-2-night.gat,149,66
+009-1-night.gat,72,44|warp|To Hurnscald House|-1,-1,009-2-night.gat,114,77
+009-1-night.gat,91,46|warp|To Hurnscald Forge|0,-1,009-2-night.gat,182,66
+009-1-night.gat,24,36|warp|Hurnscald West Exit|-1,1,008-1-night.gat,53,61
+009-1-night.gat,49,24|warp|Hurnscald North Exit|2,-1,008-1-night.gat,78,48

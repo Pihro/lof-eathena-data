@@ -1,0 +1,21 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Hermit's Cave mobs
+
+011-3-night.gat,0,0,0,0|monster|VampireBat|1066,10,0,0,Mob011-3-night::On1066
+011-3-night.gat,0,0,0,0|monster|CaveMaggot|1056,3,60000,30000,Mob011-3-night::On1056
+
+
+011-3-night.gat,0,0,0|script|Mob011-3-night|-1,
+{
+    end;
+
+On1056:
+    set @mobID, 1056;
+    callfunc "MobPoints";
+    end;
+
+On1066:
+    set @mobID, 1066;
+    callfunc "MobPoints";
+    end;
+}

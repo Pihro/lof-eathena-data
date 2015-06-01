@@ -1,0 +1,49 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Heroes' Hold - Overworld mobs
+
+hh-outside.gat,92,39,58,21|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,92,39,58,21|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,92,39,58,21|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
+hh-outside.gat,92,39,58,21|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+hh-outside.gat,40,35,40,13|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,40,35,40,13|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,40,35,40,13|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
+hh-outside.gat,40,35,40,13|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+hh-outside.gat,20,45,0,0|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,20,45,0,0|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,20,45,0,0|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
+hh-outside.gat,20,45,0,0|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+hh-outside.gat,108,64,25,22|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,108,64,25,22|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,108,64,25,22|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
+hh-outside.gat,108,64,25,22|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+hh-outside.gat,92,90,72,24|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,92,90,72,24|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,92,90,72,24|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
+hh-outside.gat,92,90,72,24|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+
+
+hh-outside.gat,0,0,0|script|Mobhh-outside|-1,
+{
+    end;
+
+On1040:
+    set @mobID, 1040;
+    callfunc "MobPoints";
+    end;
+
+On1042:
+    set @mobID, 1042;
+    callfunc "MobPoints";
+    end;
+
+On1043:
+    set @mobID, 1043;
+    callfunc "MobPoints";
+    end;
+
+On1047:
+    set @mobID, 1047;
+    callfunc "MobPoints";
+    end;
+}

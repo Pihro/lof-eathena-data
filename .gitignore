@@ -3,5 +3,3 @@ log/
 gm.log.*
 online.*
 /converter.txt
-world/map/npc/**/_*.txt
-world/map/data/*.wlk

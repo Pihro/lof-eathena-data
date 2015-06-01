@@ -1,0 +1,5 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Angela's House warps
+
+031-2.gat,23,30|warp|To Outside|-1,-1,031-1.gat,95,81
+031-2.gat,73,30|warp|To Outside|-1,-1,031-1.gat,90,116

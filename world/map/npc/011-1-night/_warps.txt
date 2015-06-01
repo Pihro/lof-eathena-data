@@ -1,0 +1,9 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Woodland warps
+
+011-1-night.gat,58,92|warp|To Hermit's Cave|-1,-1,011-3-night.gat,0,0
+011-1-night.gat,30,61|warp|To Woodland|-1,1,014-1-night.gat,108,91
+011-1-night.gat,49,104|warp|To Woodland|0,-1,010-1-night.gat,48,25
+011-1-night.gat,124,62|warp|To Hurnscald Outskirts|-1,2,008-1-night.gat,25,61
+011-1-night.gat,73,9|warp|To Woodland Hills|0,-1,012-1-night.gat,132,175
+011-1-night.gat,38,36|warp|To Bandit Cave|-1,-1,011-6-night.gat,49,100

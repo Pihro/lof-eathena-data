@@ -1,0 +1,39 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Hurnscald Outskirts mobs
+
+008-1-night.gat,0,0,0,0|monster|Serqet|1082,15,20,0,Mob008-1-night::On1082
+008-1-night.gat,0,0,0,0|monster|Bandit|1064,30,20,0,Mob008-1-night::On1064
+008-1-night.gat,0,0,0,0|monster|BlueSpark|1080,10,0,20,Mob008-1-night::On1080
+008-1-night.gat,0,0,0,0|monster|RedSpark|1081,10,30,20,Mob008-1-night::On1081
+008-1-night.gat,0,0,0,0|monster|PunkSkeleton|1097,3,0,20,Mob008-1-night::On1097
+
+
+008-1-night.gat,0,0,0|script|Mob008-1-night|-1,
+{
+    end;
+
+On1064:
+    set @mobID, 1064;
+    callfunc "MobPoints";
+    end;
+
+On1080:
+    set @mobID, 1080;
+    callfunc "MobPoints";
+    end;
+
+On1081:
+    set @mobID, 1081;
+    callfunc "MobPoints";
+    end;
+
+On1082:
+    set @mobID, 1082;
+    callfunc "MobPoints";
+    end;
+
+On1097:
+    set @mobID, 1097;
+    callfunc "MobPoints";
+    end;
+}

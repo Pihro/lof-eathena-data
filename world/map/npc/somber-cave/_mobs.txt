@@ -1,0 +1,47 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Somber Cave mobs
+
+somber-cave.gat,81,91,3,3|monster|FireLizard|1039,2,0,20000,Mobsomber-cave::On1039
+somber-cave.gat,37,61,3,3|monster|FireLizard|1039,2,0,20000,Mobsomber-cave::On1039
+somber-cave.gat,45,114,3,3|monster|FireLizard|1039,2,0,20000,Mobsomber-cave::On1039
+somber-cave.gat,0,0,0,0|monster|LavaSlime|1115,8,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,0,0,0,0|monster|FireGoblin|1011,30,20,0,Mobsomber-cave::On1011
+somber-cave.gat,74,52,1,1|monster|FireSkull|1023,1,0,2000,Mobsomber-cave::On1023
+somber-cave.gat,115,116,1,1|monster|FireSkull|1023,1,0,2000,Mobsomber-cave::On1023
+somber-cave.gat,0,0,0,0|monster|EvilMushroom|1013,10,20,0,Mobsomber-cave::On1013
+somber-cave.gat,39,57,43,76|monster|LavaSlime|1115,15,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,96,46,68,54|monster|LavaSlime|1115,10,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,88,84,53,21|monster|LavaSlime|1115,7,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,123,97,14,47|monster|LavaSlime|1115,5,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,70,111,89,30|monster|LavaSlime|1115,15,10000,0,Mobsomber-cave::On1115
+
+
+somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,
+{
+    end;
+
+On1011:
+    set @mobID, 1011;
+    callfunc "MobPoints";
+    end;
+
+On1013:
+    set @mobID, 1013;
+    callfunc "MobPoints";
+    end;
+
+On1023:
+    set @mobID, 1023;
+    callfunc "MobPoints";
+    end;
+
+On1039:
+    set @mobID, 1039;
+    callfunc "MobPoints";
+    end;
+
+On1115:
+    set @mobID, 1115;
+    callfunc "MobPoints";
+    end;
+}

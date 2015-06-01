@@ -1,0 +1,9 @@
+// Map 018-3: Northern Mines
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: 018-3.gat
+npc: npc/018-3/_mobs.txt
+npc: npc/018-3/_warps.txt
+npc: npc/018-3/bookcase.txt
+npc: npc/018-3/evil-obelisk.txt
+npc: npc/018-3/fairyquest1.txt
+npc: npc/018-3/sword.txt

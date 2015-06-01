@@ -1,0 +1,9 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Heroes' Hold - Main Cave mobs
+
+
+
+hh-maincave.gat,0,0,0|script|Mobhh-maincave|-1,
+{
+    end;
+}

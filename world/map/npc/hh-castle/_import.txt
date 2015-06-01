@@ -1,0 +1,5 @@
+// Map hh-castle: Heroes' Hold - Castle
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: hh-castle.gat
+npc: npc/hh-castle/_mobs.txt
+npc: npc/hh-castle/_warps.txt
