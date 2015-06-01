@@ -198,7 +198,6 @@ L_Check_Materials:
     mes "[Orum]";
     mes "\"Well we are both still in one piece so that is a good sign! Now we'll have to see if I did it right... mind going first?\"";
     goto L_Setup_Lair;
-    goto L_Close;
 
 L_Missing_Materials:
     mes "Orum carefully looks over all of the items then squints his eyes at you.";
@@ -364,7 +363,7 @@ L_Still_Gathering:
         "I lost my list... again.", L_List_Materials_More,
         "I've almost got them all.", -;
     mes "[Orum]";
-    mes "\"Don't make me remind you again! Warics life is on the line here! Hurry up!\"";
+    mes "\"Don't make me remind you again! Waric's life is on the line here! Hurry up!\"";
     goto L_Close;
 
 L_List_Materials_More:
@@ -418,7 +417,7 @@ L_Missing_Materials_More:
     mes "Orum carefully looks over all of the items then squints his eyes at you.";
     next;
     mes "[Orum]";
-    mes "\"You really enjoy playing games with Warics life, don't you! Come back when you have ALL of the items I told you.\"";
+    mes "\"You really enjoy playing games with Waric's life, don't you! Come back when you have ALL of the items I told you to get.\"";
     goto L_Close;
 
 L_Finish_Up:
