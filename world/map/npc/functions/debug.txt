@@ -901,7 +901,7 @@ L_ResetAll:
     callfunc "Debug";
     end;
 OnInit:
-    if (!debug)
+    if (!debug || debug > 64)
         disablenpc "Debug0";
 }
 
@@ -910,7 +910,7 @@ OnInit:
     callfunc "Debug";
     end;
 OnInit:
-    if (!debug)
+    if (!debug || debug > 64)
         disablenpc "Debug1";
 }
 
@@ -919,7 +919,7 @@ OnInit:
     callfunc "Debug";
     end;
 OnInit:
-    if (!debug)
+    if (!debug || debug > 64)
         disablenpc "Debug2";
 }
 
@@ -928,7 +928,7 @@ OnInit:
     callfunc "Debug";
     end;
 OnInit:
-    if (!debug)
+    if (!debug || debug > 64)
         disablenpc "Debug3";
 }
 
@@ -937,6 +937,6 @@ botcheck.gat,50,28,0|script|Debug4|154,
     callfunc "Debug";
     end;
 OnInit:
-    if (!debug)
+    if (!debug || debug > 64)
         disablenpc "Debug4";
 }
