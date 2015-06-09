@@ -74,7 +74,7 @@ L_dog2:
     delitem "Steak", 15;
     delitem "RawLog", 10;
     set Zeny, Zeny - 40000;
-    getitem "Hund", 1;
+    getitem "Hound", 1;
     mes "[Ace Ventura]";
     mes "\"Enjoy your dog! Do you want to adopt another pet?\"";
     
@@ -96,7 +96,7 @@ L_cat2:
     set Zeny, Zeny - 40000;
     getitem "Cat", 1;
     mes "[Ace Ventura]";
-    mes "\"Now here is a frisky white cat! Do you want to adopt other pet?\"";
+    mes "\"Now here is a frisky white cat! Do you want to adopt another pet?\"";
     
     menu
         "Yes, I do.", L_Adoptmenu,
@@ -116,7 +116,7 @@ L_rat2:
     set Zeny, Zeny - 40000;
     getitem "Rat", 1;
     mes "[Ace Ventura]";
-    mes "\"Here is your fine pet! Do you want to adopt other pet?\"";
+    mes "\"Here is your fine pet! Do you want to purchase any other pet?\"";
     
     menu
         "Yes, I do.", L_Adoptmenu,
