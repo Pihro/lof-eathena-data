@@ -118,7 +118,7 @@ L_lace_cupcake:
     mes "\"Perhaps the Chef at Dimond's Cove can help you?  We get all our cupcakes from him.\"";
     next;
 
-L_End:
+L_end:
     close;
 
 L_ChocMouboo:
@@ -134,7 +134,7 @@ L_ChocMouboo:
         "Do you have one in the shape of a mouboo? The Easter Bunny needs one.", -;
     mes "\"The Easter Bunny? Interesting... I think I can help you make a Chocolate Mouboo.\"";
     menu
-        "Nah, I decided not to do that stupid quest.", L_End,
+        "Nah, I decided not to do that stupid quest.", L_end,
         "I would really appreciate that!", -;
     set QUEST_Easter11, 11;
 
@@ -148,8 +148,8 @@ L_MakeChocMouboo:
     mes "\"Any mage should be able to make you one out of a log, if you ask.\"";
     menu
         "I have everything you need.", -,
-        "Ok, I will be back soon.", L_End,
-        "I changed my mind, forget about it.", L_End;
+        "Ok, I will be back soon.", L_end,
+        "I changed my mind, forget about it.", L_end;
 
     if(countitem("ChocolateBar") < 5
         || countitem("MoubooFigurine") < 1)
