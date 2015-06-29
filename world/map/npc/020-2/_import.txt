@@ -7,4 +7,5 @@ npc: npc/020-2/baktar.txt
 npc: npc/020-2/banker.txt
 npc: npc/020-2/furquest.txt
 npc: npc/020-2/mapflags.txt
+npc: npc/020-2/miler.txt
 npc: npc/020-2/shops.txt

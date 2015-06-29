@@ -21,7 +21,7 @@
     set @Q_status, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
 
     if(@Q_status == 2) goto L_Finished;
-    
+
     mes "...";
     menu
         "Throw something in the well.", L_Throw,
@@ -29,7 +29,7 @@
 
 L_Throw:
     mes "What do you want to throw?";
-    
+
     setarray @response_list$, "Yuck! Who threw that on me?", "Ouch! Who's hurting me?", "White powder!? What's going on up there?", "It's raining in Nivalis?!";
     setarray @item_list$, "MaggotSlime", "RawLog", "PileOfAsh", "BottleOfWater";
     menu
@@ -43,16 +43,16 @@ L_CheckItem:
     set @index, @menu - 1;
     set @response$, @response_list$[@index];
     set @item$, @item_list$[@index];
-    
+
     mes @item$;
-    
+
     if(countitem(@item$) == 0)
         goto L_MissingItem;
     delitem @item$, 1;
-    
+
     if(@item$ == "BottleOfWater")
         getitem "EmptyBottle", 1;
-    
+
     mes "[Mysterious voice inside the well]";
     mes "\"" + @response$ + "\"";
     next;
@@ -78,12 +78,12 @@ L_GetHelp:
     mes "\"" + @response$ + "So if you can get some help for me... please do so!\"";
     set @Q_status, 1;
     callsub S_Update_Var;
-    
+
     cleararray @response_list$, "", 4;
     cleararray @item_list$, "", 4;
     set @index, 0;
     set @response$, "";
-    
+
     goto L_Close;
 
 L_MissingItem:
@@ -101,39 +101,5 @@ S_Update_Var:
     set QUEST_Nivalis_state,
           (QUEST_Nivalis_state & ~(@Q_MASK)
         | (@Q_status << @Q_SHIFT));
-    return;
-}
-
-020-2.gat,100,28,0|script|Miler|100,
-{
-    set @Q_MASK, NIBBLE_4_MASK;
-    set @Q_SHIFT, NIBBLE_4_SHIFT;
-    set @Q_status, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
-
-    mes "[Miler]";
-    mes "\"Hello!\"";
-    
-    if(@Q_status != 1) goto L_Close;
-    menu
-        "Hello.", L_Close,
-        "Hello, Can you help me?", L_Help;
-
-L_Help:
-    mes "[Miler]";
-    mes "\"What's the problem?\"";
-    menu "Someone fell into the well.", L_Next;
-
-L_Next:
-    mes "[Miler]";
-    mes "\"Ho! I'll help him!\"";
-    getexp (BaseLevel * 111), 0;
-    set @Q_status, 2;
-    callsub S_Update_Var;
-    close;
-
-S_Update_Var:
-    set QUEST_Nivalis_state,
-        (QUEST_Nivalis_state & ~(@Q_MASK)
-      | (@Q_status << @Q_SHIFT));
     return;
 }

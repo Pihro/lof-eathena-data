@@ -1,0 +1,33 @@
+020-2.gat,100,28,0|script|Miler|100,
+{
+    set @Q_MASK, NIBBLE_4_MASK;
+    set @Q_SHIFT, NIBBLE_4_SHIFT;
+    set @Q_status, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
+
+    mes "[Miler]";
+    mes "\"Hello!\"";
+
+    if(@Q_status != 1) goto L_Close;
+    menu
+        "Hello.", L_Close,
+        "Hello, Can you help me?", L_Help;
+
+L_Help:
+    mes "[Miler]";
+    mes "\"What's the problem?\"";
+    menu "Someone fell into the well.", L_Next;
+
+L_Next:
+    mes "[Miler]";
+    mes "\"Ho! I'll help him!\"";
+    getexp (BaseLevel * 111), 0;
+    set @Q_status, 2;
+    callsub S_Update_Var;
+    close;
+
+S_Update_Var:
+    set QUEST_Nivalis_state,
+        (QUEST_Nivalis_state & ~(@Q_MASK)
+      | (@Q_status << @Q_SHIFT));
+    return;
+}
