@@ -1,5 +1,3 @@
-//
-
 001-1.gat,32,27,0|script|Ian|102,
 {
     // This line is only relevant for players, who started before the timestamp was introduced.
@@ -10,11 +8,13 @@
 
     if ((TUT_var != 0) && !(FLAGS & FLAG_GOT_GRADUATIONCAP) && BaseLevel >= 10)
         goto L_Grad;
+    goto L_DoneGrad;
 
 L_DoneGrad:
     mes "[Ian the Guide]";
     mes "\"Would you like to know about something?\"";
     next;
+    goto L_Menu_A;
 
 L_Menu_A:
     menu
@@ -30,35 +30,31 @@ L_Menu_A:
         "Quick Keys", L_Key,
         "Laws", L_Laws,
         "I know everything!", L_Know;
-    close;
 
 L_Fight:
     mes "[Ian the Guide]";
-    mes "\"People live in this world by living off of monsters.";
-    mes "You can fight monsters and even players by hitting the [CTRL] key, or left mouse click.\"";
+    mes "\"Adventurers in this world make their living off of monsters.";
+    mes "You can fight monsters and even players by hitting the [CTRL] key or left clicking.\"";
     next;
     mes "[Ian the Guide]";
-    mes "\"If you get tired of pressing the key too much, you can also type [SHIFT]+[CTRL].";
-    mes "This will make your character attack continuously for the time you are inactive.\"";
+    mes "\"If you get tired of key presses, you can also type [SHIFT]+[CTRL].";
+    mes "This will make your character attack continuously while you are inactive.\"";
     next;
     goto L_Menu_A;
 
 L_Items:
     mes "[Ian the Guide]";
-    mes "\"There are three types of items.";
-    mes "They can be Consumables, Equipment or Miscellaneous\"";
+    mes "\"There are three types of items:";
+    mes "Consumables, Equipment, and Miscellaneous.\"";
     next;
     mes "[Ian the Guide]";
-    mes "\"Consumable items such as Potions, can be used only once.";
-    mes "After use, they will disappear from your inventory.\"";
+    mes "\"Consumables, such as Potions, can be used only once; when used, they will disappear from your inventory.\"";
     next;
     mes "[Ian the Guide]";
-    mes "\"Equipment items like Armors, Weapons, Accessories";
-    mes "can be equipped for fashionable purposes or to raise your status.\"";
+    mes "\"Equipment like Armor, Weapons, and Accessories can be equipped for fashion purposes or to raise your stats.\"";
     next;
     mes "[Ian the Guide]";
-    mes "\"Miscellaneous items such as maggot slime, are used";
-    mes "in creating other items, or just to trade and sell.\"";
+    mes "\"Miscellaneous items such as maggot slime are used in magic or to create other items, or just to trade and sell.\"";
     next;
     goto L_Menu_A;
 
@@ -87,7 +83,7 @@ L_Monster:
 L_Style:
     mes "[Ian the Guide]";
     mes "\"The stylist NPCs will cut and perm your hair!";
-    mes "They are known for their hair growth formula\"";
+    mes "They are known for their hair growth formula.\"";
     next;
     goto L_Menu_A;
 
@@ -131,7 +127,7 @@ L_Stats:
     mes "[Ian the Guide]";
     mes "\"Vitality determines how resistant to injuries you are, and how much damage you can take before you die.";
     mes "Intelligence is useful for alchemy and magic, but there are few opportunities for either at the moment.";
-    mes "Luck determines many small things, including the likelihood of both recieving and dealing critical hits\"";
+    mes "Luck determines many small things, including the likelihood of both receiving and dealing critical hits.\"";
     next;
     mes "[Ian the Guide]";
     mes "\"I recommend that you practice your dexterity, since some of the more dangerous monsters are very hard to hit otherwise.";
@@ -160,7 +156,7 @@ L_Laws:
 
 L_Know:
     mes "[Ian the Guide]";
-    mes "\"Lost? Confused? Want to know why you can't get past a quest, overcome an NPC or find an item?  Check http://wiki.themanaworld.org for player hints, walkthroughs, item lists and more!\"";
+    mes "\"Lost? Confused? Want to know why you can't get past a quest, overcome an NPC or find an item? Check http://wiki.themanaworld.org for player hints, walkthroughs, item lists and more!\"";
     next;
     mes "\"But remember, the game isn't fun when you already know what to do. Use it well or you will lose interest in playing The Mana World! Please help by reporting anything that is unclear, outdated or that needs to be seen on our forums at http://forums.themanaworld.org.\"";
     close;
@@ -169,7 +165,7 @@ L_Grad:
     getinventorylist;
     if (@inventorylist_count == 100) goto L_TooMany;
     mes "[Ian the Guide]";
-    mes "\"Hey, you've been doing good, let me give you this.\"";
+    mes "\"Hey, you've been doing well, let me give you this.\"";
     getitem "KnightsHelmet", 1;
     set FLAGS, FLAGS | FLAG_GOT_GRADUATIONCAP;
     next;
