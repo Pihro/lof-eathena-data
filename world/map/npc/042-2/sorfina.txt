@@ -3,13 +3,14 @@
 
 042-2.gat,28,26,0|script|Sorfina|154,4,4
 {
-    if (FLAGS & FLAG_TUTORIAL_DONE) goto L_Again;
+    if (FLAGS & FLAG_TUTORIAL_DONE) goto L_HatCheck;
     if (sorfina == 4) goto L_Heal;
     if (sorfina == 3) goto L_Clothes;
     if (sorfina == 2) goto L_Chest;
     if (sorfina == 1) goto L_Carpet;
-
+    
     callfunc "GameRules";
+    goto L_Start;
 
 L_Start:
     mes "You open your eyes.";
@@ -31,12 +32,12 @@ L_Start:
     mes "Oh, and by the way my name is Sorfina.\"";
     next;
     mes "[Server]";
-    mes "The explanations in this tutorial are based on the official client 0.5 series.";
+    mes "The explanations in this tutorial are based on the official client, 0.5 series.";
     mes "If you're using another client, settings and controls may be different.";
     next;
     menu
         "That would be great!",L_Tut,
-        "No, thanks. I already know how things are going.",L_SkipTut;
+        "No, thanks. I already understand what's going on.", L_SkipTut;
 
 L_Tut:
     mes "She smiles at you.";
@@ -46,6 +47,7 @@ L_Tut:
     mes "\"You still look rather shaky.";
     mes "You're not used to the hot weather, right?\"";
     next;
+    goto L_Carpet;
 
 L_Carpet:
     mes "[Sorfina]";
@@ -105,27 +107,75 @@ L_Heal:
     next;
     goto L_Again;
 
+L_HatCheck:
+    if (!Sorfina_Caps && BaseLevel >= 10) set Sorfina_Caps, 0;
+    set @hat$, "";
+    
+    if (Sorfina_Caps == 9 && BaseLevel >= 99) set @hat$, "Level99Cap";
+    if (Sorfina_Caps == 8 && BaseLevel >= 90) set @hat$, "Level90Cap";
+    if (Sorfina_Caps == 7 && BaseLevel >= 80) set @hat$, "Level80Cap";
+    if (Sorfina_Caps == 6 && BaseLevel >= 70) set @hat$, "Level70Cap";
+    if (Sorfina_Caps == 5 && BaseLevel >= 60) set @hat$, "Level60Cap";
+    if (Sorfina_Caps == 4 && BaseLevel >= 50) set @hat$, "Level50Cap";
+    if (Sorfina_Caps == 3 && BaseLevel >= 40) set @hat$, "Level40Cap";
+    if (Sorfina_Caps == 2 && BaseLevel >= 30) set @hat$, "Level30Cap";
+    if (Sorfina_Caps == 1 && BaseLevel >= 20) set @hat$, "Level20Cap";
+    if (Sorfina_Caps == 0 && BaseLevel >= 10) set @hat$, "Level10Cap";
+    
+    if (@hat$ == "") goto L_Again;
+    
+    getinventorylist;
+    if (@inventorylist_count == 100)
+        goto L_NoRoom;
+    
+    setarray @message_list$, 
+        "I've been keeping it a secret, but I've finally finished a present for you: an emblazoned cap. It's a celebration of what you've achieved so far. Come back later and I'll have another cap for you.", 
+        "Ah, here's the next cap. Keep up the good work!", 
+        "You are doing well! Take this cap and I'll see you soon!", 
+        "I've finished you another cap, and I'm proud of your progress. Never stop improving!", 
+        "Your endurance is impressive. Here's your cap; I'll be waiting here when you earn the next.", 
+        "You aren't a household name yet, but soon all Tulimshar will acknowledge your prowess. Take this cap and carry on!", 
+        "Tanisha tells me that several of her friends hope to be adventurers some day, 'just like you.' Take your cap, and prove their adoration well-placed.", 
+        "Most adventurers would have settled down by now into the faint twilight of their fame, but you've kept going. I'm proud of you, although I fear it may be some time before the next cap is finished.", 
+        "Your cap is finished at last, and you have earned it. The world rings with your prowess, but there are yet heights you have not yet achieved...", 
+        "I would never have thought when you were brought to my house for the first time, weak and ragged, that you would become one of the most powerful adventurers ever to grace the streets of Tulimshar. This is my last cap for you, now go and use your power wisely!";
+    
+    mes "[Sorfina]";
+    mes "\"" + @message_list$[Sorfina_Caps] + "\"";
+    
+    cleararray @message_list$, 10, "";
+    
+    getitem @hat$, 1;
+    set @hat$, "";
+    set Sorfina_Caps, Sorfina_Caps + 1;
+    goto L_Close;
+
+L_NoRoom:
+    mes "[Sorfina]";
+    mes "\"Oh, I have something to give you, but it seems as if you have nowhere to put it. Come back when you are carrying a little less!\"";
+    goto L_Close;
+
 L_Again:
     mes "[Sorfina]";
     mes "\"Make yourself at home! Do you have any questions?\"";
     next;
     if (hasan)
         menu
-            "A guy named Hasan won't let me enter Tulimshar.",L_Hasan,
-            "Yes, could you explain again about...",L_Explain,
-            "No, thanks.",L_Close;
+            "A guy named Hasan won't let me enter Tulimshar.", L_Hasan,
+            "Yes, could you explain again about...", L_Explain,
+            "No thanks.", L_Close;
     menu
-        "Yes, could you explain about...",L_Explain,
-        "No, thanks.",L_Close;
+        "Yes, could you explain about...", L_Explain,
+        "No, thanks.", L_Close;
 
 L_Explain:
     menu
-        "... walking?",L_Walk,
-        "... talking?",L_Talk,
-        "... the inventory and items?",L_Items,
-        "... shortcuts?",L_Shortcut,
-        "... what to do in Tulimshar?",L_Aidan,
-        "... nevermind.",L_Close;
+        "... walking?", L_Walk,
+        "... talking?", L_Talk,
+        "... the inventory and items?", L_Items,
+        "... shortcuts?", L_Shortcut,
+        "... what to do in Tulimshar?", L_Aidan,
+        "... nevermind.", L_Close;
 
 L_Walk:
     mes "[Sorfina]";
@@ -180,18 +230,18 @@ L_Shortcut:
 
 L_Aidan:
     mes "[Sorfina]";
-    mes "\"I suggest to go to the bazaar near the south gate.";
+    mes "\"I suggest that you go to the bazaar near the south gate.";
     mes "We're in the north of Tulimshar here, so you have to walk across the town.\"";
     next;
     mes "\"When you leave this area to the Southeast, you'll come to the docks.";
     mes "Follow the street to the south to pass the old town gates.\"";
     next;
-    mes "\"Turn west at the next intersection. You'll pass by the gates of Tulimshar's famous magic school there.";
+    mes "\"Turn west at the next intersection. You'll pass by the gates of Tulimshar's famous magic school.";
     mes "Just follow the street to the south and you'll reach the bazaar.\"";
     next;
     mes "\"I heard Aidan is looking for brave adventurers, you might want to talk to him.";
     mes "Usually the bazaar is bustling with activity, there are many people who can help.";
-    mes "Talk to everybody.  You can never tell when they might know something useful.\"";
+    mes "In fact, you should talk to everybody. You can never tell when they might know something useful.\"";
     goto L_Close;
 
 L_Hasan:
@@ -226,7 +276,9 @@ L_SkipTut:
     next;
     menu
         "Thinking about it twice... please tell me.",L_Tut,
-        "Yeah, but thanks for the offer. Bye.",-;
+        "Yeah, but thanks for the offer. Bye.", L_SkippedTut;
+
+L_SkippedTut:
     mes "[Sorfina]";
     mes "\"Alright, if you say so. But take at least this.";
     callfunc "TutorialCompleted";
