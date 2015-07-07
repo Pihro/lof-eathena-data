@@ -41,6 +41,6 @@ OnTimer3000:
     setnpctimer 0;
 
 OnInit:
-    if (debug >= 2  && debug < 64) end;
+    if (debug >= 2) end;
     initnpctimer;
 }

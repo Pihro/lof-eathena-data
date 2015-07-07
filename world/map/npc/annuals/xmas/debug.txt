@@ -177,7 +177,7 @@ L_Close:
     goto L_end;
 
 OnInit:
-    if(!debug || debug > 64)
+    if(!(debug))
         disablenpc "XmasDebug#1";
 L_end:
     end;
@@ -189,7 +189,7 @@ L_end:
     goto L_end;
 
 OnInit:
-    if(!debug  || debug > 64)
+    if(!(debug))
         disablenpc "XmasDebug#2";
 L_end:
     end;
@@ -201,7 +201,7 @@ L_end:
    goto L_end;
 
 OnInit:
-   if(!debug  || debug > 64)
+   if(!(debug))
        disablenpc "XmasDebug#3";
 L_end:
    end;
@@ -213,7 +213,7 @@ L_end:
     goto L_end;
 
 OnInit:
-    if(!debug  || debug > 64)
+    if(!(debug))
         disablenpc "XmasDebug#4";
 L_end:
     end;
@@ -236,6 +236,6 @@ L_End:
    callfunc "XmasDebug";
 
 OnInit:
-   if(!debug  || debug > 64)
+   if(!(debug))
        disablenpc "XmasDebug#6";
 }

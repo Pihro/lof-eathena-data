@@ -456,6 +456,6 @@ L_Close:
     close;
 
 OnInit:
-    if (!debug || debug > 64)
+    if (!debug)
         disablenpc "MillyDebugHelper";
 }

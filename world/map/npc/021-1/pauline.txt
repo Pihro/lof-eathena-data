@@ -291,6 +291,6 @@ S_Update_Mask:
     return;
 
 OnInit:
-    if (!debug || debug > 64)
+    if (!debug)
         disablenpc "PaulineDebug";
 }

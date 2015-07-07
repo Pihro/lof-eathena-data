@@ -644,3 +644,6 @@ AMMO_NONE  0
 AMMO_BOW   1
 AMMO_SLING 2
 AMMO_WAND  3
+
+// const-debugflag.txt but we need it here for older tmwA
+debug            1
