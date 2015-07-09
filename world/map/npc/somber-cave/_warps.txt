@@ -1,4 +1,4 @@
 // This file is generated automatically. All manually changes will be removed when running the Converter.
 // Somber Cave warps
 
-somber-cave.gat,114,23|warp|Somber Cave Exit|-1,-1,009-1.gat,1,1
+somber-cave.gat,114,23|warp|Somber Cave Exit|-1,-1,009-1.gat,0,0

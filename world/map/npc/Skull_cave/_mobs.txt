@@ -1,0 +1,6 @@
+
+
+Skull_cave.gat,0,0,0|script|MobSkull_cave|-1,
+{
+    end;
+}
