@@ -1,4 +1,4 @@
-// Map hh-outside: Heroes' Hold - Overworld
+// Map hh-outside: Heroes' Hold - Outside
 // This file is generated automatically. All manually changes will be removed when running the Converter.
 map: hh-outside.gat
 npc: npc/hh-outside/_mobs.txt

@@ -4,6 +4,7 @@
 009-3-night.gat,0,0,0,0|monster|LavaSlime|1115,20,0,0,Mob009-3-night::On1115
 009-3-night.gat,0,0,0,0|monster|BlackSlime|1119,35,0,0,Mob009-3-night::On1119
 009-3-night.gat,0,0,0,0|monster|SnowFlake|1116,35,0,0,Mob009-3-night::On1116
+009-3-night.gat,82,28,90,24|monster|BlackMamba|1121,3,15000,10000,Mob009-3-night::On1121
 
 
 009-3-night.gat,0,0,0|script|Mob009-3-night|-1,
@@ -22,6 +23,11 @@ On1116:
 
 On1119:
     set @mobID, 1119;
+    callfunc "MobPoints";
+    end;
+
+On1121:
+    set @mobID, 1121;
     callfunc "MobPoints";
     end;
 }

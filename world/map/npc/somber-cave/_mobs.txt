@@ -14,6 +14,7 @@ somber-cave.gat,96,46,68,54|monster|LavaSlime|1115,10,10000,0,Mobsomber-cave::On
 somber-cave.gat,88,84,53,21|monster|LavaSlime|1115,7,10000,0,Mobsomber-cave::On1115
 somber-cave.gat,123,97,14,47|monster|LavaSlime|1115,5,10000,0,Mobsomber-cave::On1115
 somber-cave.gat,70,111,89,30|monster|LavaSlime|1115,15,10000,0,Mobsomber-cave::On1115
+somber-cave.gat,74,72,112,107|monster|BlackMamba|1121,9,15000,0,Mobsomber-cave::On1121
 
 
 somber-cave.gat,0,0,0|script|Mobsomber-cave|-1,
@@ -42,6 +43,11 @@ On1039:
 
 On1115:
     set @mobID, 1115;
+    callfunc "MobPoints";
+    end;
+
+On1121:
+    set @mobID, 1121;
     callfunc "MobPoints";
     end;
 }

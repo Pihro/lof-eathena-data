@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually changes will be removed when running the Converter.
-// Heroes' Hold - Overworld warps
+// Heroes' Hold - Outside warps
 
 hh-outside.gat,63,106|warp|To Swamp|-1,-1,026-1.gat,63,17
 hh-outside.gat,72,63|warp|To Heroes' Hold - Castle|2,-1,hh-castle.gat,26,32

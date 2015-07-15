@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually changes will be removed when running the Converter.
-// Heroes' Hold - Overworld mobs
+// Heroes' Hold - Outside mobs
 
 hh-outside.gat,92,39,58,21|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
 hh-outside.gat,92,39,58,21|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
@@ -9,18 +9,18 @@ hh-outside.gat,40,35,40,13|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On104
 hh-outside.gat,40,35,40,13|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
 hh-outside.gat,40,35,40,13|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
 hh-outside.gat,40,35,40,13|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
-hh-outside.gat,20,45,0,0|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,20,45,0,0|monster|BlackMamba|1121,2,120000,40000,Mobhh-outside::On1121
 hh-outside.gat,20,45,0,0|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
 hh-outside.gat,20,45,0,0|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
 hh-outside.gat,20,45,0,0|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
-hh-outside.gat,108,64,25,22|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
-hh-outside.gat,108,64,25,22|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
+hh-outside.gat,108,64,25,22|monster|Wisp|1040,1,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,108,64,25,22|monster|BlackMamba|1121,1,120000,40000,Mobhh-outside::On1121
 hh-outside.gat,108,64,25,22|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
 hh-outside.gat,108,64,25,22|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
-hh-outside.gat,92,90,72,24|monster|Wisp|1040,2,120000,40000,Mobhh-outside::On1040
+hh-outside.gat,92,90,72,24|monster|BlackMamba|1121,2,120000,40000,Mobhh-outside::On1121
 hh-outside.gat,92,90,72,24|monster|Spectre|1042,2,120000,40000,Mobhh-outside::On1042
 hh-outside.gat,92,90,72,24|monster|Skeleton|1043,2,120000,40000,Mobhh-outside::On1043
-hh-outside.gat,92,90,72,24|monster|Poltergeist|1047,2,120000,40000,Mobhh-outside::On1047
+hh-outside.gat,92,90,72,24|monster|Fallen|1045,2,120000,40000,Mobhh-outside::On1045
 
 
 hh-outside.gat,0,0,0|script|Mobhh-outside|-1,
@@ -42,8 +42,18 @@ On1043:
     callfunc "MobPoints";
     end;
 
+On1045:
+    set @mobID, 1045;
+    callfunc "MobPoints";
+    end;
+
 On1047:
     set @mobID, 1047;
+    callfunc "MobPoints";
+    end;
+
+On1121:
+    set @mobID, 1121;
     callfunc "MobPoints";
     end;
 }
