@@ -135,7 +135,7 @@ L_HatCheck:
         "I've finished you another cap, and I'm proud of your progress. Never stop improving!", 
         "Your endurance is impressive. Here's your cap; I'll be waiting here when you earn the next.", 
         "You aren't a household name yet, but soon all Tulimshar will acknowledge your prowess. Take this cap and carry on!", 
-        "Tanisha tells me that several of her friends hope to be adventurers some day, 'just like you.' Take your cap, and prove their adoration well-placed.", 
+        "Tanisha tells me that several of her friends hope to be adventurers some day, 'just like " + strcharinfo(0) + ".' Take your cap, and prove their adoration well-placed.", 
         "Most adventurers would have settled down by now into the faint twilight of their fame, but you've kept going. I'm proud of you, although I fear it may be some time before the next cap is finished.", 
         "Your cap is finished at last, and you have earned it. The world rings with your prowess, but there are yet heights you have not yet achieved...", 
         "I would never have thought when you were brought to my house for the first time, weak and ragged, that you would become one of the most powerful adventurers ever to grace the streets of Tulimshar. This is my last cap for you, now go and use your power wisely!";
