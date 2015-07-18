@@ -1,7 +1,7 @@
 //
 
 009-1.gat,43,32,0|script|Silversmith|135,{
-   
+
     mes "[Smith Silvers]";
     mes "\"Hello, I am your local silversmith, here for all of your smithing needs!\"";
     goto L_Smithmenu;
@@ -130,7 +130,7 @@ L_Full:
 
 L_Missing:
     mes "[Smith Silvers]";
-    mes "\"It looks like you're missing some items.  Please come back when you have what i need!\"";
+    mes "\"It looks like you're missing some items.  Please come back when you have what I need!\"";
     goto L_Close;
 
 L_NotEnoughMoney:
