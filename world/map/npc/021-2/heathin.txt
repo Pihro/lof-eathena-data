@@ -130,25 +130,25 @@ L_Heathin_Terranite_Yes:
     next;
     mes "\"Ah, I know!  I will make a helm...  Well, more like a hood, since it will be woven.\"";
     next;
-    mes "\"It will require a great amount of heat, if the rumors are to be believed.  For this, I will need 100 Coal to keep my forge burning hot.  I will also need 10 Terranite Ore to make the armor.  Of course, such work does not come cheap.  While I may enjoy my work, my time and effort is very valuable.  To compensate my efforts I will need 200,000 gold pieces.  Please come back with the gold, Coal and ore and I'll make this hood for you.\"";
+    mes "\"It will require a great amount of heat, if the rumors are to be believed.  For this, I will need 100 Coal to keep my forge burning hot.  I will also need 10 Terranite Ore to make the armor.  Of course, such work does not come cheap.  While I may enjoy my work, my time and effort is very valuable.  To compensate my efforts I will need 20,000 gold pieces.  Please come back with the gold, Coal and ore and I'll make this hood for you.\"";
     close;
 
 L_Heathin_Terranite_Hood_Forge:
-    if ( (Zeny < 200000)
+    if ( (Zeny < 20000)
         || (countitem("Coal") < 100)
         || (countitem("TerraniteOre") < 10) )
             goto L_Heathin_Terranite_Hood_Wait;
     set HEATHIN_QUEST, 4;
     delitem "Coal", 100;
     delitem "TerraniteOre", 10;
-    set Zeny, Zeny - 200000;
+    set Zeny, Zeny - 20000;
     mes "[Heathin]";
     mes "\"Great, you brought everything!  Come back later and I'll have the helm ready for you.\"";
     close;
 
 L_Heathin_Terranite_Hood_Wait:
     mes "[Heathin]";
-    mes "\"I am very busy right now.  If you could bring me 10 Terranite Ore, 100 Coal and 200,000 gold pieces, I will make that terranite hood for you.\"";
+    mes "\"I am very busy right now.  If you could bring me 10 Terranite Ore, 100 Coal and 20,000 gold pieces, I will make that terranite hood for you.\"";
     close;
 
 L_Heathin_Terranite_Hood_Ready:
@@ -166,25 +166,25 @@ L_Heathin_Terranite_Legs:
     mes "[Heathin]";
     mes "\"I am glad you are back!  I've just finished up some more of my commission.  Now I can get back to making terranite armor for you.  This time I will make some pants, but they need more ore, more Coal to heat my forge and of course, more gold for my efforts.\"";
     next;
-    mes "\"To make terranite pants, I need 200 Coal, 30 Terranite Ore and 400,000 gold pieces.  The faster you bring this to me, the faster I can have your terranite pants ready.\"";
+    mes "\"To make terranite pants, I need 200 Coal, 30 Terranite Ore and 40,000 gold pieces.  The faster you bring this to me, the faster I can have your terranite pants ready.\"";
     close;
 
 L_Heathin_Terranite_Legs_Forge:
-    if ( (Zeny < 400000)
+    if ( (Zeny < 40000)
         || (countitem("Coal") < 200)
         || (countitem("TerraniteOre") < 30) )
             goto L_Heathin_Terranite_Legs_Wait;
     set HEATHIN_QUEST, 7;
     delitem "Coal", 200;
     delitem "TerraniteOre", 30;
-    set Zeny, Zeny - 400000;
+    set Zeny, Zeny - 40000;
     mes "[Heathin]";
     mes "\"Great, you have brought everything!  Come back later and I will have those terranite pants ready for you.\"";
     close;
 
 L_Heathin_Terranite_Legs_Wait:
     mes "[Heathin]";
-    mes "\"I am very busy right now.  If you could bring me 30 Terranite Ore, 200 Coal and 400,000 gold pieces, I will make those terranite pants for you.\"";
+    mes "\"I am very busy right now.  If you could bring me 30 Terranite Ore, 200 Coal and 40,000 gold pieces, I will make those terranite pants for you.\"";
     close;
 
 L_Heathin_Terranite_Legs_Ready:
@@ -202,25 +202,25 @@ L_Heathin_Terranite_Chest_Armor:
     mes "[Heathin]";
     mes "\"Good to see you again.  I have just finished up some more of my commission.  Now I can get back to making terranite armor for you.  This time, I will make some terranite chest armor, but it needs more ore, more Coal for my forge and of course, more gold to compensate for my efforts.\"";
     next;
-    mes "\"To make terranite chest armor, I need 250 Coal, 40 Terranite Ore and 500,000 gold pieces.  The faster you bring this to me, the faster I can have your terranite armor ready.\"";
+    mes "\"To make terranite chest armor, I need 250 Coal, 40 Terranite Ore and 50,000 gold pieces.  The faster you bring this to me, the faster I can have your terranite armor ready.\"";
     close;
 
 L_Heathin_Terranite_Chest_Armor_Forge:
-    if ( (Zeny < 500000)
+    if ( (Zeny < 50000)
         || (countitem("Coal") < 250)
         || (countitem("TerraniteOre") < 40) )
             goto L_Heathin_Terranite_Chest_Armor_Wait;
     set HEATHIN_QUEST, 10;
     delitem "Coal", 250;
     delitem "TerraniteOre", 40;
-    set Zeny, Zeny - 500000;
+    set Zeny, Zeny - 50000;
     mes "[Heathin]";
     mes "\"Splendid, you have brought everything!  Come back later and I will have the terranite chest armor ready for you.\"";
     close;
 
 L_Heathin_Terranite_Chest_Armor_Wait:
     mes "[Heathin]";
-    mes "\"I am very busy right now.  If you could bring me 40 Terranite Ore, 250 Coal and 500,000 gold pieces, I will make that chest armor for you.\"";
+    mes "\"I am very busy right now.  If you could bring me 40 Terranite Ore, 250 Coal and 50,000 gold pieces, I will make that chest armor for you.\"";
     close;
 
 L_Heathin_Terranite_Chest_Armor_Ready:
