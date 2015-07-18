@@ -6,6 +6,6 @@ npc: npc/018-2/_warps.txt
 npc: npc/018-2/angus.txt
 npc: npc/018-2/books.txt
 npc: npc/018-2/caul.txt
-npc: npc/018-2/miners.txt
+npc: npc/018-2/kelan.txt
 npc: npc/018-2/petsales.txt
 npc: npc/018-2/receptionist.txt
