@@ -33,7 +33,7 @@ L_Investigation:
 
 L_GemPowder:
     mes "[Kelan]";
-    mes "\"My father taught me how to make that sort of powder. Put the gem on a firm surface, hold your pickaxe tight and whack that gem hard. It'll be crushed into powder pretty soon if you keep at it.\"";
+    mes "\"My father taught me how to make that sort of powder. Put the gem on a firm surface, hold your pick-axe tight and whack that gem hard. It'll be crushed into powder pretty soon if you keep at it.\"";
     mes "\"Do you want me to make any for you?\"";
     menu
         "Yes, I really need some.", L_GemPowderStart,
