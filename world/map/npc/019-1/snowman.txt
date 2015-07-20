@@ -1,4 +1,4 @@
-// Author: accoring to git history probably Jaxad
+// Author: according to git history probably Jaxad
 // quest made seasonal and adapted to new scripting standards by Jenalya
 
 019-1.gat,77,44,0|script|Snowman|129,
@@ -24,14 +24,17 @@ L_Quest:
     mes "\"Hello there young " + @sex$ + ".";
     mes "Would you like a Christmas hat?\"";
     next;
+    goto L_Menu;
 
 L_Menu:
     menu
         "Yes", L_Sure,
-        "No", -,
+        "No", L_No,
         "What do you need?", L_Need;
+
+L_No:
     mes "[Snowman]";
-    mes "\"Well, thats too bad, but make sure to have the holiday spirit!\"";
+    mes "\"Well, that's too bad, but make sure to have the holiday spirit!\"";
     goto L_Close;
 
 L_Sure:
@@ -68,7 +71,7 @@ L_Need:
 
 L_NoItem:
     mes "[Snowman]";
-    mes "\"Well, I am interested in some food and you don't have enought to get a hat.\"";
+    mes "\"Well, I am interested in some food and you don't have enough to get a hat.\"";
     goto L_Close;
 
 L_Done:
