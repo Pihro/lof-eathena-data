@@ -2,11 +2,11 @@
 
 009-2.gat,181,56,0|script|Nahrec|311,{
     mes "[Nahrec]";
-    mes "\"Ah, hello! It is good to see another traveller in this town!\"";
+    mes "\"Ah, hello! It is good to see another traveler in this town!\"";
     next;
     menu
         "Really? Where are you from?", L_Story,
-        "It's good to see you too, do you happen to be able to make stuff?", L_makestuff,
+        "It's good to see you too, do you happen to be able to make stuff?", L_Makestuff,
         "Alright.", L_Close;
 
 L_Story:
@@ -16,17 +16,17 @@ L_Story:
     mes "\"I'm an experienced weapon master helping this smithy here, but I am new in this town. I am best at smithing armor.\"";
     next;
     menu
-        "'Best'? So you can make other things?", L_makestuff,
+        "'Best'? So you can make other things?", L_Makestuff,
         "Good to know.", L_Close;
 
-L_makestuff:
+L_Makestuff:
     mes "[Nahrec]";
     mes "\"Yes, I can craft many things. In addition to plating and improving armor, I can craft smaller items made of gold and other metals.\"";
     menu
-        "Can you make a monocle for me? I want that...classy look...", L_monocle,
-        "Can you improve my Warlord Plate for me?", L_goldenwplate,
-        "Can you improve my Light Platemail for me?", L_goldenlplate,
-        "Can you craft Savior Pants?", L_saviorpants,
+        "Can you make a monocle for me? I want that...classy look...", L_Monocle,
+        "Can you improve my Warlord Plate for me?", L_Goldenwplate,
+        "Can you improve my Light Platemail for me?", L_Goldenlplate,
+        "Can you craft Savior Pants?", L_Saviorpants,
         "Do you know something about 'Mylarin Dust'?", L_Mylarin,
         "Nevermind, bye!", L_Close;
 
@@ -48,7 +48,7 @@ L_No_Mylarin:
     mes "\"Ah well, I'm not prepared to work with Mylarin right now anyways. I suppose I should get back to setting up my forge.\"";
     goto L_Close;
 
-L_goldenwplate:
+L_Goldenwplate:
     mes "[Nahrec]";
     mes "\"I can plate that armor in gold if you so wish, I will need 30 gold ore and 450,000gp.\"";
     if (countitem("Gold") < 30) goto L_Missing;
@@ -64,7 +64,7 @@ L_goldenwplate:
     mes "\"There you go!\"";
     goto L_Close;
 
-L_goldenlplate:
+L_Goldenlplate:
     mes "[Nahrec]";
     mes "\"I can plate that armor in gold if you so wish, I will need 20 gold ore and 250,000gp.\"";
     if (countitem("Gold") < 20) goto L_Missing;
@@ -80,15 +80,15 @@ L_goldenlplate:
     mes "\"There you go!\"";
     goto L_Close;
 
-L_monocle:
+L_Monocle:
     mes "[Nahrec]";
     mes "\"Yes, I can craft a monocle. For this, I would need you to bring me a Standard Headband, 5 gold ore, and 50,000gp\"";
     menu
-        "I have the items you need.", L_monocle2,
-        "I can have those soon...", L_beback,
+        "I have the items you need.", L_Monocle2,
+        "I can have those soon...", L_Beback,
         "That's lame.", L_Close;
 
-L_monocle2:
+L_Monocle2:
     if (countitem("Gold") < 5) goto L_Missing;
     if (countitem("StandardHeadband") < 1) goto L_Missing;
     if (Zeny < 50000) goto L_NotEnoughMoney;
@@ -102,32 +102,28 @@ L_monocle2:
     mes "\"There you go!\"";
     goto L_Close;
 
-L_saviorpants:
+L_Saviorpants:
     mes "[Nahrec]";
-    mes "\"I can craft Savior Pants. I'll need 35 gold ore, 2 pairs of cotton trousers, and 250,000gp.\"";
+    mes "\"I can craft Savior Pants. I'll need 30 gold ore, 1 pair of cotton trousers, and 200,000gp.\"";
     menu
-        "I have what you need.", L_saviorpants2,
-        "I'll be back with those items..", L_beback,
+        "I have what you need.", L_Saviorpants2,
+        "I'll be back with those items..", L_Beback,
         "That's crazy!", L_Close;
 
-L_saviorpants2:
-    if (countitem("Gold") < 35) goto L_Missing;
-    if (countitem("CottonTrousers") < 2) goto L_Missing;
-    if (Zeny < 250000) goto L_NotEnoughMoney;
+L_Saviorpants2:
+    if (countitem("Gold") < 30 || countitem("CottonTrousers") < 1) goto L_Missing;
+    if (Zeny < 200000) goto L_NotEnoughMoney;
     getinventorylist;
-    if (@inventorylist_count == 100 && countitem("Gold") > 35) goto L_Full;
-    if (@inventorylist_count == 100 && countitem("CottonTrousers") > 2) goto L_Full;
-    delitem "Gold", 35;
-    set @item$, "CottonTrousers";
-    set @number, 2;
-    callfunc "DelItems";
-    set Zeny, Zeny - 250000;
+    if (@inventorylist_count == 100 && countitem("Gold") > 30) goto L_Full;
+    delitem "Gold", 30;
+    delitem "CottonTrousers", 1;
+    set Zeny, Zeny - 200000;
     getitem "SaviorPants", 1;
     mes "[Nahrec]";
     mes "\"There you go!\"";
     goto L_Close;
 
-L_beback:
+L_Beback:
     mes "[Nahrec]";
     mes "\"Be back soon with the items I need!\"";
     goto L_Close;
