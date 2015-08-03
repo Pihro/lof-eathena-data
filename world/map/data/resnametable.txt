@@ -120,4 +120,6 @@ botcheck.gat#botcheck.wlk#
 hh-castle.gat#hh-castle.wlk#
 hh-maincave.gat#hh-maincave.wlk#
 hh-outside.gat#hh-outside.wlk#
+jacks-basement.gat#jacks-basement.wlk#
+skull-cave.gat#skull-cave.wlk#
 somber-cave.gat#somber-cave.wlk#
