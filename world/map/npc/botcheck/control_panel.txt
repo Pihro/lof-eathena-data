@@ -1,0 +1,71 @@
+botcheck.gat,46,29,0|script|CP|372,
+{
+if (getgmlevel() < 40) goto L_Close;
+goto L_Main;
+
+L_Main:
+    mes "[Control Panel]";
+    mes "Welcome to the Control Panel! Which tool would you like to use?";
+    menu
+        "NPC control.", L_NPCControl,
+        "Heroes Hold progress.", L_HeroesHold,
+        "I'm done here.", L_Close;
+
+L_NPCControl:
+    menu
+        "Disable an NPC", L_NPC_Disable,
+        "Enable an NPC", L_NPC_Enable;
+
+L_NPC_Disable:
+    mes "What NPC would you like to disable?";
+    input @npc$;
+    disablenpc @npc$;
+    mes "NPC \"" + @npc$ + "\" disabled.";
+    next;
+    goto L_Main;
+
+L_NPC_Enable:
+    mes "What NPC would you like to enable?";
+    input @npc$;
+    enablenpc @npc$;
+    mes "NPC \"" + @npc$ + "\" enabled.";
+    next;
+    goto L_Main;
+
+L_HeroesHold:
+    mes "[Control Panel]";
+    mes "Unlock progress: " + $HH_Gathered_Crystals + "/" + $HH_Needed_Crystals + " Dark Crystals gathered.";
+    mes "What would you like to do?";
+    menu
+        "Adjust required crystals.", L_HH_ChangeCrystals,
+        "Return to main menu.", L_Main,
+        "Nothing.", L_Close;
+
+L_HH_ChangeCrystals:
+    mes "[Control Panel]";
+    mes "Enter new number of required crystals (currently " + $HH_Needed_Crystals + ")";
+    input @crystals;
+    mes "[Control Panel]";
+    if (@crystals <= $HH_Gathered_Crystals) goto L_HH_CrystalsWarnLow;
+    goto L_HH_ConfirmChangeCrystals;
+
+L_HH_CrystalsWarnLow:
+    mes "Warning: the players have already gathered that many dark crystals!";
+    goto L_HH_ConfirmChangeCrystals;
+
+L_HH_ConfirmChangeCrystals:
+    mes "Are you sure you want to change the number of required Dark Crystals from " + $HH_Needed_Crystals + " to " + @crystals + "?";
+    menu
+        "No.", L_HeroesHold,
+        "Yes.", L_HH_CompleteCrystalChange;
+
+L_HH_CompleteCrystalChange:
+    set $HH_Needed_Crystals, @crystals;
+    mes "Done.";
+    goto L_HeroesHold;
+
+L_Close:
+    set @crystals, 0;
+    set @npc$, "";
+    close;
+}
