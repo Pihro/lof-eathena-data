@@ -29,7 +29,6 @@
 
 L_Begin:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"How!\"";
     next;
 
@@ -37,17 +36,169 @@ L_Begin:
     if (getequipid(equip_legs) == 642) goto L_WearingChaps;
 
     mes "[Chief Pachua]";
-    mes "";
     mes "\"For generations my tribe has been crafting special clothes out of different items.\"";
     next;
+    goto L_Check_Mamba;
 
-L_Check_Shops:
-    if((countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) && (countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2)) goto L_Super_store;
-    if(countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) goto L_Chaps_store;
-    if(countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2) goto L_Cowboy_store;
+L_Check_Mamba:
+    if (countitem("BlackMambaSkin") == 0 || QUEST_Mamba > 5 || BaseLevel < 50) goto L_Check_Shops;
+    if (QUEST_Mamba > 1) goto L_Check_Mamba_Again;
 
     mes "[Chief Pachua]";
-    mes "";
+    mes "\"Ah! Do I see a Black Mamba Skin sticking out of your bag?\"";
+    menu
+        "Yes, can you do something with it?", L_Branch_Mamba,
+        "Yes, but that's not why I'm here to see you.", L_Check_Shops;
+
+L_Check_Mamba_Again:
+    mes "[Chief Pachua]";
+    mes "\"I see you have a Black Mamba Skin with you, are you ready for me to craft something with it?\"";
+    menu
+        "Yes, take a look.", L_Branch_Mamba,
+        "No, that's not why I'm here to see you.", L_Check_Shops;
+
+L_Branch_Mamba:
+    if (QUEST_Mamba == 5) goto L_Mamba_Helm;
+    if (QUEST_Mamba == 4) goto L_Mamba_Chest;
+    if (QUEST_Mamba == 3) goto L_Mamba_Legs;
+    if (QUEST_Mamba == 2) goto L_Mamba_Boots;
+    if (QUEST_Mamba == 1) goto L_Mamba_Gloves;
+
+    mes "[Chief Pachua]";
+    mes "\"The skin of the Black Mamba can be used to craft a leather armor that is lighter than any metal armor and stronger than any other leather.";
+    mes "\"Because it is leather, it can be used to make every type of armor.";
+    mes "\"Although I know of no-one with the expertise to craft a shield, I can make the other pieces for you.";
+    mes "\"I'll start with the gloves, but I'll need two Black Mamba Skins, one Black Mamba Tongue for thread, two Black Mamba Eggs to soften the leather, a Ruby, and 5,000 gold.\"";
+
+    set QUEST_Mamba, 1;
+
+    menu
+        "I actually have all of that already!", L_Mamba_Gloves_Check,
+        "Maybe later....", L_Close;
+
+L_Mamba_Gloves:
+    mes "[Chief Pachua]";
+    mes "\"For a pair of Black Mamba Gloves I'll need two Black Mamba Skins, one Black Mamba Tongue for thread, two Black Mamba Eggs to soften the leather, a Ruby, and 5,000 gold.\"";
+    menu
+        "Here you are.", L_Mamba_Gloves_Check,
+        "I'll think about it.", L_Close;
+
+L_Mamba_Gloves_Check:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
+    if (countitem("BlackMambaSkin") < 2 || countitem("BlackMambaTongue") < 1 ||
+        countitem("BlackMambaEgg") < 2 || countitem("Ruby") < 1) goto L_MissingItems;
+    if (Zeny < 5000) goto L_NoMoney;
+
+    delitem "BlackMambaSkin", 2;
+    delitem "BlackMambaTongue", 1;
+    delitem "BlackMambaEgg", 2;
+    delitem "Ruby", 1;
+    set Zeny, Zeny - 5000;
+
+    getitem "BlackMambaGloves", 1;
+    set QUEST_Mamba, 2;
+    goto L_DealDone;
+
+L_Mamba_Boots:
+    mes "[Chief Pachua]";
+    mes "\"For a pair of Black Mamba Boots I'll need four Black Mamba Skins, two Black Mamba Tongues for thread, two Rubies, and 10,000 gold.\"";
+    menu
+        "I'll take them.", L_Mamba_Boots_Check,
+        "That's way too much!", L_Close;
+
+L_Mamba_Boots_Check:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
+    if (countitem("BlackMambaSkin") < 4 || countitem("BlackMambaTongue") < 2 ||
+        countitem("Ruby") < 2) goto L_MissingItems;
+    if (Zeny < 10000) goto L_NoMoney;
+
+    delitem "BlackMambaSkin", 4;
+    delitem "BlackMambaTongue", 2;
+    delitem "Ruby", 2;
+    set Zeny, Zeny - 10000;
+
+    getitem "BlackMambaBoots", 1;
+    set QUEST_Mamba, 3;
+    goto L_DealDone;
+
+L_Mamba_Legs:
+    mes "[Chief Pachua]";
+    mes "\"For a pair of Black Mamba Pants I'll need six Black Mamba Skins, three Black Mamba Tongues for thread, six Black Mamba Eggs to soften the leather, three Rubies, and 20,000 gold.\"";
+    menu
+        "Here you go!", L_Mamba_Legs_Check,
+        "Um, no thanks.", L_Close;
+
+L_Mamba_Legs_Check:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
+    if (countitem("BlackMambaSkin") < 6 || countitem("BlackMambaTongue") < 3 ||
+        countitem("BlackMambaEgg") < 6 || countitem("Ruby") < 3) goto L_MissingItems;
+    if (Zeny < 20000) goto L_NoMoney;
+
+    delitem "BlackMambaSkin", 6;
+    delitem "BlackMambaTongue", 3;
+    delitem "BlackMambaEgg", 6;
+    delitem "Ruby", 3;
+    set Zeny, Zeny - 20000;
+
+    getitem "BlackMambaPants", 1;
+    set QUEST_Mamba, 4;
+    goto L_DealDone;
+
+L_Mamba_Chest:
+    mes "[Chief Pachua]";
+    mes "\"For a Black Mamba Armor I'll need ten Black Mamba Skins, ten Black Mamba Tongues for stitching, two Iron Ingots for strength, ten Rubies, and 250,000 gold.\"";
+    menu
+        "I'll take it.", L_Mamba_Chest_Check,
+        "That's outrageous!", L_Close;
+
+L_Mamba_Chest_Check:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
+    if (countitem("BlackMambaSkin") < 10 || countitem("BlackMambaTongue") < 10 ||
+        countitem("IronIngot") < 2 || countitem("Ruby") < 10) goto L_MissingItems;
+    if (Zeny < 250000) goto L_NoMoney;
+
+    delitem "BlackMambaSkin", 10;
+    delitem "BlackMambaTongue", 10;
+    delitem "IronIngot", 2;
+    delitem "Ruby", 10;
+    set Zeny, Zeny - 250000;
+
+    getitem "BlackMambaArmor", 1;
+    set QUEST_Mamba, 5;
+    goto L_DealDone;
+
+L_Mamba_Helm:
+    mes "[Chief Pachua]";
+    mes "\"For a Black Mamba Helm I'll need eight Black Mamba Skins, eight Black Mamba Tongues for stitching, eight Black Mamba Eggs to soften the interior, twenty Rubies to absorb blows, and 100,000 gold.\"";
+    menu
+        "Can I get that boxed?", L_Mamba_Helm_Check,
+        "Not worth it to me right now.", L_Close;
+
+L_Mamba_Helm_Check:
+    if (countitem("BlackMambaSkin") < 8 || countitem("BlackMambaTongue") < 8 ||
+        countitem("BlackMambaEgg") < 8 || countitem("Ruby") < 20) goto L_MissingItems;
+    if (Zeny < 100000) goto L_NoMoney;
+
+    delitem "BlackMambaSkin", 8;
+    delitem "BlackMambaTongue", 8;
+    delitem "BlackMambaEgg", 8;
+    delitem "Ruby", 20;
+    set Zeny, Zeny - 100000;
+
+    getitem "BlackMambaHelm", 1;
+    set QUEST_Mamba, 6;
+    goto L_DealDone;
+
+L_Check_Shops:
+    if ((countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) && (countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2)) goto L_Super_store;
+    if (countitem("JeansShorts") >= 1 && countitem("SnakeSkin") >= 10) goto L_Chaps_store;
+    if (countitem("FancyHat") >= 1 && countitem("SnakeSkin") >= 2) goto L_Cowboy_store;
+
+    mes "[Chief Pachua]";
     mes "\"Maybe if you bring me the right materials I can make something for you.\"";
     next;
     if (@wants_leather_patch)
@@ -58,7 +209,6 @@ L_Check_Shops:
 
 S_CheckStuff:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Let me see what you have there.\"";
     next;
     return;
@@ -66,11 +216,8 @@ S_CheckStuff:
 L_Super_store:
     callsub S_CheckStuff;
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Ahh you have lots of good items to work with.\"";
-    mes "";
-    mes "\"With them I can make you either";
-    mes "a Cowboy hat or Snake Skin Chaps\"";
+    mes "\"With them I can make you either a Cowboy hat or Snake Skin Chaps\"";
     next;
     if (@wants_leather_patch)
         menu
@@ -87,7 +234,6 @@ L_Super_store:
 L_Cowboy_store:
     callsub S_CheckStuff;
     mes "[Chief Pachua]";
-    mes "";
     mes "\"To make you a Cowboy hat I will need:";
     mes "1 Fancy hat";
     mes "2 Snake skins";
@@ -108,7 +254,6 @@ L_Cowboy_store:
 L_Chaps_store:
     callsub S_CheckStuff;
     mes "[Chief Pachua]";
-    mes "";
     mes "\"To make you a pair of Snake Skin Chaps I will need:";
     mes "1 Jeans Shorts";
     mes "10 Snake skins";
@@ -127,6 +272,8 @@ L_Chaps_store:
             "On second thought, maybe later.", L_NoDeal;
 
 L_BuyChaps:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
     if (Zeny < 10000) goto L_NoMoney;
     if (countitem("JeansShorts") < 1) goto L_NoJeans;
     if (countitem("SnakeSkin") < 10) goto L_NoSkin;
@@ -137,6 +284,8 @@ L_BuyChaps:
     goto L_DealDone;
 
 L_BuyCowboy:
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
     if (Zeny < 5000) goto L_NoMoney;
     if (countitem("FancyHat") < 1) goto L_NoFancy;
     if (countitem("SnakeSkin") < 2) goto L_NoSkin;
@@ -157,7 +306,6 @@ L_Cowboy_black:
 
 L_leather_patch:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"If you just want a piece of leather, then yes, I can make that.  Bring me a snake skin and " + @LEATHER_PATCH_PRICE + " GP.\"";
     next;
     menu
@@ -177,52 +325,48 @@ L_leather_patch:
 
 L_DealDone:
     mes "[Chief Pachua]";
-    mes "";
-    mes "\"Here you are!\"";
-    mes "";
-    mes "\"Come back any time.\"";
+    mes "\"Here you are!";
+    mes "Come back any time.\"";
     goto L_Close;
 
 L_NoDeal:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Alright, but you won't get a better deal anywhere else!\"";
+    goto L_Close;
+
+L_MissingItems:
+    mes "[Chief Pachua]";
+    mes "\"You don't seem to have all the items I need to craft that. Come back when you do.\"";
     goto L_Close;
 
 L_NoMoney:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Oh dear, it seems you don't have enough money.\"";
     goto L_Close;
 
 L_NoJeans:
     mes "[Chief Pachua]";
-    mes "";
-    mes "\"Oh dear, it seems you don't have enough jeans shorts.\"";
+    mes "\"Oh dear, it seems you don't have enough jean shorts.\"";
     goto L_Close;
 
 L_NoFancy:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Oh dear, it seems you don't have enough fancy hats.\"";
     goto L_Close;
 
 L_NoSkins:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Oh dear, it seems you don't have enough snake skins.\"";
     goto L_Close;
 
 L_WearingCowboy:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Ah, I see that you are wearing a hat made with the ancient methods of my tribe.\"";
     next;
     goto L_Check_Shops;
 
 L_WearingChaps:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"Ah, I see that you are wearing pants made by my tribe.\"";
     next;
     goto L_Check_Shops;
@@ -238,8 +382,7 @@ L_Close:
 
 L_TooMany:
     mes "[Chief Pachua]";
-    mes "";
-    mes "\"You don't have room for a leather patch. Come back later.\"";
+    mes "\"You don't have room for another item. Come back later.\"";
     goto L_Close;
 
 L_smoke:
@@ -256,7 +399,6 @@ L_warp_cheat:
 
 L_Basket:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"For generations my tribe has been crafting special clothes out of different items.\"";
     mes "\"Maybe if you bring me the right materials I can make something for you.\"";
     next;
@@ -274,7 +416,6 @@ L_Basket:
 
 L_MakeBasket:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"I will need you to gather reeds for me.\"";
     mes "\"5 bundles should do it.\"";
     mes "\"You should be able to get those from mouboos as they graze.\"";
@@ -290,7 +431,6 @@ L_MakeBasket:
 
 L_EasterNotEnough:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"You do not have enough Reed Bundles for me to work with.\"";
     mes "\"Go gather more.\"";
     goto L_Close;
@@ -303,7 +443,6 @@ L_EasterEnough:
     getitem "EasterBasket", 1;
     set QUEST_Easter11, 3;
     mes "[Chief Pachua]";
-    mes "";
     mes "\"You have gathered enough reeds for me to make the basket.\"";
     mes "He skillfully soaks the reeds you brought him,";
     mes "then swiftly weaves them into a basket shape.";
@@ -313,13 +452,11 @@ L_EasterEnough:
 
 L_EasterTooMany:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"You don't have room for the Easter Basket. Come back later.\"";
     goto L_Close;
 
 L_SeeBunny:
     mes "[Chief Pachua]";
-    mes "";
     mes "\"You need to return to the Easter Bunny now.\"";
     next;
     goto L_Begin;
