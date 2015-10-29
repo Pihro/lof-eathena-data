@@ -9,43 +9,38 @@
 L_Smithmenu:
     menu
         "Can you smith my Short Sword?", L_Sword,
-//        "How about a Crusade Helmet?", L_Helm,
+        "How about a Crusade Helmet?", L_Helm,
         "Can you silver my Forest Bow?", L_Bow,
         "I'd like my Clover Silvered.", L_Clover,
-        "I think I have everything I need, thanks.", -;
-    goto L_Close;
+        "I think I have everything I need, thanks.", L_Close;
 
 L_Sword:
     mes "[Smith Silvers]";
     mes "\"I can, it will cost you 15 Silver Ore, 6 Raw Coal, and 100,000 gp.\"";
     menu
         "Sure.", L_sword2,
-        "What a ripoff!  No way!", -;
-    goto L_Close;
+        "What a ripoff!  No way!", L_Close;
 
 L_Helm:
     mes "[Smith Silvers]";
     mes "\"I can silver that helmet for 6 Silver Ore, 9 Raw coal, and 50,000 gp.\"";
     menu
         "Here you go.", L_helm2,
-        "Are you nuts?! Forget it!", -;
-    goto L_Close;
+        "Are you nuts?! Forget it!", L_Close;
 
 L_Bow:
     mes "[Smith Silvers]";
     mes "\"I can silver that bow for 18 Silver Ore, 18 Raw Coal, and 200,000 gp.\"";
     menu
         "Sure.", L_bow2,
-        "Whoa, that's way too much.", -;
-    goto L_Close;
+        "Whoa, that's way too much.", L_Close;
 
 L_Clover:
-        mes "[Smith Silvers]";
-        mes "\"I can silver your clover for 4 Silver Ore, 5 Raw Coal, and 250,000 gp.\"";
-        menu
-            "I have them right here.", L_Clover2,
-            "Whoa, that's way too much.", -;
-        goto L_Close;
+    mes "[Smith Silvers]";
+    mes "\"I can silver your clover for 4 Silver Ore, 5 Raw Coal, and 250,000 gp.\"";
+    menu
+        "I have them right here.", L_Clover2,
+        "Whoa, that's way too much.", L_Close;
 
 L_sword2:
     if (countitem("SilverOre") < 15) goto L_Missing;
@@ -64,7 +59,6 @@ L_sword2:
     menu
         "Yes.", L_Smithmenu,
         "Nope.", L_No;
-    goto L_Close;
 
 L_helm2:
     if (countitem("SilverOre") < 6) goto L_Missing;
@@ -83,7 +77,6 @@ L_helm2:
     menu
         "Yes.", L_Smithmenu,
         "No.", L_No;
-    goto L_Close;
 
 L_bow2:
     if (countitem("SilverOre") < 18) goto L_Missing;
@@ -102,7 +95,6 @@ L_bow2:
     menu
         "Yes.", L_Smithmenu,
         "No.", L_No;
-    goto L_Close;
 
 L_Clover2:
         if (countitem("SilverOre") < 4) goto L_Missing;
@@ -121,7 +113,6 @@ L_Clover2:
         menu
             "Yes.", L_Smithmenu,
             "No.", L_No;
-        goto L_Close;
 
 L_Full:
     mes "[Smith Silvers]";

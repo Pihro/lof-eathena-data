@@ -47,11 +47,11 @@ L_Check:
     mes "[Nicholas]";
     mes "\"Let me take a look at how much you have...\"";
     next;
-    if ( (countitem("IronIngot")<3) || (countitem("Coal") < 6) )
+    if ((countitem("IronIngot") < 3) || (countitem("Coal") < 6))
         goto L_NoItem;
-    if ( (countitem("IronIngot")<6) || (countitem("Coal") < 12) )
+    if ((countitem("IronIngot") < 6) || (countitem("Coal") < 12))
         goto L_StageA;
-    if ( (countitem("IronIngot")<9) || (countitem("Coal") < 18) )
+    if ((countitem("IronIngot") < 9) || (countitem("Coal") < 18))
         goto L_StageB;
     goto L_StageC;
 
@@ -119,7 +119,7 @@ L_main_menu_post_setzer:
 
     if ( (countitem("IronIngot")<6) || (countitem("Coal") < 12) )
         goto L_no_more_helmets;
-    set @choice$[@choices_nr], "Crusade Helmet (6 Iron Ingots & 12 Coal).";
+    set @choice$[@choices_nr], "Unsilvered Crusade Helmet (6 Iron Ingots & 12 Coal).";
     set @choice_idx[@choices_nr], @CHOICE_CRUSADE;
     set @choices_nr, 1 + @choices_nr;
 
@@ -200,10 +200,10 @@ L_YesCrusade:
     getinventorylist;
     if (@inventorylist_count == 100)
         goto L_TooMany;
-    set Zeny, Zeny-10000;
+    set Zeny, Zeny - 10000;
     delitem "IronIngot", 6;
     delitem "Coal", 12;
-    getitem "CrusadeHelmet", 1;
+    getitem "UnsilveredCrusadeHelmet", 1;
     goto L_Done;
 
 L_YesWarlord:
