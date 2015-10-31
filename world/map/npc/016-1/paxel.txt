@@ -1,0 +1,72 @@
+# Coal refiner
+016-1.gat,40,39,0|script|Paxel|141,{
+    set @Cost_With_Logs, 2000;
+    set @Cost_Without_Logs, 3000;
+    set @Logs_Needed, 5;
+    set @Coal_Per, 5;
+
+    mes "[Paxel]";
+    mes "\"Hello traveler! I've been studying how to refine raw coal with pressure and heat from a wood firepit.";
+    mes "\"For " + @Cost_With_Logs + " gold, I can refine " + @Coal_Per + " Coal from a lump of Raw Coal and " + @Logs_Needed + " Raw Logs.";
+    mes "If you don't have any logs to spare, I can use my logs; but that will cost you " + @Cost_Without_Logs + " gold.\"";
+
+    menu
+        "I'd like you to use my logs.", L_Logs_Provided,
+        "Use your logs, please.", L_No_Logs_Provided,
+        "I don't want to refine any coal today.", L_Close;
+
+L_Logs_Provided:
+    set @Log_Mult, @Logs_Needed;
+    set @Cost_Mult, @Cost_With_Logs;
+    goto L_Check_Items;
+
+L_No_Logs_Provided:
+    set @Log_Mult, 0;
+    set @Cost_Mult, @Cost_Without_Logs;
+    goto L_Check_Items;
+
+L_Check_Items:
+    mes "[Paxel]";
+    mes "\"How many lumps of Raw Coal do you want refined?\"";
+
+    input @refine_count;
+
+    if (@refine_count == 0) goto L_Bye;
+    if (@refine_count > countitem("RawCoal") || @refine_count * @Log_Mult > countitem("RawLog")) goto L_MissingItems;
+    if (@refine_count * @Cost_Mult > Zeny) goto L_NoMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Coal") == 0) goto L_NoSpace;
+
+    delitem "RawCoal", @refine_count;
+    delitem "RawLog", @refine_count * @Log_Mult;
+    set Zeny, Zeny - (@refine_count * @Cost_Mult);
+
+    getitem "Coal", @refine_count * @Coal_Per;
+    goto L_Bye;
+
+
+L_MissingItems:
+    mes "[Paxel]";
+    mes "\"You are missing some of the raw materials.\"";
+    goto L_Close;
+
+L_NoMoney:
+    mes "[Paxel]";
+    mes "\"You can't afford that much work! Do some odd jobs and come back.\"";
+    goto L_Close;
+
+
+L_NoSpace:
+    mes "[Paxel]";
+    mes "\"You won't have enough space for the refined Coal. Better come back later.\"";
+    goto L_Close;
+
+
+L_Bye:
+    mes "[Paxel]";
+    mes "\"Have a good day and come again soon!\"";
+    goto L_Close;
+
+L_Close:
+    close;
+}
