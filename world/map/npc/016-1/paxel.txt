@@ -1,5 +1,6 @@
-# Coal refiner
 016-1.gat,40,39,0|script|Paxel|141,{
+    # Coal refiner
+
     set @Cost_With_Logs, 2000;
     set @Cost_Without_Logs, 3000;
     set @Logs_Needed, 5;
