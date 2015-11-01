@@ -7,7 +7,7 @@
 
 009-2.gat,32,104,0|script|Selim|326,
 {
-    setarray @all_colours$, "red", "green", "dark blue", "yellow", "light blue", "pink", "black", "orange", "purple", "dark green";
+    setarray @all_colors$, "red", "green", "dark blue", "yellow", "light blue", "pink", "black", "orange", "purple", "dark green";
 
     mes "[Selim]";
     mes "\"What can I dye for you today?\"";
@@ -277,9 +277,9 @@ L_Next:
 
 L_picked_item:
     if (countitem(@del) == 0) goto L_havenone;
-    goto L_colour;
+    goto L_color;
 
-L_colour:
+L_color:
     mes "[Selim]";
     mes "\"Excellent.  Now, what color do you want?\"";
     next;
@@ -297,18 +297,18 @@ L_colour:
         "Nevermind.", L_Close;
 
 L_MenuItems:
-    set @colour, @menu - 1;
-    set @vial, 690 + @colour;
+    set @color, @menu - 1;
+    set @vial, 690 + @color;
     if (countitem(@vial) == 0) goto L_no_dye;
     goto L_finish;
 
 L_no_dye:
     mes "[Selim]";
-    mes "\"I would love to dye your " + @name$ + " for you, but you will have to bring me some " + @all_colours$[@colour] + " dye first.";
+    mes "\"I would love to dye your " + @name$ + " for you, but you will have to bring me some " + @all_colors$[@color] + " dye first.";
     mes "Those behind me are nearly empty and won't last for your item.\"";
     next;
     menu
-        "Sorry, I meant a different color.", L_colour,
+        "Sorry, I meant a different color.", L_color,
         "I wanted to dye a different item anyway.", L_clothes_choice,
         "What do you mean, `bring you dye'?", L_explain_dye,
         "Where would I get dye?", L_explain_dye,
@@ -327,9 +327,9 @@ L_finish:
         goto L_havenone;
     delitem @vial, 1;
     delitem @del, 1;
-    getitem @new + @colour, 1;
+    getitem @new + @color, 1;
     mes "[Selim]";
-    mes "\"Here " + @is_verb$ + " your " + @all_colours$[@colour] + " " + @name$ + "!  Please let " + @pronoun$ + " dry for a minute before you put " + @pronoun$ + " on.\"";
+    mes "\"Here " + @is_verb$ + " your " + @all_colors$[@color] + " " + @name$ + "!  Please let " + @pronoun$ + " dry for a minute before you put " + @pronoun$ + " on.\"";
     goto L_Close;
 
 L_havenone:
@@ -341,37 +341,38 @@ L_havenone:
 
 L_saviorarmor:
     if (countitem("WhiteSaviorArmor") < 1) goto L_missing;
-    
+
     mes "[Selim]";
     mes "\"Sure, what color would you like?\"";
     next;
-    
+
     menu
-        "Red.", -,
-        "Green.", -,
-        "Dark Blue.", -,
-        "Yellow.", -,
-        "Light Blue.", -,
-        "Pink.", -,
-        "Black.", -,
-        "Orange.", -,
-        "Dark Green.", -,
+        "Red.", L_GetSaviorColor,
+        "Green.", L_GetSaviorColor,
+        "Dark Blue.", L_GetSaviorColor,
+        "Yellow.", L_GetSaviorColor,
+        "Light Blue.", L_GetSaviorColor,
+        "Pink.", L_GetSaviorColor,
+        "Black.", L_GetSaviorColor,
+        "Orange.", L_GetSaviorColor,
+        "Dark Green.", L_GetSaviorColor,
         "Could you do purple?", L_purple_savior,
         "I'm fine.", L_close;
-    
+
+L_GetSaviorColor:
     callfunc "SaviorColors";
-    
+
     set @which_armor$, @savior_armors$[@menu - 1];
     set @which_dye$, @savior_dyes$[@menu - 1];
-    
+
     callfunc "ClearSaviorColors";
-    
+
     if (countitem(@which_dye$) == 0) goto L_no_dye_savior;
-    
+
     delitem "WhiteSaviorArmor", 1;
     delitem @which_dye$, 1;
     getitem @which_armor$, 1;
-    
+
     set ARMOR_Quest, 2;
     mes "[Selim]";
     mes "\"There you go! Want me to dye anything else?\"";
@@ -412,9 +413,9 @@ L_close:
     set @name$, "";
     set @pronoun$, "";
     set @is_verb$, "";
-    set @colour, 0;
+    set @color, 0;
     set @vial, 0;
-    set @all_colours$, "";
+    set @all_colors$, "";
     set @which_armor$, "";
     set @which_dye$, "";
     close;
