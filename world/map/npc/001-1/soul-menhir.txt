@@ -14,5 +14,7 @@
     cleararray @Ys[0], 0, 7;
     set @x, 0;
     set @y, 0;
+    delitem "YellowHitchhikersTowel", 1;
+    getitem "YellowHitchhikersTowel", 1;
     close;
 }
