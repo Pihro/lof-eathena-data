@@ -18,7 +18,7 @@
 L_bleach_menu:
     if (countitem("PileOfAsh") < 3) goto L_no_ash;
     if (Zeny < 5000) goto L_no_money;
-    
+
     mes "[Candide]";
     mes "\"What would you like to bleach?\"";
     next;
@@ -224,7 +224,6 @@ L_cotton_cloth:
 L_choose_color:
     mes "[Candide]";
     mes "\"And the color?\"";
-    next;
 
     menu
         "Red.", L_MenuItems,
@@ -247,48 +246,47 @@ L_MenuItems:
     getitem @normal, 1;
     delitem "PileOfAsh", 3;
     set Zeny, Zeny - 5000;
-    
+
     goto L_again;
 
 L_savior_armor:
     mes "[Candide]";
     mes "\"And the color?\"";
-    next;
-    
+
     // No purple - purple is Royal Savior Armor.
     menu
-        "Red.", -,
-        "Green.", -,
-        "Dark Blue.", -,
-        "Yellow.", -,
-        "Light Blue.", -,
-        "Pink.", -,
-        "Black.", -,
-        "Orange.", -,
-        "Dark Green.", -,
+        "Red.", L_GetSaviorColor,
+        "Green.", L_GetSaviorColor,
+        "Dark Blue.", L_GetSaviorColor,
+        "Yellow.", L_GetSaviorColor,
+        "Light Blue.", L_GetSaviorColor,
+        "Pink.", L_GetSaviorColor,
+        "Black.", L_GetSaviorColor,
+        "Orange.", L_GetSaviorColor,
+        "Dark Green.", L_GetSaviorColor,
         "Nevermind.", L_Close;
-    
+
+L_GetSaviorColor:
     callfunc "SaviorColors";
-    
+
     set @which_armor$, @savior_armors$[@menu - 1];
-    
+
     callfunc "ClearSaviorColors";
-    
+
     if (countitem(@which_armor$) == 0) goto L_no_item;
-    
+
     delitem @which_armor$, 1;
     getitem "WhiteSaviorArmor", 1;
     delitem "PileOfAsh", 3;
     set Zeny, Zeny - 5000;
-    
+
     set @which_armor$, "";
-    
+
     goto L_again;
 
 L_again:
     mes "[Candide]";
     mes "\"Would you like to bleach something else?\"";
-    next;
 
     menu
         "Yes.", L_bleach_menu,
