@@ -50,9 +50,9 @@ L_Begin:
 L_lace_chococake:
     next;
     menu
-        "Thanks!  Let me have a look around...", L_end,
+        "Thanks!  Let me have a look around...", L_Close,
         "Can you put this potion into a Chocolate Cake?", L_Next,
-        "Goodbye!", L_end;
+        "Goodbye!", L_Close;
 
 L_Next:
     mes "[Riskim]";
@@ -68,9 +68,9 @@ L_Next:
     mes "\"We'll need extra chocolate for that one.  If you can give me ten pieces of chocolate and that potion, plus 400 GP, I will bake you a special Chocolate Cake that hides the taste.\"";
     next;
     menu
-        "I will get them for you.", L_end,
+        "I will get them for you.", L_Close,
         "Here you are!", L_Continue,
-        "Maybe later.", L_end;
+        "Maybe later.", L_Close;
 
 L_Continue:
     if (countitem("ChocolateBar") < 10)
@@ -111,9 +111,9 @@ L_lacking_ingredients:
 L_lace_cupcake:
     next;
     menu
-        "Thanks!  Let me have a look around...", L_end,
+        "Thanks!  Let me have a look around...", L_Close,
         "Can you put this potion into an Orange Cupcake?", L_More,
-        "Goodbye!", L_end;
+        "Goodbye!", L_Close;
 
 L_More:
     mes "[Riskim]";
@@ -123,9 +123,9 @@ L_More:
     mes "[Riskim]";
     mes "";
     mes "\"Perhaps the Chef at Dimond's Cove can help you?  We get all our cupcakes from him.\"";
-    next;
+    goto L_Close;
 
-L_end:
+L_Close:
     close;
 
 L_ChocMouboo:
@@ -141,9 +141,12 @@ L_ChocMouboo:
         "Do you have one in the shape of a mouboo? The Easter Bunny needs one.", -;
     mes "\"The Easter Bunny? Interesting... I think I can help you make a Chocolate Mouboo.\"";
     menu
-        "Nah, I decided not to do that stupid quest.", L_end,
-        "I would really appreciate that!", -;
+        "Nah, I decided not to do that stupid quest.", L_Close,
+        "I would really appreciate that!", L_Set11;
+
+L_Set11:
     set QUEST_Easter11, 11;
+    goto L_MakeChockMouboo;
 
 L_MakeChocMouboo:
     mes "[Riskim]";
@@ -154,13 +157,14 @@ L_MakeChocMouboo:
     mes "\"I will also need a Mouboo Figurine to hollow out and use as a mold.\"";
     mes "\"Any mage should be able to make you one out of a log, if you ask.\"";
     menu
-        "I have everything you need.", -,
-        "Ok, I will be back soon.", L_end,
-        "I changed my mind, forget about it.", L_end;
+        "I have everything you need.", L_CheckItems,
+        "Ok, I will be back soon.", L_Close,
+        "I changed my mind, forget about it.", L_Close;
 
-    if(countitem("ChocolateBar") < 5
-        || countitem("MoubooFigurine") < 1)
-            goto L_EasterNotEnough;
+L_CheckItems:
+    if (countitem("ChocolateBar") < 5 || countitem("MoubooFigurine") < 1)
+        goto L_EasterNotEnough;
+    goto L_EasterEnough;
 
 L_EasterEnough:
     getinventorylist;
