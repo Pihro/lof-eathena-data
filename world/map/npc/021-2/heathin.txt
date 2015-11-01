@@ -239,7 +239,6 @@ L_Heathin_Terranite_Arrows:
     menu
         "No, thank you.", L_Heathin_Terranite_Arrows_No,
         "Sure, I could use some arrows.", L_Heathin_Terranite_Arrows_Yes;
-    close;
 
 L_Heathin_Terranite_Arrows_No:
     mes "[Heathin]";
@@ -288,7 +287,6 @@ L_Heathin_Terranite_Arrows_Trade:
     menu
         "No.", L_Heathin_Terranite_Arrows_Trade_No,
         "Yes.", L_Heathin_Terranite_Arrows_Trade_Yes;
-    close;
 
 L_Heathin_Terranite_Arrows_Trade_No:
     mes "[Heathin]";
