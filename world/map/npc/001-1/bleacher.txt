@@ -12,7 +12,7 @@
     if (Zeny < 5000) goto L_no_money;
 
     menu
-        "I'd like to bleach something.", -,
+        "I'd like to bleach something.", L_bleach_menu,
         "No thanks.", L_Close;
 
 L_bleach_menu:
@@ -227,18 +227,18 @@ L_choose_color:
     next;
 
     menu
-        "Red.", -,
-        "Green.", -,
-        "Dark Blue.", -,
-        "Yellow.", -,
-        "Light Blue.", -,
-        "Pink.", -,
-        "Black.", -,
-        "Orange.", -,
-        "Purple.", -,
-        "Dark Green.", -,
-        "Nevermind.", L_Close;
+        "Red.", L_MenuItems,
+        "Green.", L_MenuItems,
+        "Dark Blue.", L_MenuItems,
+        "Yellow.", L_MenuItems,
+        "Light Blue.", L_MenuItems,
+        "Pink.", L_MenuItems,
+        "Black.", L_MenuItems,
+        "Orange.", L_MenuItems,
+        "Purple.", L_MenuItems,
+        "Dark Green.", L_MenuItems;
 
+L_MenuItems:
     set @del, @dyeBase + @menu - 1;
 
     if (countitem(@del) == 0) goto L_no_item;
