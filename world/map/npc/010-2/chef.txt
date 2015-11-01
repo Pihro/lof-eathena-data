@@ -32,7 +32,9 @@ L_lace_chococake:
     next;
     menu
         "Sorry.", L_end,
-        "I need your help with a sick young girl!", -;
+        "I need your help with a sick young girl!", L_Next;
+
+L_Next:
     mes "[Chef]";
     mes "";
     mes "You explain Kadiya's situation to him.";
@@ -43,7 +45,9 @@ L_lace_cupcake:
     next;
     menu
         "Sorry.", L_end,
-        "I need your help with a sick young girl!", -;
+        "I need your help with a sick young girl!", L_Next1;
+
+L_Next1:
     mes "[Chef]";
     mes "";
     mes "You explain Kadiya's situation to him.";
@@ -51,7 +55,9 @@ L_lace_cupcake:
     next;
     menu
         "No, sorry.", L_bringit,
-        "Yes, here you are.", -;
+        "Yes, here you are.", L_Next2;
+
+L_Next2:
     if (countitem ("MopoxCurePotion") < 1)
         goto L_bringit;
     mes "[Chef]";
@@ -66,9 +72,10 @@ L_lace_cupcake:
     next;
     menu
         "I'll go and get it.", L_end,
-        "Here you are!", -,
+        "Here you are!", L_Next3,
         "Not now.", L_end;
 
+L_Next3:
     if (countitem ("GingerBreadMan") < 3)
         goto L_no_gingerbread;
     if (countitem ("Orange") < 1)

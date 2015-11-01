@@ -53,10 +53,7 @@
         "What are you talking about?", L_intro_explain,
         "I don't have any obsidian salt.", L_intro_nopowder,
         "Do I know you?", L_intro_identity,
-        "Goodbye.", -;
-    close;
-
-    set @name_complaint, 0;
+        "Goodbye.", L_Close;
 
 L_intro_explain:
     mes "[Robed Man]";
@@ -85,20 +82,19 @@ L_intro_identity:
         @xmsg$, L_intro_wrongperson,
         "You're not very good with faces, are you?", L_intro_nogood,
         "Who are you?", L_intro_who_are_you,
-        "Goodbye.", -;
-    close;
+        "Goodbye.", L_Close;
 
 L_intro_wrongperson:
     mes "[Robed Man]";
     mes "He laughs.";
     mes "\"Ah, I knew it... you're not the first one today, either.  I should apologize, I am horrible with faces.  Well, if you don't mind, please hurry along, I should go back to my experiments.\"";
     next;
+    goto L_intro_primary_menu;
 
 L_intro_primary_menu:
     menu
         "Who are you?", L_intro_who_are_you,
-        "Goodbye.", -;
-    close;
+        "Goodbye.", L_Close;
 
 L_intro_nogood:
     mes "[Robed Man]";
@@ -108,8 +104,7 @@ L_intro_nogood:
     menu
         "Who are you?", L_intro_who_are_you,
         "What is obsidian salt, anyway?", L_intro_obsidian_salt,
-        "Goodbye.", -;
-    close;
+        "Goodbye.", L_Close;
 
 L_intro_obsidian_salt:
     mes "[Robed Man]";
@@ -149,8 +144,7 @@ L_main_menu:
         "Where are you from?", L_about_auldsbel,
         "Do you need help with your experiments?", L_quest,
         "What do you know about...", L_question,
-        "Goodbye.", -;
-    close;
+        "Goodbye.", L_Close;
 
 L_main_menu_magic:
     if (@wants_sulphur && @wants_ironpowder)
@@ -162,7 +156,7 @@ L_main_menu_magic:
              "What do you know about...", L_question,
              "Can you make sulphur powder?", L_sulphur,
              "Can you make iron powder?", L_ironpowder,
-             "Goodbye.", -;
+             "Goodbye.", L_Close;
     if (@wants_sulphur && !@wants_ironpowder)
         menu
             "How does magic work?", L_about_magic,
@@ -171,16 +165,14 @@ L_main_menu_magic:
             "Do you need help with your experiments?", L_quest,
             "What do you know about...", L_question,
             "Can you make sulphur powder?", L_sulphur,
-            "Goodbye.", -;
-    if (!@wants_sulphur)
-        menu
-            "How does magic work?", L_about_magic,
-            "Can you teach me a spell?", L_learn_spell,
-            "Where are you from?", L_about_auldsbel,
-            "Do you need help with your experiments?", L_quest,
-            "What do you know about...", L_question,
-            "Goodbye.", -;
-    close;
+            "Goodbye.", L_Close;
+    menu
+        "How does magic work?", L_about_magic,
+        "Can you teach me a spell?", L_learn_spell,
+        "Where are you from?", L_about_auldsbel,
+        "Do you need help with your experiments?", L_quest,
+        "What do you know about...", L_question,
+        "Goodbye.", L_Close;
 
 L_ironpowder:
     mes "[Auldsbel the Wizard]";
@@ -198,16 +190,14 @@ L_sulphur:
     next;
     if (@Q_main_status >= @Q_STATUS_STUDENT)
         menu
-            "No, thank you.", -,
-            "I will see what I can find.", -,
+            "No, thank you.", L_Close,
+            "I will see what I can find.", L_Close,
             "Can you teach me how to make it myself?", L_sulphur_teach_spell,
             "Here you are.", L_sulphur_buy;
-    if (@Q_main_status < @Q_STATUS_STUDENT)
-        menu
-            "No, thank you.", -,
-            "I will see what I can find.", -,
-            "Here you are.", L_sulphur_buy;
-    close;
+    menu
+        "No, thank you.", L_Close,
+        "I will see what I can find.", L_Close,
+        "Here you are.", L_sulphur_buy;
 
 L_sulphur_buy:
     if (Zeny < @cost)
@@ -266,7 +256,9 @@ L_sulphur_teach_spell_no:
     next;
     menu
         "Very well, I will help you.", L_quest,
-        "No.", -;
+        "No.", L_Next;
+
+L_Next:
     mes "[Auldsbel the Wizard]";
     mes "\"Then I fear that I shall not reveal the spell to you either.\"";
     next;
@@ -279,6 +271,7 @@ L_about_magic:
     mes "[Auldsbel the Wizard]";
     mes "\"Most spells are claimed by one of the five schools of magic.  To properly use them, a magic user need not only have sufficient prowess in magic overall, but also in the specifics of that particular school.\"";
     next;
+    goto L_about_magic_minimenu;
 
 L_about_magic_minimenu:
     menu
@@ -286,13 +279,13 @@ L_about_magic_minimenu:
         "How can I advance in magic?", L_about_magic_advance,
         "How do spells work?", L_about_magic_spells,
         "Where can I learn spells?", L_about_magic_learn,
-        "Never mind.", -;
-    goto L_main_menu;
+        "Never mind.", L_main_menu;
 
 L_about_magic_schools:
     mes "[Auldsbel the Wizard]";
     mes "\"With few exceptions, all spells belong to one of the five schools of magic:  Transmutation, War, Astral, Life, and Nature.\"";
     next;
+    goto L_about_schools_minimenu;
 
 L_about_schools_minimenu:
     menu
@@ -302,8 +295,7 @@ L_about_schools_minimenu:
         "What's Life magic?", L_about_life,
         "What's Nature magic?", L_about_nature,
         "Are there other spells?", L_about_other_spells,
-        "Thank you.", -;
-    goto L_about_magic_minimenu;
+        "Thank you.", L_about_magic_minimenu;
 
 L_about_transmutation:
     mes "[Auldsbel the Wizard]";
@@ -397,6 +389,7 @@ L_about_magic_spells:
     mes "[Auldsbel the Wizard]";
     mes "\"Some spells require catalysts on top of components, others vary in power depending on whom they are cast on or under what conditions.  However, all spells are affected by the caster's astral power.\"";
     next;
+    goto L_about_spells_minimenu;
 
 L_about_spells_minimenu:
     menu
@@ -407,7 +400,6 @@ L_about_spells_minimenu:
         "Where can I learn spells?", L_about_magic_learn,
         "How often can I cast spells?", L_about_speed,
         "Never mind.", L_about_magic_minimenu;
-    close;
 
 L_about_astral_power:
     mes "[Auldsbel the Wizard]";
@@ -469,8 +461,7 @@ L_about_auldsbel:
     next;
     menu
         "All right, but what about you?.", L_about_auldsbel_2,
-        "Never mind.", -;
-    goto L_main_menu;
+        "Never mind.", L_main_menu;
 
 L_about_auldsbel_2:
     mes "[Auldsbel the Wizard]";
@@ -540,8 +531,7 @@ L_Q_astralsoul_L:
     mes "\"It is about... erm, 11300 GP. Do you have so much money?\"";
     menu
         "Here you are", L_Q_astralsoul_L1,
-        "I will get it.", -;
-    goto L_main_menu;
+        "I will get it.", L_main_menu;
 
 L_Q_astralsoul_L1:
     if (Zeny < 11300)
@@ -645,13 +635,13 @@ L_Q_manaseed_touched:
     mes "\"Legend has it that you can substitute for such control by imbibing a Mana Potion.  I am not sure whether that legend is true, but for you it might be worth trying it out.\"";
     next;
     set MAGIC_FLAGS, MAGIC_FLAGS | MFLAG_KNOWS_MANAPOTION;
+    goto L_Q_manaseed_touched_short;
 
 L_Q_manaseed_touched_short:
     menu
         "Where can I get a Mana Potion?", L_where_mana_potion,
         "Can you make a Mana Potion?", L_make_mana_potion,
-        "Thank you.", -;
-    goto L_main_menu;
+        "Thank you.", L_main_menu;
 
 L_where_mana_potion:
     mes "[Auldsbel the Wizard]";
@@ -664,9 +654,11 @@ L_make_mana_potion:
     mes "\"Well, I can transmute some components into a Mana Potion for you.  Let's see... I will need one pearl, 10,000 GP, about twenty Mauve leaves, and some Gamboge ones... ten should do, I think.  Oh, and a bottle of water, of course.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next1,
         "I will look for those items.", L_main_menu,
         "I'm not interested.", L_Q_manaseed_touched_short;
+
+L_Next1:
     if (Zeny < 10000)
         goto L_make_mana_potion_missing;
     if (countitem("GambogeHerb") < 10)
@@ -701,7 +693,9 @@ L_make_mana_potion:
     next;
     menu
         "Thank you!", L_main_menu,
-        "What about the pearl and GP?", -;
+        "What about the pearl and GP?", L_Next2;
+
+L_Next2:
     mes "[Auldsbel the Wizard]";
     mes "Auldsbel raises his eyebrows in surprise.";
     mes "\"Those were payment.  You don't expect me to work for free, now do you?\"";
@@ -768,8 +762,10 @@ L_component_quest_0:
     mes "\"There are plenty of Mauve plants around, so I'm sure that you won't have a hard time finding the leaves.\"";
     next;
     menu
-        "I have them here.", -,
+        "I have them here.", L_Next3,
         "Sure, I will look for them.", L_main_menu;
+
+L_Next3:
     if (countitem ("MauveHerb") < 20)
         goto L_component_quest_missing;
     delitem "MauveHerb", 20;
@@ -791,9 +787,11 @@ L_component_quest_1:
     mes "\"Please be a good " + @address$ + " and get me an iron potion, a concentration potion, and three small and three medium healing potions.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next4,
         "I'm not your 'good " + @address$ + "'!", L_main_menu,
         "I'll see what I can do.", L_main_menu;
+
+L_Next4:
     if (countitem ("SmallHealingPotion") < 3)
         goto L_component_quest_missing;
     if (countitem ("MediumHealingPotion") < 3)
@@ -824,8 +822,10 @@ L_component_quest_2:
     mes "\"I would like to run the next batch of experiments on a larger scale, though.  Would you be so kind as to fetch me one hundred silk cocoons, please?\"";
     next;
     menu
-        "One hundred cocoons, here you are.", -,
+        "One hundred cocoons, here you are.", L_Next5,
         "That's a lot; I'll see what I can do.", L_main_menu;
+
+L_Next5:
     if (countitem ("SilkCocoon") < 100)
         goto L_component_quest_missing;
     delitem "SilkCocoon", 100;
@@ -848,8 +848,10 @@ L_component_quest_3:
     mes "\"I'm still not sure how to integrate it into the spell...  but leave that to me.  Can you get me twenty-five red scorpion stingers and twenty-five lumps of maggot slime?  Those should be just what I need.\"";
     next;
     menu
-        "Here are your stingers and slimes.", -,
+        "Here are your stingers and slimes.", L_Next6,
         "I will get back to you once I have them.", L_main_menu;
+
+L_Next6:
     if (countitem ("RedScorpionStinger") < 25)
         goto L_component_quest_missing;
     if (countitem ("MaggotSlime") < 25)
@@ -881,8 +883,10 @@ L_component_quest_4:
     mes "\"Could you get me twenty regular, cave, and mountain snake tongues, please?  So a total of sixty tongues.  This is where most of their life force is concentrated, incidentally.\"";
     next;
     menu
-        "Here are your tongues.", -,
+        "Here are your tongues.", L_Next7,
         "I will hunt some snakes for you.", L_main_menu;
+
+L_Next7:
     if (countitem ("SnakeTongue") < 20)
         goto L_component_quest_missing;
     if (countitem ("CaveSnakeTongue") < 20)
@@ -920,8 +924,10 @@ L_component_quest_5:
     mes "\"I do have another assignment for you, but this one will be tricky.  I will need fifty grass snake tongues.  I believe that this may be just enough life force to return the silkworm back to its original shape.\"";
     next;
     menu
-        "Here they are.", -,
+        "Here they are.", L_Next8,
         "That's quite a challenge.", L_main_menu;
+
+L_Next8:
     if (countitem ("GrassSnakeTongue") < 50)
         goto L_component_quest_missing;
     delitem "GrassSnakeTongue", 50;
@@ -960,23 +966,23 @@ L_component_quest_missing:
 
 L_learn_spell:
     if (@Q_main_status == @Q_STATUS_INITIATION)
-        goto LL_initiation;
+        goto L_initiation;
     if (@Q_main_status == @Q_STATUS_STUDENT)
-        goto LL_student_start;
+        goto L_student_start;
     if (@Q_main_status == @Q_STATUS_STUDENT0)
-        goto LL_student_0;
+        goto L_student_0;
     if (@Q_main_status == @Q_STATUS_STUDENT1)
-        goto LL_student_1;
+        goto L_student_1;
     if (@Q_main_status == @Q_STATUS_STUDENT2)
-        goto LL_student_2;
+        goto L_student_2;
     if (@Q_main_status == @Q_STATUS_STUDENT3)
-        goto LL_student_3;
+        goto L_student_3;
     if (@Q_main_status == @Q_STATUS_STUDENT4)
-        goto LL_student_4;
+        goto L_student_4;
     if (@Q_main_status == @Q_STATUS_STUDENT5)
-        goto LL_student_5;
+        goto L_student_5;
     if (@Q_main_status == @Q_STATUS_STUDENT6)
-        goto LL_student_6;
+        goto L_student_5;
 
     mes "[Auldsbel the Wizard]";
     mes "\"Wellll.... you do seem to have some magical abilities.  But do you possess the talent and diligence needed for a true wizard?\"";
@@ -1002,7 +1008,7 @@ L_learn_spell:
     callsub S_update_var;
     goto L_main_menu;
 
-LL_repeat_spell:
+L_repeat_spell:
     mes "[Auldsbel the Wizard]";
     mes "\"The invocation is `" + getspellinvocation("transmute-wood-to-figurine") + ",' followed by the last syllable of the name of the creature you want to shape the log into.  So `" + getspellinvocation("transmute-wood-to-figurine") + " lurk' for a Skrytlurk figurine.\"";
     next;
@@ -1014,21 +1020,19 @@ LL_repeat_spell:
     next;
     goto L_main_menu;
 
-LL_initiation:
+L_initiation:
     mes "[Auldsbel the Wizard]";
     mes "\"So, have you managed to transmute something?\"";
     next;
     if (countitem("MoubooFigurine"))
         menu
-            "Not yet.", -,
-            "How about this mouboo figurine?", LL_initiation_check;
-    if (!(countitem("MoubooFigurine")))
-        menu
-            "Not yet.", -,
-            "What was the spell again?", LL_repeat_spell;
-    goto L_main_menu;
+            "Not yet.", L_main_menu,
+            "How about this mouboo figurine?", L_initiation_check;
+    menu
+        "Not yet.", L_main_menu,
+        "What was the spell again?", L_repeat_spell;
 
-LL_initiation_fail:
+L_initiation_fail:
     mes "[Auldsbel the Wizard]";
     mes "\"No, no, no.  This is no good-- too many imperfections.\"";
     mes "He throws it away.";
@@ -1036,7 +1040,7 @@ LL_initiation_fail:
     next;
     goto L_main_menu;
 
-LL_initiation_check:
+L_initiation_check:
     if (!(countitem("MoubooFigurine")))
         goto L_main_menu;
     delitem "MoubooFigurine", 1;
@@ -1044,7 +1048,7 @@ LL_initiation_check:
     mes "Auldsbel inspects your figurine.";
     next;
     if (@mexp < 40)
-        goto LL_initiation_fail;
+        goto L_initiation_fail;
     mes "[Auldsbel the Wizard]";
     mes "Auldsbel nods.";
     mes "\"This looks good.\"";
@@ -1069,8 +1073,8 @@ LL_initiation_check:
     next;
     goto L_main_menu;
 
-LL_student_start:
-    if (@mexp < 200) goto LL_notready;
+L_student_start:
+    if (@mexp < 200) goto L_notready;
         mes "[Auldsbel the Wizard]";
     mes "\"Next, I shall teach you a higher-level transmutation spell.\"";
     if (getskilllv(SKILL_MAGIC) < 2)
@@ -1080,8 +1084,10 @@ LL_student_start:
     mes "\"Bring me ten bug legs, and I will reveal its invocation to you.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next9,
         "I'll be back with them.", L_main_menu;
+
+L_Next9:
     if (countitem("BugLeg") < 10)
         goto L_component_quest_missing;
     delitem "BugLeg", 10;
@@ -1102,15 +1108,15 @@ LL_student_start:
     next;
     goto L_main_menu;
 
-LL_notready:
+L_notready:
     mes "[Auldsbel the Wizard]";
     mes "\"You still need more practice with spellcasting; I won't give you another spell until you are ready.\"";
     next;
     goto L_main_menu;
 
-LL_student_0:
+L_student_0:
     if (@mexp < 350)
-        goto LL_notready;
+        goto L_notready;
     mes "[Auldsbel the Wizard]";
     mes "\"The next transmutation spell is a little harder than the last one I taught you, but you should be able to manage.\"";
     next;
@@ -1118,8 +1124,10 @@ LL_student_0:
     mes "\"Bring me twenty mauve leaves, and I will reveal its invocation.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next10,
         "I'll be back with them.", L_main_menu;
+
+L_Next10:
     if (countitem("MauveHerb") < 20)
         goto L_component_quest_missing;
     delitem "MauveHerb", 20;
@@ -1136,9 +1144,9 @@ LL_student_0:
     next;
     goto L_main_menu;
 
-LL_student_1:
+L_student_1:
     if (@mexp < 425)
-        goto LL_notready;
+        goto L_notready;
     mes "[Auldsbel the Wizard]";
     mes "\"Up next is the transmutation spell for regular shirts.\"";
     next;
@@ -1146,8 +1154,10 @@ LL_student_1:
     mes "\"For this, I would like ten scorpion stingers.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next11,
         "I'll be back with them.", L_main_menu;
+
+L_Next11:
     if (countitem("ScorpionStinger") < 10)
             goto L_component_quest_missing;
     delitem "ScorpionStinger", 10;
@@ -1164,9 +1174,9 @@ LL_student_1:
     next;
     goto L_main_menu;
 
-LL_student_2:
+L_student_2:
     if (@mexp < 500)
-        goto LL_notready;
+        goto L_notready;
     mes "[Auldsbel the Wizard]";
     mes "\"You may find the next spell particularly useful.\"";
     next;
@@ -1174,8 +1184,10 @@ LL_student_2:
     mes "\"Bring me twenty wooden logs, and I will teach you.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_Next12,
         "I'll be back with them.", L_main_menu;
+
+L_Next12:
     if (countitem("RawLog") < 20)
             goto L_component_quest_missing;
     delitem "RawLog", 20;
@@ -1192,14 +1204,15 @@ LL_student_2:
     next;
     goto L_main_menu;
 
-LL_student_3:
+L_student_3:
     if (getskilllv(SKILL_MAGIC) < 3)
-        goto LL_magic_skill_insufficient;
+        goto L_magic_skill_insufficient;
     mes "[Auldsbel the Wizard]";
     mes "\"I believe that you may be ready for the next level of transmutation magic!  Let me teach you one last spell that you can handle before your promotion, and if you can cast this one, I will advance you.\"";
     next;
+    goto L_student_3_repeat;
 
-LL_student_3_repeat:
+L_student_3_repeat:
     mes "[Auldsbel the Wizard]";
     mes "\"This one has the invocation `" + getspellinvocation("make-concentration-potion") + "'.  Put two cobalt leaves and two pink flower petals into a bottle of water, hold it up, and speak that phrase.\"";
     next;
@@ -1213,18 +1226,20 @@ LL_student_3_repeat:
     callsub S_update_var;
     goto L_main_menu;
 
-LL_student_4:
+L_student_4:
     mes "[Auldsbel the Wizard]";
     mes "\"Did you manage to transmute a concentration potion?\"";
     next;
     menu
-        "What was the invocation again?", LL_student_3_repeat,
+        "What was the invocation again?", L_student_3_repeat,
         "No, still working on it...", L_main_menu,
-        "Yes.", -;
+        "Yes.", L_Next13;
+
+L_Next13:
     if (countitem("ConcentrationPotion") < 1)
-        goto LL_student_4_no_potion;
+        goto L_student_4_no_potion;
     if (!(MAGIC_FLAGS & MFLAG_MADE_CONC_POTION))
-        goto LL_student_4_wrong_potion;
+        goto L_student_4_wrong_potion;
     mes "[Auldsbel the Wizard]";
     mes "Auldsbel examines your potion and nods.";
     mes "\"Good work!  You are ready for a promotion!\"";
@@ -1245,30 +1260,32 @@ LL_student_4:
     next;
     goto L_main_menu;
 
-LL_student_4_wrong_potion:
+L_student_4_wrong_potion:
     mes "[Auldsbel the Wizard]";
     mes "Auldsbell examines your potion, then shakes his head.";
     mes "\"This doesn't look quite right, though I can't quite point at what the problem is.  You will have to continue trying.\"";
     next;
     goto L_main_menu;
 
-LL_student_4_no_potion:
+L_student_4_no_potion:
     mes "[Auldsbel the Wizard]";
     mes "\"You seem to be rather lacking the concentration potion you need to justify your claim, my dear fellow.\"";
     next;
     goto L_main_menu;
 
-LL_student_5:
+L_student_5:
     mes "[Auldsbel the Wizard]";
     mes "\"Hmm.  Come back some other time, please; I still haven't figured out what to teach you next.\"";
     close;
 
-LL_magic_skill_insufficient:
+L_magic_skill_insufficient:
     mes "[Auldsbel the Wizard]";
     mes "\"No, not at this time.  You will have to advance in your overall magic skill before I can teach you more.\"";
     next;
     goto L_main_menu;
 
+L_Close:
+    close;
 
 S_update_var:
     set @Q_status, @Q_main_status | (@Q_component_quest << 5);

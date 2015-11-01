@@ -7,7 +7,6 @@
 //            "I need to find a way to go back home, can you help me?", L_Frozenbeard_Default,
 //            "I heard you know pirates from all around the world, is it true?", L_Frozenbeard_Easter2012;
 
-L_Frozenbeard_Default:
     mes "[Frozenbeard]";
     mes "\"Arrr mate! I'm glad there's a dock here, so I don't have to row boat from my ship anymore!  I pioneered the trade routes between Nivalis and the rest of the World, so now merchants and adventurers can travel to and fro without any hassle other than the harsh weather up here, yarr.\"";
     close;

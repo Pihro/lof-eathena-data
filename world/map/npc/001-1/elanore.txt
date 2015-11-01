@@ -19,66 +19,79 @@
     set @STATUS_WAITING_FOR_KADIYA, 4;
     set @STATUS_READY_TO_LEARN_CURE_POISON, 5;
     set @STATUS_LEARNED_CURE_POISON, 6;
-    
+
+    callfunc "ElanoreFix";
+
+    // This operation works around an earlier possible corruption of this state
+    if (@Q_status > @Q_STATUS_MAX)
+    set @Q_status, @STATUS_INITIAL;
+    callsub S_update_var;
     if (sc_check(sc_poison)) goto L_CurePoison;
     if (BaseLevel > 10) goto L_NoHeal;
     set @TEMP,rand(4);
-    if(@TEMP == 0) goto Heal1;
-    if(@TEMP == 1) goto Heal2;
-    if(@TEMP == 2) goto Heal3;
-    if(@TEMP == 3) goto Heal4;
+    if(@TEMP == 1) goto L_Heal2;
+    if(@TEMP == 2) goto L_Heal3;
+    if(@TEMP == 3) goto L_Heal4;
+    goto L_Heal1;
 
-Heal1:
+L_Heal1:
+
     mes "[Elanore the Healer]";
     mes "\"You don't look too well; let me treat your wounds.\"";
     next;
-    goto Heal_L;
+    goto L_Heal_L;
 
-Heal2:
+L_Heal2:
+
     mes "[Elanore the Healer]";
     mes "\"I will make quick work of your wounds.\"";
     next;
-    goto Heal_L;
+    goto L_Heal_L;
 
-Heal3:
+L_Heal3:
+
     mes "[Elanore the Healer]";
     mes "\"Need a healing?\"";
     next;
-    goto Heal_L;
+    goto L_Heal_L;
 
-Heal4:
+L_Heal4:
+
     mes "[Elanore the Healer]";
     mes "\"Sometimes you just need to run from battle.\"";
     next;
-    goto Heal_L;
+    goto L_Heal_L;
 
-Heal_L:
-    set @TEMP,rand(3);
+L_Heal_L:
+    set @TEMP,rand(4);
+    if(@TEMP == 1) goto L_Heal_2;
+    if(@TEMP == 2) goto L_Heal_3;
+    if(@TEMP == 3) goto L_Heal_4;
+    goto L_Heal_1;
 
-    if(@TEMP == 0) goto Heal_1;
-    if(@TEMP == 1) goto Heal_2;
-    if(@TEMP == 2) goto Heal_3;
-    if(@TEMP == 3) goto Heal_4;
+L_Heal_1:
 
-Heal_1:
     mes "[Elanore the Healer]";
     mes "\"Here you go!\"";
     heal 10000,10000;
     goto L_Close;
 
-Heal_2:
+L_Heal_2:
+
     mes "[Elanore the Healer]";
     mes "\"Painless, wasn't it?";
     heal 10000,10000;
     goto L_Close;
 
-Heal_3:
+L_Heal_3:
+
     mes "[Elanore the Healer]";
     mes "\"You should be more careful.\"";
     heal 10000,10000;
     goto L_Close;
 
-Heal_4:
+L_Heal_4:
+
     mes "[Elanore the Healer]";
     mes "\"Much better, right?!\"";
     heal 10000,10000;
@@ -87,6 +100,7 @@ Heal_4:
 L_NoHeal:
     if (MAGIC_FLAGS)
         goto L_Chat;
+    goto L_NoHealMessage;
 
 L_NoHealMessage:
     mes "[Elanore the Healer]";
@@ -99,6 +113,7 @@ L_Chat:
     mes "[Elanore the Healer]";
     mes "\"Hello!  Can I help you?\"";
     next;
+    goto L_Main;
 
 L_Main:
     if (@has_magic && (@Q_status == @STATUS_INITIAL))
@@ -130,8 +145,8 @@ OnPCKillEvent:
     goto L_OnPcKillFinish;
 
 L_OnPcKillWipe:
-        set @Q_heal_exp, 0;
-        goto L_OnPcKillFinish;
+    set @Q_heal_exp, 0;
+    goto L_OnPcKillFinish;
 
 L_OnPcKillFinish:
     set MAGIC_EXPERIENCE, (MAGIC_EXPERIENCE & ~(255 << 24)) | (@Q_heal_exp << 24);
@@ -142,11 +157,10 @@ L_Lifestones:
     mes "\"I always need components for my own healing spells.  If you bring me ten gamboge leaves, ten alizarin leaves, ten mauve leaves and ten cobalt leaves, I can make ten lifestones; I will give you half of them.\"";
     next;
     menu
-        "OK, I will get them.", -,
-        "No way!", -,
+        "OK, I will get them.", L_Close,
+        "No way!", L_Close,
         "Here you are!", L_Lifestones_Trade,
         "Can I make them myself?", L_Lifestones_MakeSelf;
-    goto L_Close;
 
 L_Lifestones_Trade:
     if (countitem("MauveHerb") < 10) goto L_Lifestones_Trade_Missing;
@@ -192,6 +206,7 @@ L_Lifestones_Trade_Missing:
 L_Lifestones_MakeSelf:
     mes "[Elanore the Healer]";
     if (@has_magic < 2) goto L_Lifestones_MakeSelf_no;
+    goto L_Lifestones_MakeSelf_yes;
 
 L_Lifestones_MakeSelf_yes:
     mes "\"Oh, but of course!  You are powerful enough to make your own lifestones, using the enchantment '" + getspellinvocation("enchant-lifestone") + "'.  This will consume a bug leg or a maggot slime or one of each of the four healing herbs, though.\"";
@@ -345,6 +360,7 @@ L_Teach_Explain3:
     mes "[Elanore the Healer]";
     mes "\"But his daugher has contracted Mopox, so she needs help.  He doesn't trust me, but perhaps he will trust you; you have been helping quite a few people, after all.\"";
     next;
+    goto L_3_menu;
 
 L_3_menu:
     menu

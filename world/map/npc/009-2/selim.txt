@@ -12,6 +12,7 @@
     mes "[Selim]";
     mes "\"What can I dye for you today?\"";
     next;
+    goto L_clothes_choice;
 
 L_clothes_choice:
     set @pronoun$, "it";
@@ -39,8 +40,7 @@ L_clothes_choice:
         "Savior Armor.", L_saviorarmor,
         "Fine dress.", L_finedress,
         "About these sorcerer robes...", L_asksorcererrobe,
-        "I'm fine for now, thanks.", -;
-    close;
+        "I'm fine for now, thanks.", L_Close;
 
 L_cottonshirt:
     set @del, 1202;
@@ -166,8 +166,7 @@ L_sorcererrobe:
         "A purple lined one.", L_purplelinedsorcererrobe,
         "A dark green lined one.", L_darkgreenlinedsorcererrobe,
         "A white lined one.", L_whitelinedsorcererrobe,
-        "I'm fine for now, thanks.", -;
-    close;
+        "I'm fine for now, thanks.", L_Close;
 
 L_redlinedsorcererrobe:
     set @del, 798;
@@ -258,40 +257,46 @@ L_asksorcererrobe:
     mes "\"Yes?\"";
     next;
     menu
-        "Do you think you can dye that line to a different color?", -;
+        "Do you think you can dye that line to a different color?", L_Next1;
+
+L_Next1:
     mes "[Selim]";
     mes "\"Hum, I fear I can't do that. The area is too small and I can operate only on large ones.";
     mes "But with the appropriate materials, maybe a talented tailor can make the change.\"";
     next;
     menu
-        "Oh, I see!", -;
+        "Oh, I see!", L_Next;
+
+L_Next:
     mes "[Selim]";
     mes "\"Of course I can help you by dyeing the materials your tailor will want.";
     mes "All I need is a piece of Cotton Cloth.\"";
     menu
         "Sure. Here is one.", L_cottoncloth,
-        "I have to go pick that.", -;
-    close;
+        "I have to go get that.", L_Close;
 
 L_picked_item:
     if (countitem(@del) == 0) goto L_havenone;
+    goto L_colour;
 
 L_colour:
     mes "[Selim]";
     mes "\"Excellent.  Now, what color do you want?\"";
     next;
     menu
-        "Red.", -,
-        "Green.", -,
-        "Dark Blue.", -,
-        "Yellow.", -,
-        "Light Blue.", -,
-        "Pink.", -,
-        "Black.", -,
-        "Orange.", -,
-        "Purple.", -,
-        "Dark Green.", -,
-        "Nevermind.", L_close;
+        "Red.", L_MenuItems,
+        "Green.", L_MenuItems,
+        "Dark Blue.", L_MenuItems,
+        "Yellow.", L_MenuItems,
+        "Light Blue.", L_MenuItems,
+        "Pink.", L_MenuItems,
+        "Black.", L_MenuItems,
+        "Orange.", L_MenuItems,
+        "Purple.", L_MenuItems,
+        "Dark Green.", L_MenuItems,
+        "Nevermind.", L_Close;
+
+L_MenuItems:
     set @colour, @menu - 1;
     set @vial, 690 + @colour;
     if (countitem(@vial) == 0) goto L_no_dye;
@@ -305,10 +310,9 @@ L_no_dye:
     menu
         "Sorry, I meant a different color.", L_colour,
         "I wanted to dye a different item anyway.", L_clothes_choice,
-        "What do you mean, 'bring you dye'?", L_explain_dye,
+        "What do you mean, `bring you dye'?", L_explain_dye,
         "Where would I get dye?", L_explain_dye,
-        "Never mind.", -;
-    close;
+        "Nevermind.", L_Close;
 
 L_explain_dye:
     if (QUEST_clothdyer_knowsdye < 1)
@@ -326,7 +330,7 @@ L_finish:
     getitem @new + @colour, 1;
     mes "[Selim]";
     mes "\"Here " + @is_verb$ + " your " + @all_colours$[@colour] + " " + @name$ + "!  Please let " + @pronoun$ + " dry for a minute before you put " + @pronoun$ + " on.\"";
-    goto L_close;
+    goto L_Close;
 
 L_havenone:
     mes "[Selim]";

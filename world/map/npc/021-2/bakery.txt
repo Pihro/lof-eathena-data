@@ -11,6 +11,7 @@
 //    if (gettime(6) == @month && gettime(5) >= @start_day && gettime(5) <= @end_day && QUEST_Easter11 == 10) goto L_ChocMouboo;
 //    if (gettime(6) == @month && gettime(5) >= @start_day && gettime(5) <= @end_day && QUEST_Easter11 == 11) goto L_MakeChocMouboo;
 //    if (gettime(6) == @month && gettime(5) >= @start_day && gettime(5) <= @end_day && QUEST_Easter11 == 12) goto L_SeeBunny;
+    goto L_Begin;
 
 L_Begin:
     mes "[Riskim]";
@@ -50,8 +51,10 @@ L_lace_chococake:
     next;
     menu
         "Thanks!  Let me have a look around...", L_end,
-        "Can you put this potion into a Chocolate Cake?", -,
+        "Can you put this potion into a Chocolate Cake?", L_Next,
         "Goodbye!", L_end;
+
+L_Next:
     mes "[Riskim]";
     mes "";
     mes "As you show Riskim the potion, he leans back, away from it.";
@@ -66,8 +69,10 @@ L_lace_chococake:
     next;
     menu
         "I will get them for you.", L_end,
-        "Here you are!", -,
+        "Here you are!", L_Continue,
         "Maybe later.", L_end;
+
+L_Continue:
     if (countitem("ChocolateBar") < 10)
         goto L_lacking_ingredients;
     if (countitem("MopoxCurePotion") < 1)
@@ -107,8 +112,10 @@ L_lace_cupcake:
     next;
     menu
         "Thanks!  Let me have a look around...", L_end,
-        "Can you put this potion into an Orange Cupcake?", -,
+        "Can you put this potion into an Orange Cupcake?", L_More,
         "Goodbye!", L_end;
+
+L_More:
     mes "[Riskim]";
     mes "";
     mes "\"Orange Cupcakes?  Oh dear... I'm sorry, but I have a very bad orange allergy.\"";

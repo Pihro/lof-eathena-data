@@ -16,8 +16,5 @@
     set @y, 0;
     delitem "WhiteHitchhikersTowel", 1;
     getitem "WhiteHitchhikersTowel", 1;
-    delitem "RedHitchhikersTowel", 1;
-    delitem "YellowHitchhikersTowel", 1;
-    delitem "HitchhikersTowel", 1;
     close;
 }

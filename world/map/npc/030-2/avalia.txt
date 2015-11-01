@@ -16,7 +16,7 @@ L_OffSeason:
     close;
 
 L_XmasMain:
-    if(@xmas_reward_done_state) goto L_Thanks;
+    if(@xmas_reward_done_state) goto L_ThankYou;
     if(@xmas_reward1_done_state) goto L_Thanks;
     if(@xmas_reward_start_state) goto L_Reward;
     if(@xmas_reward2_done_state) goto L_Reward;
@@ -32,7 +32,9 @@ L_ListReturn:
     mes "[Avalia]";
     mes "\"This had better be important, I have got enough to worry about.\"";
     menu
-        "Sorry for interrupting, but I have been sent up here with the List", -;
+        "Sorry for interrupting, but I have been sent up here with the List", L_Next;
+
+L_Next:
     mes "She stares blankly at you for a bit...";
     next;
     mes "\"YAHOO!!\"";

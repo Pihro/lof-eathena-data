@@ -46,28 +46,37 @@
     if (@state != 7)
         goto L_Close;
     menu
-        "I have this magic fertilizer from Tinris and need a spell cast on it.",-;
+        "I have this magic fertilizer from Tinris and need a spell cast on it.",L_Next;
+
+L_Next:
     mes "[Eomie]";
     mes "\"Oh? I see, that's a difficult task.";
     mes "I'd be glad to help you, but unfortunately I can't interrupt the magic I use to keep this spot of grass alive.\"";
     next;
     mes "\"It's unusually hot at the moment, even for this desert area. It might have something to do with the aftereffects of the earthquake.\"";
     menu
-        "Isn't there any possibility?",-;
+        "Isn't there any possibility?",L_Continue;
+
+L_Continue:
     mes "She hesitates.";
     set @state, 8;
     callsub S_Update_Mask;
-L_GetStuff: // @state == 8
+    goto L_GetStuff;
+
+L_GetStuff:
+    // @state == 8
     mes "[Eomie]";
     mes "\"I could try to interrupt my spells to be able to cast the spell on the fertilizer, but then I need to prepare the grass for this.";
     mes "Bring me " + @grass_amount + " Grass Seeds, " + @water_amount + " Bottles of Water and " + @ice_amount + " Ice Cubes.\"";
     menu
-        "I have it.",-,
+        "I have it.",L_More,
         "Where can I get Grass Seeds?",L_Hurnscald,
         "How can I get Ice Cubes? We're in the desert!",L_Mine,
         "Ok, I'll go and get it.",L_Close;
+L_More:
     if ((countitem("GrassSeed") < @grass_amount) || (countitem("BottleOfWater") < @water_amount) || (countitem("IceCube") < @ice_amount))
         goto L_NoItem;
+
     delitem "GrassSeed", @grass_amount;
     delitem "BottleOfWater", @water_amount;
     delitem "IceCube", @ice_amount;
@@ -107,8 +116,10 @@ L_CastedSpell: // @state >= 9 but below 14
     if (@state != 13)
         goto L_Close;
     menu
-        "It was and he created this Silk Headband as a present for you.",-,
+        "It was and he created this Silk Headband as a present for you.",L_Present,
         "(Mumble something and leave)",L_Close;
+
+L_Present:
     if (countitem("SilkHeadband") < 1)
         goto L_NoItem;
     delitem "SilkHeadband", 1;

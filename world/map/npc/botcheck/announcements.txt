@@ -15,13 +15,12 @@
 
 botcheck.gat,49,29,0|script|Stone Board|348,
 {
-if (getgmlevel() < 60)
-    goto L_Close;
+    if (getgmlevel() < 60)
+        goto L_Close;
 
-if ($@GMSA_STATUS == 0)
+    if ($@GMSA_STATUS)
+        goto L_InfoBroadcast;
     goto L_PrepareBroadcast;
-if ($@GMSA_STATUS == 1)
-    goto L_InfoBroadcast;
 
 L_InfoBroadcast:
     set @next_broadcast_ts, (3600000*($@GMSA_TICK - $@GMSA_CURRENT_TICK) - getnpctimer(0))/1000;
@@ -141,6 +140,8 @@ L_StartBroadcast2:
     if ($@GMSA_STATUS == 1)
         goto L_Abort;
     callsub S_PerformBroadcast;
+    goto L_StartBroadcast;
+
 L_StartBroadcast:
     if ($@GMSA_STATUS == 1)
         goto L_Abort;
@@ -170,4 +171,5 @@ OnTimer3600000:
     if ($@GMSA_MAX != 0)
         end;
     callsub S_StopBroadcast;
+    end;
 }

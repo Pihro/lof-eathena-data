@@ -87,7 +87,6 @@ L_nomagic_mainmenu:
         "Throw a rock at it", L_nomagic_throwrock,
         "Destroy it", L_nomagic_destroy,
         "Leave it alone", L_end;
-    close;
 
 L_nomagic_examine:
     mes "[Mana Seed]";
@@ -150,7 +149,6 @@ L_magic_mainmenu:
         "Touch it", L_magic_touch,
         "Destroy it", L_magic_destroy,
         "Leave it alone", L_end;
-    close;
 
 L_magic_touch:
     mes "[Mana Seed]";

@@ -6,7 +6,6 @@
     if (gettime(7) == $@hw2011_year && gettime(6) == 10 && gettime(5) >= $@hw2011_start_day)
         goto L_TrickOrTreat;
 
-L_Begin:
     if (BaseLevel < 10) goto L_TooYoung;
     if (Zeny < 10000) goto L_NoMoney;
 
@@ -23,12 +22,11 @@ L_Begin:
     next;
     menu
         "Please do, my dear...", L_Change,
-        "Leave alone my family treasure!", -;
-    close;
+        "Leave alone my family treasure!", L_Close;
 
 L_Change:
     if (Zeny < 10000)
-        goto L_No_Money;
+        goto L_NoMoney;
     set Zeny, Zeny - 10000;
     changesex;
     close;
@@ -46,4 +44,7 @@ L_NoMoney:
 L_TrickOrTreat:
     callfunc "TrickOrTreat2011";
     goto L_Begin;
+
+L_Close:
+    close;
 }
