@@ -116,8 +116,8 @@ L_CastedSpell: // @state >= 9 but below 14
     if (@state != 13)
         goto L_Close;
     menu
-        "It was and he created this Silk Headband as a present for you.",L_Present,
-        "(Mumble something and leave)",L_Close;
+        "It was and he created this Silk Headband as a present for you.", L_Present,
+        "(Mumble something and leave)", L_Close;
 
 L_Present:
     if (countitem("SilkHeadband") < 1)
@@ -157,18 +157,23 @@ L_Grass:
     mes "[Eomie]";
     mes "";
     mes "\"I maintain this little spot of grass in the desert.\"";
-    next;
     menu
-        "It looks beautiful. I wish I could find a Grass Liner like this.", -;
+        "It looks beautiful. I wish I could find a Grass Liner like this.", L_LinerNext;
+
+L_LinerNext:
     mes "\"A Grass Liner? Last year I helped the Easter Bunny with a Grass Liner for his basket... It was really easy...  Is this liner for yourself?\"";
-    next;
     menu
-        "No. Actually, it is for the Easter Bunny again...", -;
+        "No. Actually, it is for the Easter Bunny again...", L_BunnyNext;
+
+L_BunnyNext:
     mes "\"Why didn't you say so before? I can help you make the Grass Liner for the basket if you wish.\"";
     menu
-        "I would really appreciate that!", -,
+        "I would really appreciate that!", L_HelpNext,
         "Nah, I decided not to do that stupid quest.", L_End;
+
+L_HelpNext:
     set QUEST_Easter11, 5;
+    goto L_HelpNext;
 
 L_MakeGrass:
     mes "[Eomie]";
@@ -177,15 +182,13 @@ L_MakeGrass:
     mes "\"I think 5 seeds should be enough.\"";
     mes "\"Squirrels tend to pick those up as they gather food.\"";
     menu
-        "I have some seeds...", -,
+        "I have some seeds...", L_SeedCheck,
         "Ok, I will be back soon.", L_End,
         "I changed my mind, forget about it.", L_End;
 
-    if(countitem("GrassSeed") < 5)
-        goto L_EasterNotEnough;
-    if(countitem("GrassSeed") >= 5)
-        goto L_EasterEnough;
-    close;
+L_SeedCheck:
+    if (countitem("GrassSeed") < 5) goto L_EasterNotEnough;
+    goto L_EasterEnough;
 
 L_EasterNotEnough:
     mes "[Eomie]";
@@ -196,13 +199,14 @@ L_EasterNotEnough:
 
 L_EasterEnough:
     getinventorylist;
-    if (@inventorylist_count == 100
-        && countitem("GrassSeed") > 10)
-            goto L_EasterTooMany;
+    if (@inventorylist_count == 100 && countitem("GrassSeed") > 10)
+        goto L_EasterTooMany;
     if(countitem("GrassSeed") < 5)
         goto L_EasterNotEnough;
+
     delitem "GrassSeed", 5;
     getitem "GrassLiner", 1;
+
     set QUEST_Easter11, 6;
     mes "[Eomie]";
     mes "";
