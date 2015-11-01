@@ -354,9 +354,6 @@ L_No_Pickledbeets:
 L_Easter2012Foolplayers:
     mes "The chef can't hear you. He keeps looking and feeling the scent of his new recipe.";
     close;
-
-L_Close:
-    close;
 }
 
 //010-2.gat,28,31,0|script|#chefproposition|32767,0,0
