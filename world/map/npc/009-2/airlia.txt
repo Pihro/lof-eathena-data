@@ -98,16 +98,6 @@ L_Airlia_intro:
     mes "\"My poor father, doomed to that awful cemetery.\"";
     next;
 
-    // CASE REMOVED:
-    // This step is pointless and just forces the player to make a selection that doesn't effect anything.
-    // ALSO it misses the case where QUEST_Graveyard_Caretaker == 3, in this case it proceeds to the message without wasting player clicks
-    // Removing this check will make execution the same for QUEST_Graveyard_Caretaker == 3 and QUEST_Graveyard_Caretaker == 4
-    // If for some reason this is desireable, uncomment it and make sure to catch the extra case mentioned
-    //
-    //if (QUEST_Graveyard_Caretaker == @Q_STATUS_HAS_NO_NEW_LETTER)
-    //    menu
-    //        "...", -;
-
     if (QUEST_Graveyard_Caretaker == @Q_STATUS_HAS_NEW_LETTER)
         menu
             "...", L_Next3,

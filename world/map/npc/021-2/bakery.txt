@@ -134,11 +134,15 @@ L_ChocMouboo:
     mes "\"Welcome to our bakery! Here you will find the best cakes in Tulimshar. And don't leave before you try one of our delicious Chocolate Pinkies!\"";
     next;
     menu
-        "Excuse me, sir? Did you say Chocolate Pinkies?", -;
+        "Excuse me, sir? Did you say Chocolate Pinkies?", L_ChocolatePinkie;
+
+L_ChocolatePinkie:
     mes "\"Yes! But there is no need to be alarmed, it is just plain chocolate molded in the shape of a small pinkie...\"";
     next;
     menu
-        "Do you have one in the shape of a mouboo? The Easter Bunny needs one.", -;
+        "Do you have one in the shape of a mouboo? The Easter Bunny needs one.", L_EasterMouboo;
+
+L_EasterMouboo:
     mes "\"The Easter Bunny? Interesting... I think I can help you make a Chocolate Mouboo.\"";
     menu
         "Nah, I decided not to do that stupid quest.", L_Close,

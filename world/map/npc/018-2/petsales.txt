@@ -2,7 +2,7 @@
 
 018-2.gat,122,23,0|script|Pet Detective|160,{
 
-  
+
     mes "[Ace Ventura]";
     mes "\"Hello, I heard you were wanting a pet to help you in your adventures.\"";
     mes "\"I know that because I am a pet detective and other adventurers said you may want to adopt a pet.\"";
@@ -17,13 +17,12 @@ L_Adoptmenu:
     mes "[Ace Ventura]";
     mes "\"Tell me which one of the pets you want to adopt.\"";
     next;
-    
+
     menu
         "I would like to have a dog!", L_Dog,
         "Got any cats?", L_Cat,
         "Hmmm... I'd like a rat...", L_Rat,
-        "On second thought, I don't really want that responsibility right now.", -;
-    goto L_Close;
+        "On second thought, I don't really want that responsibility right now.", L_Close;
 
 L_Dog:
     mes "[Ace Ventura]";
@@ -31,11 +30,10 @@ L_Dog:
     mes "\"20 animal bones, 15 steaks, 10 raw logs, and 40,000 GP.\"";
     next;
     mes "\"A well trained dog, will help you improve your strength too.\"";
-    
+
     menu
         "Sure, I believe a trained dog will make me stronger.", L_dog2,
-        "What a ripoff!  No way! They would probably bite me any ways!", -;
-    goto L_Close;
+        "What a ripoff!  No way! They would probably bite me anyways!", L_Close;
 
 L_Cat:
     mes "[Ace Ventura]";
@@ -44,24 +42,22 @@ L_Cat:
     next;
     mes "\"I guarantee they will make you feel faster and more agile in battle.\"";
     mes "\"A great deal for only 10 animal bones, 10 steaks, 15 cartons of milk and 40,000 GP.\"";
-    
+
     menu
         "Yes, I could use more agility.", L_cat2,
-        "No Thanks, I like being slow.", -;
-    goto L_Close;
+        "No thanks, I like being slow.", L_Close;
 
 L_Rat:
     mes "[Ace Ventura]";
-    mes "\"Rats are so cool!\""; 
-    mes "\"The ones I have here will really help your Dexterity.\""; 
+    mes "\"Rats are so cool!\"";
+    mes "\"The ones I have here will really help your Dexterity.\"";
     next;
     mes "\"They cost 15 animal bones, 10 steaks, 20 bottles of water, and 40,000 GP.\"";
     mes "\"Now that you know how valuable they are, would you like to have one?\"";
-    
+
     menu
         "Sure, The rat is just what I need.", L_rat2,
-        "Whoa, that's way too much for a rat.", -;
-    goto L_Close;
+        "Whoa, that's way too much for a rat.", L_Close;
 
 L_dog2:
     if (countitem("AnimalBones") < 20) goto L_Missing;
@@ -77,11 +73,10 @@ L_dog2:
     getitem "Hound", 1;
     mes "[Ace Ventura]";
     mes "\"Enjoy your dog! Do you want to adopt another pet?\"";
-    
+
     menu
         "Yes, I would.", L_Adoptmenu,
-        "Nope, not today. I want to have time to train my new dog.", L_No;
-    goto L_Close;
+        "Nope, not today. I want to have time to train my new dog.", L_Close;
 
 L_cat2:
     if (countitem("AnimalBones") < 10) goto L_Missing;
@@ -97,11 +92,10 @@ L_cat2:
     getitem "Cat", 1;
     mes "[Ace Ventura]";
     mes "\"Now here is a frisky white cat! Do you want to adopt another pet?\"";
-    
+
     menu
         "Yes, I do.", L_Adoptmenu,
         "No thank you, I think the cat is all I need for now", L_No;
-    goto L_Close;
 
 L_rat2:
     if (countitem("AnimalBones") < 15) goto L_Missing;
@@ -117,12 +111,12 @@ L_rat2:
     getitem "Rat", 1;
     mes "[Ace Ventura]";
     mes "\"Here is your fine pet! Do you want to purchase any other pet?\"";
-    
+
     menu
         "Yes, I do.", L_Adoptmenu,
         "No, Thanks. I really want to see this rat attack!", L_No;
     goto L_Close;
-    
+
 L_MagCat:
     mes "[Ace Ventura]";
     mes "\"Just a moment... Aren't you a Halloween Quest Adventurer? This is your lucky day!\"";
@@ -130,14 +124,14 @@ L_MagCat:
     mes "\"They are so new, I haven't even had time to open the crates\"";
     next;
     mes "\"I can tell you that these pets are very rare and will not last very long.\"";
-    mes "\"Are you interested in getting one of them?\"";    
-    
+    mes "\"Are you interested in getting one of them?\"";
+
     menu
         "Yes, Let me have one!.", L_YesBcat,
 	"Not Really.", L_EndSoon,
 	"I would really like a different pet.", L_Adoptmenu;
-    goto L_Close;	
-        
+    goto L_Close;
+
 L_YesBcat:
     if (HW_Bcat == 1) goto L_OnlyOne;
     if (HW_Bcat == 2) goto L_NoMoreForYou;
@@ -146,14 +140,14 @@ L_YesBcat:
     next;
     mes "\".. If you bring me the following items and 60,000 GP, I will let you have one of them.\"";
     mes "\"50 Marshmallows, 50 Candy Pumpkins, 20 Lifestones, 4 Jack-O-Lanterns, 3 Jars of Blood, 2 Rubber Bats and one rare Black Pearl.\"";
-    
+
     menu
        "I have what you need", L_GetBcat,
        "I don't have everything you need. I will come back.", L_EndSoon,
        "I changed my mind, I don't really want one.", L_EndSoon,
        "I think I want a different pet?", L_Adoptmenu;
     goto L_Close;
-    
+
 L_GetBcat:
     if (countitem("Marshmallow") < 50) goto L_Missing;
     if (countitem("CandyPumpkin") < 50) goto L_Missing;
@@ -171,7 +165,7 @@ L_GetBcat:
     delitem "JackOLantern", 4;
     delitem "JarofBlood", 3;
     delitem "RubberBat", 2;
-    delitem "BlackPearl", 1;    
+    delitem "BlackPearl", 1;
     set Zeny, Zeny - 60000;
     getitem "BlackCat", 1;
     set HW_Bcat, 1;
@@ -180,14 +174,14 @@ L_GetBcat:
     next;
     mes "\"Black Cat!\"";
     goto L_Close;
-    
+
 L_EndSoon:
     mes "[Ace Ventura]";
     mes "\"OK, Fine, but don't come crying to me when they are all gone.\"";
     mes "\"These Rare Pets were ordered especially for the Halloween Event.\"";
     mes "\"so when it is over, There may be no more to adopt.\"";
     goto L_Close;
-        
+
 L_Full:
     mes "[Ace Ventura]";
     mes "\"Looks like you can't carry anything else in the your inventory, come back when you've made some room.\"";
@@ -211,7 +205,7 @@ L_MissingPearl:
     next;
     mes "\"Please come back when you have the Black Pearl.\"";
     goto L_Close;
-    
+
 L_NotEnoughMoney:
     mes "[Ace Ventura]";
     mes "\"You don't have enough money, come back later!\"";
@@ -221,30 +215,29 @@ L_No:
     mes "[Ace Ventura]";
     mes "\"Have a great day, and enjoy you new pet!\"";
     goto L_Close;
-    
+
 L_OnlyOne:
     mes "[Ace Ventura]";
     mes "\" I am afraid you can not have another Rare Pet, They are all gone...\"";
     next;
     mes "\"However, I might be able to special order you one.\"";
-    
+
     menu
         "Yes, I would like to order one.", L_BuyBcat,
-        "No, Thanks.", -;
-    goto L_Close;
-    
+        "No, Thanks.", L_Close;
+
 L_BuyBcat:
     mes "[Ace Ventura]";
     mes "\"The RARE pets sells for 750,000 GP.\"";
     next;
     mes "\"Bring me the following items and 750,000 GP and then I will let you have one.\"";
     mes "\"50 Marshmallows, 50 Candy Pumpkins, 20 Lifestones, 4 Jack-O-Lanterns, 3 Jars of Blood, 2 Rubber Bats and 1 rare Black Pearl.\"";
-    
+
     menu
        "OK I have what you need.", L_SpecialBuy,
        "No, I have changed my mind.", L_Close;
     goto L_Close;
-   
+
 L_SpecialBuy:
     if (countitem("Marshmallow") < 50) goto L_Missing;
     if (countitem("CandyPumpkin") < 50) goto L_Missing;
@@ -262,7 +255,7 @@ L_SpecialBuy:
     delitem "JackOLantern", 4;
     delitem "JarofBlood", 3;
     delitem "RubberBat", 2;
-    delitem "BlackPearl", 1;    
+    delitem "BlackPearl", 1;
     set Zeny, Zeny - 750000;
     getitem "BlackCat", 1;
     set HW_Bcat, 2;
@@ -271,7 +264,7 @@ L_SpecialBuy:
     next;
     mes "\"Black Cat!\"";
     goto L_Close;
-    
+
 L_NoMoreForYou:
     mes "[Ace Ventura]";
     mes "\"Nice to see you again. You're the Adventurer who special ordered a Rare Pet from me..\"";

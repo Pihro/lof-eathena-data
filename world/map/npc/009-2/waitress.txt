@@ -50,8 +50,10 @@ L_10Tip:
     mes "\"Thank you, sweetie! Want to hear a secret?\"";
     next;
     menu
-        "What is it, darling?", -,
+        "What is it, darling?", L_Secret,
         "Nah, I don't feel like chatting.", L_No;
+
+L_Secret:
     mes "[Melinda]";
     mes "\"The master bowyer in this village used to construct exceptional bows. When you want one you should go and ask him.\"";
     close;

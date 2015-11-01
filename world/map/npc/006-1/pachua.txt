@@ -204,8 +204,7 @@ L_Check_Shops:
     if (@wants_leather_patch)
         menu
             "Wait, can you make a leather patch for me?", L_leather_patch,
-            "OK, bye.", -;
-    goto L_Close;
+            "OK, bye.", L_Close;
 
 S_CheckStuff:
     mes "[Chief Pachua]";
@@ -260,7 +259,6 @@ L_Chaps_store:
     mes "10.000 GP\"";
     mes "";
     mes "\"Do we have a deal?\"";
-    next;
     if (!@wants_leather_patch)
         menu
             "Yes, that's fine.", L_BuyChaps,
@@ -309,10 +307,11 @@ L_leather_patch:
     mes "\"If you just want a piece of leather, then yes, I can make that.  Bring me a snake skin and " + @LEATHER_PATCH_PRICE + " GP.\"";
     next;
     menu
-        "Here you are.", -,
+        "Here you are.", L_CheckPatchItems,
         "OK, I'll be back later.", L_Close,
         "That's too expensive!.", L_NoDeal;
 
+L_CheckPatchItems:
     if (countitem("SnakeSkin") < 1) goto L_NoSkins;
     if (Zeny < @LEATHER_PATCH_PRICE) goto L_NoMoney;
     getinventorylist;
@@ -403,15 +402,21 @@ L_Basket:
     mes "\"Maybe if you bring me the right materials I can make something for you.\"";
     next;
     menu
-        "Do you work only with clothes? Because I was looking for a basket.", -;
+        "Do you work only with clothes? Because I was looking for a basket.", L_AskBasket;
+
+L_AskBasket:
     mes "\"A basket? In our tribe, we craft baskets of all kinds using only reeds. This basket, you need it to carry your items?\"";
     menu
-        "No. It is for the Easter Bunny. I offered to get him one.", -;
+        "No. It is for the Easter Bunny. I offered to get him one.", L_EasterBunny;
+
+L_EasterBunny:
     mes "\"I appreciate your attitude. Maybe I can help you with that.\"";
     menu
-        "I would be really grateful if you could do that!", -,
+        "I would be really grateful if you could do that!", L_SetStatus,
         "Nah, I decided not to do that stupid quest.", L_Close,
         "I would prefer to talk to you about other stuff.", L_Begin; //should go to pachuas's regular chat
+
+L_SetStatus:
     set QUEST_Easter11, 2;
 
 L_MakeBasket:
@@ -420,11 +425,12 @@ L_MakeBasket:
     mes "\"5 bundles should do it.\"";
     mes "\"You should be able to get those from mouboos as they graze.\"";
     menu
-        "I have the Reeds!", -,
+        "I have the Reeds!", L_CheckBasketItems,
         "Ok, I will be back soon", L_Close,
         "I changed my mind, forget about it", L_Close,
         "Can I talk to you about another stuff?", L_Begin; //should go to pachuas's regular chat
 
+L_CheckBasketItems:
     if(countitem("ReedBundle") < 5) goto L_EasterNotEnough;
     if(countitem("ReedBundle") >= 5) goto L_EasterEnough;
     goto L_Close;

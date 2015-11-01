@@ -6,8 +6,9 @@
 
     mes "*You see a switch, it is flipped off*";
         menu "No, I am NOT flipping the switch... thats final.", L_Exit,
-        "Ha! What's the worst that could happen?", -;
+        "Ha! What's the worst that could happen?", L_Flip;
 
+L_Flip:
     mes "*As you flip the switch, the cave starts to rumble*";
 
     if ($@ELE_CAVE_STATUS != 0) goto L_Enjoy; // Prevent from starting level 1 from two different players

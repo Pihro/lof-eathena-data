@@ -2,14 +2,14 @@
 
 009-2.gat,110,44,0|script|The Doctor|184,{
 
-    if (BaseLevel <= 24) goto L_Lvl_too_low; 
-   
+    if (BaseLevel <= 24) goto L_Lvl_too_low;
+
     if (QUEST_Episode == 1) goto L_Check;
     if (QUEST_Episode == 2) goto L_Redo_tea;
 
     mes "[The Doctor]";
     mes "\"Quite interesting, quite interesting indeed.\"";
-    menu 
+    menu
         "Um, might I ask, what is so interesting?",-;
     mes "[The Doctor]";
     mes "\"Well, you are. You're quite interesting. I've been watching you for some time now, as you've been helping so many people: you're quite a master at what you do, you know.\"";
@@ -35,10 +35,10 @@ L_Lvl_too_low:
     close;
 
 L_Check:
-    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 || 
-        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 || 
+    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 ||
+        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 ||
         countitem("BottleOfWater") < 10) goto L_NotEnough;
-    
+
     delitem "MauveHerb", 50;
     delitem "CobaltHerb", 50;
     delitem "GambogeHerb", 50;
@@ -47,16 +47,16 @@ L_Check:
     goto L_Get_Reward;
 
 L_Check2:
-    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 || 
-        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 || 
+    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 ||
+        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 ||
         countitem("BottleOfWater") < 10) goto L_NotEnough;
-    
+
     delitem "MauveHerb", 50;
     delitem "CobaltHerb", 50;
     delitem "GambogeHerb", 50;
     delitem "AlizarinHerb", 50;
     delitem "BottleOfWater", 10;
-    
+
     getitem "DarkConcentrationPotion", 5;
     mes "[The Doctor]";
     mes "\"Thanks, enjoy!\"";
@@ -71,8 +71,10 @@ L_Get_Reward:
     mes "\"Well, I suppose you can have what's left of my tea.\"";
     getitem "DarkConcentrationPotion", 5;
     menu
-        "Oh, thank you!",-;
-    set QUEST_Episode, 2;                   
+        "Oh, thank you!", L_SetStatus2;
+
+L_SetStatus2:
+    set QUEST_Episode, 2;
     close;
 
 L_Redo_tea:
@@ -81,8 +83,7 @@ L_Redo_tea:
     menu
         "Alright, I have them here!", L_Check2,
         "Can you remind me what I need to get again?", L_Remind,
-        "No thanks, see ya!", -;
-    close;
+        "No thanks, see ya!", L_Close;
 
 L_Remind:
     mes "[The Doctor]";
@@ -94,7 +95,8 @@ L_NotEnough:
     mes "\"Sorry, you do not have enough ingredients. You'd better search thoroughly.\"";
     menu
         "Can you remind me what I need to get?", L_Remind,
-        "Ok, I'll go find what you need.", -;
+        "Ok, I'll go find what you need.", L_Close;
+
+L_Close:
     close;
 }
-
