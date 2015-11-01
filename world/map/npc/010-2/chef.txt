@@ -16,7 +16,6 @@
 //    if (QUEST_Easter12 == 8) goto L_Easter2012Foolplayers;
 //    if (QUEST_Easter12 == 9) goto OnEaster2012Out;
 
-L_Begin:
     mes "[Chef]";
     mes "";
     mes "\"I'm too busy right now to talk.\"";
@@ -31,7 +30,7 @@ L_Begin:
 L_lace_chococake:
     next;
     menu
-        "Sorry.", L_end,
+        "Sorry.", L_Close,
         "I need your help with a sick young girl!", L_Next;
 
 L_Next:
@@ -44,7 +43,7 @@ L_Next:
 L_lace_cupcake:
     next;
     menu
-        "Sorry.", L_end,
+        "Sorry.", L_Close,
         "I need your help with a sick young girl!", L_Next1;
 
 L_Next1:
@@ -71,9 +70,9 @@ L_Next2:
     mes "\"Ah yes.  We need to bind the smell in gingerbread.  Bring me three pieces of gingerbread, one orange, and 500 GP for the other ingredients, and I will make you your cupcake.\"";
     next;
     menu
-        "I'll go and get it.", L_end,
+        "I'll go and get it.", L_Close,
         "Here you are!", L_Next3,
-        "Not now.", L_end;
+        "Not now.", L_Close;
 
 L_Next3:
     if (countitem ("GingerBreadMan") < 3)
@@ -138,7 +137,7 @@ L_bringit:
     mes "\"Bring it here when you do.\"";
     next;
 
-L_End:
+L_Close:
     close;
 
 L_JellyBean:
@@ -150,9 +149,12 @@ L_JellyBean:
     next;
     mes "\"Even though I am really busy this time of year, I will help you make some Jelly Beans to put in the basket if you wish. Just to keep the tradition alive...\"";
     menu
-        "I would really appreciate that!", -,
-        "Nah, I decided not to do that stupid quest.", L_End;
+        "I would really appreciate that!", L_SetJellyBean,
+        "Nah, I decided not to do that stupid quest.", L_Close;
+
+L_SetJellyBean:
     set QUEST_Easter11, 8;
+    goto L_MakeJellyBean;
 
 L_MakeJellyBean:
     mes "[Chef]";
@@ -162,10 +164,11 @@ L_MakeJellyBean:
     mes "\"Sea slimes seem to have those, so try them.\"";
     mes "\"And because it's the holidays, I'll add in the other ingredient for free.\"";
     menu
-        "I have some candies!", -,
-        "Ok, I will be back soon.", L_End,
-        "I changed my mind, forget about it.", L_End;
+        "I have some candies!", L_CandyCheck,
+        "Ok, I will be back soon.", L_Close,
+        "I changed my mind, forget about it.", L_Close;
 
+L_CandyCheck:
     if(countitem("Candy") < 15)
         goto L_EasterNotEnough;
     if(countitem("Candy") >= 15)
@@ -216,8 +219,9 @@ L_Easter2012_Begin:
     mes "[Chef]";
     mes "\"Ahh, " + strcharinfo(0) + "! I really need to talk to you. Did the Easter Bunny give you a very thick and heavy pan?\"";
     menu
-        "Yes, he did. Why?", -;
+        "Yes, he did. Why?", L_Easter2012_Continue;
 
+L_Easter2012_Continue:
     mes "[Chef]";
     mes "\"Good to know! I am asking because now you are my only hope. I have invented the ultimate culinary wonder, a recipe for the most incredibly tasty food you can imagine!\"";
     next;
@@ -228,8 +232,9 @@ L_Easter2012_Begin:
     mes "\"Oh, and I will need to keep it with me for a while, as the ingredients need to rest in the acid solution for a long time, but you can always come here to see how it is going.\"";
     menu
         "Ok, but I want my pan back when it is done!", L_Accept_Cooking,
-        "No way, I won't let you fill my hat with corrosive yeti saliva!", -;
+        "No way, I won't let you fill my hat with corrosive yeti saliva!", L_NoWay;
 
+L_NoWay:
     mes "[Chef]";
     mes "\"Ahh, don't say that! Please, think about it and come back if you change your mind.\"";
     close;
@@ -238,8 +243,10 @@ L_Accept_Cooking:
     mes "[Chef]";
     mes "\"Great! But I can't promise anything regarding your hat. What I can promise is: IF it works, you will eat the most spectacular food of all time! I won't say what it is, but it is going to be great! What do you say, are you sure?\"";
     menu
-        "Ahh, just take the pan and do your thing.", -,
+        "Ahh, just take the pan and do your thing.", L_CarryOn,
         "No way!", L_Close;
+
+L_CarryOn:
     if (countitem("PanHat") < 1)
         goto L_No_PanHat;
     delitem "PanHat", 1;
@@ -262,9 +269,11 @@ L_Easter2012_Result:
     mes "[Chef]";
     mes "\"Hey! I have some good news and some bad news... Which one do you want to hear first?\"";
     menu
-        "The good one.", -,
-        "The bad one.", -,
+        "The good one.", L_SelectNews,
+        "The bad one.", L_SelectNews,
         "Oh no, I don't even want to hear!", L_Close;
+
+L_SelectNews:
     if (@temp < 15) goto L_Easter2012_Lucky;
     if (@temp >= 15) goto L_Easter2012_Unlucky;
     close;
@@ -284,16 +293,22 @@ L_Easter2012_Unlucky:
     mes "\"Ahh, actually, it doesn't matter! The important thing is that the recipe was a success! I just can't believe how something can be so tasty!\"";
     next;
     menu
-        "Nice! Now, what about my hat?", -;
+        "Nice! Now, what about my hat?", L_HatNext;
+
+L_HatNext:
     mes "\"Oh, that... Ehh, unfortunately, the pan is not anymore. It was completely destroyed by the time the pickled beets were ready! But don't worry, I will keep my promise and give you a jar of this culinary masterpiece!\"";
     next;
     menu
-        "Wait, wait... Are you saying I lost my hat?", -;
+        "Wait, wait... Are you saying I lost my hat?", L_HatNext2;
+
+L_HatNext2:
     mes "[Chef]";
     mes "\"Hmm, yes. But I must say I really appreciate your effort to help me! You sacrificed your cool hat in the name of the culinary arts, only a great person would do that!\"";
     next;
     menu
-        "But... I... My hat...", -;
+        "But... I... My hat...", L_HatNext3;
+
+L_HatNext3:
     mes "[Chef]";
     mes "\"Here, take your pickled beets!\"";
     getitem "PickledBeets", 1;
