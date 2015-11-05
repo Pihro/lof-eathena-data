@@ -16,7 +16,7 @@ L_Smithmenu:
 
 L_Sword:
     mes "[Smith Silvers]";
-    mes "\"I can, it will cost you 15 Silver Ore, 6 Raw Coal, and 100,000 gp.\"";
+    mes "\"I can, it will cost you 9 Silver Ore, 5 Raw Coal, and 40,000 gp.\"";
     menu
         "Sure.", L_sword2,
         "What a ripoff!  No way!", L_Close;
@@ -37,22 +37,20 @@ L_Bow:
 
 L_Clover:
     mes "[Smith Silvers]";
-    mes "\"I can silver your clover for 4 Silver Ore, 5 Raw Coal, and 250,000 gp.\"";
+    mes "\"I can silver your clover for 4 Silver Ore, 5 Raw Coal, and 50,000 gp.\"";
     menu
         "I have them right here.", L_Clover2,
         "Whoa, that's way too much.", L_Close;
 
 L_sword2:
-    if (countitem("SilverOre") < 15) goto L_Missing;
-    if (countitem("RawCoal") < 6) goto L_Missing;
+    if (countitem("SilverOre") < 9) goto L_Missing;
+    if (countitem("RawCoal") < 5) goto L_Missing;
     if (countitem("ShortSword") < 1) goto L_Missing;
-    if (Zeny < 100000) goto L_NotEnoughMoney;
-    getinventorylist;
-    if (@inventorylist_count == 100 && countitem("SilverOre") > 15 && countitem("RawCoal") < 6) goto L_Full;
-    delitem "SilverOre", 15;
-    delitem "RawCoal", 6;
+    if (Zeny < 40000) goto L_NotEnoughMoney;
+    delitem "SilverOre", 9;
+    delitem "RawCoal", 5;
     delitem "ShortSword", 1;
-    set Zeny, Zeny - 100000;
+    set Zeny, Zeny - 40000;
     getitem "SilverSword", 1;
     mes "[Smith Silvers]";
     mes "\"There you go! Want me to silver anything else?\"";
@@ -65,8 +63,6 @@ L_helm2:
     if (countitem("RawCoal") < 9) goto L_Missing;
     if (countitem("UnsilveredCrusadeHelmet") < 1) goto L_Missing;
     if (Zeny < 50000) goto L_NotEnoughMoney;
-    getinventorylist;
-    if (@inventorylist_count == 100 && countitem("SilverOre") > 6 && countitem("RawCoal") < 9) goto L_Full;
     delitem "RawCoal", 9;
     delitem "SilverOre", 6;
     delitem "UnsilveredCrusadeHelmet", 1;
@@ -83,8 +79,6 @@ L_bow2:
     if (countitem("RawCoal") < 18) goto L_Missing;
     if (countitem("ForestBow") < 1) goto L_Missing;
     if (Zeny < 200000) goto L_NotEnoughMoney;
-    getinventorylist;
-    if (@inventorylist_count == 100 && countitem("SilverOre") > 18 && countitem("RawCoal") < 18) goto L_Full;
     delitem "RawCoal", 18;
     delitem "SilverOre", 18;
     delitem "ForestBow", 1;
@@ -100,24 +94,17 @@ L_Clover2:
         if (countitem("SilverOre") < 4) goto L_Missing;
         if (countitem("RawCoal") < 5) goto L_Missing;
         if (countitem("FourLeafClover") < 1) goto L_Missing;
-        if (Zeny < 250000) goto L_NotEnoughMoney;
-        getinventorylist;
-        if (@inventorylist_count == 100 && countitem("SilverOre") > 4 && countitem("RawCoal") < 5) goto L_Full;
+        if (Zeny < 50000) goto L_NotEnoughMoney;
         delitem "RawCoal", 5;
         delitem "SilverOre", 4;
         delitem "FourLeafClover", 1;
-        set Zeny, Zeny - 250000;
+        set Zeny, Zeny - 50000;
         getitem "SilverFourLeafAmulet", 1;
         mes "[Smith Silvers]";
         mes "\"There you go.  Would you like anything else silvered?\"";
         menu
             "Yes.", L_Smithmenu,
             "No.", L_No;
-
-L_Full:
-    mes "[Smith Silvers]";
-    mes "\"You must have been making a lot of trades...your bag is completely full!  Come back after you've made some room.\"";
-    goto L_Close;
 
 L_Missing:
     mes "[Smith Silvers]";
