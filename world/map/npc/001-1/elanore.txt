@@ -20,11 +20,6 @@
     set @STATUS_READY_TO_LEARN_CURE_POISON, 5;
     set @STATUS_LEARNED_CURE_POISON, 6;
 
-    callfunc "ElanoreFix";
-
-    // This operation works around an earlier possible corruption of this state
-    if (@Q_status > @Q_STATUS_MAX)
-    set @Q_status, @STATUS_INITIAL;
     callsub S_update_var;
     if (sc_check(sc_poison)) goto L_CurePoison;
     if (BaseLevel > 10) goto L_NoHeal;
