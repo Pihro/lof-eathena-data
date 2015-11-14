@@ -13,7 +13,7 @@
 //#################################################################################
 
 
-031-3.gat,122,51,0	script	Santa	105,{
+031-3,122,51,0    script    Santa    105,{
 
         if (Sex) set @honorific$, "young hero";
         if (Sex) set @gender$, "boy";
@@ -68,14 +68,14 @@ L_Stocking_Prize:
         mes "[Santa Claus]";
         mes "\"Good to know you liked it! Now I would like to give you a personal item. It is not a hat, but something that will always make you remember how grateful I am.\"";
         next;
-	menu
-		"Wonderful! Santa, You are great! Is it another hat?",-;
-	next;
+    menu
+        "Wonderful! Santa, You are great! Is it another hat?",-;
+    next;
         mes "\"No, not a hat. Here, take this. I have been using it for the last three months... It is my favorite and it means a lot to me.\"";
         getitem "RedChristmasStocking", 1;
         set Xmas2010, 4;
         close2;
-        percentheal -20, 0;
+        heal -Hp * 20 / 100, 0;
         message strcharinfo(0), "You suddenly get dizzy... Something is not right with you. Maybe you shouldnt have put the Red Stocking so close to your face!";
         end;
 

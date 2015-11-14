@@ -1,5 +1,5 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Deeper Snow Cave warps
 
-019-4.gat,70,24|warp|To Snow Cave|-1,-1,019-3.gat,57,48
-019-4.gat,25,124|warp|To Snow Hills|0,-1,044-1.gat,154,93
+019-4,70,24|warp|To Snow Cave#019-40|-1,-1,019-3,57,48
+019-4,25,124|warp|To Snow Hills#019-41|0,-1,044-1,154,93

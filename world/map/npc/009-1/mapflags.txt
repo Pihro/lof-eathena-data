@@ -1,1 +1,1 @@
-009-1.gat|mapflag|town
+009-1|mapflag|town

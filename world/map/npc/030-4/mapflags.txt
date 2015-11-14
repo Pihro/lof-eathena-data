@@ -1,1 +1,1 @@
-030-4.gat|mapflag|nosave|030-2,151,25
+030-4|mapflag|nosave|030-2,151,25

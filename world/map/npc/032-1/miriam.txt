@@ -18,7 +18,7 @@
 // after you gained the speed skill, all variables are reset to zero.
 //#############################################
 
-032-1.gat,55,20,0|script|Miriam|175,
+032-1,55,20,0|script|Miriam|175,
 {
     if (getskilllv(SKILL_SPEED)) goto L_fast;
     if (getequipid(equip_torso) < 0) goto L_naked;
@@ -156,8 +156,8 @@ L_teach:
         "I am already fast.", L_notfast;
 
 L_Prepared:
-    set @agi, readparam(bAgi);
-    set @torso$, getitemname(getequipid(equip_torso));
+    set @agi, Agi;
+    set @torso$, getitemlink(getequipid(equip_torso));
     set @weight, MaxWeight/Weight;
     if (@weight < 3)
         goto L_heavyweight;
@@ -235,8 +235,8 @@ L_LetsDoThis:
     close2;
     message strcharinfo(0), "Miriam quickly grabs your arm and pull you to the place where she is sitting.";
     // Warp the player to the place where the NPC is defined, so he can't cheat.
-    warp "032-1.gat",55,21;
-    npctalk "Run " +strcharinfo(0)+ ", run!";
+    warp "032-1",55,21;
+    npctalk strnpcinfo(0), "Run " +strcharinfo(0)+ ", run!";
     set QUEST_MIRIAM, 5;
     set QUEST_MIRIAM_start, gettimetick(2);
     set QUEST_MIRIAM_cheat, 0;
@@ -314,7 +314,7 @@ L_goodjob:
     next;
     mes "You feel dizzy and as soon as you move your head and look to the ground, Miriam pushes you hard, sending you meters away from her.";
     close2;
-    warp "032-1.gat",55,22;
+    warp "032-1",55,22;
     // free all used player variables. This can be done, since there is a conditional on the speedskill at the beginning.
     set QUEST_MIRIAM_start, 0;
     set QUEST_MIRIAM_run, 0;

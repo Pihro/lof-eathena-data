@@ -1,12 +1,12 @@
-001-1.gat,40,40,6	script	EasterBunny	139,{
-	if (QUEST_Easter08_state > 0) goto L_Finished;
+001-1,40,40,6    script    EasterBunny    139,{
+    if (QUEST_Easter08_state > 0) goto L_Finished;
 
-	mes "[Easter Bunny]";
-	mes "Hi handsome! Happy Easter to you.";
-	next;
+    mes "[Easter Bunny]";
+    mes "Hi handsome! Happy Easter to you.";
+    next;
 
-	set @cond, 0;
-	if (countitem("RedEasterEgg") > 0) set @cond, @cond + 1;
+    set @cond, 0;
+    if (countitem("RedEasterEgg") > 0) set @cond, @cond + 1;
         if (countitem("GreenEasterEgg") > 0) set @cond, @cond + 1;
         if (countitem("BlueEasterEgg") > 0) set @cond, @cond + 1;
         if (countitem("YellowEasterEgg") > 0) set @cond, @cond + 1;
@@ -15,7 +15,7 @@
 
         if (@cond == 6) goto L_Give;
 
-	L_Message:
+    L_Message:
                 mes "[Easter Bunny]";
                 mes "Do you want to take part in the big easter egg hunt?";
                 mes "";
@@ -26,24 +26,24 @@
                 close;
 
         L_Give:
-	        delitem "RedEasterEgg", 1;
-	        delitem "GreenEasterEgg", 1;
-	        delitem "BlueEasterEgg", 1;
-	        delitem "YellowEasterEgg", 1;
-	        delitem "PinkEasterEgg", 1;
-	        delitem "TealEasterEgg", 1;
+            delitem "RedEasterEgg", 1;
+            delitem "GreenEasterEgg", 1;
+            delitem "BlueEasterEgg", 1;
+            delitem "YellowEasterEgg", 1;
+            delitem "PinkEasterEgg", 1;
+            delitem "TealEasterEgg", 1;
                 mes "[Easter Bunny]";
-        	mes "Here is your prize:";
-        	mes "The official easter 2008 headgear!";
-        	mes "Have fun!";
-		getitem "BunnyEars", 1;
-        	set QUEST_Easter08_state, 1;
-        	close;
+            mes "Here is your prize:";
+            mes "The official easter 2008 headgear!";
+            mes "Have fun!";
+        getitem "BunnyEars", 1;
+            set QUEST_Easter08_state, 1;
+            close;
 
-	L_Finished:
+    L_Finished:
                 mes "[Easter Bunny]";
-		mes "You already completed the quest.";
-		mes "But maybe you would like to help others complete it, too?";
-		close;
+        mes "You already completed the quest.";
+        mes "But maybe you would like to help others complete it, too?";
+        close;
 
 }

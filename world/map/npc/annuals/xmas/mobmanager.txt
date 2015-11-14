@@ -1,6 +1,6 @@
 // Spawns mobs
 
-019-1.gat,0,0,0|script|XmasSpawnManager|400,
+019-1.gat,0,0,0|script|XmasSpawnManager|400
 {
     end;
 
@@ -54,38 +54,29 @@ L_End:
     end;
 }
 
-019-1.gat,0,0,0|script|XmasSpawnCounter#0|400,
+019-1.gat,0,0,0|script|XmasSpawnCounter#0|400
 {
     end;
 
 OnTally:
-    cmdothernpc "XmasSpawnManager", "Tally";
+    donpcevent "XmasSpawnManager::OnCommandTally";
     end;
 }
 
-019-3.gat,0,0,0|script|XmasSpawnCounter#1|400,
+019-3.gat,0,0,0|script|XmasSpawnCounter#1|400
 {
     end;
 
 OnTally:
-    cmdothernpc "XmasSpawnManager", "Tally";
+    donpcevent "XmasSpawnManager::OnCommandTally";
     end;
 }
 
-030-1.gat,0,0,0|script|XmasSpawnCounter#2|400,
+030-3.gat,0,0,0|script|XmasSpawnCounter#2|400
 {
     end;
 
 OnTally:
-    cmdothernpc "XmasSpawnManager", "Tally";
-    end;
-}
-
-030-3.gat,0,0,0|script|XmasSpawnCounter#3|400,
-{
-    end;
-
-OnTally:
-    cmdothernpc "XmasSpawnManager", "Tally";
+    donpcevent "XmasSpawnManager::OnCommandTally";
     end;
 }

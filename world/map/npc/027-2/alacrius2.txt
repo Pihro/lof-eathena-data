@@ -1,7 +1,7 @@
 //Starts the reaper quest
 //To enable: sed 's_^// __' -i npc/027-2/alacrius2.txt
 
-// 027-2.gat,107,29,0|script|Alacrius|313,
+// 027-2,107,29,0|script|Alacrius|313,
 // {
 //     if ($@FIGHT_ALACRIUS_STATUS != 0) goto L_Enjoy;
 
@@ -53,12 +53,12 @@
 // // Time to fight
 // OnTimer10000:
 
-//    monster "027-2.gat",0,0,"Reaper Quest",1111,1,"Alacrius::OnDeadReaper";
+//    monster "027-2",0,0,"Reaper Quest",1111,1,"Alacrius::OnDeadReaper";
 //    end;
 
 // OnDeadReaper:
 //    set $@MO_REAPER, $@MO_REAPER + 1;
-//    killmonster "027-2.gat","All";
+//    killmonster "027-2","All";
 //    end;
 
 // OnDeadLost:
@@ -70,12 +70,12 @@
 
 //    set $@MO_REAPER,0;
 //    set $@FIGHT_ALACRIUS_STATUS, 0;
-//    killmonster "027-2.gat","All";
+//    killmonster "027-2","All";
 //    stopnpctimer;
 //    setnpctimer 0;
 //    set @PRIZE, 0;
-//    npctalk "Oh my beloved wife, you could not be rescued! I will have to purge my mistakes again...";
-//    npctalk "Please, help my beloved wife!!";
+//    npctalk strnpcinfo(0), "Oh my beloved wife, you could not be rescued! I will have to purge my mistakes again...";
+//    npctalk strnpcinfo(0), "Please, help my beloved wife!!";
 
 //    end;
 

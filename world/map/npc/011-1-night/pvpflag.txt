@@ -1,1 +1,1 @@
-011-1-night.gat|mapflag|pvp
+011-1-night|mapflag|pvp

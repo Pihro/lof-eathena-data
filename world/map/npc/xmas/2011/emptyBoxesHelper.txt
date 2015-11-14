@@ -3,7 +3,8 @@
 // Urmas asks for raw logs to make empty presents boxes
 // later he can be asked for those boxes to put toys in
 
-030-2.gat,140,41,0|script|Urmas|328,{
+030-2,140,41,0|script|Urmas|328
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -48,7 +49,7 @@ L_Helping:
 L_NoEvent:
     mes "[Urmas]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

@@ -1,10 +1,10 @@
 // Pumpkin mobs for the seasonal halloween event with Oscar
-055-1.gat,48,25,16,8|monster|Spawn Pumpkin|1063,12,10000,5000,PumpkinMob055-1::On1063
-055-1.gat,139,29,5,7|monster|Spawn Pumpkin|1063,7,10000,5000,PumpkinMob055-1::On1063
-055-1.gat,132,24,6,4|monster|Spawn Pumpkin|1063,4,10000,5000,PumpkinMob055-1::On1063
+055-1,48,25,16,8|monster|Pumpkin|1063,12,10000ms,5000ms,PumpkinMob055-1::On1063
+055-1,139,29,5,7|monster|Pumpkin|1063,7,10000ms,5000ms,PumpkinMob055-1::On1063
+055-1,132,24,6,4|monster|Pumpkin|1063,4,10000ms,5000ms,PumpkinMob055-1::On1063
 
 
-055-1.gat,0,0,0|script|PumpkinMob055-1|-1,
+055-1,0,0,0|script|PumpkinMob055-1|32767
 {
     end;
 
@@ -62,7 +62,7 @@ L_HeavyPoison1:
 L_HeavyPoison2:
     set @discover_poisonous_pumpkin, @discover_poisonous_pumpkin + 1;
     misceffect FX_PUMPKIN_EXPLOSION, strcharinfo(0);
-    percentheal -100,0;
+    heal -Hp, 0;
     end;
 
 }

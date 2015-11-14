@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-044-1.gat,66,103,0|script|Leiremes|170,{
+044-1,66,103,0|script|Leiremes|170
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;

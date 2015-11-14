@@ -22,16 +22,6 @@ admin_pass: admin
 //ladminallowip: clear
 ladminallowip: 127.0.0.1
 
-// Gamemaster password, used with the @gm command to obtain GM commands
-// NOTICE: You should also change this one.
-gm_pass: gm
-
-// GM level granted to people using @gm (with the correct password).
-// Builtin default is 60; setting it to 0 will disable the command.
-// To work, @gm also needs to be level 0 in atcommand_local.conf,
-// and atcommand_gm_only needs to be off in battle_local.conf
-level_new_gm: 0
-
 // Update host
 // If not empty, send address for client to download data.
 // This must contain news.txt and resources.xml
@@ -39,7 +29,7 @@ update_host: http://tmwdata.org/updates/
 
 // Which world should appear first to the players.
 // see server_name in world/conf/char_local.conf
-main_server: The Mana World
+main_server: Land of Fire
 
 // Server Communication username and password.
 // This used to be in save/account.txt, but this is better.

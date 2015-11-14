@@ -1,5 +1,6 @@
 // Map hh-outside: Heroes' Hold - Outside
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: hh-outside.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: hh-outside
 npc: npc/hh-outside/_mobs.txt
 npc: npc/hh-outside/_warps.txt
+npc: npc/hh-outside/mysterious-stranger.txt

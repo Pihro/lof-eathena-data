@@ -8,7 +8,8 @@
 // 5: delivered the Plush Mouboo without giving it to the bad guy
 // 6: delivered fake present instead of Plush Mouboo
 
-030-2.gat,31,77,0|script|Rikhard|329,{
+030-2,31,77,0|script|Rikhard|329
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -60,7 +61,7 @@ L_Ordered:
 L_NoEvent:
     mes "[Rikhard]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -74,7 +75,8 @@ L_Close:
     close;
 }
 
-030-2.gat,135,31,0|script|Launo|329,{
+030-2,135,31,0|script|Launo|329
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -180,7 +182,7 @@ L_PlushMoubooDone:
 L_NoEvent:
     mes "[Launo]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

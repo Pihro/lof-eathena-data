@@ -1,8 +1,6 @@
-// For now this has to use a real map name, but the effect happens
-// on any map because of the -1s at the end.
 // Note: the client (I think) has a display bug if this is called
 // during the intial connection's equip hook
-botcheck.gat,0,0,0|script|UnequipCB|-1,-1,-1
+-|script|UnequipCB|32767
 {
     end;
 
@@ -13,7 +11,7 @@ OnUnequip:
 }
 
 // Paired with unequipcb
-function|script|UnequipLater|,
+function|script|UnequipLater
 {
     // if there are multiple items that want to be removed,
     // only schedule one timer - scripts will be called again

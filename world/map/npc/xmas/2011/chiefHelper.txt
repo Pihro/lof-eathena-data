@@ -2,7 +2,8 @@
 // author: Jenalya
 // Warrick is the Chief of Santa's helpers, starts the quest
 
-030-2.gat,87,77,0|script|Chief Warrick|329,{
+030-2,87,77,0|script|Chief Warrick|329
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -61,7 +62,7 @@ L_Helping:
 L_NoEvent:
     mes "[Chief Warrick]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -84,6 +85,6 @@ L_Close:
     close;
 }
 
-//030-2.gat,85,33,0|script|Debug|105,{
+//030-2,85,33,0|script|Debug|105,{
 //    callfunc "xmas2011debug";
 //}

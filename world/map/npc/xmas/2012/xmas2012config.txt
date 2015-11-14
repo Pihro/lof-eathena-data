@@ -60,7 +60,8 @@ OnInit:
     set $@xmas2012_SANTA_FLAG, 0x00000800;
 }
 
-function|script|xmas2012time|{
+function|script|xmas2012time
+{
 // debug
 //    if (@xmas_debug == $@xmas2012_event_time)
 //        goto L_Event_Time;
@@ -89,12 +90,14 @@ L_Reward_Time:
     return;
 }
 
-function|script|xmas2012update_reinboo_var|{
+function|script|xmas2012update_reinboo_var
+{
     set xmas2012, (xmas2012 & ~NIBBLE_0_MASK) | (@reinboo << NIBBLE_0_SHIFT);
     return;
 }
 
-function|script|xmas2012debug|{
+function|script|xmas2012debug
+{
     mes "What do you want to do?";
     menu
         "Set time.", L_Time,
@@ -135,6 +138,6 @@ L_Close:
     close;
 }
 
-// 030-1.gat,91,48,0|script|Debug|105,{
+// 030-1,91,48,0|script|Debug|105,{
 //     callfunc "xmas2012debug";
 // }

@@ -1,10 +1,10 @@
-function|script|SaviorColors|,
+function|script|SaviorColors
 {
     setarray @savior_armors$, "RedSaviorArmor", "GreenSaviorArmor", "DarkBlueSaviorArmor", "YellowSaviorArmor", "BlueSaviorArmor", "PinkSaviorArmor", "BlackSaviorArmor", "OrangeSaviorArmor", "DarkGreenSaviorArmor";
     setarray @savior_dyes$, "RedDye", "GreenDye", "DarkBlueDye", "YellowDye", "LightBlueDye", "PinkDye", "BlackDye", "OrangeDye", "DarkGreenDye";
     return;
 }
-function|script|ClearSaviorColors|,
+function|script|ClearSaviorColors
 {
     cleararray @savior_armors$, "", 9;
     cleararray @savior_dyes$, "", 9;

@@ -10,7 +10,8 @@
 // 10 : Good
 // 11 : Bad
 
-030-1.gat,103,54,0|script|Grombadil|105,{
+030-1,103,54,0|script|Grombadil|105
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -154,7 +155,8 @@ L_Close:
     close;
 }
 
-030-1.gat,96,57,0|script|Reimeles|170,{
+030-1,96,57,0|script|Reimeles|170
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -178,7 +180,8 @@ L_RewardTime:
     close;
 }
 
-030-1.gat,100,46,0|script|Leimeres|170,{
+030-1,100,46,0|script|Leimeres|170
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -202,7 +205,8 @@ L_RewardTime:
     close;
 }
 
-006-1.gat,126,112,0|script|Meireles the Reinboo|170,{
+006-1,126,112,0|script|Meireles the Reinboo|170
+{
     set @cake_amount, 3;
     set @apple_amount, 5;
 
@@ -325,7 +329,8 @@ L_Close:
     close;
 }
 
-012-1.gat,66,55,0|script|Meileres the Reinboo|170,{
+012-1,66,55,0|script|Meileres the Reinboo|170
+{
     set @cake_amount, 3;
     set @apple_amount, 5;
 
@@ -447,7 +452,8 @@ L_Close:
     close;
 }
 
-018-1.gat,114,41,0|script|Reilemes the Reinboo|170,{
+018-1,114,41,0|script|Reilemes the Reinboo|170
+{
     set @cake_amount, 3;
     set @apple_amount, 5;
 
@@ -568,7 +574,8 @@ L_Close:
     close;
 }
 
-017-1.gat,35,49,0|script|Leiremes the Reinboo|170,{
+017-1,35,49,0|script|Leiremes the Reinboo|170
+{
     set @cake_amount, 3;
     set @apple_amount, 5;
 

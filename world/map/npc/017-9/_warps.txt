@@ -1,9 +1,9 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Backstage warps
 
-017-9.gat,22,20|warp|To Left Door Onstage|-1,-1,017-2.gat,23,21
-017-9.gat,26,21|warp|To Outside|-1,-1,017-1.gat,43,34
-017-9.gat,30,20|warp|To Right Door Onstage|-1,-1,017-2.gat,29,21
-017-9.gat,21,28|warp|To Left Trapdoor Onstage|-1,-1,017-2.gat,25,25
-017-9.gat,26,28|warp|To Centre Trapdoor Onstage|-1,-1,017-2.gat,26,23
-017-9.gat,31,28|warp|To Right Trapdoor Onstage|-1,-1,017-2.gat,27,25
+017-9,22,20|warp|To Left Door Ons#017-90|-1,-1,017-2,23,21
+017-9,26,21|warp|To Outside#017-91|-1,-1,017-1,43,34
+017-9,30,20|warp|To Right Door On#017-92|-1,-1,017-2,29,21
+017-9,21,28|warp|To Left Trapdoor#017-93|-1,-1,017-2,25,25
+017-9,26,28|warp|To Centre Trapdo#017-94|-1,-1,017-2,26,23
+017-9,31,28|warp|To Right Trapdoo#017-95|-1,-1,017-2,27,25

@@ -1,1 +1,1 @@
-021-2.gat|mapflag|town
+021-2|mapflag|town

@@ -1,6 +1,6 @@
 // Doctor 4, at the fruit trees.
 
-028-1.gat,122,72,0	script	Doctor#who4	184,{
+028-1,122,72,0    script    Doctor#who4    184,{
     // States here
     callsub S_Helped_Count;
     if (@Easter_2010_helper >= 2 && !((Easter_2010_QuestState >> E10_FLAG_MID_REWARD_SHIFT) & E10_FLAG_MID_REWARD_MASK))
@@ -397,10 +397,10 @@ L_lens_directdamage:
     set @opacityID, 0;
 
     set @mod, 0;
-    if (rand(readparam(bAgi)) > 30) set @mod, 1;
+    if (rand(Agi) > 30) set @mod, 1;
     if (@mod == 1) mes "You barely manage to dive out of the way as the yellow flash sharply hisses through a space which, until a few moments ago, you had occupied...";
     if (@mod == 0) mes "The light burns all around you, with a strong sensation as if you were crushed under a great weight...";
-    if (@mod == 0) itemheal readparam(bVit) * readparam(bVit) / 12 - 820, 0;
+    if (@mod == 0) heal Vit * Vit / 12 - 820, 0, 1;
     if (Hp < 1) close;
     set @mod, 1;
 
@@ -624,7 +624,7 @@ L_MidReward:
     mes "[Doctor]";
     mes "";
     mes "\"While visiting another dimension--hm, as a matter of fact, it was quite like this one. But their choices in the past seem to have differed from the ones here...\"";
-	next;
+    next;
     mes "[Doctor]";
     mes "";
     mes "The Doctor reflects on his words. \"Interesting how things turn out. Well, I now have a lot of these Valentine's Glasses, if you'd like a pair.\"";

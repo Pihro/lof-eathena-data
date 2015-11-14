@@ -1,5 +1,6 @@
 // Uncle Bunny
-008-1.gat,45,23,0|script|Uncle Bunny|336,{
+008-1,45,23,0|script|Uncle Bunny|336
+{
 
     if ((BaseLevel < 30) || (gettimetick(2)-TUT_var < 3*7*86400)) // player must be created at least three weeks ago
         goto L_TooYoung;

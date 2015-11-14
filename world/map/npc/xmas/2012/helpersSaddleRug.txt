@@ -2,7 +2,8 @@
 // author: Jenalya
 
 // Create Blanket
-030-2.gat,153,39,0|script|Raimo|329,{
+030-2,153,39,0|script|Raimo|329
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -71,7 +72,7 @@ L_BlanketDone:
 L_NoEvent:
     mes "[Raimo]";
     mes "\"I'm sorry, the house isn't open to visitors at the moment.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -90,7 +91,8 @@ L_Close:
 }
 
 // Create Saddle Rug
-030-2.gat,135,31,0|script|Launo|329,{
+030-2,135,31,0|script|Launo|329
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -166,7 +168,7 @@ L_BlanketDone:
 L_NoEvent:
     mes "[Launo]";
     mes "\"I'm sorry, the house isn't open to visitors at the moment.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -185,7 +187,8 @@ L_Close:
 }
 
 // Dye Saddle Rug
-030-2.gat,140,31,0|script|Reino|328,{
+030-2,140,31,0|script|Reino|328
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -250,7 +253,7 @@ L_Inventory:
 L_NoEvent:
     mes "[Reino]";
     mes "\"I'm sorry, the house isn't open to visitors at the moment.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

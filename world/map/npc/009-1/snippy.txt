@@ -1,5 +1,6 @@
 // A barber (later we can make it so certain styles need to come from him, for a price)
-009-1.gat,54,29,0|script|Snippy|112,{
+009-1,54,29,0|script|Snippy|112
+{
     mes "[Snippy the Barber]";
     mes "\"Do you need a change of style?\"";
     next;
@@ -7,9 +8,4 @@
     mes "[Snippy the Barber]";
     mes "\"Come again!\"";
     close;
-
-// OnInit doesn't work for functions, they need our help
-OnInit:
-    callfunc "OnInitBarber";
 }
-

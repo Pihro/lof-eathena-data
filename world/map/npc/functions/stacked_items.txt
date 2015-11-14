@@ -1,4 +1,4 @@
-function|script|DelItems|,
+function|script|DelItems
 {
     goto L_Loop;
     
@@ -12,7 +12,7 @@ L_Done:
     set @item$, "";
     return;
 }
-function|script|GetItems|,
+function|script|GetItems
 {
     goto L_Loop;
     

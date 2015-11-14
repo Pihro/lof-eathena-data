@@ -1,5 +1,5 @@
 // Map somber-cave: Somber Cave
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: somber-cave.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: somber-cave
 npc: npc/somber-cave/_mobs.txt
 npc: npc/somber-cave/_warps.txt

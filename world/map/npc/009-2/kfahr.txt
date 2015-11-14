@@ -13,12 +13,14 @@
 //#
 //#################################################################################
 
-009-2.gat,67,57,0|script|Kfahr|125,
+009-2,67,57,0|script|Kfahr|125,
 {
     set @hw2011_npc_id, $@hw2011_npc_kfahr;
     if (gettime(7) == $@hw2011_year && gettime(6) == 10 && gettime(5) >= $@hw2011_start_day)
         goto L_TrickOrTreat;
+    goto L_Begin;
 
+L_Begin:
     set @QS_NEWBIE, 0;
     set @QS_MET_KFAHR, 1;
     set @QS_KNOWS_KFAHR, 2;
@@ -921,9 +923,9 @@ L_golden_scorpion_wrestle:
     set @KFAHR_AGI, 60 - @beer_count * 5;
     set @kfahr_stamina, 120;
 
-    set @PC_STR, readparam(bStr);
-    set @PC_AGI, readparam(bAgi);
-    set @PC_MAX_STAMINA, readparam(bVit) + 20;
+    set @PC_STR, Str;
+    set @PC_AGI, Agi;
+    set @PC_MAX_STAMINA, Vit + 20;
     set @pc_stamina, @PC_MAX_STAMINA;
 
     setarray @positions$,

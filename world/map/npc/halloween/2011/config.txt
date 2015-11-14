@@ -43,7 +43,8 @@
 
 // !!! IMPORTANT NOTE: a maximum of 15 NPCs can be used for this quest !!!
 
--|script|#hw2011config|-1,{
+-|script|#hw2011config
+{
 OnInit:
     // Set this to 1 for testing, to enable for all of October
     set $@hw2011_start_day, 24;

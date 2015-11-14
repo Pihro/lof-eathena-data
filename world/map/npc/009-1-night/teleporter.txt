@@ -1,6 +1,7 @@
 //
 
-009-1-night.gat,53,47,0|script|Teleporter#2|116,{
+009-1-night,53,47,0|script|Teleporter#2|116
+{
     mes "[Mundane Transporter]";
     mes "\"Would you like to return to the daylight?\"";
     menu
@@ -8,7 +9,7 @@
          "Are you crazy!?", L_Close;
 
 L_Sure:
-    warp "009-1.gat", 50, 40;
+    warp "009-1", 50, 40;
     close;
     
 L_Close:

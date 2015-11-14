@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-2.gat,89,23,0|script|Verneri|334,{
+030-2,89,23,0|script|Verneri|334
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -84,7 +85,7 @@ L_RewardTime:
 L_NoEvent:
     mes "[Verneri]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_Close:

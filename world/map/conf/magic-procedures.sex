@@ -280,36 +280,23 @@
 (PROCEDURE install_melee_spell (charges base_delay attack_animation)
     (CALL install_attack_spell charges base_delay 1 attack_animation))
 
-(PROCEDURE summon_spell (mob_id count delay lifetime control_level)
+(PROCEDURE summon_spell (mob_id count delay lifetime control_level school)
     (CALL default_effect)
     (sfx location SFX_SUMMON_START 0)
     (WAIT delay)
     (sfx location SFX_SUMMON_FIRE 0)
     (spawn
-        (rbox location 2)
+        (rbox location (if_then_else
+                            (is_in (location caster)
+                                (@+
+                                    (@ "009-7" (- (script_int caster "$@fightclub_x1") 2) (- (script_int caster "$@fightclub_y1") 2))
+                                    (+ (- (script_int caster "$@fightclub_x2") (script_int caster "$@fightclub_x1")) 5)
+                                    (+ (- (script_int caster "$@fightclub_y2") (script_int caster "$@fightclub_y1")) 5))) 1 2))
         caster
         mob_id
         (if_then_else
             (>=
-                (skill caster ASTRAL)
-                control_level)
-            2
-            1)
-        count
-        lifetime)) "pets when level is high enough"
-
-(PROCEDURE summon_dark_spell (mob_id count delay lifetime control_level)
-    (CALL default_effect)
-    (sfx location SFX_SUMMON_START 0)
-    (WAIT delay)
-    (sfx location SFX_SUMMON_FIRE 0)
-    (spawn
-        (rbox location 2)
-        caster
-        mob_id
-        (if_then_else
-            (>=
-                (skill caster DARK)
+                (skill caster school)
                 control_level)
             2
             1)
@@ -335,3 +322,24 @@
         (BLOCK "1 is Tulimshar, 9 is Hurnscald and 20 is Nivalis"
             (message caster "A powerful magic drains your spell just as it is beginning to take shape!")
             (ABORT))))
+
+(PROCEDURE script_split_str (d str v m)
+    (FOR a 0 m
+        (BLOCK
+            (IF (< (strlen str) 1) (BREAK))
+            (SET arglen (strlen str))
+            (SET argoffset
+                (if_then_else
+                    (contains_string str d)
+                    (strstr str d)
+                    arglen))
+            (SET arg
+                (if_then_else (== arglen argoffset)
+                    str
+                    (substr str 0 argoffset)))
+            (set_script_str caster (+ (+ "@" v) (+ a "$")) arg)
+            (SET str
+                (if_then_else
+                    (> arglen (- argoffset 1))
+                    (substr str (+ argoffset 1) arglen)
+                    "")))))

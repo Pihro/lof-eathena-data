@@ -2,7 +2,7 @@
 // Quest fixed by Pyndragon/Daniel Foerster, 27 May 2015
 // See also 009-2/fairyquest2.txt
 
-018-3.gat,60,21,0|script|Susanne|114,
+018-3,60,21,0|script|Susanne|114,
 {
   
   if(BaseLevel <= 49) goto L_noob;
@@ -46,18 +46,18 @@ L_yes1:
     mes "\"(Susanne Screams) WATCH OUT!!! I think I hear him in this very cave!!!\"";
     set FAIRY_Quest, 1;
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
+    monster "018-3",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
     close;
 
 OnFafiDragonDead:
     if (FAIRY_Quest == 1) set FAIRY_Quest, 2;
     set @FafiFight, 0;
     message strcharinfo(0), " You killed the Fafi Dragon.";
-    mapannounce "018-3.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
-    mapannounce "009-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
-    mapannounce "001-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
-    mapannounce "020-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
-    mapannounce "027-1.gat", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "018-3", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "009-1", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "001-1", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "020-1", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
+    mapannounce "027-1", "" +strcharinfo(0)+ " has killed the Fafi Dragon!", 0;
     message strcharinfo(0), " Cheers are being heard throughout the land!";
     end;
 
@@ -65,9 +65,9 @@ L_tellagain:
     mes "[Susanne]";
     mes "\"Hello \"" + strcharinfo(0) + ",";
     mes "\"Don't forget, the Fafi Dragon roams throughout many worlds... Please save my friends, they are in so much danger...\"";
-//    killmonster "018-3.gat", "Susanne::OnFafiDragonDead";
+//    killmonster "018-3", "Susanne::OnFafiDragonDead";
     set @FafiFight, 1;
-    monster "018-3.gat",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
+    monster "018-3",28,25,"FafiDragon",1120,1, "Susanne::OnFafiDragonDead";
     mes "\"Thank you...\"";
     next;
     mes "\"(Susanne Screams) WATCH OUT!!!  I think I hear him in this very cave!!!\"";
@@ -82,7 +82,7 @@ L_thanks:
     
     mes "\"I'm so glad I get to see my friends again, thank you so much for saving them! You are so big and strong... You should talk to the Fairy Princess on the second floor of the Hurnscald Inn.\"";
     mes "\"By the way, I found this Helmet after you killed the Fafi Dragon, Maybe you can use it some day.\"";
-    if (FAIRY_Quest==2)	set FAIRY_Quest, 3;
+    if (FAIRY_Quest==2)    set FAIRY_Quest, 3;
     getitem "MonsterSkullHelmet", 1;
     close;
 

@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-1.gat,96,57,0|script|Reimeles|170,{
+030-1,96,57,0|script|Reimeles|170
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -28,7 +29,8 @@ L_Close:
     close;
 }
 
-030-1.gat,100,46,0|script|Leimeres|170,{
+030-1,100,46,0|script|Leimeres|170
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -71,7 +73,8 @@ L_Close:
     close;
 }
 
-030-1.gat,103,54,0|script|Meireles|170,{
+030-1,103,54,0|script|Meireles|170
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)

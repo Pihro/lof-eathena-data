@@ -9,7 +9,7 @@
 //     3: Luvia is defeated
 //-----------------------------------------------------------------------------
 
-052-2.gat,88,19,0|script|#TriggerDialog|32767,3,2,
+052-2,88,19,0|script|#TriggerDialog|32767,3,2
 {
     set @step, 7;
     if ($@illia_progress < @step) goto L_ShouldNotBeHere;
@@ -18,18 +18,18 @@
 
 L_SpawnLuvia:
     set $@illia_level_7_progress, 1;
-    cmdothernpc "Luvia", "Start";
+    donpcevent "Luvia::OnCommandStart";
     end;
 
 L_ShouldNotBeHere:
-    percentheal -100, 0;
+    heal -Hp, 0;
     end;
 
 }
 
 // A trigger whose only purpose is to place Luvia npcs back in place.
 // (even though the Janitor 7 will have done this job)
-052-2.gat,77,48,0|script|#TriggerPlaceLuvia|32767,1,1,
+052-2,77,48,0|script|#TriggerPlaceLuvia|32767,1,1
 {
     if (strcharinfo(0) != $@ILLIA_HERO$) end;
     if ($@illia_progress == 7 && $@illia_level_7_progress == 0) goto L_PlaceLuvia;
@@ -42,7 +42,7 @@ L_PlaceLuvia:
 
 }
 
-052-2.gat,88,15,0|script|Luvia|371,
+052-2,88,15,0|script|Luvia|371
 {
     set @step, 7;
     if ($@illia_progress < @step) goto L_ShouldNotBeHere;
@@ -59,31 +59,31 @@ L_Start:
     end;
 
 L_ShouldNotBeHere:
-    percentheal -100, 0;
+    heal -Hp, 0;
     end;
 
 OnTimer1000:
-    npctalk "Oh well, who thought you would survive so far?";
+    npctalk strnpcinfo(0), "Oh well, who thought you would survive so far?";
     end;
 
 OnTimer5000:
-    npctalk "All this way, for nothing, only to die from my hands...";
+    npctalk strnpcinfo(0), "All this way, for nothing, only to die from my hands...";
     end;
 
 OnTimer10000:
-    npctalk "Don't worry, you will continue to live, for my sake.";
+    npctalk strnpcinfo(0), "Don't worry, you will continue to live, for my sake.";
     end;
 
 OnTimer15000:
-    npctalk "One piece of advice: get prepared!";
+    npctalk strnpcinfo(0), "One piece of advice: get prepared!";
     stopnpctimer;
     setnpctimer 0;
-    cmdothernpc "#LuviaDaemon", "Invoke";
+    donpcevent "#LuviaDaemon::OnCommandInvoke";
     end;
 
 }
 
-052-2.gat,88,15,0|script|#LuviaDaemon|127,
+052-2,88,15,0|script|#LuviaDaemon|32767
 {
 end;
 
@@ -99,7 +99,7 @@ OnTimer2000:
     // Kill any mob existing on the map
     // That's to terminate any attempt at players mass-summoning mobs
     // and hide in a corner of the map.
-    killmonster "052-2.gat", "All";
+    killmonster "052-2", "All";
     npcwarp 1, 1, "Luvia";
     end;
 
@@ -123,9 +123,8 @@ OnTimer5000:
     if ($@illia_level_7_progress != 1)
         end;
     // Warp to the place to spawn luvia once the teleport sequence is finished
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         end;
-    attachrid($@ILLIA_HERO_ID);
     set $@illia_luvia_x, getx();
     set $@illia_luvia_y, gety();
     npcwarp $@illia_luvia_x, $@illia_luvia_y, "#LuviaDaemon";
@@ -142,7 +141,7 @@ OnTimer5500:
     enablenpc "#LuviaDaemon";
     misceffect FX_EVIL_SUMMON;
     misceffect FX_CHANNELLING_CAST;
-    monster "052-2.gat", $@illia_luvia_x, $@illia_luvia_y, "", 1102, 1, "#LuviaDaemon::OnDeath";
+    monster "052-2", $@illia_luvia_x, $@illia_luvia_y, "", 1102, 1, "#LuviaDaemon::OnDeath";
     set $@illia_luvia_x, 0;
     set $@illia_luvia_y, 0;
     end;
@@ -176,15 +175,14 @@ OnTimer26000:
     end;
 
 S_SpawnWitchGuard:
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         end;
-    attachrid($@ILLIA_HERO_ID);
     npcwarp getx(), gety(), "#LuviaDaemon";
     misceffect FX_EVIL_SUMMON;
     misceffect FX_GROUND_SPAWN;
-    monster "052-2.gat", getx(), gety(), "", 1103, 1, "#LuviaDaemon::OnWGD";
+    monster "052-2", getx(), gety(), "", 1103, 1, "#LuviaDaemon::OnWGD";
     detachrid;
-    areatimer "052-2.gat", 73, 11, 115, 49, 0, "#LuviaDaemon::OnWGS";
+    areatimer "052-2", 73, 11, 115, 49, 0, "#LuviaDaemon::OnWGS";
     return;
 
 OnTimer30000:
@@ -200,7 +198,7 @@ OnTimer30000:
 L_TriggerTrance:
     set $@illia_level_7_progress, 3;
     set $@illia_luvia_trance_delay, 0;
-    areatimer "052-2.gat", 73, 11, 115, 49, 0, "#LuviaDaemon::OnTT";
+    areatimer "052-2", 73, 11, 115, 49, 0, "#LuviaDaemon::OnTT";
     setnpctimer 0;
     end;
 
@@ -215,13 +213,13 @@ OnDeath:
     if ($@illia_progress != 7)
         end;
     set $@illia_level_7_progress, 4;
-    killmonster "052-2.gat", "#LuviaDaemon::OnWGD";
-    mapannounce "052-2.gat", "Luvia : How? By mere humans! But we will see again! Enjoy your victory while it lasts, " + $@ILLIA_HERO$ + "!!", 0;
+    killmonster "052-2", "#LuviaDaemon::OnWGD";
+    mapannounce "052-2", "Luvia : How? By mere humans! But we will see again! Enjoy your victory while it lasts, " + $@ILLIA_HERO$ + "!!", 0;
 
     set $@illia_bp, $Illia_Luvia_Harvest * 16 / 10 + 120;
-    areatimer "052-2.gat", 73, 11, 115, 49, 0, "#LuviaDaemon::OnBP";
+    areatimer "052-2", 73, 11, 115, 49, 0, "#LuviaDaemon::OnBP";
 
-    areatimer "052-2.gat", 73, 11, 115, 49, 2000, "#LuviaDaemon::OnW00t";
+    areatimer "052-2", 73, 11, 115, 49, 2000, "#LuviaDaemon::OnW00t";
 
     set $@illia_progress, 8;
     callfunc "UpdateIlliaProgress";
@@ -274,15 +272,15 @@ OnW00t:
 }
 
 // Warp from the party room, to the chest room
-052-2.gat,88,12,0|script|#ToLuviaRoomDoor|32767,1,2,
+052-2,88,12,0|script|#ToLuviaRoomDoor|32767,1,2
 {
     set @step, 7;
     if ($@illia_progress < @step) goto L_ShouldNotBeHere;
     if ($@illia_level_7_progress < 4) end;
-    warp "052-2.gat", 133, 84;
+    warp "052-2", 133, 84;
     end;
 
 L_ShouldNotBeHere:
-    percentheal -100, 0;
+    heal -Hp, 0;
     end;
 }

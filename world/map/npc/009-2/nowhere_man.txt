@@ -1,6 +1,7 @@
 //
 
-009-2.gat,33,94,0|script|Nowhere Man|153,{
+009-2,33,94,0|script|Nowhere Man|153
+{
     set @Ironprice, 1000;
     set @Sulphurprice, 1200;
     set @Yellowpowderprice, 6500;
@@ -88,7 +89,7 @@ L_Gloves:
         goto L_Close;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("LeatherGloves") == 0)
-        goto L_TooMany;
+        goto L_Full;
     mes "[Nowhere Man]";
     mes "\"Gloves? Sure, I sell fine leather gloves for only 3000 GP.\"";
     menu

@@ -1,4 +1,4 @@
-026-1.gat,24,37,0|script|Munro|183,
+026-1,24,37,0|script|Munro|183,
 {
     mes "[Munro]";
     mes "\"Whoh dude...\"";
@@ -40,7 +40,7 @@ L_Exit:
     close;
 }
 
-026-1.gat,25,37,0|script|#AnnualHalloween|-1,
+026-1,25,37,0|script|#AnnualHalloween|32767
 {
     end;
 
@@ -77,7 +77,7 @@ L_End:
 }
 
 
-function|script|CheckMunro|,
+function|script|CheckMunro
 {
     if ((gettime(6) == 10 && gettime(5) >= 27) || (gettime(6) == 11 && gettime(5) <= 5))
         goto L_Return;

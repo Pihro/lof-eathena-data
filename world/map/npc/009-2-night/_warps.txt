@@ -1,23 +1,23 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Hurnscald Indoor warps
 
-009-2-night.gat,75,23|warp|To First Floor|0,-1,009-2-night.gat,74,47
-009-2-night.gat,95,30|warp|To Outside|-1,-1,009-1-night.gat,59,34
-009-2-night.gat,130,26|warp|To Outside|-1,-1,009-1-night.gat,71,31
-009-2-night.gat,144,26|warp|To Second Floor|0,-1,009-2-night.gat,144,43
-009-2-night.gat,144,42|warp|To Third Floor|0,-1,009-2-night.gat,144,25
-009-2-night.gat,155,47|warp|To First Floor|0,-1,009-2-night.gat,155,63
-009-2-night.gat,114,46|warp|To First Floor|0,-1,009-2-night.gat,114,70
-009-2-night.gat,50,55|warp|To Outside|-1,-1,009-1-night.gat,35,31
-009-2-night.gat,74,53|warp|To Cellar|-1,-1,009-2-night.gat,143,78
-009-2-night.gat,74,46|warp|To Second Floor|0,-1,009-2-night.gat,75,22
-009-2-night.gat,114,78|warp|To Outside|-1,-1,009-1-night.gat,72,45
-009-2-night.gat,114,69|warp|To Second Floor|0,-1,009-2-night.gat,114,45
-009-2-night.gat,149,67|warp|To Outside|-1,-1,009-1-night.gat,80,32
-009-2-night.gat,143,77|warp|To First Floor|-1,-1,009-2-night.gat,74,52
-009-2-night.gat,155,62|warp|To Second Floor|0,-1,009-2-night.gat,155,46
-009-2-night.gat,182,67|warp|To Outside|0,-1,009-1-night.gat,91,47
-009-2-night.gat,147,90|warp|To Hurnscald Cave|-1,-1,009-3-night.gat,173,21
-009-2-night.gat,27,107|warp|To Outside|-1,-1,009-1-night.gat,58,47
-009-2-night.gat,46,50|warp|To Inn Private Room|-1,-1,009-2-night.gat,76,78
-009-2-night.gat,77,78|warp|To Hurnscald Inn|-1,-1,009-2-night.gat,47,50
+009-2-night,75,23|warp|To First F#009-2-night0|0,-1,009-2-night,74,47
+009-2-night,95,30|warp|To Outside#009-2-night1|-1,-1,009-1-night,59,34
+009-2-night,130,26|warp|To Outside#009-2-night2|-1,-1,009-1-night,71,31
+009-2-night,144,26|warp|To Second #009-2-night3|0,-1,009-2-night,144,43
+009-2-night,144,42|warp|To Third F#009-2-night4|0,-1,009-2-night,144,25
+009-2-night,155,47|warp|To First F#009-2-night5|0,-1,009-2-night,155,63
+009-2-night,114,46|warp|To First F#009-2-night6|0,-1,009-2-night,114,70
+009-2-night,50,55|warp|To Outside#009-2-night7|-1,-1,009-1-night,35,31
+009-2-night,74,53|warp|To Cellar#009-2-night8|-1,-1,009-2-night,143,78
+009-2-night,74,46|warp|To Second #009-2-night9|0,-1,009-2-night,75,22
+009-2-night,114,78|warp|To Outsid#009-2-night10|-1,-1,009-1-night,72,45
+009-2-night,114,69|warp|To Second#009-2-night11|0,-1,009-2-night,114,45
+009-2-night,149,67|warp|To Outsid#009-2-night12|-1,-1,009-1-night,80,32
+009-2-night,143,77|warp|To First #009-2-night13|-1,-1,009-2-night,74,52
+009-2-night,155,62|warp|To Second#009-2-night14|0,-1,009-2-night,155,46
+009-2-night,182,67|warp|To Outsid#009-2-night15|0,-1,009-1-night,91,47
+009-2-night,147,90|warp|To Hurnsc#009-2-night16|-1,-1,009-3-night,173,21
+009-2-night,27,107|warp|To Outsid#009-2-night17|-1,-1,009-1-night,58,47
+009-2-night,46,50|warp|To Inn Pr#009-2-night18|-1,-1,009-2-night,76,78
+009-2-night,77,78|warp|To Hurnsc#009-2-night19|-1,-1,009-2-night,47,50

@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-2.gat,25,35,0|script|Vellamo|328,{
+030-2,25,35,0|script|Vellamo|328
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -34,7 +35,7 @@ L_Candy:
 L_NoEvent:
     mes "[Vellamo]";
     mes "\"I'm sorry, the house isn't open to visitors at the moment.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -47,7 +48,8 @@ L_Close:
     close;
 }
 
-030-2.gat,33,29,0|script|Ismo|329,{
+030-2,33,29,0|script|Ismo|329
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -82,7 +84,7 @@ L_Candy:
 L_NoEvent:
     mes "[Ismo]";
     mes "\"I'm sorry, the house isn't open to visitors at the moment.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

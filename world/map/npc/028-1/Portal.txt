@@ -1,6 +1,6 @@
-028-1.gat,69,71,0|script|Portal#_M|400,
+028-1,69,71,0|script|Portal#_M|400,
 {
-    if (isin("028-1.gat",65,67,73,73)) goto L_Main;
+    if (isin("028-1",65,67,73,73)) goto L_Main;
     mes "There is something there, but you aren't quite close enough to see exactly what it is.";
     close;
 
@@ -34,7 +34,7 @@ L_No_Hesitation:
     next;
     mes "Dizzying colors whirl around you. You collapse.";
     savepoint "009-1", 52, 39;
-    itemheal -hp -1, 0;
+    heal -hp -1, 0, 1;
     close;
 
 L_Look:
@@ -123,7 +123,7 @@ L_Jump:
     mes "[Portal]";
     mes "";
     mes "Whichever it is, one of you slows just as you begin to recognise some details...";
-    warp "009-1.gat", 52, 39;
+    warp "009-1", 52, 39;
     savepoint "009-1", 52, 39;
     mes "[Home]";
     mes "";

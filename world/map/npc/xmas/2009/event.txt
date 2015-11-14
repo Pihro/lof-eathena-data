@@ -1,4 +1,4 @@
-020-1.gat,78,85,0	script	Santa	105,{
+020-1,78,85,0    script    Santa    105,{
     if (QUEST_Christmas09_state > 0) goto L_Finished;
 
     set @cond, 0;

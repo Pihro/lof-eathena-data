@@ -1,4 +1,4 @@
-010-2.gat,33,25,0|script|Chef#dimond|148,
+010-2,33,25,0|script|Chef#dimond|148,
 {
 // lines belong to Easter 2011:
 // set @month, 4;
@@ -16,6 +16,9 @@
 //    if (QUEST_Easter12 == 8) goto L_Easter2012Foolplayers;
 //    if (QUEST_Easter12 == 9) goto OnEaster2012Out;
 
+    goto L_Begin;
+
+L_Begin:
     mes "[Chef]";
     mes "";
     mes "\"I'm too busy right now to talk.\"";
@@ -199,7 +202,7 @@ L_EasterEnough:
     mes "\"Here are your Jelly Beans.\"";
     close;
 
-L_TooMany:
+L_EasterTooMany:
     mes "[Chef]";
     mes "";
     mes "\"You don't have enough room for the Jelly Beans. Come back later.\"";
@@ -356,7 +359,7 @@ L_Easter2012Foolplayers:
     close;
 }
 
-//010-2.gat,28,31,0|script|#chefproposition|32767,0,0
+//010-2,28,31,0|script|#chefproposition|32767,0,0
 //{
 //OnTouch:
 //    if (gettime(7) != $@easter2012_year || QUEST_Easter12 != 8 || !((gettime(6) == 4 && gettime(5) >= $@easter2012_reward_start_day) && (gettime(6) == 4 && gettime(5) <= $@easter2012_reward_end_day)))

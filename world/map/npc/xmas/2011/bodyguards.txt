@@ -2,7 +2,8 @@
 // author: Jenalya
 // Bodyguards who don't let you enter Santa's room until after Christmas
 
-030-2.gat,76,88,0|script|Vilhelmiina|335,{
+030-2,76,88,0|script|Vilhelmiina|335
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -23,7 +24,7 @@
 L_NoEvent:
     mes "[Vilhelmiina]";
     mes "\"How did you get in? At this time of the year this house isn't in use.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -35,7 +36,8 @@ L_Close:
     close;
 }
 
-030-2.gat,80,88,0|script|Verneri|334,{
+030-2,80,88,0|script|Verneri|334
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -57,7 +59,7 @@ L_Close:
 L_NoEvent:
     mes "[Verneri]";
     mes "\"What are you doing in here? At this time of the year this house isn't in use.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:
@@ -69,7 +71,8 @@ L_Close:
     close;
 }
 
-030-2.gat,152,22,0|script|Vanamo|332,{
+030-2,152,22,0|script|Vanamo|332
+{
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
         goto L_NoEvent;
@@ -81,11 +84,12 @@ L_Close:
 L_NoEvent:
     mes "[Vanamo]";
     mes "\"What are you doing in here? At this time of the year this house isn't in use.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     close;
 }
 
-030-2.gat,89,23,0|script|Vihtori|333,{
+030-2,89,23,0|script|Vihtori|333
+{
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
         goto L_NoEvent;
@@ -97,12 +101,13 @@ L_NoEvent:
 L_NoEvent:
     mes "[Vihtori]";
     mes "\"What are you doing in here? At this time of the year this house isn't in use.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     close;
 }
 
 // door to Santa's room
-030-2.gat,78,87,0|script|#door|400,1,1{
+030-2,78,87,0|script|#door|400,1,1
+{
 
     if ((gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_reward_start_day)
         || (gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -110,17 +115,18 @@ L_NoEvent:
     end;
 
 L_RewardTime:
-    warp "030-2.gat", 194, 67;
+    warp "030-2", 194, 67;
     end;
 }
 
 // entrance of the building
-030-1.gat,99,53,0|script|#Door|400,1,1,{
+030-1,99,53,0|script|#Door|400,1,1
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
         end;
 
-    warp "030-2.gat", 88, 50;
+    warp "030-2", 88, 50;
     end;
 }

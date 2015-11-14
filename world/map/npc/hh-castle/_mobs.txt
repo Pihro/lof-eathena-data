@@ -1,9 +1,9 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Heroes' Hold - Castle mobs
 
 
 
-hh-castle.gat,0,0,0|script|Mobhh-castle|-1,
+hh-castle,0,0,0|script|Mobhh-castle|32767
 {
     end;
 }

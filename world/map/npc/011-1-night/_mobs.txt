@@ -1,18 +1,18 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Woodland mobs
 
-011-1-night.gat,0,0,0,0|monster|EvilMushroom|1013,30,0,0,Mob011-1-night::On1013
-011-1-night.gat,0,0,0,0|monster|BanditLord|1065,15,0,0,Mob011-1-night::On1065
-011-1-night.gat,0,0,0,0|monster|SpikyMushroom|1019,5,0,0,Mob011-1-night::On1019
-011-1-night.gat,0,0,0,0|monster|Reaper|1067,15,0,0,Mob011-1-night::On1067
-011-1-night.gat,0,0,0,0|monster|Archant|1060,5,0,10,Mob011-1-night::On1060
-011-1-night.gat,0,0,0,0|monster|Moggun|1061,20,0,0,Mob011-1-night::On1061
-011-1-night.gat,0,0,0,0|monster|CloverPatch|1037,2,0,1000,Mob011-1-night::On1037
-011-1-night.gat,0,0,0,0|monster|Pumpkin|1063,25,30,20,Mob011-1-night::On1063
-011-1-night.gat,0,0,0,0|monster|TheLost|1073,10,30,20,Mob011-1-night::On1073
+011-1-night,0,0,0,0|monster|EvilMushroom|1013,30,0ms,0ms,Mob011-1-night::On1013
+011-1-night,0,0,0,0|monster|BanditLord|1065,15,0ms,0ms,Mob011-1-night::On1065
+011-1-night,0,0,0,0|monster|SpikyMushroom|1019,5,0ms,0ms,Mob011-1-night::On1019
+011-1-night,0,0,0,0|monster|Reaper|1067,15,0ms,0ms,Mob011-1-night::On1067
+011-1-night,0,0,0,0|monster|Archant|1060,5,0ms,10ms,Mob011-1-night::On1060
+011-1-night,0,0,0,0|monster|Moggun|1061,20,0ms,0ms,Mob011-1-night::On1061
+011-1-night,0,0,0,0|monster|CloverPatch|1037,2,0ms,1000ms,Mob011-1-night::On1037
+011-1-night,0,0,0,0|monster|Pumpkin|1063,25,30ms,20ms,Mob011-1-night::On1063
+011-1-night,0,0,0,0|monster|TheLost|1073,10,30ms,20ms,Mob011-1-night::On1073
 
 
-011-1-night.gat,0,0,0|script|Mob011-1-night|-1,
+011-1-night,0,0,0|script|Mob011-1-night|32767
 {
     end;
 

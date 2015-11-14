@@ -3,7 +3,7 @@
 //Reviewed by alastrim, Jenalya, Kandiman, enchilado
 //To enable: sed 's_^// __' -i npc/easter/2011/easter.txt
 
-// 008-1.gat,45,23, 0	script	Easter Bunny	173,{
+// 008-1,45,23, 0    script    Easter Bunny    173,{
 //     set @month, 4;
 //     set @start_day, 15;
 //     set @end_day, 30;

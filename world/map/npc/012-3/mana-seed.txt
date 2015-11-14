@@ -1,4 +1,4 @@
-012-3.gat,62,130,0|script|Mana Seed#MAGIC|166,
+012-3,62,130,0|script|Mana Seed#MAGIC|166,
 {
     setarray @magic_exp_needed,
         0, // level 0
@@ -213,7 +213,7 @@ L_magic_levelup:
     set @SUP_xp, @exp_bonus[1 + getskilllv(SKILL_MAGIC)];
     set @SUP_lvl, 1 + getskilllv(SKILL_MAGIC);
     callfunc "SkillUp";
-    itemheal 0, 10000;
+    heal 0, 10000, 1;
     next;
     goto L_end;
 

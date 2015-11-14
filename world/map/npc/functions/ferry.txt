@@ -1,6 +1,6 @@
 // The ferry system
 
-function|script|Ferry|,
+function|script|Ferry
 {
     if (BaseLevel < 20)
         goto L_LowerCost;
@@ -40,7 +40,7 @@ L_Tulimshar:
         goto L_NotEnoughGP;
 
     set Zeny, Zeny - @cost_tulimshar;
-    warp "022-1.gat", 76, 72;
+    warp "022-1", 76, 72;
     goto L_Close;
 
 L_Hurnscald:
@@ -50,7 +50,7 @@ L_Hurnscald:
         goto L_NotEnoughGP;
 
     set Zeny, Zeny - @cost_hurnscald;
-    warp "008-1.gat", 137, 64;
+    warp "008-1", 137, 64;
     goto L_Close;
 
 L_Nivalis:
@@ -60,7 +60,7 @@ L_Nivalis:
         goto L_NotEnoughGP;
 
     set Zeny, Zeny - @cost_nivalis;
-    warp "031-1.gat", 95, 109;
+    warp "031-1", 95, 109;
     goto L_Close;
 
 L_Candor:
@@ -70,7 +70,7 @@ L_Candor:
         goto L_NotEnoughGP;
 
     set Zeny, Zeny - @cost_candor;
-    warp "029-1.gat", 25, 37;
+    warp "029-1", 25, 37;
     goto L_Close;
 
 L_AlreadyThere:

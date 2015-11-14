@@ -2,7 +2,7 @@
 // TODO: add dialog/code for giving more letters
 //       Airlia supports receiving an infinate number of letters
 
-027-2.gat,24,25,0|script|Caretaker|159,
+027-2,24,25,0|script|Caretaker|159,
 {
     if (QUEST_Graveyard_Caretaker == 1) goto L_Return_Dialog;
     if (QUEST_Graveyard_Caretaker == 2) goto L_Has_Letter;
@@ -107,19 +107,19 @@ L_Give_New_Letter_Real:
     close;
 
 OnTimer3000:
-    monster "027-2.gat", 29, 21, "Caretaker's Wife", 1044, 1, "Caretaker::OnWifeDeath";
+    monster "027-2", 29, 21, "Caretaker's Wife", 1044, 1, "Caretaker::OnWifeDeath";
     stopnpctimer;
     setnpctimer 0;
     end;
 
 OnInit:
-    monster "027-2.gat", 29, 21, "Caretaker's Wife", 1044, 1, "Caretaker::OnWifeDeath";
+    monster "027-2", 29, 21, "Caretaker's Wife", 1044, 1, "Caretaker::OnWifeDeath";
     end;
 
 OnWifeDeath:
-    mapannounce "027-2.gat", "NO! YOU KILLED MY WIFE!", 0;
-    gmcommand "@l I killed the caretaker's wife!";
-    gmcommand "@ban +5mn " + strcharinfo(0);
+    mapannounce "027-2", "NO! YOU KILLED MY WIFE!", 0;
+    //gmcommand "@l I killed the caretaker's wife!";
+    //gmcommand "@ban +5mn " + strcharinfo(0);
     initnpctimer;
     end;
 

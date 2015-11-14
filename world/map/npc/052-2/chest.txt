@@ -12,7 +12,7 @@
 //     3: player choosed to leave the room
 //-----------------------------------------------------------------------------
 
-052-2.gat,136,73,0|script|Chest#illia|111,
+052-2,136,73,0|script|Chest#illia|111
 {
     set @step, 8;
     if ($@illia_progress < @step) goto L_ShouldNotBeHere;
@@ -26,12 +26,14 @@
     goto L_Pick;
 
 L_ShouldNotBeHere:
-    percentheal -100, 0;
+    heal -Hp, 0;
     end;
 
 OnInit:
-    setarray $@illia_item_common_rewards, 601, 636, 637, 638, 639, 625, 626, 658, 571, 579, 876, 782, 545, 758, 4028, 602, 536, 720, 532, 570, 642;
-    setarray $@illia_item_unique_rewards, 877, 878, 879, 880;
+    setarray $@illia_common_rewards$,   "SteelShield",  "WarlordHelmet",  "KnightsHelmet",  "InfantryHelmet",  "CrusadeHelmet",  "ChainmailShirt",  "LightPlatemail",  "WarlordPlate",  "Setzer", "RockKnife",  "WarlordBoots",  "ForestArmor",  "ForestBow",  "WoodenStaff",  "WizardHat",  "WoodenShield",  "ShortSword",  "SilkRobe",  "LeatherGloves",  "BoneKnife",  "JeansChaps";
+    setarray $@illia_common_rewards_n$, "Steel Shield", "Warlord Helmet", "Knights Helmet", "Infantry Helmet", "Crusade Helmet", "Chainmail Shirt", "Light Platemail", "Warlord Plate", "Setzer", "Rock Knife", "Warlord Boots", "Forest Armor", "Forest Bow", "Wooden Staff", "Wizard Hat", "Wooden Shield", "Short Sword", "Silk Robe", "Leather Gloves", "Bone Knife", "Jeans Chaps";
+    setarray $@illia_unique_rewards$,   "BullHelmet",  "BansheeBow",  "HeartOfIsis",   "LazuriteRobe";
+    setarray $@illia_unique_rewards_n$, "Bull Helmet", "Banshee Bow", "Heart of Isis", "Lazurite Robe";
     end;
 
 L_ResumePick:
@@ -58,13 +60,14 @@ L_GetCommonReward:
     if (@illia_current_num_rewards == $@illia_num_common_reward_items)
         goto L_RewardDone;
     getinventorylist;
-    set @reward, $@illia_item_common_rewards[rand(getarraysize($@illia_item_common_rewards))];
-    if ((checkweight(@reward, 1) == 0) || (@inventorylist_count == 100))
+    set @index, rand(getarraysize($@illia_common_rewards$));
+    set @reward$, $@illia_common_rewards$[@index];
+    if ((checkweight(@reward$, 1) == 0) || (@inventorylist_count == 100))
         goto L_InventoryNoSpace;
     set @illia_current_num_rewards, @illia_current_num_rewards + 1;
-    getitem @reward, 1;
-    mes "You found a " + getitemname(@reward) + "!";
-    set @reward, 0;
+    getitem @reward$, 1;
+    mes "You found a " + $@illia_common_rewards_n$[@index] + "!";
+    set @reward$, "";
     goto L_GetCommonReward;
 
 L_GetUniqueReward:
@@ -73,17 +76,18 @@ L_GetUniqueReward:
     if (Illia_Uniques_Count >= 2)
         goto L_GetUniqueReward2;
     getinventorylist;
-    set @reward, $@illia_item_unique_rewards[rand(getarraysize($@illia_item_unique_rewards))];
-    if ((checkweight(@reward, 1) == 0) || (@inventorylist_count == 100))
+    set @index, rand(getarraysize($@illia_unique_rewards$));
+    set @reward$, $@illia_unique_rewards$[@index];
+    if ((checkweight(@reward$, 1) == 0) || (@inventorylist_count == 100))
         goto L_InventoryNoSpace;
     next;
     mes "You notice an interesting shape hidden under a cover...";
     next;
     set @illia_current_num_rewards, @illia_current_num_rewards + 1;
-    getitem @reward, 1;
-    mes "You found a " + getitemname(@reward) + "!";
+    getitem @reward$, 1;
+    mes "You found a " + $@illia_unique_rewards_n$[@index] + "!";
     set Illia_Uniques_Count, Illia_Uniques_Count + 1;
-    set @reward, 0;
+    set @reward$, "";
     goto L_GetUniqueReward;
 
 L_GetUniqueReward2:
@@ -117,7 +121,7 @@ L_AskLeaving:
     next;
     // Force the hero to leave last, as this event triggers the end of the quest
     // as well as some dialogs from Valia, when the hero returns.
-    if (strcharinfo(0) == $@ILLIA_HERO$ && getareausers("052-2.gat", 19, 8, 137, 88) > 1)
+    if (strcharinfo(0) == $@ILLIA_HERO$ && getareausers("052-2", 19, 8, 137, 88) > 1)
         goto L_WaitHelpersLeave;
     goto L_PrepareLeaving;
 
@@ -160,7 +164,7 @@ OnFx:
     end;
 
 OnRing:
-    warp "007-1.gat", 85 + rand(0,2), 75 + rand(0,2);
+    warp "007-1", 85 + rand(0,2), 75 + rand(0,2);
     if (strcharinfo(0) == $@ILLIA_HERO$)
         goto L_ScheduleEnd;
     end;
@@ -168,7 +172,7 @@ OnRing:
 L_ScheduleEnd:
     set $@ILLIA_STATUS, 253;
     startnpctimer "Valia";
-    cmdothernpc "#IlliaDaemon", "Toggle";
+    donpcevent "#IlliaDaemon::OnCommandToggle";
     end;
 
 L_Close:

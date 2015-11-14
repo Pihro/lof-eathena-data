@@ -1,13 +1,13 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Lake Cave mobs
 
-011-4-night.gat,52,30,39,39|monster|PunkSkeleton|1097,1,100000,30000,Mob011-4-night::On1097
-011-4-night.gat,93,114,39,39|monster|AzulSlime|1100,1,100000,30000,Mob011-4-night::On1100
-011-4-night.gat,0,0,0,0|monster|ShadowSnake|1101,40,0,0,Mob011-4-night::On1101
-011-4-night.gat,0,0,0,0|monster|WitchGuard|1103,15,0,0,Mob011-4-night::On1103
+011-4-night,52,30,39,39|monster|PunkSkeleton|1097,1,100000ms,30000ms,Mob011-4-night::On1097
+011-4-night,93,114,39,39|monster|AzulSlime|1100,1,100000ms,30000ms,Mob011-4-night::On1100
+011-4-night,0,0,0,0|monster|ShadowSnake|1101,40,0ms,0ms,Mob011-4-night::On1101
+011-4-night,0,0,0,0|monster|WitchGuard|1103,15,0ms,0ms,Mob011-4-night::On1103
 
 
-011-4-night.gat,0,0,0|script|Mob011-4-night|-1,
+011-4-night,0,0,0|script|Mob011-4-night|32767
 {
     end;
 

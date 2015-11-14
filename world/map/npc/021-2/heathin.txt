@@ -1,6 +1,6 @@
 //Items for NPC are incomplete.  Makes "simple ring" which can be crafted into a useful ring by Inya and terranite armor.
 
-021-2.gat,70,129,0|script|Heathin|147,
+021-2,70,129,0|script|Heathin|147,
 {
     set @TARROW_REQ_TERRA_ORE, 1;
     set @TARROW_REQ_COAL, 5;
@@ -304,7 +304,7 @@ L_Heathin_Terranite_Arrows_Trade_Yes:
     delitem "Coal", @TARROW_REQ_COAL;
     delitem "TerraniteOre", @TARROW_REQ_TERRA_ORE;
     set Zeny, Zeny - @TARROW_REQ_GP;
-    set @lucky, 5 * rand(readparam(bLuk));
+    set @lucky, 5 * rand(Luk);
     getitem "TerraniteArrow", 1000 + @lucky;
     mes "[Heathin]";
     mes "\"Here you go! You are lucky, I could forge "+@lucky+" more arrows than expected. Come back again if you want more Terranite Arrows.\"";

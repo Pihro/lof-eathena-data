@@ -1,0 +1,9 @@
+-|script|#MOTD|32767
+{
+    end;
+
+OnPCLoginEvent:
+    message strcharinfo(0), "Welcome to Land of Fire! (running on tmwAthena)";
+    message strcharinfo(0), "You can report abuse by typing in chat: @wgm Player XYZ is abusing me";
+    message strcharinfo(0), "LOFBot is our official bot, whisper \".help\" to it for more details.";
+}

@@ -63,7 +63,8 @@ OnInit:
 }
 
 // calculates the points for helping and sabotaging
-function|script|xmas2011points|{
+function|script|xmas2011points
+{
     set @plushmouboo, (xmas11 & $@xmas11_PlushMoubooMask) >> $@xmas11_PlushMoubooShift;
     set @stickreinboo, (xmas11 & $@xmas11_StickReinbooMask) >> $@xmas11_StickReinbooShift;
     set @ball, (xmas11 & $@xmas11_BallMask) >> $@xmas11_BallShift;
@@ -133,7 +134,8 @@ function|script|xmas2011points|{
     return;
 }
 
-function|script|xmas2011debug|{
+function|script|xmas2011debug
+{
     menu
         "i'm fine",L_Close,
         "show my points",L_Points,

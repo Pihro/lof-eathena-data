@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-2.gat,85,79,0|script|Santa|105,{
+030-2,85,79,0|script|Santa|105
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -90,7 +91,7 @@ L_Young:
 L_NoEvent:
     mes "[Santa]";
     mes "\"I'm very sorry, but I can't allow you inside here at the moment. Please come back around Christmas time.\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

@@ -2,7 +2,7 @@
 //(incomplete, use alacrius2.txt instead)
 //To enable: sed 's_^// __' -i npc/027-2/alacrius.txt
 
-//027-2.gat,107,29,0|script|Alacrius|313,
+//027-2,107,29,0|script|Alacrius|313,
 //{
 //     // if started, go to started
 //     // if fail go to failed
@@ -17,23 +17,23 @@
 //     close;
 
 // L_START:
-//     monster "027-4.gat",40,55,"Reaper Quest",1067,1,"Reaper::OnDead";
+//     monster "027-4",40,55,"Reaper Quest",1067,1,"Reaper::OnDead";
 //     enablenpc "#gatecontrol";
 //     enablenpc "#closedgate";
 //     disablenpc "#opengate";
 // // Open doors to reaper level
-//     warp "027-3.gat",41,70;
+//     warp "027-3",41,70;
 //     initnpctimer;
 //     close;
 
 // // 5 min mark for testing purposes, up it when finished.
 // OnTimer300000:
-//     mapwarp "027-3.gat", "027-2.gat",104,41;
-//     mapwarp "027-4.gat", "027-2.gat",104,41;
-//     killmonsterall "027-4.gat";
+//     mapwarp "027-3", "027-2",104,41;
+//     mapwarp "027-4", "027-2",104,41;
+//     killmonster "027-4", "All";
 //     end;
 // OnTimer301000:
-//     npctalk "You have failed the mission.";
+//     npctalk strnpcinfo(0), "You have failed the mission.";
 //     end;
 
 // // cooldown before the quest can be restarted

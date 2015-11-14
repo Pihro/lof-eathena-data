@@ -1,6 +1,6 @@
 // Map 009-3-night: Hurnscald Cave
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: 009-3-night.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: 009-3-night
 npc: npc/009-3-night/_mobs.txt
 npc: npc/009-3-night/_warps.txt
 npc: npc/009-3-night/pvpflag.txt

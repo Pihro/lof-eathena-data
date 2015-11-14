@@ -1,5 +1,5 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Heroes' Hold - Castle warps
 
-hh-castle.gat,26,33|warp|To Heroes' Hold - Overworld|1,-1,hh-outside.gat,72,65
-hh-castle.gat,26,33|warp|To Heroes' Hold - Main Cave|1,-1,hh-maincave.gat,0,0
+hh-castle,26,33|warp|To Heroes' H#hh-castle0|1,-1,hh-outside,72,65
+hh-castle,26,33|warp|To Heroes' H#hh-castle1|1,-1,hh-maincave,0,0

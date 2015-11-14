@@ -1,5 +1,5 @@
 // Map hh-maincave: Heroes' Hold - Main Cave
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: hh-maincave.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: hh-maincave
 npc: npc/hh-maincave/_mobs.txt
 npc: npc/hh-maincave/_warps.txt

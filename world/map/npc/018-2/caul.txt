@@ -7,7 +7,7 @@
 //#
 //#################################################################################
 
-018-2.gat,37,22,0|script|Caul|107,
+018-2,37,22,0|script|Caul|107,
 {
     callfunc "ClearVariables";
 
@@ -140,7 +140,7 @@ L_brew:
     goto L_CraftLoop;
 
 L_CraftLoop:
-    set @throw, rand(readparam(bInt));
+    set @throw, rand(Int);
     set @result, 1;
     if (@throw >= 5) set @result, 2;
     if (@throw >= 15) set @result, 3;
@@ -428,7 +428,7 @@ L_monster_oil_random_1: // mode 1: remove colour
     return;
 
 L_monster_oil_pc_bad:
-    if (rand(readparam(bInt) + 100) > 60)
+    if (rand(Int + 100) > 60)
         goto L_monster_oil_pc_bad_ok;
     if (@bubble_mode)
         mes "As your leaf dissolves, the intensity of the bubbling increases.";
@@ -448,7 +448,7 @@ L_monster_oil_pc_bad_ok:
 L_monster_oil_auto_bad:
     if (rand(3) == 0)
         goto L_Return;
-    if (rand(readparam(bInt) + 100) > 70)
+    if (rand(Int + 100) > 70)
         goto L_Return;
     mes "The brew begins to bubble more violently.";
     set @bubble_mode, @bubble_mode + 1;
@@ -461,11 +461,11 @@ L_monster_oil_auto_bad:
 L_monster_oil_explode:
     mes "[Exploding monster oil]";
     mes "Your brew explodes!";
-    if (rand(readparam(bAgi)) > 40)
+    if (rand(Agi) > 40)
         goto L_monster_oil_explode_dodge;
     mes "The burst of boiling monster brew hits you.";
     next;
-    itemheal (15 * rand(readparam(bVit))) - 1500, 0;
+    heal (15 * rand(Vit)) - 1500, 0, 1;
     close;
 
 L_monster_oil_explode_dodge:
@@ -715,7 +715,7 @@ L_mopox_failed_hard:
     mes "Suddenly, the thick mass bends outwards, a huge bubble bursting open right in your face!";
     next;
 
-    if (rand(readparam(bVit)) < 40)
+    if (rand(Vit) < 40)
         sc_start sc_poison, 1, 20;
 
     mes "[Brewing Mopox Cure]";

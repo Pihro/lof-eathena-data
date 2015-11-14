@@ -1,6 +1,6 @@
 // Map 009-1-night: Hurnscald
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: 009-1-night.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: 009-1-night
 npc: npc/009-1-night/_mobs.txt
 npc: npc/009-1-night/_warps.txt
 npc: npc/009-1-night/pvpflag.txt

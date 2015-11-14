@@ -17,7 +17,8 @@
 //          The low bits are used to keep track of how many times you've gotten treats.
 //          Currently, the vague plan is 16 for each, but we may need to use this variable for the second part of the quest.
 
-function|script|TrickOrTreat2011|{
+function|script|TrickOrTreat2011
+{
     if ((gettimetick(2)-TUT_var < 7*86400) || (BaseLevel < $@hw2011_min_level)) //player must be created at least 1 weeks ago
         goto L_QuickReturn;
     menu
@@ -80,7 +81,7 @@ L_MaskMemoryCheck:
 
 L_MaskMemoryYes:
     // not necessarily true
-    mes "\"I remember you, " + getequipname(equip_head) + " person. No more treats for you!\"";
+    mes "\"I remember you, " + getitemlink(getequipid(equip_head)) + " person. No more treats for you!\"";
     goto L_Close;
 
 L_MaskMemoryNo:

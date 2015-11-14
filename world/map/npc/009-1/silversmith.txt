@@ -1,6 +1,7 @@
 //
 
-009-1.gat,43,32,0|script|Silversmith|135,{
+009-1,43,32,0|script|Silversmith|135
+{
 
     mes "[Smith Silvers]";
     mes "\"Hello, I am your local silversmith, here for all of your smithing needs!\"";

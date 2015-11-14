@@ -1,4 +1,4 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Hermit's Cave warps
 
-011-3-night.gat,31,14|warp|To Lake Cave|-1,-1,011-4-night.gat,73,10
+011-3-night,31,14|warp|To Lake Ca#011-3-night0|-1,-1,011-4-night,73,10

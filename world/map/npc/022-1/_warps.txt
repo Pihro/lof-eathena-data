@@ -1,5 +1,5 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Tulimshar Port warps
 
-022-1.gat,73,110|warp|To North Tulimshar|3,-1,021-1.gat,73,23
-022-1.gat,113,110|warp|To North Tulimshar|3,-1,021-1.gat,113,23
+022-1,73,110|warp|To North Tulimsh#022-10|3,-1,021-1,73,23
+022-1,113,110|warp|To North Tulimsh#022-11|3,-1,021-1,113,23

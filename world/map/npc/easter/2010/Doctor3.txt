@@ -1,6 +1,6 @@
 // Doctor 3, at the stones.
 
-028-1.gat,71,98,0	script	Doctor#who3	184,{
+028-1,71,98,0    script    Doctor#who3    184,{
     // States here
     callsub S_Helped_Count;
     if (@Easter_2010_helper >= 2 && !((Easter_2010_QuestState >> E10_FLAG_MID_REWARD_SHIFT) & E10_FLAG_MID_REWARD_MASK))
@@ -426,7 +426,7 @@ L_MidReward:
     mes "[Doctor]";
     mes "";
     mes "\"While visiting another dimension--hm, as a matter of fact, it was quite like this one. But their choices in the past seem to have differed from the ones here...\"";
-	next;
+    next;
     mes "[Doctor]";
     mes "";
     mes "The Doctor reflects on his words. \"Interesting how things turn out. Well, I now have a lot of these Valentine's Glasses, if you'd like a pair.\"";

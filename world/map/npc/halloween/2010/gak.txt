@@ -1,4 +1,4 @@
-010-1.gat,29,48,0	script	Gak	188,	{
+010-1,29,48,0    script    Gak    188,    {
 
         if ($hween10 == 2) goto L_Event_Over;
 
@@ -82,7 +82,7 @@ L_Give_Tongue_Die:
 
 L_Die:
         close2;
-        itemheal -Hp -1, 0;
+        heal -Hp -1, 0, 1;
         end;
 
 L_Thanks:

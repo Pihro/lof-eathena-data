@@ -1,4 +1,4 @@
-006-1.gat,23,100,0|script|Pachua|143,
+006-1,23,100,0|script|Pachua|143,
 {
     set @LEATHER_PATCH_PRICE, 300;
 // @wants_leather_patch is used as boolean
@@ -274,7 +274,7 @@ L_BuyChaps:
     if (@inventorylist_count == 100) goto L_TooMany;
     if (Zeny < 10000) goto L_NoMoney;
     if (countitem("JeansShorts") < 1) goto L_NoJeans;
-    if (countitem("SnakeSkin") < 10) goto L_NoSkin;
+    if (countitem("SnakeSkin") < 10) goto L_NoSkins;
     set Zeny, Zeny - 10000;
     delitem "SnakeSkin", 10;
     delitem "JeansShorts", 1;
@@ -286,7 +286,7 @@ L_BuyCowboy:
     if (@inventorylist_count == 100) goto L_TooMany;
     if (Zeny < 5000) goto L_NoMoney;
     if (countitem("FancyHat") < 1) goto L_NoFancy;
-    if (countitem("SnakeSkin") < 2) goto L_NoSkin;
+    if (countitem("SnakeSkin") < 2) goto L_NoSkins;
     set Zeny, Zeny - 5000;
     delitem "SnakeSkin", 2;
     delitem "FancyHat", 1;

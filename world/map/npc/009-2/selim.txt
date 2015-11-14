@@ -5,7 +5,7 @@
 //#                                                                               #
 //#################################################################################
 
-009-2.gat,32,104,0|script|Selim|326,
+009-2,32,104,0|script|Selim|326,
 {
     setarray @all_colors$, "red", "green", "dark blue", "yellow", "light blue", "pink", "black", "orange", "purple", "dark green";
 
@@ -357,7 +357,7 @@ L_saviorarmor:
         "Orange.", L_GetSaviorColor,
         "Dark Green.", L_GetSaviorColor,
         "Could you do purple?", L_purple_savior,
-        "I'm fine.", L_close;
+        "I'm fine.", L_Close;
 
 L_GetSaviorColor:
     callfunc "SaviorColors";
@@ -378,7 +378,7 @@ L_GetSaviorColor:
     mes "\"There you go! Want me to dye anything else?\"";
     menu
         "Yes.", L_clothes_choice,
-        "Nope.", L_close;
+        "Nope.", L_Close;
 
 L_no_dye_savior:
     mes "[Selim]";
@@ -390,7 +390,7 @@ L_no_dye_savior:
         "I wanted to dye a different item anyway.", L_clothes_choice,
         "What do you mean, 'bring you dye'?", L_explain_dye,
         "Where would I get dye?", L_explain_dye,
-        "Never mind.", L_close;
+        "Never mind.", L_Close;
 
 L_purple_savior:
     mes "[Selim]";
@@ -407,7 +407,7 @@ L_alreadydone:
     mes "\"Looks like you have already dyed it, sorry..\"";
     close;
 
-L_close:
+L_Close:
     set @del, 0;
     set @new, 0;
     set @name$, "";

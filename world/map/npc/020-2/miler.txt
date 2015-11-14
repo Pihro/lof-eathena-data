@@ -2,32 +2,63 @@
 {
     set @Q_MASK, NIBBLE_4_MASK;
     set @Q_SHIFT, NIBBLE_4_SHIFT;
-    set @Q_status, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
+    set @Q_well, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
+
+    if (QUEST_Episode >= 18) goto L_Episode_Thank;
+    if (QUEST_Episode >= 4) goto L_Episode_AskBoxes;
+    if (@Q_well == 2 && QUEST_Episode == 3) goto L_Episode_Start;
 
     mes "[Miler]";
     mes "\"Hello!\"";
 
-    if(@Q_status != 1) goto L_Close;
+    if (@Q_well == 1) goto L_Well_Menu;
+
+    goto L_Close;
+
+L_Well_Menu:
     menu
         "Hello.", L_Close,
-        "Hello, Can you help me?", L_Help;
+        "Hello, Can you help me?", L_Well_Help;
 
-L_Help:
+L_Well_Help:
     mes "[Miler]";
     mes "\"What's the problem?\"";
-    menu "Someone fell into the well.", L_Next;
+    menu "Someone fell into the well.", L_Well_Finish;
 
-L_Next:
+L_Well_Finish:
     mes "[Miler]";
     mes "\"Ho! I'll help him!\"";
     getexp (BaseLevel * 111), 0;
-    set @Q_status, 2;
+    set @Q_well, 2;
     callsub S_Update_Var;
+    goto L_Close;
+
+L_Episode_Start:
+    mes "[Miler]";
+    mes "\"Oh dear, oh dear, where could I have possibly left it?!\"";
+    menu
+        "What are you looking for?", L_Episode_Looking,
+        "Uh, bye.", L_Close;
+
+L_Episode_Looking:
+    mes "[Miler]";
+    mes "\"My ring! My one precious golden ring, oh where, oh where could it be....";
+    next;
+    mes "How could I lose it, how could I lose it, how could I lose it...\"";
+    if (countitem("DarkConcentrationPotion") == 0) goto L_Close;
+
+L_Episode_AskBoxes:
+    mes "[Miler]";
+
+L_Episode_Thank:
+    mes "[Miler]";
+    mes "\"Thank you so much for finding my precious ring!\"";
+    goto L_Close;
+
+L_Close:
     close;
 
 S_Update_Var:
-    set QUEST_Nivalis_state,
-        (QUEST_Nivalis_state & ~(@Q_MASK)
-      | (@Q_status << @Q_SHIFT));
+    set QUEST_Nivalis_state, QUEST_Nivalis_state & ~(@Q_W_MASK) | (@Q_well << @Q_W_SHIFT);
     return;
 }

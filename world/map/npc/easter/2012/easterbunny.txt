@@ -1,6 +1,7 @@
 // Easter bunny
 
-021-2.gat,69,55,0|script|Easter Bunny|173,{
+021-2,69,55,0|script|Easter Bunny|173
+{
 
     if (QUEST_Easter12 >= 6) goto L_Easterbunny_Thanks;
     if (QUEST_Easter12 < 5) goto L_Easterbunny_Notyet;

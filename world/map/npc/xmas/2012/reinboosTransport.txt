@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-1.gat,75,65,0|script|Meileres|170,{
+030-1,75,65,0|script|Meileres|170
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -64,7 +65,7 @@ L_Pay:
 
     mes "[Meileres]";
     mes "\"Yum, yum, tasty. Ok, let's start.\"";
-    warp "044-1.gat", 71, 103;
+    warp "044-1", 71, 103;
     goto L_Close;
 
 L_NoItem:
@@ -95,7 +96,8 @@ L_Close:
     close;
 }
 
-044-1.gat,66,100,0|script|Reilemes|170,{
+044-1,66,100,0|script|Reilemes|170
+{
     callfunc "xmas2012time";
 
     set @reinboo, (xmas2012 & NIBBLE_0_MASK) >> NIBBLE_0_SHIFT;
@@ -151,7 +153,7 @@ L_Pay:
 
     mes "[Reilemes]";
     mes "\"Yum, yum, tasty. Ok, let's start.\"";
-    warp "030-1.gat", 75, 68;
+    warp "030-1", 75, 68;
     goto L_Close;
 
 L_NoItem:

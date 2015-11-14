@@ -14,19 +14,19 @@
 //    254: Quest is being ended and cleaned: the hero logged off.
 //    255: Quest is being ended and cleaned: the hero died or he ran out of time
 
-007-1.gat,77,81,0|script|Valia|370,
+007-1,77,81,0|script|Valia|370
 {
     set @illia_sapphire_powder, 3;
     set @illia_amethyst_powder, 1;
     set @illia_iron_powder, 13;
     set @illia_yeti_tear, 1;
     set @illia_iced_water, 4;
-    set @illia_min_level, 90;
+    set $@illia_min_level, 90;
 
-    if (getgmlevel() >= 40 && getequipid(equip_head) == 647 && (strcharinfo(0) == "AdminJen" || strcharinfo(0) == "V0id"))
+    if (getgmlevel() >= 40 && getequipid(equip_head) == 647)
         goto L_DeveloperBoard;
 
-    if (BaseLevel < @illia_min_level) goto L_Unexperienced;
+    if (BaseLevel < $@illia_min_level) goto L_Unexperienced;
     if ($@ILLIA_STATUS == 0) goto L_Introduce;
     if ($@ILLIA_STATUS == 1) goto L_PreparingSpell;
     if ($@ILLIA_STATUS == 2) goto L_ReadyToTeleport;
@@ -55,7 +55,7 @@ L_DeveloperBoard:
 
 L_Introduce:
     if (@illia_go_find_items)
-        goto L_AskTeleportSpellItems;
+        goto L_AskItems;
     if (@illia_know_witch == 1)
         goto L_QuickIntroduce;
     mes "[Valia]";
@@ -75,7 +75,7 @@ L_Next:
     mes "But unfortunately not enough to avoid being captured.\"";
     menu
         "That's unfortunate...", L_Exit,
-        "What information do you have about all this?", L_Next1;
+        "What informations do you have about all this?", L_Next1;
 
 L_Next1:
     set @illia_know_witch, 1;
@@ -128,7 +128,7 @@ L_Next3:
     next;
 
     if (getusers(1) < 4)
-        goto L_NotEnoughPeopleAvailable;
+        goto L_NotPeepAv;
 
     mes "[Valia]";
     mes "\"Do you know such people?\"";
@@ -141,48 +141,48 @@ L_Next4:
     mes "\"Good.";
     mes "I can teleport all of you close to that waterfall, but for that, I will need " + @illia_sapphire_powder + " bags of Sapphire Powder, " + @illia_amethyst_powder + " of Amethyst Powder, " + @illia_iron_powder + " Iron Powders," + @illia_yeti_tear + " Frozen Yeti Tear and " + @illia_iced_water + " bottles of Iced Water.\"";
     menu
-        "I have them here.", L_CheckTeleportSpellItems,
-        "I don't have them, but I'll try to find.", L_NoTeleportSpellItems;
+        "I have them here.", L_CheckItems,
+        "I don't have them, but I'll try to find.", L_NoItems;
 
-L_NotEnoughPeopleAvailable:
+L_NotPeepAv:
     mes "[Valia]";
     mes "\"But it seems there are not enough people around.";
     mes "Come back later.\"";
     close;
 
-L_AskTeleportSpellItems:
+L_AskItems:
     mes "[Valia]";
     mes "\"So, did you bring me what I need?\"";
     menu
-        "Hum, I forgot what you asked...", L_RepeatTeleportSpellItems,
-        "Here they are!", L_CheckTeleportSpellItems;
+        "Hum, I forgot what you asked...", L_RepeatItems,
+        "Here they are!", L_CheckItems;
 
-L_RepeatTeleportSpellItems:
+L_RepeatItems:
     mes "[Valia]";
     mes "\"I need " + @illia_sapphire_powder + " bags of Sapphire Powder, " + @illia_amethyst_powder + " of Amethyst Powder, " + @illia_iron_powder + " Iron Powders," + @illia_yeti_tear + " Frozen Yeti Tear and " + @illia_iced_water + " bottles of Iced Water.\"";
     next;
     mes "\"Hurry up.\"";
     close;
 
-L_NoTeleportSpellItems:
+L_NoItems:
     set @illia_go_find_items, 1;
     close;
 
-L_MissingTeleportSpellItems:
+L_MissingItems:
     mes "[Valia]";
     mes "\"Obviously you are missing some of the components.";
     mes "Go find the missing ones, fast. We lack time!\"";
     set @illia_go_find_items, 1;
     close;
 
-L_CheckTeleportSpellItems:
+L_CheckItems:
     if (
         (countitem ("SapphirePowder") < @illia_sapphire_powder) ||
         (countitem ("AmethystPowder") < @illia_amethyst_powder) ||
         (countitem ("IronPowder") < @illia_iron_powder) ||
         (countitem ("FrozenYetiTear") < @illia_yeti_tear) ||
         (countitem ("IcedWater") < @illia_iced_water)
-        ) goto L_MissingTeleportSpellItems;
+        ) goto L_MissingItems;
     // someone started the quest in the meantime, so we cancel this one.
     if ($@ILLIA_STATUS > 0)
         goto L_Interrupt;
@@ -193,11 +193,6 @@ L_CheckTeleportSpellItems:
     set $@ILLIA_STATUS, 1;
     initnpctimer;
     set @illia_go_find_items, 0;
-    delitem "SapphirePowder", @illia_sapphire_powder;
-    delitem "AmethystPowder", @illia_amethyst_powder;
-    delitem "IronPowder", @illia_iron_powder;
-    delitem "FrozenYetiTear", @illia_yeti_tear;
-    delitem "IcedWater", @illia_iced_water;
 
     mes "[Valia]";
     mes "\"Very well! I can prepare the spell now!\"";
@@ -248,29 +243,30 @@ L_ChooseHelper1:
         goto L_WrongHelper1;
     if (isloggedin(getcharid(3, $@ILLIA_HELPER1$)) == 0)
         goto L_HelperDoesNotExist1;
-    attachrid(getcharid(3, $@ILLIA_HELPER1$));
-    if (BaseLevel < @illia_min_level)
+    if (!(attachrid(getcharid(3, $@ILLIA_HELPER1$))))
+        goto L_Exit;
+    if (BaseLevel < $@illia_min_level)
         goto L_HelperTooWeak1;
     set $@ILLIA_HELPER1$, strcharinfo(0);
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
-        goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
-    goto L_ChooseHelper2;
+    if (attachrid($@ILLIA_HERO_ID))
+        goto L_ChooseHelper2;
+    goto L_Exit;
 
 L_HelperTooWeak1:
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
     mes "[Team Selector]";
     mes "The player " + $@ILLIA_HELPER1$ + " is too weak to help you.";
+    set $@ILLIA_HELPER1$, "";
     next;
     goto L_ChooseHelperConfirm1;
 
 L_HelperDoesNotExist1:
     mes "[Team Selector]";
     mes "This player " + $@ILLIA_HELPER1$ + " seems offline or does not exist.";
+    set $@ILLIA_HELPER1$, "";
     next;
     goto L_ChooseHelperConfirm1;
 
@@ -298,29 +294,30 @@ L_ChooseHelper2:
         goto L_WrongHelper2;
     if (isloggedin(getcharid(3, $@ILLIA_HELPER2$)) == 0)
         goto L_HelperDoesNotExist2;
-    attachrid(getcharid(3, $@ILLIA_HELPER2$));
-    if (BaseLevel < @illia_min_level)
+    if (!(attachrid(getcharid(3, $@ILLIA_HELPER2$))))
+        goto L_Exit;
+    if (BaseLevel < $@illia_min_level)
         goto L_HelperTooWeak2;
     set $@ILLIA_HELPER2$, strcharinfo(0);
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
-        goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
-    goto L_ChooseHelper3;
+    if (attachrid($@ILLIA_HERO_ID))
+        goto L_ChooseHelper3;
+    goto L_Exit;
 
 L_HelperTooWeak2:
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
     mes "[Team Selector]";
     mes "The player " + $@ILLIA_HELPER2$ + " is too weak to help you.";
+    set $@ILLIA_HELPER2$, "";
     next;
     goto L_ChooseHelperConfirm2;
 
 L_HelperDoesNotExist2:
     mes "[Team Selector]";
     mes "This player " + $@ILLIA_HELPER2$ + " seems offline or does not exist.";
+    set $@ILLIA_HELPER2$, "";
     next;
     goto L_ChooseHelperConfirm2;
 
@@ -349,24 +346,24 @@ L_ChooseHelper3:
         goto L_WrongHelper3;
     if (isloggedin(getcharid(3, $@ILLIA_HELPER3$)) == 0)
         goto L_HelperDoesNotExist3;
-    attachrid(getcharid(3, $@ILLIA_HELPER3$));
-    if (BaseLevel < @illia_min_level)
+    if (!(attachrid(getcharid(3, $@ILLIA_HELPER3$))))
+        goto L_Exit;
+    if (BaseLevel < $@illia_min_level)
         goto L_HelperTooWeak3;
     set $@ILLIA_HELPER3$, strcharinfo(0);
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
     mes $@ILLIA_HELPER1$ + ", " + $@ILLIA_HELPER2$ + " and " + $@ILLIA_HELPER3$ + " will be your three comrades.";
     close;
 
 L_HelperTooWeak3:
     detachrid;
-    if (isloggedin($@ILLIA_HERO_ID) == 0)
+    if (!(attachrid($@ILLIA_HERO_ID)))
         goto L_Exit;
-    attachrid($@ILLIA_HERO_ID);
     mes "[Team Selector]";
     mes "The player " + $@ILLIA_HELPER3$ + " is too weak to help you.";
+    set $@ILLIA_HELPER3$, "";
     next;
     goto L_ChooseHelperConfirm3;
 
@@ -374,6 +371,7 @@ L_HelperTooWeak3:
 L_HelperDoesNotExist3:
     mes "[Team Selector]";
     mes "This player " + $@ILLIA_HELPER3$ + " seems offline or does not exist.";
+    set $@ILLIA_HELPER3$, "";
     next;
     goto L_ChooseHelperConfirm3;
 
@@ -389,6 +387,8 @@ L_PreparingSpell:
     close;
 
 L_ReadyToTeleport:
+    if ($@ILLIA_HELPER1$ == "" || $@ILLIA_HELPER2$ == "" || $@ILLIA_HELPER3$ == "")
+        goto L_PlayerGaveUp;
     if (strcharinfo(0) == $@ILLIA_HERO$)
         goto L_AskToTeleport;
     if (strcharinfo(0) == $@ILLIA_HELPER1$ || strcharinfo(0) == $@ILLIA_HELPER2$ || strcharinfo(0) == $@ILLIA_HELPER3$)
@@ -398,9 +398,26 @@ L_ReadyToTeleport:
     close;
 
 L_AskToTeleport:
-    // Check area users just to give a hint if there are players around,
-    // but do not actually check if the real helpers are here
-    if (getareausers("007-1.gat", 66, 73, 92, 88) < 4)
+    // Check area users just to give a hint if there are players around
+    // $@ILLIA_HERO$ $@ILLIA_HELPER1$ $@ILLIA_HELPER2$ $@ILLIA_HELPER3$
+    if (!(attachrid(getcharid(3,$@ILLIA_HELPER1$))))
+        goto L_NotEveryoneHere;
+    if (!(isin("007-1", 66, 73, 92, 88)))
+        goto L_NotEveryoneHere;
+    detachrid;
+    if (!(attachrid(getcharid(3,$@ILLIA_HELPER2$))))
+        goto L_NotEveryoneHere;
+    if (!(isin("007-1", 66, 73, 92, 88)))
+        goto L_NotEveryoneHere;
+    detachrid;
+    if (!(attachrid(getcharid(3,$@ILLIA_HELPER3$))))
+        goto L_NotEveryoneHere;
+    if (!(isin("007-1", 66, 73, 92, 88)))
+        goto L_NotEveryoneHere;
+    detachrid;
+    if (!(attachrid(getcharid(3,$@ILLIA_HERO$))))
+        goto L_NotEveryoneHere;
+    if (!(isin("007-1", 66, 73, 92, 88)))
         goto L_NotEveryoneHere;
     mes "[Valia]";
     mes "\"Everyone seems to be here. Make sure to stay close to me.\"";
@@ -409,6 +426,19 @@ L_AskToTeleport:
         "Wait a minute.", L_Exit;
 
 L_Next5:
+    if (
+        (countitem ("SapphirePowder") < @illia_sapphire_powder) ||
+        (countitem ("AmethystPowder") < @illia_amethyst_powder) ||
+        (countitem ("IronPowder") < @illia_iron_powder) ||
+        (countitem ("FrozenYetiTear") < @illia_yeti_tear) ||
+        (countitem ("IcedWater") < @illia_iced_water)
+        ) goto L_MissingItems;
+    delitem "SapphirePowder", @illia_sapphire_powder;
+    delitem "AmethystPowder", @illia_amethyst_powder;
+    delitem "IronPowder", @illia_iron_powder;
+    delitem "FrozenYetiTear", @illia_yeti_tear;
+    delitem "IcedWater", @illia_iced_water;
+
     // Stop the 5mins timer and start it again.
     set $@ILLIA_STATUS, 3;
     initnpctimer;
@@ -464,14 +494,14 @@ L_Warp:
     end;
 
 OnRealWarp:
-    warp "051-1.gat", 23 + rand(2), 24 + rand(3);
+    warp "051-1", 23 + rand(2), 24 + rand(3);
     if (strcharinfo(0) == $@ILLIA_HERO$)
         goto L_InitVars;
     end;
 
 L_InitVars:
     set $@ILLIA_STATUS, 4;
-    cmdothernpc "#IlliaDaemon", "Toggle";
+    donpcevent "#IlliaDaemon::OnCommandToggle";
     // init various variables
     set $@illia_progress, 1;
     callfunc "UpdateIlliaProgress";
@@ -488,13 +518,13 @@ L_InitVars:
     set $@illia_begin_time, gettimetick(2);
 
     // Clean all levels
-    cmdothernpc "#IlliaJanitor1", "Clean";
-    cmdothernpc "#IlliaJanitor2", "Clean";
-    cmdothernpc "#IlliaJanitor3", "Clean";
-    cmdothernpc "#IlliaJanitor4", "Clean";
-    cmdothernpc "#IlliaJanitor5", "Clean";
-    cmdothernpc "#IlliaJanitor6", "Clean";
-    cmdothernpc "#IlliaJanitor7", "Clean";
+    donpcevent "#IlliaJanitor1::OnCommandClean";
+    donpcevent "#IlliaJanitor2::OnCommandClean";
+    donpcevent "#IlliaJanitor3::OnCommandClean";
+    donpcevent "#IlliaJanitor4::OnCommandClean";
+    donpcevent "#IlliaJanitor5::OnCommandClean";
+    donpcevent "#IlliaJanitor6::OnCommandClean";
+    donpcevent "#IlliaJanitor7::OnCommandClean";
 
     stopnpctimer;
     setnpctimer 0;
@@ -515,24 +545,24 @@ L_ReactToPlayersReturn:
     // the rings will have deleted their memories.
     // So the same dialog can apply.
     if ($@illia_progress < 8)
-        goto L_DisappointedByHeroFail;
+        goto L_Disappoint;
     if ($@illia_progress == 8)
         goto L_SurprisedByHeroWin;
     end;
 
 L_SurprisedByHeroWin:
-    npctalk "(How is it possible... " + $@ILLIA_HERO$ + " survived...)";
+    npctalk strnpcinfo(0), "(How is it possible... " + $@ILLIA_HERO$ + " survived...)";
     emotion EMOTE_SURPRISE;
     goto L_EndQuest;
 
-L_DisappointedByHeroFail:
-    npctalk "Oh no... It seems " + $@ILLIA_HERO$ + " did not make it... Who will save my sister now?";
+L_Disappoint:
+    npctalk strnpcinfo(0), "Oh no... It seems " + $@ILLIA_HERO$ + " did not make it... Who will save my sister now?";
     emotion EMOTE_SAD;
     goto L_EndQuest;
 
 L_PlayerGaveUp:
     close2;
-    npctalk "Well... It seems you can't do it " + $@ILLIA_HERO$ + ". I knew it as soon as I saw you!";
+    npctalk strnpcinfo(0), "Well... It seems you can't do it " + $@ILLIA_HERO$ + ". I knew it as soon as I saw you!";
     emotion EMOTE_UPSET;
     goto L_EndQuest;
 
@@ -556,13 +586,13 @@ L_EndQuest:
     set $@illia_bp, 0;
 
     // Clean all levels
-    cmdothernpc "#IlliaJanitor1", "Clean";
-    cmdothernpc "#IlliaJanitor2", "Clean";
-    cmdothernpc "#IlliaJanitor3", "Clean";
-    cmdothernpc "#IlliaJanitor4", "Clean";
-    cmdothernpc "#IlliaJanitor5", "Clean";
-    cmdothernpc "#IlliaJanitor6", "Clean";
-    cmdothernpc "#IlliaJanitor7", "Clean";
+    donpcevent "#IlliaJanitor1::OnCommandClean";
+    donpcevent "#IlliaJanitor2::OnCommandClean";
+    donpcevent "#IlliaJanitor3::OnCommandClean";
+    donpcevent "#IlliaJanitor4::OnCommandClean";
+    donpcevent "#IlliaJanitor5::OnCommandClean";
+    donpcevent "#IlliaJanitor6::OnCommandClean";
+    donpcevent "#IlliaJanitor7::OnCommandClean";
 
     stopnpctimer;
     setnpctimer 0;
@@ -578,30 +608,30 @@ OnTimer3000:
 OnTimer2500:
     if ($@ILLIA_STATUS != 3)
         end;
-    npctalk $@ILLIA_HERO$ + ", " + $@ILLIA_HELPER1$ + ", " + $@ILLIA_HELPER2$ + ", " + $@ILLIA_HELPER3$ + ", listen!";
+    npctalk strnpcinfo(0), $@ILLIA_HERO$ + ", " + $@ILLIA_HELPER1$ + ", " + $@ILLIA_HELPER2$ + ", " + $@ILLIA_HELPER3$ + ", listen!";
     end;
 
 OnTimer7500:
     if ($@ILLIA_STATUS != 3)
         end;
-    npctalk "I will teleport the 4 of you in a forest that isn't far from the waterfall.";
+    npctalk strnpcinfo(0), "I will teleport the 4 of you in a forest that isn't far from the waterfall.";
     end;
 
 OnTimer14000:
     if ($@ILLIA_STATUS != 3)
         end;
-    npctalk "Each of you takes one of these rings. They will allow you to come back here when needed.";
+    npctalk strnpcinfo(0), "Each of you takes one of these rings. They will allow you to come back here when needed.";
     end;
 
 OnTimer24000:
     if ($@ILLIA_STATUS != 3)
         end;
     if ($Illia_Luvia_Harvest < 10)
-        npctalk "Do your best and save my sister!";
+        npctalk strnpcinfo(0), "Do your best and save my sister!";
     if ($Illia_Luvia_Harvest >= 10 && $Illia_Luvia_Harvest < 35)
-        npctalk "This will be quite dangerous, but do your best and save my sister!";
+        npctalk strnpcinfo(0), "This will be quite dangerous, but do your best and save my sister!";
     if ($Illia_Luvia_Harvest >= 35)
-        npctalk "This will be awfully dangerous, but do your best and save my sister!";
+        npctalk strnpcinfo(0), "This will be awfully dangerous, but do your best and save my sister!";
     end;
 
 OnTimer34000:
@@ -609,11 +639,11 @@ OnTimer34000:
         end;
     // Trigger 4 areatimers to show the teleport spell
     // This is better looking than a basic areawarp
-    areatimer "007-1.gat", 66, 73, 92, 88, 3000, "Valia::OnWarpHero";
-    areatimer "007-1.gat", 66, 73, 92, 88, 3500, "Valia::OnWarpHelper1";
-    areatimer "007-1.gat", 66, 73, 92, 88, 4000, "Valia::OnWarpHelper2";
-    areatimer "007-1.gat", 66, 73, 92, 88, 4500, "Valia::OnWarpHelper3";
-    npctalk "Spiralis Major!";
+    areatimer "007-1", 66, 73, 92, 88, 3000, "Valia::OnWarpHero";
+    areatimer "007-1", 66, 73, 92, 88, 3500, "Valia::OnWarpHelper1";
+    areatimer "007-1", 66, 73, 92, 88, 4000, "Valia::OnWarpHelper2";
+    areatimer "007-1", 66, 73, 92, 88, 4500, "Valia::OnWarpHelper3";
+    npctalk strnpcinfo(0), "Spiralis Major!";
     misceffect FX_BLUE_MAGIC_CAST;
     end;
 
@@ -632,25 +662,31 @@ OnTimer150000:
     if ($@ILLIA_STATUS != 1)
         end;
     set $@ILLIA_STATUS, 2;
-    npctalk $@ILLIA_HERO$ + ", I am ready to cast the teleport spell. You and your comrades should not wait any longer!";
+    npctalk strnpcinfo(0), $@ILLIA_HERO$ + ", I am ready to cast the teleport spell. You and your comrades should not wait any longer!";
     end;
 
 OnTimer280000:
     if ($@ILLIA_STATUS != 2)
         end;
-    npctalk "Hurry up " + $@ILLIA_HERO$ + ", I am losing patience.";
+    npctalk strnpcinfo(0), "Hurry up " + $@ILLIA_HERO$ + ", I am losing patience.";
     end;
 
 OnTimer300000:
     if ($@ILLIA_STATUS != 2)
         end;
-    npctalk $@ILLIA_HERO$ + ", you and your missing comrades made me lose a precious time! Out of my sight!";
+    npctalk strnpcinfo(0), $@ILLIA_HERO$ + ", you and your missing comrades made me lose a precious time! Out of my sight!";
     emotion EMOTE_UPSET;
+    if (attachrid($@ILLIA_HERO_ID))
+        goto L_KillHero;
+    goto L_EndQuest;
+
+L_KillHero:
+    heal -Hp, 0;
     goto L_EndQuest;
 
 }
 
-007-1.gat,128,100,0|script|#IlliaDaemon|127,
+007-1,128,100,0|script|#IlliaDaemon|32767
 {
 end;
 
@@ -691,10 +727,10 @@ OnTimer4000:
     if (isloggedin($@ILLIA_HERO_ID) == 0)
         end;
     if ($@ILLIA_STATUS == 255 && attachrid($@ILLIA_HERO_ID) && (
-            isin("051-1.gat",1,1,190,80)  ||
-            isin("051-3.gat",1,1,115,130) ||
-            isin("052-1.gat",1,1,100,80)  ||
-            isin("052-2.gat",1,1,150,100)
+            isin("051-1",1,1,190,80)  ||
+            isin("051-3",1,1,115,130) ||
+            isin("052-1",1,1,100,80)  ||
+            isin("052-2",1,1,150,100)
         )
         ) goto L_WarpHero;
     detachrid;
@@ -706,7 +742,7 @@ OnTimer4500:
     // send a message to all the helpers
     setarray $@illia_helpers$, $@ILLIA_HELPER1$,$@ILLIA_HELPER2$,$@ILLIA_HELPER3$;
     set $@illia_helper_index,0;
-    goto L_CheckHelperNeedNotification;
+    goto L_HelperNotification;
 
 OnTimer6500:
     if ($@ILLIA_STATUS < 254)
@@ -722,19 +758,19 @@ OnTimer6500:
     set $@illia_players_in_luvia_territory, 0;
     end;
 
-L_CheckHelperNeedNotification:
+L_HelperNotification:
     if ($@illia_helper_index >= 4)
-        goto L_CleanHelpersNotifications;
+        goto L_CleanHelpers;
     set $@illia_helper$, $@illia_helpers$[$@illia_helper_index];
     if (isloggedin(getcharid(3, $@illia_helper$)) == 0)
         goto L_NextHelperToNotify;
     if (
         $@illia_helper$ != "" &&
         attachrid(getcharid(3, $@illia_helper$)) && (
-            isin("051-1.gat",1,1,190,80)  ||
-            isin("051-3.gat",1,1,115,130) ||
-            isin("052-1.gat",1,1,100,80)  ||
-            isin("052-2.gat",1,1,150,100)
+            isin("051-1",1,1,190,80)  ||
+            isin("051-3",1,1,115,130) ||
+            isin("052-1",1,1,100,80)  ||
+            isin("052-2",1,1,150,100)
         )
         ) goto L_NotifyHelperFail;
     detachrid;
@@ -742,9 +778,9 @@ L_CheckHelperNeedNotification:
 
 L_NextHelperToNotify:
     set $@illia_helper_index, $@illia_helper_index + 1;
-    goto L_CheckHelperNeedNotification;
+    goto L_HelperNotification;
 
-L_CleanHelpersNotifications:
+L_CleanHelpers:
     cleararray $@illia_helpers$, "", 3;
     set $@illia_helper$, "";
     set $@illia_helper_index,0;
@@ -789,10 +825,10 @@ L_CleanHelpersWarps:
 L_WarpHelper:
     // Proceed only if the helper is still on one of the quest's maps
     if (
-        isin("051-1.gat",1,1,190,80 ) ||
-        isin("051-3.gat",1,1,115,130) ||
-        isin("052-1.gat",1,1,100,80 ) ||
-        isin("052-2.gat",1,1,150,100)
+        isin("051-1",1,1,190,80 ) ||
+        isin("051-3",1,1,115,130) ||
+        isin("052-1",1,1,100,80 ) ||
+        isin("052-2",1,1,150,100)
         ) goto L_DoWarpHelper;
     detachrid;
     goto L_NextHelperToWarp;
@@ -801,7 +837,7 @@ L_DoWarpHelper:
     // At this point, the player has been attached
     if ($@illia_progress >= 5)
         message strcharinfo(0), "You feel dizzy, and that your memory is being rewritten... Who is Luvia? Something isn't right.";
-    warp "007-1.gat",85 + rand(0,2),75 + rand(0,2);
+    warp "007-1",85 + rand(0,2),75 + rand(0,2);
     detachrid;
     goto L_NextHelperToWarp;
 
@@ -810,10 +846,10 @@ L_Check:
     if (isloggedin($@ILLIA_HERO_ID) == 0)
         goto L_HeroLogOff;
     if (attachrid($@ILLIA_HERO_ID) &&
-        (isin("051-1.gat",1,1,190,80 ) == 0) &&
-        (isin("051-3.gat",1,1,115,130) == 0) &&
-        (isin("052-1.gat",1,1,100,80 ) == 0) &&
-        (isin("052-2.gat",1,1,150,100) == 0)
+        (isin("051-1",1,1,190,80 ) == 0) &&
+        (isin("051-3",1,1,115,130) == 0) &&
+        (isin("052-1",1,1,100,80 ) == 0) &&
+        (isin("052-2",1,1,150,100) == 0)
         ) goto L_HeroEscape;
     if (isdead())
         goto L_HeroDead;
@@ -856,7 +892,7 @@ L_WarpHero:
     // At this point, the player has been attached
     if ($@illia_progress >= 5)
         message strcharinfo(0), "You feel dizzy, and that your memory is being rewritten... Who is Luvia? Something isn't right.";
-    warp "007-1.gat",85 + rand(0,2),75 + rand(0,2);
+    warp "007-1",85 + rand(0,2),75 + rand(0,2);
     detachrid;
     end;
 
@@ -883,7 +919,7 @@ L_Start:
 
 }
 
-function|script|UpdateIlliaProgress|,
+function|script|UpdateIlliaProgress
 {
     if ($@illia_progress == 1)
         goto L_Torch1;
@@ -945,42 +981,42 @@ L_Torch1:
     return;
 }
 
-007-1.gat,72,88,0|script|#IlliaTorch1|374,
+007-1,72,88,0|script|#IlliaTorch1|374
 {
 end;
 }
 
-007-1.gat,71,85,0|script|#IlliaTorch2|374,
+007-1,71,85,0|script|#IlliaTorch2|374
 {
 end;
 }
 
-007-1.gat,75,70,0|script|#IlliaTorch3|374,
+007-1,75,70,0|script|#IlliaTorch3|374
 {
 end;
 }
 
-007-1.gat,85,71,0|script|#IlliaTorch4|374,
+007-1,85,71,0|script|#IlliaTorch4|374
 {
 end;
 }
 
-007-1.gat,88,69,0|script|#IlliaTorch5|374,
+007-1,88,69,0|script|#IlliaTorch5|374
 {
 end;
 }
 
-007-1.gat,86,68,0|script|#IlliaTorch6|374,
+007-1,86,68,0|script|#IlliaTorch6|374
 {
 end;
 }
 
-007-1.gat,87,68,0|script|#IlliaTorch7|374,
+007-1,87,68,0|script|#IlliaTorch7|374
 {
 end;
 }
 
-007-1.gat,88,67,0|script|#IlliaTorch8|374,
+007-1,88,67,0|script|#IlliaTorch8|374
 {
 end;
 }

@@ -1,6 +1,6 @@
 // Map 011-1-night: Woodland
-// This file is generated automatically. All manually changes will be removed when running the Converter.
-map: 011-1-night.gat
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: 011-1-night
 npc: npc/011-1-night/_mobs.txt
 npc: npc/011-1-night/_warps.txt
 npc: npc/011-1-night/pvpflag.txt

@@ -1,4 +1,4 @@
-botcheck.gat,46,29,0|script|CP|372,
+botcheck,46,29,0|script|CP|372,
 {
 if (getgmlevel() < 40) goto L_Close;
 goto L_Main;

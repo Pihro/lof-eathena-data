@@ -8,7 +8,8 @@
 // 01 done in good way
 // 11 done in bad way
 
-030-2.gat,31,81,0|script|Eljas|328,{
+030-2,31,81,0|script|Eljas|328
+{
 
     if (!(gettime(7) == $@xmas2011_year && gettime(6) == 12 && gettime(5) >= $@xmas2011_start_day)
         && !(gettime(7) == ($@xmas2011_year + 1) && gettime(6) == 1 && gettime(5) <= $@xmas2011_reward_end_day))
@@ -90,7 +91,7 @@ L_Done:
 L_NoEvent:
     mes "[Eljas]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     goto L_Close;
 
 L_RewardTime:

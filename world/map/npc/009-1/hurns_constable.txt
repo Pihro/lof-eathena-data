@@ -1,6 +1,7 @@
 //
 
-009-1.gat,63,33,0|script|Constable Geri Graf|150,{
+009-1,63,33,0|script|Constable Geri Graf|150
+{
 // set @npcname$, "Constable Geri Graf";
     set @canSkip, 1;
     callfunc "GameRules";

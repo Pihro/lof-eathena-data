@@ -1,6 +1,7 @@
 // Author: Jenalya, Pihro
 
-009-2.gat,181,56,0|script|Nahrec|311,{
+009-2,181,56,0|script|Nahrec|311
+{
     mes "[Nahrec]";
     mes "\"Ah, hello! It is good to see another traveler in this town!\"";
     next;
@@ -121,6 +122,11 @@ L_Saviorpants2:
     getitem "SaviorPants", 1;
     mes "[Nahrec]";
     mes "\"There you go!\"";
+    goto L_Close;
+
+L_Full:
+    mes "[Nahrec]";
+    mes "\"It looks like you don't have room for this item. Come back when you have more room!\"";
     goto L_Close;
 
 L_Beback:

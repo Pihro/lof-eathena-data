@@ -1,4 +1,4 @@
-function	script	Easter2010Loc_Check1	{
+function    script    Easter2010Loc_Check1    {
     set @result,  ~Easter_2010_EggState1 & (1 << @obj) &  $Easter_2010_Egg_Loc_State1;
     if (@result == 0) goto L_NotHere;
     getinventorylist;
@@ -21,7 +21,7 @@ L_TooMany:
     return;
 }
 
-function	script	Easter2010Loc_Check2	{
+function    script    Easter2010Loc_Check2    {
     set @result,  ~Easter_2010_EggState2 & (1 << @obj) &  $Easter_2010_Egg_Loc_State2;
     if (@result == 0) goto L_NotHere;
     getinventorylist;
@@ -44,7 +44,7 @@ L_TooMany:
     return;
 }
 
-function	script	Easter2010Loc_Check3	{
+function    script    Easter2010Loc_Check3    {
     set @result, ~Easter_2010_EggState3 & (1 << @obj) &   $Easter_2010_Egg_Loc_State3;
     if (@result == 0) goto L_NotHere;
     getinventorylist;
@@ -67,7 +67,7 @@ L_TooMany:
     return;
 }
 
-function	script	Easter2010Loc_Check4	{
+function    script    Easter2010Loc_Check4    {
     set  @result,  ~Easter_2010_EggState4 & (1 << @obj) &   $Easter_2010_Egg_Loc_State4;
     if  (@result == 0) goto L_NotHere;
     getinventorylist;
@@ -90,7 +90,7 @@ L_TooMany:
     return;
 }
 
-function	script	Easter2010Loc_Check5	{
+function    script    Easter2010Loc_Check5    {
     set  @result, ~Easter_2010_EggState5 & (1 << @obj) &    $Easter_2010_Egg_Loc_State5;
     if  (@result == 0) goto L_NotHere;
     getinventorylist;

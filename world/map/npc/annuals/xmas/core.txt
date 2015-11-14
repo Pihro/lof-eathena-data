@@ -2,7 +2,7 @@
 // author: Jenalya, Chayenne, cinderweb, wushin
 // please see #XmasConfig
 
-function|script|XmasNaughty|,
+function|script|XmasNaughty
 {
     set @xmas_karma, ((XMASTIME & NIBBLE_1_MASK) >> NIBBLE_1_SHIFT);
     if((@xmas_karma - @karma_bonus) >= 0)
@@ -23,7 +23,7 @@ L_Return:
     return;
 }
 
-function|script|XmasNice|,
+function|script|XmasNice
 {
     set @xmas_karma, ((XMASTIME & NIBBLE_1_MASK) >> NIBBLE_1_SHIFT);
     if((@xmas_karma + @karma_bonus) < 16)
@@ -45,7 +45,7 @@ L_Return:
 }
 
 // Called for a basic reward for quests state completion
-function|script|XmasXpReward|,
+function|script|XmasXpReward
 {
     if (BaseLevel >= 10)
         goto L_HigherLevel;
@@ -63,44 +63,44 @@ L_Return:
     return;
 }
 
-function|script|XmasSetState|,
+function|script|XmasSetState
 {
     set XMASTIME, (XMASTIME & ~(NIBBLE_0_MASK) | (@xmas_state << NIBBLE_0_SHIFT));
     return;
 }
 
-function|script|XmasSetSide|,
+function|script|XmasSetSide
 {
     set XMASTIME, XMASTIME | $@xmas_side_bit;
     return;
 }
 
-function|script|XmasSetRoute|,
+function|script|XmasSetRoute
 {
     set XMASTIME, XMASTIME | $@xmas_route_bit;
     return;
 }
 
-function|script|XmasThrowOut|,
+function|script|XmasThrowOut
 {
     set XMASTIME, XMASTIME | $@xmas_thrown_out_bit;
     return;
 }
 
-function|script|XmasSetBossStart|,
+function|script|XmasSetBossStart
 {
     set XMASTIME, XMASTIME | $@xmas_boss_start_bit;
     return;
 }
 
-function|script|XmasSetBossHero|,
+function|script|XmasSetBossHero
 {
     set XMASTIME, XMASTIME | $@xmas_boss_hero_bit;
     return;
 }
 
 // Tallys the players quest
-function|script|XmasSetReward|,
+function|script|XmasSetReward
 {
     set @xmas_endgame, 0;
     set @xmas_reward_side, 0;
@@ -130,7 +130,7 @@ L_SetRewardBonus:
         set @xmas_reward_lower_bound, 2 * @xmas_reward_tally - rand(5);
     if (@xmas_reward_tally <= 5)
         set @xmas_reward_lower_bound, @xmas_reward_tally;
-    set @xmas_reward_upper_bound, @xmas_reward_lower_bound + ((readparam(bLuk)) / 5);
+    set @xmas_reward_upper_bound, @xmas_reward_lower_bound + ((Luk) / 5);
     set @xmas_reward, (rand(@xmas_reward_lower_bound, @xmas_reward_upper_bound));
     set @xmas_reward_lower_bound, 0;
     set @xmas_reward_upper_bound, 0;
@@ -138,7 +138,7 @@ L_SetRewardBonus:
 }
 
 // Main quest completion reward
-function|script|XmasMainXpBpReward|,
+function|script|XmasMainXpBpReward
 {
     callfunc "XmasSetReward";
 
@@ -159,8 +159,7 @@ L_LevelingReward:
     goto L_XmasExp;
 
 L_XmasLevel:
-    gmcommand "@blvl 1";
-    gmcommand "@l I was a good kid this year.";
+    set BaseLevel, BaseLevel + 1;
     return;
 
 L_XmasExp:
@@ -169,7 +168,7 @@ L_XmasExp:
 }
 
 // Final Item reward
-function|script|XmasMainItemReward|,
+function|script|XmasMainItemReward
 {
     callfunc "XmasSetReward";
 
@@ -209,9 +208,9 @@ L_FinalGift:
     set @xmas_reward_item2$, $@xmas_uncommon_reward$[@xmas_uncommon_slot2];
     if(checkweight("Iten", 1) == 0)
         goto L_FullInv;
-    if(@xmas_reward >= 80)
+    if(@xmas_reward >= $@xmas_reward_tally_rare)
         getitem @xmas_reward_item$, 1;
-    if(@xmas_reward >= 40)
+    if(@xmas_reward >= $@xmas_reward_tally_common)
         getitem @xmas_reward_item1$, 1;
     getitem @xmas_reward_item2$, 1;
     set @xmas_uncommon_slot1, 0;
@@ -237,7 +236,7 @@ L_Return:
 // Checks for an expired event key
 // Each new annual event needs a new key
 // or it will allow completion from last year
-function|script|XmasCheckOld|,
+function|script|XmasCheckOld
 {
     if(XMASYEAR == $XMAS_TIME_KEY[5])
         goto L_Return;

@@ -12,7 +12,7 @@
 // -o11c
 
 // The Candy Man
-009-1.gat,90,27,0	script	The Candy Man	183, {
+009-1,90,27,0    script    The Candy Man    183, {
 
     set @STATE_KNOWS_CANDYMAN, 1;
     set @STATE_FETCH_QUEST, 2;
@@ -64,7 +64,7 @@ L_Candy_Mean_Bastard:
 
 L_Candy_Insult:
     callsub S_Taunt_PC;
-    itemheal -Hp, 0;
+    heal -Hp, 0, 1;
     misceffect sfx_magic_war;
     misceffect sfx_magic_war, strcharinfo(0);
     close;
@@ -118,7 +118,7 @@ L_Candy_Check:
     callsub S_Taunt_PC;
     misceffect sfx_magic_war;
     misceffect sfx_magic_war, strcharinfo(0);
-    itemheal -Hp, 0;
+    heal -Hp, 0, 1;
     close;
 
 L_Check_Not_Enough:
@@ -206,7 +206,7 @@ L_kill_target_recruit:
     setarray @messages$, "Ouch, I felt that you silly person! That 'weakling' you killed gave me some nice candy... now you will suffer...", "Oooh, a good kill... do you want to work for meee for that? Come and see me...", "Exquisite, a perfect kill... can you do it again? Come see me, I'll make it worth your while...", "Awwwww, that was no fun, you couldn't even see the fool's face. Nevermind, he has failed me, he will pay...", "Hmph, you just _know_ you can do better than that...";
     set @pos, rand(getarraysize(@messages$));
     message strcharinfo(0), @messages$[@pos];
-    if (@pos == 0) itemheal -Hp / 2 - 40, -Sp / 2 - 40;
+    if (@pos == 0) heal -Hp / 2 - 40, -Sp / 2 - 40, 1;
     close;
 
 L_killer_check:
@@ -273,7 +273,7 @@ L_DIE_IN_A_FIRE:
     callsub S_Taunt_PC;
     misceffect sfx_magic_war;
     misceffect sfx_magic_war, strcharinfo(0);
-    itemheal -Hp, 0;
+    heal -Hp, 0, 1;
     close;
 
 S_Taunt_PC:

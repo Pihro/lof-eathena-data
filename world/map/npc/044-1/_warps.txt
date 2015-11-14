@@ -1,13 +1,13 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Snow Hills warps
 
-044-1.gat,108,165|warp|To Small Cave|-1,-1,044-3.gat,110,102
-044-1.gat,108,156|warp|To Small Cave|-1,-1,044-3.gat,119,94
-044-1.gat,102,111|warp|To Small Cave|-1,-1,044-3.gat,119,58
-044-1.gat,102,107|warp|To Small Cave|-1,-1,044-3.gat,128,45
-044-1.gat,154,92|warp|To Deeper Snow Cave|-1,-1,019-4.gat,25,123
-044-1.gat,101,143|warp|To Snow Hills Cave|-1,-1,044-3.gat,126,180
-044-1.gat,37,173|warp|To Snow Hills Cave|-1,-1,044-3.gat,33,175
-044-1.gat,45,73|warp|To Snow Hills Cave|-1,-1,044-3.gat,46,76
-044-1.gat,78,109|warp|To Snow Hills Cave|-1,-1,044-3.gat,35,41
-044-1.gat,83,123|warp|To Snow Hills Cave|-1,-1,044-3.gat,108,165
+044-1,108,165|warp|To Small Cave#044-10|-1,-1,044-3,110,102
+044-1,108,156|warp|To Small Cave#044-11|-1,-1,044-3,119,94
+044-1,102,111|warp|To Small Cave#044-12|-1,-1,044-3,119,58
+044-1,102,107|warp|To Small Cave#044-13|-1,-1,044-3,128,45
+044-1,154,92|warp|To Deeper Snow C#044-14|-1,-1,019-4,25,123
+044-1,101,143|warp|To Snow Hills Ca#044-15|-1,-1,044-3,126,180
+044-1,37,173|warp|To Snow Hills Ca#044-16|-1,-1,044-3,33,175
+044-1,45,73|warp|To Snow Hills Ca#044-17|-1,-1,044-3,46,76
+044-1,78,109|warp|To Snow Hills Ca#044-18|-1,-1,044-3,35,41
+044-1,83,123|warp|To Snow Hills Ca#044-19|-1,-1,044-3,108,165

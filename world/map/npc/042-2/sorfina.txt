@@ -1,13 +1,15 @@
 // This file is part of the Tutorial
 // Author: Jenalya
 
-042-2.gat,28,26,0|script|Sorfina|154,4,4
+042-2,28,26,0|script|Sorfina|154,4,4
 {
+    callfunc "ClearVariables";
+    
     if (FLAGS & FLAG_TUTORIAL_DONE) goto L_HatCheck;
-    if (sorfina == 4) goto L_Heal;
-    if (sorfina == 3) goto L_Clothes;
-    if (sorfina == 2) goto L_Chest;
-    if (sorfina == 1) goto L_Carpet;
+    if (QL_SORFINA == 4) goto L_Heal;
+    if (QL_SORFINA == 3) goto L_Clothes;
+    if (QL_SORFINA == 2) goto L_Chest;
+    if (QL_SORFINA == 1) goto L_Carpet;
     
     callfunc "GameRules";
     goto L_Start;
@@ -53,8 +55,8 @@ L_Carpet:
     mes "[Sorfina]";
     mes "\"Try to take a few steps and walk to that red carpet over there.";
     mes "Just use the arrow keys or click on the place you want to go to.\"";
-    if (!sorfina)
-        set sorfina, 1;
+    if (!QL_SORFINA)
+        set QL_SORFINA, 1;
     goto L_Close;
 
 L_Chest:
@@ -94,7 +96,7 @@ L_Clothes:
     mes "\"And here is some money for you. At least you can buy yourself something to eat.";
     mes "Good luck!\"";
     set Zeny, Zeny + 30;
-    set sorfina, 4;
+    set QL_SORFINA, 4;
     goto L_Close;
 
 L_Heal:
@@ -108,7 +110,6 @@ L_Heal:
     goto L_Again;
 
 L_HatCheck:
-    if (!Sorfina_Caps && BaseLevel >= 10) set Sorfina_Caps, 0;
     set @hat$, "";
     
     if (Sorfina_Caps == 9 && BaseLevel >= 99) set @hat$, "Level99Cap";
@@ -159,7 +160,7 @@ L_Again:
     mes "[Sorfina]";
     mes "\"Make yourself at home! Do you have any questions?\"";
     next;
-    if (hasan)
+    if (QL_HASAN && QL_HASAS != 4)
         menu
             "A guy named Hasan won't let me enter Tulimshar.", L_Hasan,
             "Yes, could you explain again about...", L_Explain,
@@ -264,10 +265,10 @@ L_Hasan:
     next;
     mes "\"If Valon hadn't have come along that moment, Hasan would have died that day.\"";
     next;
-    mes "\"However, the scorpions poison caused a bad fever and once Hasan had recovered from that, he was even more malicious than before.\"";
+    mes "\"However, the scorpion's poison caused a bad fever and once Hasan had recovered from that, he was even more malicious than before.\"";
     mes "She sighs.";
-    if (hasan == 1)
-        set hasan, 2;
+    if (QL_HASAN == 1)
+        set QL_HASAN, 2;
     goto L_Close;
 
 L_SkipTut:
@@ -301,12 +302,12 @@ OnTouch:
     goto L_Start;
 }
 
-042-2.gat,33,27,0|script|#Carpet|32767,1,1
+042-2,33,27,0|script|#Carpet|32767,1,1
 {
     end;
 
 OnTouch:
-    if (sorfina != 1)
+    if (QL_SORFINA != 1)
         end;
     mes "[Sorfina]";
     mes "\"Very good! I'm glad you're recovering.";
@@ -320,14 +321,14 @@ OnTouch:
     mes "\"To interact with things in your environment or talk to NPCs you can either click on it or press N to focus and T to talk/activate.\"";
     next;
     mes "\"Now get the clothes out of the chest.\"";
-    set sorfina, 2;
+    set QL_SORFINA, 2;
     close;
 }
 
-042-2.gat,27,23,0|script|Chest#sorfina|111,
+042-2,27,23,0|script|Chest#sorfina|111,
 {
-    if (sorfina > 2) goto L_Empty;
-    if (sorfina == 2) goto L_Shirt;
+    if (QL_SORFINA > 2) goto L_Empty;
+    if (QL_SORFINA == 2) goto L_Shirt;
 
     mes "The chest is locked.";
     close;
@@ -343,7 +344,7 @@ L_Shirt:
     mes "\"You can open your inventory by pressing F3 or clicking on the 'Inventory' button in the bar at the upper right corner.\"";
     next;
     mes "\"After we finish talking, click on the clothes and press the equip button.\"";
-    set sorfina, 3;
+    set QL_SORFINA, 3;
     close;
 
 L_Empty:
@@ -351,15 +352,15 @@ L_Empty:
     close;
 }
 
-042-2.gat,44,31,0|script|#DoorOut-sorfina|45,0,0
+042-2,44,31,0|script|#DoorOut-sorfina|45,0,0
 {
     end;
 
 OnTouch:
-    if ((sorfina < 4)
+    if ((QL_SORFINA < 4)
         && !(FLAGS & FLAG_TUTORIAL_DONE))
             goto L_Block;
-    warp "042-1.gat", 63, 77;
+    warp "042-1", 63, 77;
     end;
 
 L_Block:

@@ -1,7 +1,8 @@
 // This file is part of Christmas Event 2012
 // author: Jenalya
 
-030-2.gat,76,88,0|script|Vilhelmiina|335,{
+030-2,76,88,0|script|Vilhelmiina|335
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -31,11 +32,12 @@ L_Close:
 L_NoEvent:
     mes "[Vilhelmiina]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     close;
 }
 
-030-2.gat,80,88,0|script|Vihtori|333,{
+030-2,80,88,0|script|Vihtori|333
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -65,11 +67,12 @@ L_Close:
 L_NoEvent:
     mes "[Vihtori]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     close;
 }
 
-030-2.gat,152,22,0|script|Vanamo|332,{
+030-2,152,22,0|script|Vanamo|332
+{
     callfunc "xmas2012time";
 
     if (@xmas_time == $@xmas2012_no_event_time)
@@ -86,6 +89,6 @@ L_NoEvent:
 L_NoEvent:
     mes "[Vanamo]";
     mes "\"How did you come in? At this time of the year the door should be locked!\"";
-    warp "030-1.gat", 99, 55;
+    warp "030-1", 99, 55;
     close;
 }

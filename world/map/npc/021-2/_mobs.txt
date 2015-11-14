@@ -1,9 +1,9 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // North Tulimshar Indoor mobs
 
 
 
-021-2.gat,0,0,0|script|Mob021-2|-1,
+021-2,0,0,0|script|Mob021-2|32767
 {
     end;
 }

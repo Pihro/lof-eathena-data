@@ -28,16 +28,16 @@
 //  6: the player saved the farmer from the pumpkin invasion (all pumpkins / mobs killed)
 //  10: the player failed to save the farmer from the pumpkin invasion (player left the map, died -- logging off is allowed however)
 
-function|script|HalloweenQuestWaterPumpkins|,
+function|script|HalloweenQuestWaterPumpkins
 {
     if (Quest_Halloween != 5 || $@HalloweenQuest_PumpkinHunter$ != "")
         end;
     set $@HalloweenQuest_PumpkinHunter$, strcharinfo(0);
-    cmdothernpc "Oscar", "Spg";
+    donpcevent "Oscar::OnCommandSpg";
     end;
 }
 
-011-1.gat,94,38,0|script|Oscar|142,
+011-1,94,38,0|script|Oscar|142,
 {
     // Check we are at the good time of the year
     if (!(gettime(6) == 11 && (gettime(5) >= 4 && gettime(5) <= 30))) goto L_NoEvent;
@@ -331,13 +331,13 @@ L_TimerFunction:
         end;
     callsub S_CheckPlayer;
     set $@HalloweenQuest_PumpkinsTimer, $@HalloweenQuest_PumpkinsTimer + 1;
-    if (mobcount("011-1.gat", "Oscar::OnPD")  < 0 &&
-        mobcount("011-1.gat", "Oscar::OnPDP") < 0 &&
+    if (mobcount("011-1", "Oscar::OnPD")  < 0 &&
+        mobcount("011-1", "Oscar::OnPDP") < 0 &&
         $@HalloweenQuest_PumpkinsCount <= 0)
         goto L_AllPumpkinsDead;
     // A quick "cheer up"
     if ($@HalloweenQuest_PumpkinsTimer == 300)
-        npctalk "Hurry up " + $@HalloweenQuest_PumpkinHunter$ + "! My farm is being ruined!";
+        npctalk strnpcinfo(0), "Hurry up " + $@HalloweenQuest_PumpkinHunter$ + "! My farm is being ruined!";
     // 7 mins max
     if ($@HalloweenQuest_PumpkinsTimer > 420)
         goto L_PumpkinsRuinedEverything;
@@ -348,21 +348,21 @@ L_TimerFunction:
 
 L_TrySpawnPumpkin:
     if ($@HalloweenQuest_PumpkinsCount > 0)
-        areamonster "011-1.gat", 97, 40, 101, 44, "", 1063, 1, "Oscar::OnPD";
+        areamonster "011-1", 97, 40, 101, 44, "", 1063, 1, "Oscar::OnPD";
     setnpctimer 0;
     end;
 
 OnTimer2500:
     if ($@HalloweenQuest_PumpkinsState != 0)
         end;
-    areamonster "011-1.gat", 97, 40, 101, 44, "", 1063, 2, "Oscar::OnPD";
+    areamonster "011-1", 97, 40, 101, 44, "", 1063, 2, "Oscar::OnPD";
     end;
 
 OnTimer6000:
     if ($@HalloweenQuest_PumpkinsState != 0)
         end;
     emotion EMOTE_AFRAID;
-    npctalk "Oh no, these pumpkins look strange and infested with bugs! Help me get rid of them " + $@HalloweenQuest_PumpkinHunter$ + "!";
+    npctalk strnpcinfo(0), "Oh no, these pumpkins look strange and infested with bugs! Help me get rid of them " + $@HalloweenQuest_PumpkinHunter$ + "!";
     set $@HalloweenQuest_PumpkinsState, 1;
     setnpctimer 0;
     end;
@@ -388,13 +388,13 @@ OnPD:
         getitem "PumpkinHelmet", 1;
     // huntsman spider x1
     if (@halloween_rand < (15*BaseLevel)/100)
-        areamonster "011-1.gat", 97, 40, 101, 44, "", 1083, 1, "Oscar::OnPDP";
+        areamonster "011-1", 97, 40, 101, 44, "", 1083, 1, "Oscar::OnPDP";
     // Or spider x1
     if (@halloween_rand >= (15*BaseLevel)/100 && @halloween_rand < (75*BaseLevel)/100)
-        areamonster "011-1.gat", 97, 40, 101, 44, "", 1012, 1, "Oscar::OnPDP";
+        areamonster "011-1", 97, 40, 101, 44, "", 1012, 1, "Oscar::OnPDP";
     // Or archant x2
     if (@halloween_rand >= (75*BaseLevel)/100)
-        areamonster "011-1.gat", 97, 40, 101, 44, "", 1060, 2, "Oscar::OnPDP";
+        areamonster "011-1", 97, 40, 101, 44, "", 1060, 2, "Oscar::OnPDP";
 
     set @halloween_rand, 0;
     end;
@@ -404,11 +404,11 @@ OnPDP:
 
 L_KillBadHunter:
     misceffect FX_PUMPKIN_EXPLOSION, strcharinfo(0);
-    percentheal -100, 0;
+    heal -Hp, 0;
     end;
 
 L_PumpkinsRuinedEverything:
-    npctalk "No! " + $@HalloweenQuest_PumpkinHunter$ + " how could you let that happen? All my farm is a mess now! All my trees are infested with bugs!";
+    npctalk strnpcinfo(0), "No! " + $@HalloweenQuest_PumpkinHunter$ + " how could you let that happen? All my farm is a mess now! All my trees are infested with bugs!";
     goto L_Fail;
 
 L_AllPumpkinsDead:
@@ -419,21 +419,21 @@ S_CheckPlayer:
         goto L_PlayerOff;
     if (isdead())
         goto L_PlayerDead;
-    if (isin("011-1.gat",20,5,130,110) == 0)
+    if (isin("011-1",20,5,130,110) == 0)
         goto L_PlayerLeft;
     detachrid;
     return;
 
 L_PlayerOff:
-    npctalk "What? Where is " + $@HalloweenQuest_PumpkinHunter$ + "? Someone, help me!";
+    npctalk strnpcinfo(0), "What? Where is " + $@HalloweenQuest_PumpkinHunter$ + "? Someone, help me!";
     goto L_Fail;
 
 L_PlayerLeft:
-    npctalk "What the!! " + $@HalloweenQuest_PumpkinHunter$ + " left me alone with all this! Someone, help me!";
+    npctalk strnpcinfo(0), "What the!! " + $@HalloweenQuest_PumpkinHunter$ + " left me alone with all this! Someone, help me!";
     goto L_Fail;
 
 L_PlayerDead:
-    npctalk "Oh no I can't believe it! " + $@HalloweenQuest_PumpkinHunter$ + " just died! Someone, help me!";
+    npctalk strnpcinfo(0), "Oh no I can't believe it! " + $@HalloweenQuest_PumpkinHunter$ + " just died! Someone, help me!";
     goto L_Fail;
 
 L_Fail:
@@ -450,12 +450,12 @@ L_Success:
         goto L_PlayerOff;
     set Quest_Halloween, 6;
     emotion EMOTE_GRIN;
-    npctalk "Hurray, " + $@HalloweenQuest_PumpkinHunter$ + " you did it! Thank you thank you! Come here!";
+    npctalk strnpcinfo(0), "Hurray, " + $@HalloweenQuest_PumpkinHunter$ + " you did it! Thank you thank you! Come here!";
     goto L_Clean;
 
 L_Clean:
-    killmonster "011-1.gat", "Oscar::OnPD";
-    killmonster "011-1.gat", "Oscar::OnPDP";
+    killmonster "011-1", "Oscar::OnPD";
+    killmonster "011-1", "Oscar::OnPDP";
     set $@HalloweenQuest_PumpkinHunter$, "";
     set $@HalloweenQuest_PumpkinsCount, 0;
     set $@HalloweenQuest_PumpkinsState, 0;

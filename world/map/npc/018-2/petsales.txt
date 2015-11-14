@@ -1,6 +1,7 @@
 //
 
-018-2.gat,122,23,0|script|Pet Detective|160,{
+018-2,122,23,0|script|Pet Detective|160
+{
 
 
     mes "[Ace Ventura]";
@@ -128,8 +129,8 @@ L_MagCat:
 
     menu
         "Yes, Let me have one!.", L_YesBcat,
-	"Not Really.", L_EndSoon,
-	"I would really like a different pet.", L_Adoptmenu;
+    "Not Really.", L_EndSoon,
+    "I would really like a different pet.", L_Adoptmenu;
     goto L_Close;
 
 L_YesBcat:

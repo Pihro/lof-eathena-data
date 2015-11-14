@@ -1,6 +1,6 @@
 // Clears old variables
 
-function|script|ClearVariables|,
+function|script|ClearVariables
 {
     set EasterQuest, 0;
 
@@ -112,6 +112,20 @@ function|script|ClearVariables|,
 
     set QUEST_clothdyer_angus, 0;
 
+    // Repack Tutorial variables into the QUEST_StartArea var
+    if (sorfina)
+        set QL_SORFINA, sorfina;
+    set sorfina, 0;
+    if (tanisha)
+        set QL_SORFINA, tanisha;
+    set tanisha, 0;
+    if (sorfina)
+        set QL_KAAN, kaan;
+    set kaan, 0;
+    if (hasan)
+        set QL_HASAN, hasan;
+    set hasan, 0;
+
     // Tulimshar and Mine Variables which aren't used anymore
     set Scorp, 0;
     set Bugleg, 0;
@@ -185,7 +199,7 @@ L_Fix_Full:
 // The variable TMW_Quest was used to save the progress in several subquests linearly.
 // The subquests are moved to different nibbles of other variables
 // to make it possible to do some of the quests in parallel.
-function|script|ClearVarTMW_Quest|,
+function|script|ClearVarTMW_Quest
 {
     if (TMW_Quest == 0) goto L_Done;
     if (TMW_Quest <= 6)  goto L_Bernard_Mikhail;
@@ -245,7 +259,7 @@ L_Done:
     return;
 }
 
--|script|#ClearGlobalVars|-1,
+-|script|#ClearGlobalVars|32767
 {
     end;
 

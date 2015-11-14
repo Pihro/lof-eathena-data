@@ -2,6 +2,6 @@
 
 
 
-debugroom.gat,0,0,0	script	Mobdebugroom	-1,{
-	end;
+debugroom,0,0,0    script    Mobdebugroom    -1,{
+    end;
 }

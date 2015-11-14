@@ -1,24 +1,23 @@
-function|script|useWarpTowel|,
+function|script|useWarpTowel
 {
-    set @towelColor, readparam(@tColor);
-    if (isin("botcheck.gat",25,27,51,47))
+    if (isin("botcheck",25,27,51,47))
         goto L_Botcheck;
-    if (isin("052-1.gat",1,1,100,80) || isin("052-2.gat",1,1,150,100))
+    if (isin("052-1",1,1,100,80) || isin("052-2",1,1,150,100))
         goto L_Illia;
-    if (isin("029-3.gat",1,1,99,99))
+    if (isin("029-3",1,1,99,99))
         goto L_Candor;
-    if (isin("031-4.gat",1,1,90,90))
+    if (isin("031-4",1,1,90,90))
         goto L_Cindy;
-    if (@towelColor$ == "White") warp "020-1.gat",66,91; // Nivalis
-    if (@towelColor$ == "Red") warp "009-1.gat",51,40; // Hurnscald
-    if (@towelColor$ == "Green") warp "003-1.gat",35,25; // Hitchhiker
-    if (@towelColor$ == "Blue") warp "003-1.gat",35,25; // Hitchhiker
-    if (@towelColor$ == "Yellow") warp "001-1.gat",44,68; // Tulimshar
-    if (@towelColor$ == "Purple") warp "003-1.gat",35,25; // Hitchhiker
-    if (@towelColor$ == "Orange") warp "027-1.gat",70,100; // Graveyard
-    if (@towelColor$ == "Pink") warp "012-3.gat",448,66; // Terranite Cave
-    if (@towelColor$ == "Teal") warp "003-1.gat",35,25; // Hitchhiker
-    if (@towelColor$ == "Lime") warp "003-1.gat",35,25; // Hitchhiker
+    if (@towelColor$ == "White") warp "020-1",66,91; // Nivalis
+    if (@towelColor$ == "Red") warp "009-1",51,40; // Hurnscald
+    if (@towelColor$ == "Green") warp "003-1",35,25; // Hitchhiker
+    if (@towelColor$ == "Blue") warp "003-1",35,25; // Hitchhiker
+    if (@towelColor$ == "Yellow") warp "001-1",44,68; // Tulimshar
+    if (@towelColor$ == "Purple") warp "003-1",35,25; // Hitchhiker
+    if (@towelColor$ == "Orange") warp "027-1",70,100; // Graveyard
+    if (@towelColor$ == "Pink") warp "012-3",448,66; // Terranite Cave
+    if (@towelColor$ == "Teal") warp "003-1",35,25; // Hitchhiker
+    if (@towelColor$ == "Lime") warp "003-1",35,25; // Hitchhiker
 
     if (rand(15))
         goto L_Keep;

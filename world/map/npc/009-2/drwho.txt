@@ -1,81 +1,109 @@
-//Written by Ozthokk, scripted by Munkar and edited by Pihro
+// An Episode for You, by Ozthokk.
+// Part 1: Tea for Two, scripted by Munkar and edited by Pihro and Pyndragon.
 
-009-2.gat,110,44,0|script|The Doctor|184,{
-
-    if (BaseLevel <= 24) goto L_Lvl_too_low;
+009-2.gat,110,44,0|script|The Doctor|184
+{
+    if (BaseLevel < 25) goto L_Lvl_too_low;
 
     if (QUEST_Episode == 1) goto L_Check;
-    if (QUEST_Episode == 2) goto L_Redo_tea;
+    if (QUEST_Episode == 2 && BaseLevel >= 40) goto L_Miler;
+    if (QUEST_Episode >= 2) goto L_Redo_tea;
 
     mes "[The Doctor]";
     mes "\"Quite interesting, quite interesting indeed.\"";
     menu
-        "Um, might I ask, what is so interesting?",-;
+        "Um, might I ask, what is so interesting?", L_Intro;
+
+L_Intro:
     mes "[The Doctor]";
     mes "\"Well, you are. You're quite interesting. I've been watching you for some time now, as you've been helping so many people: you're quite a master at what you do, you know.\"";
     menu
-        "Well, thanks.",-;
+        "Well, thanks.", L_IntroContinue;
+
+L_IntroContinue:
     mes "[The Doctor]";
     mes "\"I don't suppose you have some herbs and a few bottles of water with you, do you?\"";
     menu
-        "Some herbs and water? Could you be more specific?",-;
+        "'Some herbs and water'? Could you be more specific?", L_IntroSpecify;
+
+L_IntroSpecify:
     mes "[The Doctor]";
     mes "\"Ah, sorry, of course. I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water as well.\"";
     menu
-        "That shouldn't been too hard, but do I get something in return?",-;
+        "That shouldn't been too hard, but do I get something in return?", L_IntroReward;
+
+L_IntroReward:
     mes "[The Doctor]";
     mes "\"I suppose, what would you like?";
     mes "Er, nevermind, I've thought of something to give you. You can go off now and get what I need.\"";
-	set QUEST_Episode, 1;
-    close;
+    set QUEST_Episode, 1;
+    goto L_Close;
 
 L_Lvl_too_low:
-	mes "[The Doctor]";
+    mes "[The Doctor]";
     mes "\"Hmm, it's very interesting, very ... (mumbling).\"";
-    close;
+    goto L_Close;
+
+L_Miler:
+    mes "[The Doctor]";
+    mes "\"Thank you for helping me make my tea. I hope the potions have been helpful...";
+    mes "That reminds me. I have a friend in Nivalis named Miler who gave me some hints on the recipe. Would you take him a sample of what I gave you?";
+    mes "If you've used all the ones I've given, you can always bring me more ingredients.\"";
+    set QUEST_Episode, 3;
+    menu
+        "I'll go right away.", L_Close,
+        "Ah, I suppose I need to gather more ingredients first...", L_Close,
+        "Oh, I have some more ingredients right here!", L_Check3;
+
+S_Tea_Check:
+    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 ||
+        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 ||
+        countitem("BottleOfWater") < 10) set @failed, 1;
+    if (@failed != 1) goto S_Take_Items;
+    return;
+
+S_Take_Items:
+    delitem "MauveHerb", 50;
+    delitem "CobaltHerb", 50;
+    delitem "GambogeHerb", 50;
+    delitem "AlizarinHerb", 50;
+    delitem "BottleOfWater", 10;
+    return;
 
 L_Check:
-    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 ||
-        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 ||
-        countitem("BottleOfWater") < 10) goto L_NotEnough;
+    callsub S_Tea_Check;
+    if (@failed == 1) goto L_NotEnough;
 
-    delitem "MauveHerb", 50;
-    delitem "CobaltHerb", 50;
-    delitem "GambogeHerb", 50;
-    delitem "AlizarinHerb", 50;
-    delitem "BottleOfWater", 10;
-    goto L_Get_Reward;
+    mes "[The Doctor]";
+    mes "\"Mmm, it's been so long since I have had herbal tea. You have my gratitude.\"";
+    menu
+        "Seriously? What sort of reward is that?", L_Get_Reward;
 
 L_Check2:
-    if (countitem("MauveHerb") < 50 || countitem("CobaltHerb") < 50 ||
-        countitem("GambogeHerb") < 50 || countitem("AlizarinHerb") < 50 ||
-        countitem("BottleOfWater") < 10) goto L_NotEnough;
-
-    delitem "MauveHerb", 50;
-    delitem "CobaltHerb", 50;
-    delitem "GambogeHerb", 50;
-    delitem "AlizarinHerb", 50;
-    delitem "BottleOfWater", 10;
+    callsub S_Tea_Check;
+    if (@failed == 1) goto L_NotEnough;
 
     getitem "DarkConcentrationPotion", 5;
     mes "[The Doctor]";
     mes "\"Thanks, enjoy!\"";
-	close;
+    goto L_Close;
+
+L_Check3:
+    callsub S_Tea_Check;
+    if (@failed == 1) goto L_NotEnough;
+
+    mes "[The Doctor]";
+    mes "\"Remember to save one for Miler!\"";
+    getitem "DarkConcentrationPotion", 5;
+    goto L_Close;
 
 L_Get_Reward:
     mes "[The Doctor]";
-    mes "\"Mmm, it's been so long since I have had herbal tea. You have my gratitude.\"";
-    menu
-        "Seriously? What sort of reward is that?",-;
-    mes "[The Doctor]";
     mes "\"Well, I suppose you can have what's left of my tea.\"";
     getitem "DarkConcentrationPotion", 5;
-    menu
-        "Oh, thank you!", L_SetStatus2;
-
-L_SetStatus2:
     set QUEST_Episode, 2;
-    close;
+    menu
+        "Oh, thank you!", L_Close;
 
 L_Redo_tea:
     mes "[The Doctor]";
@@ -88,9 +116,11 @@ L_Redo_tea:
 L_Remind:
     mes "[The Doctor]";
     mes "\"Ah, sorry, of course, I need 50 mauve herbs, 50 cobalt herbs, 50 gamboge herbs, 50 alizarin herbs and 10 bottles of water.\"";
-    close;
+    goto L_Close;
 
 L_NotEnough:
+    set @failed, 0;
+
     mes "[The Doctor]";
     mes "\"Sorry, you do not have enough ingredients. You'd better search thoroughly.\"";
     menu

@@ -1,9 +1,9 @@
-// This file is generated automatically. All manually changes will be removed when running the Converter.
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Electricity Boss Cave mobs
 
 
 
-005-4.gat,0,0,0|script|Mob005-4|-1,
+005-4,0,0,0|script|Mob005-4|32767
 {
     end;
 }

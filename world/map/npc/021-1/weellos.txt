@@ -1,7 +1,7 @@
 // A historian
 // takes part in quest given by 021-2/kylian.txt
 
-021-1.gat,130,125,0|script|Weellos|103,
+021-1,130,125,0|script|Weellos|103
 {
     set QUEST_NorthTulimshar, QUEST_NorthTulimshar | $@knowWeellosNT;
     set @kylian, ((QUEST_NorthTulimshar & $@businessmanNT_MASK) >> $@businessmanNT_SHIFT);
@@ -9,8 +9,10 @@
     set @hw2011_npc_id, $@hw2011_npc_weellos;
     if (gettime(7) == $@hw2011_year && gettime(6) == 10 && gettime(5) >= $@hw2011_start_day)
         goto L_TrickOrTreat;
+    goto L_Begin;
 
-    if isin("021-1.gat", 130, 120, 140, 125) goto L_In;
+L_Begin:
+    if isin("021-1", 130, 120, 140, 125) goto L_In;
 
     mes "[Weellos]";
     mes "\"This is a very historic building. One of the oldest in the area.\"";
