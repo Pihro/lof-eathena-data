@@ -27,6 +27,8 @@
     if (gettime(7) == $@hw2011_year && gettime(6) == 10 && gettime(5) >= $@hw2011_start_day)
         goto L_TrickOrTreat;
 
+    goto L_Begin;
+
 L_Begin:
     mes "[Chief Pachua]";
     mes "\"How!\"";
@@ -205,6 +207,7 @@ L_Check_Shops:
         menu
             "Wait, can you make a leather patch for me?", L_leather_patch,
             "OK, bye.", L_Close;
+    goto L_Super_store;
 
 S_CheckStuff:
     mes "[Chief Pachua]";
@@ -224,11 +227,10 @@ L_Super_store:
             "Snake Skin Chaps sound good.", L_BuyChaps,
             "Can you make a leather patch?", L_leather_patch,
             "Not now, maybe later.", L_NoDeal;
-    if (!@wants_leather_patch)
-        menu
-            "Cowboy hat, please.", L_BuyCowboy,
-            "Snake Skin Chaps sound good.", L_BuyChaps,
-            "Not now, maybe later.", L_NoDeal;
+    menu
+        "Cowboy hat, please.", L_BuyCowboy,
+        "Snake Skin Chaps sound good.", L_BuyChaps,
+        "Not now, maybe later.", L_NoDeal;
 
 L_Cowboy_store:
     callsub S_CheckStuff;
@@ -245,10 +247,9 @@ L_Cowboy_store:
             "Yes, that's fine.", L_BuyCowboy,
             "Can you make a leather patch?", L_leather_patch,
             "On second thought, maybe later.", L_NoDeal;
-    if (!@wants_leather_patch)
-        menu
-            "Yes, that's fine.", L_BuyCowboy,
-            "On second thought, maybe later.", L_NoDeal;
+    menu
+        "Yes, that's fine.", L_BuyCowboy,
+        "On second thought, maybe later.", L_NoDeal;
 
 L_Chaps_store:
     callsub S_CheckStuff;
