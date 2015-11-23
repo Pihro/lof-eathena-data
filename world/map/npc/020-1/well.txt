@@ -16,11 +16,7 @@
 
 020-1,99,83,0|script|#Well|400,
 {
-    set @Q_MASK, NIBBLE_4_MASK;
-    set @Q_SHIFT, NIBBLE_4_SHIFT;
-    set @Q_status, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
-
-    if(@Q_status == 2) goto L_Finished;
+    if(QL_WELL == 2) goto L_Finished;
 
     mes "...";
     menu
@@ -76,8 +72,7 @@ L_Help:
 L_GetHelp:
     mes "[Mysterious voice inside the well]";
     mes "\"" + @response$ + "So if you can get some help for me... please do so!\"";
-    set @Q_status, 1;
-    callsub S_Update_Var;
+    set QL_WELL, 1;
 
     cleararray @response_list$, "", 4;
     cleararray @item_list$, "", 4;
@@ -96,10 +91,4 @@ L_Finished:
 
 L_Close:
     close;
-
-S_Update_Var:
-    set QUEST_Nivalis_state,
-          (QUEST_Nivalis_state & ~(@Q_MASK)
-        | (@Q_status << @Q_SHIFT));
-    return;
 }

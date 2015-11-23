@@ -1,17 +1,13 @@
 020-2.gat,100,28,0|script|Miler|100,
 {
-    set @Q_MASK, NIBBLE_4_MASK;
-    set @Q_SHIFT, NIBBLE_4_SHIFT;
-    set @Q_well, ((QUEST_Nivalis_state) & @Q_MASK) >> @Q_SHIFT;
-
     if (QUEST_Episode >= 18) goto L_Episode_Thank;
     if (QUEST_Episode >= 4) goto L_Episode_AskBoxes;
-    if (@Q_well == 2 && QUEST_Episode == 3) goto L_Episode_Start;
+    if (QL_WELL == 2 && QUEST_Episode == 3) goto L_Episode_Start;
 
     mes "[Miler]";
     mes "\"Hello!\"";
 
-    if (@Q_well == 1) goto L_Well_Menu;
+    if (QL_WELL == 1) goto L_Well_Menu;
 
     goto L_Close;
 
@@ -29,8 +25,7 @@ L_Well_Finish:
     mes "[Miler]";
     mes "\"Ho! I'll help him!\"";
     getexp (BaseLevel * 111), 0;
-    set @Q_well, 2;
-    callsub S_Update_Var;
+    set QL_WELL, 2;
     goto L_Close;
 
 L_Episode_Start:
@@ -57,8 +52,4 @@ L_Episode_Thank:
 
 L_Close:
     close;
-
-S_Update_Var:
-    set QUEST_Nivalis_state, QUEST_Nivalis_state & ~(@Q_W_MASK) | (@Q_well << @Q_W_SHIFT);
-    return;
 }
