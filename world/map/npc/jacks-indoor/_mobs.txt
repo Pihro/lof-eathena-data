@@ -1,0 +1,9 @@
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+// Jack's House mobs
+
+
+
+jacks-indoor,0,0,0|script|Mobjacks-indoor|32767
+{
+    end;
+}

@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Snake Pit warps
 
-005-3,52,33|warp|To Outside#005-30|-1,-1,005-1,89,25
-005-3,33,82|warp|To Outside#005-31|-1,-1,005-1,71,77
+005-3,52,33|warp|-1,-1,005-1,89,25
+005-3,33,82|warp|-1,-1,005-1,71,77

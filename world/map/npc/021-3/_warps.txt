@@ -1,6 +1,6 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Central Tulimshar Sewers warps
 
-021-3,143,127|warp|To Central Tulim#021-30|-1,-1,021-1,147,137
-021-3,125,33|warp|To Central Tulim#021-31|-1,-1,021-1,124,39
-021-3,57,99|warp|To Central Tulim#021-32|-1,-1,021-1,50,105
+021-3,143,127|warp|-1,-1,021-1,147,137
+021-3,125,33|warp|-1,-1,021-1,124,39
+021-3,57,99|warp|-1,-1,021-1,50,105

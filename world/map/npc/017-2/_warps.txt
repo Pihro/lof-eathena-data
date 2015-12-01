@@ -1,9 +1,9 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Theater warps
 
-017-2,30,20|warp|To Right Door Ba#017-20|-1,-1,017-9,29,21
-017-2,26,31|warp|To Outside#017-21|-1,-1,017-1,43,33
-017-2,22,20|warp|To Left Door Bac#017-22|-1,-1,017-9,23,21
-017-2,24,25|warp|To Left Trapdoor#017-23|-1,-1,017-9,21,26
-017-2,26,21|warp|To Center Trapdo#017-24|-1,-1,017-9,26,27
-017-2,28,25|warp|To Right Trapdoo#017-25|-1,-1,017-9,31,26
+017-2,30,20|warp|-1,-1,017-9,29,21
+017-2,26,31|warp|-1,-1,017-1,43,33
+017-2,22,20|warp|-1,-1,017-9,23,21
+017-2,24,25|warp|-1,-1,017-9,21,26
+017-2,26,21|warp|-1,-1,017-9,26,27
+017-2,28,25|warp|-1,-1,017-9,31,26

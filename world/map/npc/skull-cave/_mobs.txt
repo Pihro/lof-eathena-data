@@ -1,0 +1,9 @@
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+// Skull Cave mobs
+
+
+
+skull-cave,0,0,0|script|Mobskull-cave|32767
+{
+    end;
+}

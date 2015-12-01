@@ -1,9 +1,9 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Frosty Underground warps
 
-046-3,139,19|warp|ToOutside#046-30|-1,-1,046-1,139,20
-046-3,78,30|warp|ToOutside#046-31|-1,-1,046-1,78,31
-046-3,83,43|warp|ToOutside#046-32|-1,-1,046-1,83,44
-046-3,131,48|warp|ToOutside#046-33|-1,-1,046-1,131,49
-046-3,131,55|warp|ToOutside#046-34|-1,-1,046-1,131,56
-046-3,124,109|warp|ToOutside#046-35|-1,-1,046-1,124,110
+046-3,139,19|warp|-1,-1,046-1,139,20
+046-3,78,30|warp|-1,-1,046-1,78,31
+046-3,83,43|warp|-1,-1,046-1,83,44
+046-3,131,48|warp|-1,-1,046-1,131,49
+046-3,131,55|warp|-1,-1,046-1,131,56
+046-3,124,109|warp|-1,-1,046-1,124,110

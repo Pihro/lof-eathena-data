@@ -1,14 +1,14 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Hurnscald warps
 
-009-1-night,49,55|warp|Hurnscald #009-1-night0|2,-1,008-1-night,78,81
-009-1-night,97,36|warp|Hurnscald #009-1-night1|-1,0,008-1-night,128,61
-009-1-night,35,30|warp|To Hurnsca#009-1-night2|-1,-1,009-2-night,50,54
-009-1-night,58,46|warp|To Storage#009-1-night3|-1,-1,009-2-night,27,106
-009-1-night,59,33|warp|To Archer #009-1-night4|-1,-1,009-2-night,95,29
-009-1-night,71,30|warp|To Hurnsca#009-1-night5|-1,-1,009-2-night,130,25
-009-1-night,80,31|warp|To Hurnsca#009-1-night6|-1,-1,009-2-night,149,66
-009-1-night,72,44|warp|To Hurnsca#009-1-night7|-1,-1,009-2-night,114,77
-009-1-night,91,46|warp|To Hurnsca#009-1-night8|0,-1,009-2-night,182,66
-009-1-night,24,36|warp|Hurnscald #009-1-night9|-1,1,008-1-night,53,61
-009-1-night,49,24|warp|Hurnscald#009-1-night10|2,-1,008-1-night,78,48
+009-1-night,49,55|warp|2,-1,008-1-night,78,81
+009-1-night,97,36|warp|-1,0,008-1-night,128,61
+009-1-night,35,30|warp|-1,-1,009-2-night,50,54
+009-1-night,58,46|warp|-1,-1,009-2-night,27,106
+009-1-night,59,33|warp|-1,-1,009-2-night,95,29
+009-1-night,71,30|warp|-1,-1,009-2-night,130,25
+009-1-night,80,31|warp|-1,-1,009-2-night,149,66
+009-1-night,72,44|warp|-1,-1,009-2-night,114,77
+009-1-night,91,46|warp|0,-1,009-2-night,182,66
+009-1-night,24,36|warp|-1,1,008-1-night,53,61
+009-1-night,49,24|warp|2,-1,008-1-night,78,48

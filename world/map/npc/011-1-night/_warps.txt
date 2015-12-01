@@ -1,9 +1,9 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Woodland warps
 
-011-1-night,58,92|warp|To Hermit'#011-1-night0|-1,-1,011-3-night,0,0
-011-1-night,30,61|warp|To Woodlan#011-1-night1|-1,1,014-1-night,108,91
-011-1-night,49,104|warp|To Woodlan#011-1-night2|0,-1,010-1-night,48,25
-011-1-night,124,62|warp|To Hurnsca#011-1-night3|-1,2,008-1-night,25,61
-011-1-night,73,9|warp|To Woodlan#011-1-night4|0,-1,012-1-night,132,175
-011-1-night,38,36|warp|To Bandit #011-1-night5|-1,-1,011-6-night,49,100
+011-1-night,58,92|warp|-1,-1,011-3-night,0,0
+011-1-night,30,61|warp|-1,1,014-1-night,108,91
+011-1-night,49,104|warp|0,-1,010-1-night,48,25
+011-1-night,124,62|warp|-1,2,008-1-night,25,61
+011-1-night,73,9|warp|0,-1,012-1-night,132,175
+011-1-night,38,36|warp|-1,-1,011-6-night,49,100

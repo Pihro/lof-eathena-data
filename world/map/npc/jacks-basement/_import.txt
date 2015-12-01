@@ -1,0 +1,5 @@
+// Map jacks-basement: Jack's Basement
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: jacks-basement
+npc: npc/jacks-basement/_mobs.txt
+npc: npc/jacks-basement/_warps.txt

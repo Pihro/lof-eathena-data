@@ -1,8 +1,8 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Beach warps
 
-004-1,84,115|warp|To Sandstorm Des#004-10|1,-1,002-1,28,14
-004-1,37,111|warp|To Beach#004-11|1,-1,003-1,141,20
-004-1,80,31|warp|To Beach House#004-12|-1,-1,004-2,21,28
-004-1,86,27|warp|To Second Floor#004-13|-1,-1,004-2,57,65
-004-1,68,19|warp|To Beach#004-14|1,-1,041-1,101,94
+004-1,84,115|warp|1,-1,002-1,28,14
+004-1,37,111|warp|1,-1,003-1,141,20
+004-1,80,31|warp|-1,-1,004-2,21,28
+004-1,86,27|warp|-1,-1,004-2,57,65
+004-1,68,19|warp|1,-1,041-1,101,94

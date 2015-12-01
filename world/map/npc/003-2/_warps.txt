@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Beach House warps
 
-003-2,22,29|warp|To Outside#003-20|-1,-1,003-1,48,37
-003-2,56,29|warp|To Outside#003-21|-1,-1,003-1,59,30
+003-2,22,29|warp|-1,-1,003-1,48,37
+003-2,56,29|warp|-1,-1,003-1,59,30

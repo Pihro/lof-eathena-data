@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Heroes' Hold - Castle warps
 
-hh-castle,26,33|warp|To Heroes' H#hh-castle0|1,-1,hh-outside,72,65
-hh-castle,26,33|warp|To Heroes' H#hh-castle1|1,-1,hh-maincave,0,0
+hh-castle,26,33|warp|1,-1,hh-outside,72,65
+hh-castle,26,33|warp|1,-1,hh-maincave,0,0

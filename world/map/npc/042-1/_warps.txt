@@ -1,7 +1,7 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Tulimshar Suburbs warps
 
-042-1,63,76|warp|To Sorfina's Hou#042-10|-1,-1,042-2,44,30
-042-1,91,102|warp|To Store House#042-11|-1,-1,042-2,22,92
-042-1,104,102|warp|To Store House#042-12|-1,-1,042-2,44,92
-042-1,65,104|warp|To Tulimshar Sub#042-13|-1,-1,042-2,29,61
+042-1,63,76|warp|-1,-1,042-2,44,30
+042-1,91,102|warp|-1,-1,042-2,22,92
+042-1,104,102|warp|-1,-1,042-2,44,92
+042-1,65,104|warp|-1,-1,042-2,29,61

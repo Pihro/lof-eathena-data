@@ -1,0 +1,5 @@
+// Map skull-cave: Skull Cave
+// This file is generated automatically. All manually added changes will be removed when running the Converter.
+map: skull-cave
+npc: npc/skull-cave/_mobs.txt
+npc: npc/skull-cave/_warps.txt

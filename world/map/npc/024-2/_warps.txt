@@ -1,5 +1,5 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Tulimshar Magic School warps
 
-024-2,26,27|warp|To Tulimshar Can#024-20|0,-1,024-1,80,49
-024-2,42,28|warp|To Outside#024-21|-1,-1,024-1,86,49
+024-2,26,27|warp|0,-1,024-1,80,49
+024-2,42,28|warp|-1,-1,024-1,86,49

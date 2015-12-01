@@ -1,4 +1,4 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Somber Cave warps
 
-somber-cave,114,23|warp|Somber Cav#somber-cave0|-1,-1,009-1,1,1
+somber-cave,114,23|warp|-1,-1,009-1,1,1
