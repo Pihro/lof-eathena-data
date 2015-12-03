@@ -51,7 +51,7 @@ L_LD_Drinks:
     set @state, 2;
     callsub S_Update_Var;
     delitem "CactusDrink", 10;
-    getitem "CottonTrousers", 1;
+    getitem "Boots", 1;
     mes "[Lieutenant Dausen]";
     mes "\"Great!  This will help us make it through the hot day.  As a gift for your troubles, take these boots to keep your legs from burning in the sun.  Have a good day...\"";
     next;
