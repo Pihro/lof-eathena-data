@@ -28,7 +28,7 @@ L_Adoptmenu:
 L_Dog:
     mes "[Ace Ventura]";
     mes "\"A dog? OK... for one of our fine dogs you will need to bring me\"";
-    mes "\"20 animal bones, 15 steaks, 10 raw logs, and 40,000 GP.\"";
+    mes "\"20 animal bones, 15 steaks, 10 raw logs, and 100,000 GP.\"";
     next;
     mes "\"A well trained dog, will help you improve your strength too.\"";
 
@@ -42,7 +42,7 @@ L_Cat:
     mes "\"You will be amazed at the speed of these fine animals.\"";
     next;
     mes "\"I guarantee they will make you feel faster and more agile in battle.\"";
-    mes "\"A great deal for only 10 animal bones, 10 steaks, 15 cartons of milk and 40,000 GP.\"";
+    mes "\"A great deal for only 10 animal bones, 10 steaks, 15 cartons of milk and 100,000 GP.\"";
 
     menu
         "Yes, I could use more agility.", L_cat2,
@@ -53,7 +53,7 @@ L_Rat:
     mes "\"Rats are so cool!\"";
     mes "\"The ones I have here will really help your Dexterity.\"";
     next;
-    mes "\"They cost 15 animal bones, 10 steaks, 20 bottles of water, and 40,000 GP.\"";
+    mes "\"They cost 15 animal bones, 10 steaks, 20 bottles of water, and 100,000 GP.\"";
     mes "\"Now that you know how valuable they are, would you like to have one?\"";
 
     menu
@@ -64,13 +64,13 @@ L_dog2:
     if (countitem("AnimalBones") < 20) goto L_Missing;
     if (countitem("Steak") < 15) goto L_Missing;
     if (countitem("RawLog") < 10) goto L_Missing;
-    if (Zeny < 40000) goto L_NotEnoughMoney;
+    if (Zeny < 100000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("AnimalBones") > 20 && countitem("Steak") > 15) goto L_Full;
     delitem "AnimalBones", 20;
     delitem "Steak", 15;
     delitem "RawLog", 10;
-    set Zeny, Zeny - 40000;
+    set Zeny, Zeny - 100000;
     getitem "Hound", 1;
     mes "[Ace Ventura]";
     mes "\"Enjoy your dog! Do you want to adopt another pet?\"";
@@ -83,13 +83,13 @@ L_cat2:
     if (countitem("AnimalBones") < 10) goto L_Missing;
     if (countitem("Steak") < 10) goto L_Missing;
     if (countitem("Milk") < 15) goto L_Missing;
-    if (Zeny < 40000) goto L_NotEnoughMoney;
+    if (Zeny < 100000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("AnimalBones") > 10 && countitem("Steak") > 10) goto L_Full;
     delitem "AnimalBones", 10;
     delitem "Steak", 10;
     delitem "Milk", 15;
-    set Zeny, Zeny - 40000;
+    set Zeny, Zeny - 100000;
     getitem "Cat", 1;
     mes "[Ace Ventura]";
     mes "\"Now here is a frisky white cat! Do you want to adopt another pet?\"";
@@ -102,13 +102,13 @@ L_rat2:
     if (countitem("AnimalBones") < 15) goto L_Missing;
     if (countitem("Steak") < 10) goto L_Missing;
     if (countitem("BottleOfWater") < 20) goto L_Missing;
-    if (Zeny < 40000) goto L_NotEnoughMoney;
+    if (Zeny < 100000) goto L_NotEnoughMoney;
     getinventorylist;
     if (@inventorylist_count == 100 && countitem("AnimalBones") > 15 && countitem("Steak") > 10) goto L_Full;
     delitem "AnimalBones", 15;
     delitem "Steak", 10;
     delitem "BottleOfWater", 20;
-    set Zeny, Zeny - 40000;
+    set Zeny, Zeny - 100000;
     getitem "Rat", 1;
     mes "[Ace Ventura]";
     mes "\"Here is your fine pet! Do you want to purchase any other pet?\"";
