@@ -1,3 +1,4 @@
 // This file is generated automatically. All manually added changes will be removed when running the Converter.
 // Jack's House warps
 
+jacks-indoor,31,31|warp|-1,-1,009-1,42,45
