@@ -7,7 +7,7 @@
     callfunc "ClearVariables";
     callfunc "XmasStates";
 
-    if (($@xmas_time) && (@xmas_sh_done)) goto L_Done;
+    if ($@xmas_time && @xmas_sh_done) goto L_Done;
     if ($@xmas_time) goto L_Quest;
 
     mes "[Santa's Helper]";
@@ -46,16 +46,20 @@ L_Yes:
         goto L_NoItem;
     if (countitem("GreenPresentBox") < $@xmas_sh_green_amount)
         goto L_NoItem;
-    getinventorylist;
+
     set @SantasHelper_Reward$, $@SantasHelper_Annual_Reward$[ rand(getarraysize($@SantasHelper_Annual_Reward$)) ];
-    if ((@inventorylist_count > 99) || (checkweight(@SantasHelper_Reward$, 1) == 0))
-        goto L_TooMany;
+
+    getinventorylist;
+    if (@inventorylist_count == 100) goto L_TooMany;
+
     mes "[Santa's Helper]";
     mes "\"Great! Here is something for you\"";
+
     delitem "PurplePresentBox", $@xmas_sh_purple_amount;
     delitem "BluePresentBox", $@xmas_sh_blue_amount;
     delitem "GreenPresentBox", $@xmas_sh_green_amount;
     getitem @SantasHelper_Reward$, 1;
+
     set @SantasHelper_Reward$, "";
     set XMASTIME, XMASTIME | $@xmas_sh_bit;
     set @karma_bonus, $@xmas_karma_bonus;
