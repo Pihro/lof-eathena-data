@@ -1,6 +1,0 @@
-
-
-Skull_cave,0,0,0|script|MobSkull_cave
-{
-    end;
-}
