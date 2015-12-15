@@ -1,20 +1,20 @@
 026-1,24,37,0|script|Munro|183,
 {
     mes "[Munro]";
-    mes "\"Whoh dude...\"";
+    mes "\"Woah dude....\"";
     next;
     mes "[Munro]";
-    mes "\"Man.. I don't know how I got here.. freaky..\"";
+    mes "\"Man.... I don't know how I got here... freaky....\"";
     next;
     mes "[Munro]";
-    mes "\"Hey dude, what's that on your face? It's creeping me out!\"";
+    mes "\"Wait. Dude, what is that on your face? It's creeping me out!\"";
     menu
-        "There is nothing on my face..", L_Nothing,
-        "What, This skin?",L_ThisSkin;
+        "There is nothing on my face....", L_Nothing,
+        "What, my skin?", L_Skin;
 
-L_ThisSkin:
+L_Skin:
     mes "[Munro]";
-    mes "\"Skin? Whoh far-out man.. This must be that weirdo place my brother Parua told me about..\"";
+    mes "\"Skin? Woah, far-out man.. This must be that weirdo place my brother Parua told me about..\"";
     next;
     mes "Munro stares at you vacantly for a moment";
     next;
@@ -50,14 +50,7 @@ OnInit:
     end;
 
 OnTimer1000:
-    set $@isHalloween, 0;
     if ((gettime(6) == 10 && gettime(5) >= 27) || (gettime(6) == 11 && gettime(5) <= 5))
-        set $@isHalloween, 1;
-
-    if (gettime(6) == 12 && gettime(5) >= 23 && gettime(5) <= 26)
-        set $@isHalloween, 1;
-
-    if ($@isHalloween)
         goto L_enablemunro;
 
     goto L_disablemunro;
@@ -80,9 +73,6 @@ L_End:
 function|script|CheckMunro
 {
     if ((gettime(6) == 10 && gettime(5) >= 27) || (gettime(6) == 11 && gettime(5) <= 5))
-        goto L_Return;
-
-    if (gettime(6) == 12 && gettime(5) >= 23 && gettime(5) <= 26)
         goto L_Return;
 
     callfunc "UnequipLater";
