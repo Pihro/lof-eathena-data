@@ -1,6 +1,6 @@
 //
 
-001-1,48,52,0|script|Aidan|102,
+001-1,48,52,0|script|Aidan|102
 {
     if(MPQUEST == 0) goto L_Register;
     mes "[Aidan the Monster Guide]";

@@ -2,7 +2,7 @@
 // Quest fixed by Pyndragon/Daniel Foerster, 27 May 2015
 // See also 009-2/fairyquest2.txt
 
-018-3,60,21,0|script|Susanne|114,
+018-3,60,21,0|script|Susanne|114
 {
   
   if(BaseLevel <= 49) goto L_noob;

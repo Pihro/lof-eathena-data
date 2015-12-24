@@ -27,7 +27,7 @@ OnInit:
     end;
 }
 
-022-1,41,46,0|script|Anwar|156,
+022-1,41,46,0|script|Anwar|156
 {
     set @state, ((QUEST_NorthTulimshar & $@magicfieldNT_MASK) >> $@magicfieldNT_SHIFT);
 

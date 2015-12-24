@@ -325,7 +325,7 @@ OnTouch:
     close;
 }
 
-042-2,27,23,0|script|Chest#sorfina|111,
+042-2,27,23,0|script|Chest#sorfina|111
 {
     if (QL_SORFINA > 2) goto L_Empty;
     if (QL_SORFINA == 2) goto L_Shirt;

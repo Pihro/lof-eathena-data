@@ -2,7 +2,7 @@
 // TODO: add dialog/code for giving more letters
 //       Airlia supports receiving an infinate number of letters
 
-027-2,24,25,0|script|Caretaker|159,
+027-2,24,25,0|script|Caretaker|159
 {
     if (QUEST_Graveyard_Caretaker == 1) goto L_Return_Dialog;
     if (QUEST_Graveyard_Caretaker == 2) goto L_Has_Letter;

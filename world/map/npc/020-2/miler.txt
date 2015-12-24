@@ -1,4 +1,4 @@
-020-2.gat,100,28,0|script|Miler|100,
+020-2.gat,100,28,0|script|Miler|100
 {
     if (QUEST_Episode >= 18) goto L_Episode_Thank;
     if (QUEST_Episode >= 4) goto L_Episode_AskBoxes;

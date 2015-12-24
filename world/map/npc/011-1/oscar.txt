@@ -37,7 +37,7 @@ function|script|HalloweenQuestWaterPumpkins
     end;
 }
 
-011-1,94,38,0|script|Oscar|142,
+011-1,94,38,0|script|Oscar|142
 {
     // Check we are at the good time of the year
     if (!(gettime(6) == 11 && (gettime(5) >= 4 && gettime(5) <= 30))) goto L_NoEvent;

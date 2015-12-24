@@ -1,6 +1,6 @@
 //
 
-001-1,57,52,0|script|Tybalt|107,
+001-1,57,52,0|script|Tybalt|107
 {
     callfunc "ClearVariables";
     set @npcname$, "Tybalt";

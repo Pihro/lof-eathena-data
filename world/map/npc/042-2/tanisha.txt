@@ -2,7 +2,7 @@
 // Authors: Jenalya, alastrim
 // Cleanup: o11c
 
-042-2,37,90,0|script|Tanisha|114,
+042-2,37,90,0|script|Tanisha|114
 {
     callfunc "ClearVariables";
     

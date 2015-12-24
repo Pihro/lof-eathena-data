@@ -23,12 +23,12 @@ OnTimer2000:
     end;
 }
 
-027-3,40,59,0|script|#closedgate|322,
+027-3,40,59,0|script|#closedgate|322
 {
     end;
 }
 
-027-3,40,59,0|script|#opengate|323,
+027-3,40,59,0|script|#opengate|323
 {
     end;
 }

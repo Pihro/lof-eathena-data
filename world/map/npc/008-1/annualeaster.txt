@@ -113,21 +113,21 @@ L_End1:
     return;
 }
 
-008-1,65,40,0|script|#TestEgg0|375,
+008-1,65,40,0|script|#TestEgg0|375
 {
     set @EasterEggID, 0;
     callfunc("AnnualEasterEvent");
     end;
 }
 
-008-1,65,40,0|script|#TestEgg1|375,
+008-1,65,40,0|script|#TestEgg1|375
 {
     set @EasterEggID, 1;
     callfunc("AnnualEasterEvent");
     end;
 }
 
-008-1,65,40,0|script|#TestEgg2|375,
+008-1,65,40,0|script|#TestEgg2|375
 {
     set @EasterEggID, 2;
     callfunc("AnnualEasterEvent");

@@ -21,7 +21,7 @@
 //TODO Add an icreasing particle effect to the chest, move it half a tile right
 // and make it one of those lab tables from the slime quests
 
-030-4,32,21,0|script|AniManOMat|400,
+030-4,32,21,0|script|AniManOMat|400
 {
     set $@XmasBattleStatusClone, 0;
     callfunc "XmasStates";

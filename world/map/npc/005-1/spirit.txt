@@ -286,13 +286,13 @@ S_update_var:
     return;
 }
 
-005-1,118,70,0|script|#EarthImp0#_M|400,
+005-1,118,70,0|script|#EarthImp0#_M|400
 {
     callfunc "EarthImpTouch";
     end;
 }
 
-005-1,119,70,0|script|#EarthImp1#_M|400,
+005-1,119,70,0|script|#EarthImp1#_M|400
 {
     callfunc "EarthImpTouch";
     end;

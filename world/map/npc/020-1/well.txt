@@ -14,7 +14,7 @@
 //# used variables: QUEST_Nivalis_state Nibble4
 //############################################
 
-020-1,99,83,0|script|#Well|400,
+020-1,99,83,0|script|#Well|400
 {
     if(QL_WELL == 2) goto L_Finished;
 

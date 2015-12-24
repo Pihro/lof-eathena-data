@@ -1,6 +1,6 @@
 // Quest fixed by Pyndragon/Daniel Foerster, 27 May 2015
 
-009-2,63,26,0|script|Royal Fairy|108,
+009-2,63,26,0|script|Royal Fairy|108
 {
     if(FAIRY_Quest == 1) goto L_tellagain;
     if(FAIRY_Quest == 3) goto L_thanks;

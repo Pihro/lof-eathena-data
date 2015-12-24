@@ -1,4 +1,4 @@
-006-1,23,100,0|script|Pachua|143,
+006-1,23,100,0|script|Pachua|143
 {
     set @LEATHER_PATCH_PRICE, 300;
 // @wants_leather_patch is used as boolean

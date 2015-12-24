@@ -1,8 +1,8 @@
 //
 
-005-1,69,76,0|shop|George#sandstorm|115,ShortBow:*1,Arrow :1,IronArrow:*1,Beer:*1,ChickenLeg :-2
+005-1,69,76,0|shop|George#sandstorm|115,ShortBow:*1,Arrow:1,IronArrow:*1,Beer:*1,ChickenLeg:*2
 
-005-1,66,75,0|script|Kieron|132,
+005-1,66,75,0|script|Kieron|132
 {
     mes "[Kieron]";
     mes "\"Be careful if you're going in that cave,";
@@ -10,7 +10,7 @@
     close;
 }
 
-005-1,91,23,0|script|William|131,
+005-1,91,23,0|script|William|131
 {
     mes "[William]";
     mes "\"Going in the cave?";

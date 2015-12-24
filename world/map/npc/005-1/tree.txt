@@ -155,13 +155,13 @@ L_Close:
 
 }
 
-005-1,79,41,0|script|#DruidTree0#_M|400,
+005-1,79,41,0|script|#DruidTree0#_M|400
 {
     callfunc "QuestTreeTouch";
     end;
 }
 
-005-1,80,41,0|script|#DruidTree1#_M|400,
+005-1,80,41,0|script|#DruidTree1#_M|400
 {
     callfunc "QuestTreeTouch";
     end;

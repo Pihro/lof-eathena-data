@@ -1,7 +1,7 @@
 // The Paper Boy, Roger, helps sailors obtain the scroll needed for the captains hat. Nov 07, 2012 Dev- DingoDuck
 // Fixed 19 May 2015 by Itchy Demon
 
-018-1,76,85,0|script|Roger|130,
+018-1,76,85,0|script|Roger|130
 {
     mes "[Roger]";
     mes "\"Paper! Paper! Get your copy of The Land of Fire Gazette here!\"";
