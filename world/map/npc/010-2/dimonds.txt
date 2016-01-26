@@ -52,7 +52,7 @@
     if (gettime(5) > @end_day) goto L_no_event;
     if (gettimetick(2)-TUT_var < 2*7*86400 ) //player must be created at least 2 weeks ago
         goto L_no_event;
-    if (FLAGS & FLAG_HAS_BOWLER_BURNSDAY ) goto L_event_done;
+    if (FLAGS & FLAG_HAS_BOWLER_BURNSDAY && FLAGS & FLAG_HAS_STEAMPUNK_BURNSDAY) goto L_event_done;
     getinventorylist;
     if (@inventorylist_count == 100) goto L_Full_Inv;
 
@@ -218,8 +218,15 @@ L_Next:
     getinventorylist;
     if (@inventorylist_count == 100)
         goto L_Full_Inv;
+    if (FLAGS & FLAG_HAS_BOWLER_BURNSDAY) goto L_Get_SteamTopHat;
+
     getitem "BowlerHat", 1;
     set FLAGS, FLAGS | FLAG_HAS_BOWLER_BURNSDAY;
+    close;
+
+L_Get_SteamTopHat:
+    getitem "SteamTopHat", 1;
+    set FLAGS, FLAGS | FLAG_HAS_STEAMPUNK_BURNSDAY;
     close;
 
 L_no_event:
@@ -386,7 +393,7 @@ L_event_done:
 
 L_Full_Inv:
     mes "[Shannon]";
-    mes "\"Your possessions seems to be a burden to you.\"";
+    mes "\"On second thought, your possessions seems to be a burden to you.\"";
     next;
     mes "\"Maybe you should turn away from the mundane world and get rid of this burden to change your view to the beauty of poetry.\"";
     close;
@@ -581,4 +588,3 @@ L_Close:
     callfunc "Inn";
     end;
 }
-
