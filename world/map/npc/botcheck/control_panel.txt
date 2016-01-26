@@ -14,7 +14,9 @@ L_Main:
 L_NPCControl:
     menu
         "Disable an NPC", L_NPC_Disable,
-        "Enable an NPC", L_NPC_Enable;
+        "Enable an NPC", L_NPC_Enable,
+        "Return to main menu.", L_Main,
+        "Nothing.", L_Close;
 
 L_NPC_Disable:
     mes "What NPC would you like to disable?";
