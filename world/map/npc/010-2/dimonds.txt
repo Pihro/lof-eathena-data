@@ -12,33 +12,33 @@
     close;
 }
 
-010-2,40,35,0|script|Phil|157
+010-2,40,35,0|script|Phil|626
 {
     mes "[Phil]";
-    mes "\"We're having problems with our equipment!\"";
+    mes "\"We've finally solved the problem with our instruments!\"";
     next;
     mes "[Phil]";
-    mes "\"I don't know if we can play any songs!\"";
+    mes "\"Now we can play any songs!\"";
     close;
 }
 
-010-2,40,37,0|script|Jerry|160
+010-2,40,37,0|script|Jerry|627
 {
     mes "[Jerry]";
-    mes "\"I don't know what's wrong.\"";
+    mes "\"I finally figured out what was wrong.\"";
     next;
     mes "[Jerry]";
-    mes "\"We should be able to play you music in the future!\"";
+    mes "\"I can't believe it took so long to fix....\"";
     close;
 }
 
-010-2,42,36,0|script|Robert|162
+010-2,42,36,0|script|Robert|628
 {
     mes "[Robert]";
-    mes "\"I hope we can figure something out!\"";
+    mes "\"We held to our hope and Jerry figured it out.\"";
     next;
     mes "[Robert]";
-    mes "\"We are kinda useless if we can't play music.\"";
+    mes "\"Now we are no longer useless — we can play music again!\"";
     close;
 }
 
