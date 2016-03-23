@@ -13,3 +13,17 @@ L_Change:
     misceffect 15, strcharinfo(0);
     return;
 }
+
+
+function|script|useRandomCandy
+{
+    if (rand(10))
+        goto L_Normal;
+
+    callfunc "useShockSweet";
+    return;
+
+L_Normal:
+    heal 5, 0, 1;
+    return;
+}
